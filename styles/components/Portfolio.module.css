@@ -1,0 +1,255 @@
+.portfolio_screen {
+  width: 100%;
+  padding: 00px 130px 130px 130px;
+}
+
+.portfolio_screen__title_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.portfolio_screen__title {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+  margin-bottom: 60px;
+
+  font-size: 232px;
+
+  max-width: 100%;
+
+  color: var(--main-white-color);
+}
+
+.portfolio_screen__tabs {
+  display: flex;  
+  justify-content: space-between;
+  margin-bottom: 90px;
+}
+
+.portfolio_screen__tabs_item {
+  cursor: pointer;
+  padding: 10px 30px 10px 30px;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 33px;
+
+  /* identical to box height */
+  text-transform: uppercase;
+
+  color: var(--main-light-grey-color);
+}
+
+.tabs_item_active {
+  border: 1px solid var(--main-white-color);
+  color: var(--main-white-color);
+}
+
+.portfolio_cards {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 60px;
+}
+
+.portfolio_cards__item {
+  width: calc(50% - 30px);
+  cursor: pointer;
+
+  list-style-type: none;
+}
+
+.portfolio_cards__item a { 
+  text-decoration: none;
+}
+
+.portfolio_cards__item_photo {
+  width: 100%;
+
+  background-size: cover;
+  background-position: center;
+
+  max-height: 328px;
+  object-fit: cover;
+}
+
+.portfolio_cards__item_title {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+
+  color: var(--main-white-color);
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+.portfolio_cards__item_subtitle {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 120%;
+
+  margin-top: 5px;
+
+  color: var(--main-light-grey-color);
+}
+
+.portfolio_screen__show_more_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.portfolio_screen__show_more {
+  width: 163px;
+  height: 45px;
+
+  border: 1px solid var(--main-light-grey-color);
+  box-sizing: border-box;
+
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+
+  margin-top: 40px;
+
+  color: var(--main-light-grey-color);
+  background: transparent;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1530px) {
+  .portfolio_screen__title {
+    font-size: 212px;
+  }
+}
+@media screen and (max-width: 1424px) {
+  .portfolio_screen__title {
+    font-size: 202px;
+  }
+}
+@media screen and (max-width: 1340px) {
+  .portfolio_screen__title {
+    font-size: 182px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .portfolio_screen__title {
+    font-size: 162px;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .portfolio_screen__title {
+    font-size: 142px;
+  }
+}
+@media screen and (max-width: 1020px) {
+  .portfolio_screen {
+    padding: 60px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .btn_to_portfolio {
+    width: 320px;
+    left: 220px;
+    top: 490px;
+  }
+
+  .portfolio_screen__title {
+    margin-bottom: 55px;
+  }
+
+  .portfolio_screen__tabs_item {
+    width: 210px;
+    height: 63px;
+    font-size: 20px;
+    display: flex;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+  }
+  .portfolio_screen__show_more {
+    margin-top: 25px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .portfolio_screen__title {
+    font-size: 122px;
+  }
+}
+
+@media screen and (max-width: 808px) {
+  .portfolio_screen__tabs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 30px;
+    gap: 10px 10px;
+  }
+  .portfolio_screen__title {
+    font-size: 102px;
+  }
+}
+
+@media screen and (max-width: 804px) {
+  .portfolio_screen__title {
+    margin-bottom: 40px;
+  }
+  .portfolio_screen {
+    margin-top: 120px;
+    padding: 22px;
+  }
+  .portfolio_cards {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .portfolio_cards__item {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 667px) {
+  .portfolio_screen__title {
+    font-size: 82px;
+  }
+
+  .portfolio_screen__tabs_item {
+    width: 156px;
+    height: 45px;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .portfolio_screen__title {
+    font-size: 72px;
+  }
+}
+
+@media screen and (max-width: 441px) {
+  .portfolio_screen__title {
+    font-size: 66px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .portfolio_screen__title {
+    font-size: 58px;
+  }
+}

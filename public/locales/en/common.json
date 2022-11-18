@@ -1,0 +1,23 @@
+{
+  "fullname": "Nikita Khvatov",
+  "quote": "My goal is to write maintainable, clean and understandable code to process development was enjoyable.",
+  "prewiew": {
+    "view_portfolio": "View portfolio"
+  },
+  "menu": {
+    "main": "Main",
+    "about": "About",
+    "portfolio": "Portfolio",
+    "services": "Services",
+    "contacts": "Contacts"
+  },
+  "about": {
+    "hello": "Hello! I'm Nikita, I'm a Middle full-stack developer. More than 4 years experience."
+  },
+  "portfolio": {
+    "all_projects": "All projects",
+    "show_more": "Show more",
+    "show_less": "Show less",
+    "main_features": "Main features:"
+  }
+}

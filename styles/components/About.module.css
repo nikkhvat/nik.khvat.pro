@@ -1,0 +1,433 @@
+.about_screen {
+  width: 100%;
+  padding: 130px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.about_screen__left {
+  width: 590px;
+  position: relative;
+}
+
+.about_screen__text {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 120%;
+
+  /* or 43px */
+
+  color: var(--main-white-color);
+}
+
+.about_screen__line {
+  width: 640px;
+  height: 0;
+  border: 1px solid var(--main-dark-grey-color);
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.about_screen__line_down {
+  width: 640px;
+  height: 0;
+  border: 1px solid var(--main-dark-grey-color);
+  margin-top: -5px;
+  margin-bottom: 20px;
+}
+
+.skils_table {
+  display: flex;
+  width: 590px;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.skils_table div {
+  width: 50%;
+}
+.skils_table div div {
+  width: 100%;
+}
+
+.skils_table__column {
+  display: flex;
+  flex-direction: column;
+}
+
+.about_screen__right {
+  width: calc(100% - 590px);
+  position: relative;
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+.skils_table__column_title {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 33px;
+
+  /* identical to box height */
+  text-transform: capitalize;
+  margin-bottom: 5px;
+
+  color: var(--main-white-color);
+}
+
+.half_color {
+  position: relative;
+  display: inline-block;
+  color: var(--main-grey-shadow-color-text);
+}
+
+.half_color::before {
+  content: attr(id);
+  color: var(--main-dark-grey-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 68%;
+  overflow: hidden;
+}
+
+.about_screen__photo {
+  width: 480px;
+  height: 480px;
+
+  background-position: top center;
+  background-size: cover;
+
+  position: relative;
+}
+
+.about_screen__photo_text {
+  position: absolute;
+  left: -150.7px;
+  top: 318px;
+
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 120%;
+
+  color: var(--main-dark-grey-color);
+
+  transform: rotate(-90deg);
+}
+
+.skils_table__column_item {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+
+  margin-top: 10px;
+  text-transform: capitalize;
+
+  color: var(--main-light-grey-color);
+  white-space: nowrap;
+}
+
+.about_screen__skills_title {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 120%;
+
+  text-transform: capitalize;
+
+  color: var(--main-dark-grey-color);
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+}
+
+.about_screen__company_list {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 47px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.about_screen__company_list__item {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 120%;
+  color: var(--main-white-color);
+}
+
+.about_screen__company_title {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 120%;
+
+  letter-spacing: 0.08em;
+  text-transform: capitalize;
+
+  color: var(--main-dark-grey-color);
+  position: absolute;
+  margin-top: -10px;
+  right: 0;
+} 
+
+@media screen and (min-width: 1481px) {
+  .about_screen__photo {
+    width: 580px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .about_screen__company_list_tablet {
+    display: none;
+  }
+}
+
+
+@media screen and (max-width: 1410px) {
+  .about_screen__photo {
+    width: 380px;
+  }
+  
+  .about_screen__company_list__item {
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 1295px) {
+  .about_screen__company_list__item {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 120%;
+  
+    color: var(--main-white-color);
+    margin-top: 15px;
+  }
+
+  .about_screen__company_list_tablet {
+    margin-left: 25px;
+  }
+
+  .about_screen {
+    flex-direction: column;
+    padding: 130px;
+  }
+
+  .about_screen__left {
+    width: 100%;
+  }
+
+  .about_screen__line {
+    width: 100%;
+  }
+
+
+  .about_screen__line_down {
+    width: 100%;
+  }
+
+  .about_screen__right {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .about_screen__company_list_tablet {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-top: 60px;
+  }
+
+  .about_screen__company_title_tablet {
+    font-family: 'Fira Code';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 120%;
+    letter-spacing: 0.08em;
+    text-transform: capitalize;
+    color: var(--main-dark-grey-color);
+  }
+
+  .about_screen__company_list {
+    display: none;
+  }
+
+  .about_screen__photo {
+    width: 418.25px;
+  }
+  .skils_table {
+    width: 100%;
+    padding-right: 20px;
+  }
+}
+
+
+@media screen and (max-width: 1020px) {
+  .about_screen {
+    padding: 60px;
+    margin-top: 120px;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .about_screen {
+    padding: 34px;
+  }
+}
+
+@media screen and (min-width: 804px) {
+  .about_screen__company_list__last_item {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 804px) {
+
+  .skils_table__column_title {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .skils_table__column_item {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+  }
+
+  .about_screen__skills_title {
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 120%;
+
+    transform: rotate(-90deg);
+    position: absolute;
+    bottom: 95px;
+    right: -70px;
+    width: auto;
+  }
+
+  .about_screen__left {
+    margin-bottom: 20px;
+  }
+
+  .skils_table {
+    gap: 0;
+  }
+  .about_screen__photo_text {
+    left: -150.7px;
+    top: 240px;
+  }
+
+  .about_screen__text {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 120%;
+  }
+  .about_screen {
+    padding: 22px;
+  }
+
+  .skils_table {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .skils_table__column {
+    width: 50%;
+    margin-bottom: 30px;
+  }
+
+  .skils_table__column_item {
+    margin-top: 10px;
+  }
+
+  .about_screen__right {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .about_screen__company_list_tablet {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    margin-left: 0;
+  }
+
+  .about_screen__company_list__item {
+    margin-right: 37px;
+  }
+
+  .about_screen__company_title_tablet {
+    display: none;
+  }
+
+  .about_screen__photo {
+    margin-right: -22px;
+    width: 379px;
+    height: 403px;
+  }
+
+  .about_screen__company_list__last_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 15px;
+  }
+
+  .about_screen__company_list__text {
+    font-family: 'Fira Code';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 120%;
+  
+    letter-spacing: 0.08em;
+    text-transform: capitalize;
+  
+    color: var(--main-dark-grey-color);
+  }
+
+  .about_screen__company_list__line {
+    border: 1px solid var(--main-dark-grey-color);
+    width: calc(100vw - 228px - 22px - 22px - 20px);
+    margin-right: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .about_screen__text {
+    font-size: 21px;
+  }
+
+  .about_screen__photo {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .about_screen__company_list__item {
+    margin-right: 25px;
+  }
+}
