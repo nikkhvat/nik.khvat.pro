@@ -1,6 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import type { DocumentProps } from 'next/document'
-// import i18n from '../next-i18next.config'
 
 type Props = DocumentProps & {
   // add custom document props
@@ -22,20 +21,6 @@ class MyDocument extends Document<Props> {
         </Head>
 
         <body>
-          <div id={'globalLoader'}>
-            <div className="loader" style={{
-              width: '100vw',
-              height: '100vh',
-              background: '#121212',
-              position: 'absolute',
-              top: '0',
-              zIndex: 999
-            }} >
-              <div/>
-              <div/>
-            </div>
-          </div>
-
           <Main />
           <NextScript />
         </body>

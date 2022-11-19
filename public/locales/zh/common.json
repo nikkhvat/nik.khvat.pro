@@ -19,5 +19,13 @@
     "show_more": "显示更多",
     "show_less": "显示较少",
     "main_features": "主要特点:"
+  },
+  "services": {
+    "website_development": "网站发展",
+    "development_browser_extensions": "浏览器扩展的开发",
+    "mobile_development": "流动发展",
+    "web_aplication": "网上应用系统",
+    "parsers": "解析器",
+    "back_end_development": "后端开发和支持"
   }
 }

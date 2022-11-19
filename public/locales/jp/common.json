@@ -19,5 +19,13 @@
     "show_more": "もっと見せる",
     "show_less": "表示を減らす",
     "main_features": "主な特徴"
+  },
+  "services": {
+    "website_development": "ウェブサイト開発",
+    "development_browser_extensions": "ブラウザ拡張機能の開発",
+    "mobile_development": "モバイル開発",
+    "web_aplication": "ブラウザアプリケーション",
+    "parsers": "パーサー",
+    "back_end_development": "バックエンド開発とサポート"
   }
 }

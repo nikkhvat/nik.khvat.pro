@@ -19,5 +19,13 @@
     "show_more": "Показать еще",
     "show_less": "Скрыть",
     "main_features": "Функционал:"
+  },
+  "services": {
+    "website_development": "Создание сайтов",
+    "development_browser_extensions": "Создание расширений для браузеров",
+    "mobile_development": "Мобильная разработка",
+    "web_aplication": "Создание веб-приложений",
+    "parsers": "Создание парсеров/скраперов",
+    "back_end_development": "Разработка и поддержка back-end приложений"
   }
 }

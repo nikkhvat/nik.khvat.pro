@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import React from "react";
 
 import styles from "../styles/components/Service.module.css"
@@ -10,27 +9,16 @@ interface iServiceItem {
 }
 
 interface IService {
-  services: {
-    ru: iServiceItem[]
-    en: iServiceItem[]
-  }
+  services: iServiceItem[]
 }
 
 const Service: React.FC<IService> = ({services}) => {
-  const router = useRouter()
-
-  const currentLang = router.locale
-
-  const getCurrentData = (): iServiceItem[] => {
-    if (currentLang === "en") return services.en
-    else return services.ru
-  }
 
   return (
     <div id="service" className={styles.service_screen} >
 
       <div className={styles.service_screen__items} >
-        {getCurrentData().map(item => (
+        {services.map(item => (
           <div 
             key={item.name} 
             className={`

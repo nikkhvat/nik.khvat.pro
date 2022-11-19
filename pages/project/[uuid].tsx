@@ -3,13 +3,10 @@ import React from 'react';
 import Image from 'next/image'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next'
-import { GetStaticProps, InferGetStaticPropsType } from 'next'
+import { InferGetStaticPropsType } from 'next'
 
 import styles from "../../styles/Project.module.css"
 
-type Props = {
-  // Add custom props here
-}
 
 const Project: React.FC<InferGetStaticPropsType<any>> = (_props) => {
   const { t } = useTranslation('common')

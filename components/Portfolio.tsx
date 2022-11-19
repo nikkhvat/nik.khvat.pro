@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react"
 
-import styles from "../styles/components/Portfolio.module.css"
-
-// import { portfolioData } from "../utils/portfolio"
-import { useTranslation } from 'next-i18next'
-import useWindowSize from "../hooks/useWindowsSize"
-import Link from "next/link"
-
-import Image from 'next/image'
 import { useRouter } from "next/router"
 
-const Portfolio: React.FC<any> = (_props) => {
+import { useTranslation } from 'next-i18next'
+import Link from "next/link"
+import Image from 'next/image'
+
+import styles from "../styles/components/Portfolio.module.css"
+
+import useWindowSize from "../hooks/useWindowsSize"
+
+const Portfolio: React.FC<any> = ({categories}) => {
   const { t } = useTranslation('common')
   const router = useRouter()
   
@@ -20,14 +20,6 @@ const Portfolio: React.FC<any> = (_props) => {
   const [width]: number[] = useWindowSize();
 
   const [data, setData] = useState([])
-
-  // const portfolio = portfolioData
-  const categories = [
-    { id: 1, title: t("portfolio.all_projects") },
-    { id: 2, title: "WEB" },
-    { id: 4, title: "MOBILE" },
-    { id: 3, title: "BOT" },
-  ]
 
   const [limit, setLimit] = useState(4)
 
@@ -61,7 +53,7 @@ const Portfolio: React.FC<any> = (_props) => {
       </div>
 
       <div className={styles.portfolio_screen__tabs}>
-        {categories.map((item) => (
+        {categories.map((item: any) => (
           <div key={item.id} onClick={() => {
             setActiveTab(item.id)
             setLimit(4)

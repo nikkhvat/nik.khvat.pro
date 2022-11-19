@@ -19,5 +19,13 @@
     "show_more": "और दिखाओ",
     "show_less": "कम दिखाएं",
     "main_features": "मुख्य विशेषताएं"
+  },
+  "services": {
+    "website_development": "वेबसाइट विकास",
+    "development_browser_extensions": "ब्राउज़र एक्सटेंशन का विकास",
+    "mobile_development": "मोबाइल विकास",
+    "web_aplication": "वेब अनुप्रयोग",
+    "parsers": "पार्सर्स",
+    "back_end_development": "बैक-एंड विकास और समर्थन"
   }
 }

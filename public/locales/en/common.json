@@ -19,5 +19,13 @@
     "show_more": "Show more",
     "show_less": "Show less",
     "main_features": "Main features:"
+  },
+  "services": {
+    "website_development": "Website development",
+    "development_browser_extensions": "Development of browser extensions",
+    "mobile_development": "Mobile development",
+    "web_aplication": "Web Aplication",
+    "parsers": "Parsers",
+    "back_end_development": "Back-end development and support"
   }
 }
