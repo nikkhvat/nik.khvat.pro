@@ -1,0 +1,23 @@
+{
+  "fullname": "Nikita Khvatov",
+  "quote": "我的目标是编写可维护、干净且易于理解的代码，以便开发过程充满乐趣。",
+  "prewiew": {
+    "view_portfolio": "查看投资组合"
+  },
+  "menu": {
+    "main": "主要的",
+    "about": "关于",
+    "portfolio": "文件夹",
+    "services": "服务",
+    "contacts": "联系人"
+  },
+  "about": {
+    "hello": "你好！我是 Nikita，我是一名中级全栈开发人员。 4年以上经验"
+  },
+  "portfolio": {
+    "all_projects": "所有项目",
+    "show_more": "显示更多",
+    "show_less": "显示较少",
+    "main_features": "主要特点:"
+  }
+}

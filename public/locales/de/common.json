@@ -1,0 +1,23 @@
+{
+  "fullname": "Nikita Khvatov",
+  "quote": "Mein Ziel ist es, wartbaren, sauberen und verständlichen Code zu schreiben, damit die Prozessentwicklung Spaß macht.",
+  "prewiew": {
+    "view_portfolio": "Portfolio ansehen"
+  },
+  "menu": {
+    "main": "Hauptsächlich",
+    "about": "Über mich",
+    "portfolio": "Portfolio",
+    "services": "Dienstleistungen",
+    "contacts": "Kontakte"
+  },
+  "about": {
+    "hello": "Hallo! Ich bin Nikita, ich bin ein Middle-Full-Stack-Entwickler. Mehr als 4 Jahre Erfahrung."
+  },
+  "portfolio": {
+    "all_projects": "Alle Projekte",
+    "show_more": "Zeig mehr",
+    "show_less": "Zeige weniger",
+    "main_features": "Haupteigenschaften:"
+  }
+}

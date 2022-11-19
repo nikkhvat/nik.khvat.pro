@@ -2,21 +2,26 @@ import React, { useEffect, useState } from "react"
 
 import styles from "../styles/components/Portfolio.module.css"
 
-import { portfolioData } from "../utils/portfolio"
+// import { portfolioData } from "../utils/portfolio"
 import { useTranslation } from 'next-i18next'
 import useWindowSize from "../hooks/useWindowsSize"
 import Link from "next/link"
 
 import Image from 'next/image'
+import { useRouter } from "next/router"
 
-const Portfolio: React.FC = () => {
+const Portfolio: React.FC<any> = (_props) => {
   const { t } = useTranslation('common')
+  const router = useRouter()
   
   const [activeTab, setActiveTab] = useState(-1)
 
+  const currentLang = router.locale
   const [width]: number[] = useWindowSize();
 
-  const portfolio = portfolioData
+  const [data, setData] = useState([])
+
+  // const portfolio = portfolioData
   const categories = [
     { id: 1, title: t("portfolio.all_projects") },
     { id: 2, title: "WEB" },
@@ -26,6 +31,11 @@ const Portfolio: React.FC = () => {
 
   const [limit, setLimit] = useState(4)
 
+  const fetchProjects = async () => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/projects/${currentLang}`)  
+    const data = await res.json()
+    setData(data.projects)
+  }
 
   useEffect(() => {
     setActiveTab(1)
@@ -34,11 +44,14 @@ const Portfolio: React.FC = () => {
     }
   }, [])
 
-  
+  useEffect(() => {
+    fetchProjects()
+  }, [router.locale])
+
   const getProjects = (limit: number) => {
-    return portfolio
-      .filter(item => item.categories.includes(activeTab) || activeTab === 1)
-      .filter((item, index) => index < limit)
+    return data
+      .filter((item: any) => item.categories.includes(activeTab) || activeTab === 1)
+      .filter((item: any, index: number) => index < limit)
   }
 
   return (
@@ -60,13 +73,16 @@ const Portfolio: React.FC = () => {
       </div>
       
       <div className={styles.portfolio_cards} >
-        {getProjects(limit).map((element) => <div 
+        {getProjects(limit).map((element: any) => <div 
             key={element.id} 
             className={styles.portfolio_cards__item} >
               
-              <Link href={`/project/${element.id}`} >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img 
+              <Link 
+                href={`/project/${element.id}`}
+                target="_blank" >
+                <Image
+                  width={635.5}
+                  height={328}
                   src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${element.url}`}
                   className={styles.portfolio_cards__item_photo} 
                   alt={`preiew for ${element.title}`} />
@@ -86,6 +102,7 @@ const Portfolio: React.FC = () => {
             localStorage.limit = 10;
             setLimit(10)
             }} > 
+
           {t('portfolio.show_more')} 
         </button>}
 

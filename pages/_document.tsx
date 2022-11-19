@@ -20,7 +20,22 @@ class MyDocument extends Document<Props> {
           
           <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;600&family=Open+Sans&display=swap" rel="stylesheet" />
         </Head>
+
         <body>
+          <div id={'globalLoader'}>
+            <div className="loader" style={{
+              width: '100vw',
+              height: '100vh',
+              background: '#121212',
+              position: 'absolute',
+              top: '0',
+              zIndex: 999
+            }} >
+              <div/>
+              <div/>
+            </div>
+          </div>
+
           <Main />
           <NextScript />
         </body>

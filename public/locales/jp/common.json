@@ -1,0 +1,23 @@
+{
+  "fullname": "Nikita Khvatov",
+  "quote": "私の目標は、保守可能でクリーンで理解しやすいコードを記述してプロセス開発を行うことでした。",
+  "prewiew": {
+    "view_portfolio": "ポートフォリオを見る"
+  },
+  "menu": {
+    "main": "主要",
+    "about": "私について",
+    "portfolio": "ポートフォリオ",
+    "services": "サービス",
+    "contacts": "連絡先"
+  },
+  "about": {
+    "hello": "こんにちは！ミドルフルスタック開発者のニキータです。 4年以上の経験。"
+  },
+  "portfolio": {
+    "all_projects": "すべてのプロジェクト",
+    "show_more": "もっと見せる",
+    "show_less": "表示を減らす",
+    "main_features": "主な特徴"
+  }
+}

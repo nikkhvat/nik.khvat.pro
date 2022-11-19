@@ -20,10 +20,14 @@ export default function handler(
   if (!req.query.uuid) return res.status(400)
 
   const id: string = req.query.uuid as string
-  const lang: string = req.query.lang as string
+  let lang: string = req.query.lang as string
   const project: any = getProjectById(id)  
 
   if (project === null) return res.status(404)
+
+  if (!data.supported_languages.includes(lang)) {
+    lang = 'en'
+  }
 
   const currentProject = {
     categories: project.categories,

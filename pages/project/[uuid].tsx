@@ -1,5 +1,4 @@
 import React from 'react';
-import { useRouter } from 'next/router'
 
 import Image from 'next/image'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -12,8 +11,9 @@ type Props = {
   // Add custom props here
 }
 
-const Project: React.FC<any> = (_props: InferGetStaticPropsType<any>) => {
+const Project: React.FC<InferGetStaticPropsType<any>> = (_props) => {
   const { t } = useTranslation('common')
+
 
   const data = _props.data
   
@@ -57,7 +57,6 @@ const Project: React.FC<any> = (_props: InferGetStaticPropsType<any>) => {
               width="0"
               height="0"
               src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${photo}`}
-              blurDataURL={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${photo}`}
               alt={`photo ${i + 1}`} />
           </div>
         ))}
