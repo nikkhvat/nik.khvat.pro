@@ -17,10 +17,10 @@ const App = ({ Component, pageProps }: AppProps) => {
   }, []);
 
   return loading ? <div className={styles.loading} >
-  <div className={styles.container} >
-    <p className={styles.name} >{t('fullname')}</p>
-  </div>
-</div> : <Component {...pageProps} />;
+    <div className={styles.container} >
+      <p className={styles.name} >{t('fullname')}</p>
+    </div>
+  </div> : <Component {...pageProps} />;
 }
 
 export default appWithTranslation(App);

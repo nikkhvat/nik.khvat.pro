@@ -58,10 +58,12 @@ const Menu: React.FC = () => {
               EN
           </LocaleLink>
           <LocaleLink 
-            className={`${styles.language_switch__item} ${currentLang === "ru" ? styles.active : styles.inactive}`} 
+            className={`
+              ${styles.language_switch__item} 
+              ${currentLang === (currentLang !== "en" ? currentLang : 'RU') ? styles.active : styles.inactive}`} 
             href="/" 
             locale="ru" >
-              RU
+              {currentLang !== "en" ? currentLang : 'RU'}
           </LocaleLink>
         </div>
       </div>
@@ -103,12 +105,20 @@ const Menu: React.FC = () => {
             ))}
 
             <div className={`${styles.menu__item} ${styles.language_switch_mobile}`} >
-              <span className={`${styles.language_switch__item} ${currentLang === "en" ? styles.active : styles.inactive}`} >
-                EN 
-              </span>
-              <span className={`${styles.language_switch__item} ${currentLang === "ru" ? styles.active : styles.inactive}`} >
-                RU
-              </span>
+            <LocaleLink 
+              className={`${styles.language_switch__item} ${currentLang === "en" ? styles.active : styles.inactive}`} 
+              href="/" 
+              locale="en" >
+                EN
+            </LocaleLink>
+            <LocaleLink 
+              className={`
+                ${styles.language_switch__item} 
+                ${currentLang === (currentLang !== "en" ? currentLang : 'RU') ? styles.active : styles.inactive}`} 
+              href="/" 
+              locale="ru" >
+                {currentLang !== "en" ? currentLang : 'RU'}
+            </LocaleLink>
             </div>
           </div>}
       </div>

@@ -1,4 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import data from "../../../../data.json"
@@ -25,28 +24,34 @@ export default function handler(
 
   if (project === null) return res.status(404)
 
-  if (!data.supported_languages.includes(lang)) {
-    lang = 'en'
-  }
-
   const currentProject = {
     categories: project.categories,
     id: project.id,
     url: project.url,
     title: project.title,
     lang: lang,
-    sub_title: project.sub_title[lang],
-    description: project.description[lang],
+    sub_title: project.sub_title[lang] ? project.sub_title[lang] : project.sub_title['en'],
+    description: project.description[lang] ? project.description[lang] : project.description['en'],
     cards: project.cards,
     features: [] as any,
     photos: project.photos,
   }
 
-  for (let index = 0; index < project.features.length; index++) {
-    const feature = project.features[index];
-    
-    if (feature.lang === lang) currentProject.features.push(feature)
+  const getFeatures = (currentLang: string) => {
+    const features = []
+    for (let index = 0; index < project.features.length; index++) {
+      const feature = project.features[index];
+      
+      if (feature.lang === currentLang) features.push(feature)
+    }
+
+    return features
   }
+
+  let currentFeatures = getFeatures(lang)
+
+  currentProject.features = currentFeatures.length !== 0 ? currentFeatures : getFeatures('en')
+
 
   res.status(200).json(currentProject)
 }

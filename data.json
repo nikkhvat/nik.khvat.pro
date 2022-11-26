@@ -1,5 +1,4 @@
 {
-  "supported_languages": ["ru", "en"],
   "projects": [
     {
       "categories": [4],
@@ -8,20 +7,27 @@
       "title": "Ewys",
       "sub_title": {
         "en": "On-screen menu with augmented reality for a restaurant",
-        "ru": "Меню с дополненной реальностью для ресторанов"
+        "ru": "Меню с дополненной реальностью для ресторанов",
+        "jp": "レストランのための拡張現実と画面上のメニュー"
       },
       "description": {
         "en": "An application for an electronic menu with augmented reality elements for restaurants.",
-        "ru": "Приложение для электронного меню с элементами дополненной реальности для ресторанов."
+        "ru": "Приложение для электронного меню с элементами дополненной реальности для ресторанов.",
+        "jp": "レストランのための拡張現実要素を備えた電子メニューのためのアプリケーション。"
       },
       "cards": [
         { "title": "Front-end", "sub_title": "Vue.js, Three.js" },
         { "title": "Back-end", "sub_title": "NodeJs, Express, MySql" }
       ],
       "features": [
+        { "name": "QRコードでレストランメニューを見る", "lang": "jp" },
+        { "name": "個々の料理、その説明、写真、食材などを表示します", "lang": "jp" },
+        { "name": "拡張現実での料理の3dモデルの表示", "lang": "jp" },
+
         { "name": "View restaurant menu by QR code", "lang": "en" },
         { "name": "View individual dishes, their description, photo, ingredients etc", "lang": "en" },
         { "name": "Viewing a 3d model of a dish in augmented reality", "lang": "en" },
+
         { "name": "Просмотр меню ресторана по QR коду", "lang": "ru" },
         { "name": "Просмотр отдельных блюд и их описание, фото, время готовки, ингридиенты", "lang": "ru" },
         { "name": "Просмотр 3d модели блюда в дополненной реальности", "lang": "ru" }
@@ -34,12 +40,14 @@
       "url": "BISUP.jpg",
       "title": "BUSINESS UP",
       "sub_title": {
-        "en": "The platform forms entrepreneurial skills by using online gaming solutions, building development, supporting the business community and participating in cyber championships.",
-        "ru": "Платформа формирует навыки предпринимателя с помощью игровых онлайн решений."
+        "en": "The platform builds entrepreneurial skills through online gaming solutions.",
+        "ru": "Платформа формирует навыки предпринимателя с помощью игровых онлайн решений.",
+        "jp": "プラットフォームは、オンラインゲームのソリューションを通じて起業家のスキルを構築します。"
       },
       "description": {
         "en": "The platform forms entrepreneurial skills by using online gaming solutions, building development, supporting the business community and participating in cyber championships.",
-        "ru": "Платформа формирует навыки предпринимателя с помощью игровых онлайн решений, выстраивая траектории развития, поддержки бизнес-комьюнити и участия в киберчемпионатах."
+        "ru": "Платформа формирует навыки предпринимателя с помощью игровых онлайн решений, выстраивая траектории развития, поддержки бизнес-комьюнити и участия в киберчемпионатах.",
+        "jp": "プラットフォームは、オンラインゲームのソリューションを使用して、開発を構築し、ビジネスコミュニティを支援し、サイバーシンショーに参加することにより、起業家のスキルを形成します。"
       },
       "cards": [
         { "title": "Front-end","sub_title": "Vue.js, VueRouter" },
@@ -47,11 +55,18 @@
         { "title": "Mobile", "sub_title": "ReactNative" }
       ],
       "features": [
+        { "name": "評価と評判の個人アカウント", "lang": "jp"},
+        { "name": "ビジネスゲームと選手権", "lang": "jp"},
+        { "name": "通信教育", "lang": "jp"},
+        { "name": "デジタルビジネスコミュニティ", "lang": "jp"},
+        { "name": "社会プロジェクト", "lang": "jp"},
+
         { "name": "Personal Account with rating and reputation", "lang": "en"},
         { "name": "Business games and championships", "lang": "en"},
         { "name": "Distance learning", "lang": "en"},
         { "name": "Digital business community", "lang": "en"},
         { "name": "Social Project", "lang": "en"},
+
         { "name": "Личный кабинет с рейтингом и репутацией", "lang": "ru"},
         { "name": "Бизнес-игры и чемпионаты", "lang": "ru"},
         { "name": "Дистанционное обучение", "lang": "ru"},
@@ -67,21 +82,29 @@
       "title": "OWSUP",
       "sub_title": {
         "en": "Service for selis for Ozon and Wildberries",
-        "ru": "Сервис помощник продовцов на Ozon и Wildberries"
+        "ru": "Сервис помощник продовцов на Ozon и Wildberries",
+        "jp": "オゾンと野生の果実のための販売のためのサービス"
       },
       "description": {
         "en": "Service for Ozon and Wildberries that helps to optimize sales",
-        "ru": "Сервис для Ozon и Wildberries, который помогает оптимизировать продажи."
+        "ru": "Сервис для Ozon и Wildberries, который помогает оптимизировать продажи.",
+        "jp": "販売の最適化を支援するオゾンと野生の果実のためのサービス"
       },
       "cards": [
         { "title": "Front-end","sub_title": "React, Redux Toolkit, Ant.d" },
         { "title": "Back-end", "sub_title": "GoLang, Gin, Gorm, PostgreSQL" }
       ],
       "features": [
+        { "name": "カードのコピー", "lang": "jp" },
+        { "name": "1つのダッシュボード内のすべての取引先の一般的な分析", "lang": "jp" },
+        { "name": "すべての取引先からの注文の分析", "lang": "jp" },
+        { "name": "配達のための商品の追加料金/手数料の計算機", "lang": "jp" },
+        
         { "name": "Copying cards", "lang": "en" },
         { "name": "General analytics of all accounts in one Dashboard", "lang": "en" },
         { "name": "Analytics of orders from all accounts", "lang": "en" },
         { "name": "Calculator of surcharge / commission of goods for delivery", "lang": "en" },
+
         { "name": "Копирование карточек", "lang": "ru" },
         { "name": "Общая аналитика всех кабинетов в одном Dashboard", "lang": "ru" },
         { "name": "Аналитика заказов со всех кабинетов", "lang": "ru" },
@@ -96,20 +119,28 @@
       "title": "EPICHERISION",
       "sub_title": {
         "en": "Bot for Discord server",
-        "ru": "Бот для Discrod сервера."
+        "ru": "Бот для Discrod сервера.",
+        "jp": "不和サーバーのためのボット"
       },
       "description": {
         "en": "The main focus of the bot is to provide the fastest and most complete information about new arrivals in a number of stores selected by the customer for certain categories of goods.",
-        "ru": "Discord bot, задача которого предоставлять информацию о поступлении новых товаров."
+        "ru": "Discord bot, задача которого предоставлять информацию о поступлении новых товаров.",
+        "jp": "ボットの主な焦点は、商品の特定のカテゴリのために顧客が選択した店舗の数での新着に関する最速かつ最も完全な情報を提供することです。"
       },
       "cards": [
         { "title": "Bot", "sub_title": "NodeJs, node-html-parser" }
       ],
       "features": [
+        { "name": "実装の過程で、ATKリンクを生成するために必要な、通常のデータとメタの両方の多数のパーサーが書かれました", "lang": "jp" },
+        { "name": "ユーザーに送信する製品を選択するためのキーワードとカテゴリを編集する機能を実装しました", "lang": "jp" },
+        { "name": "配送はチャネルに適切に分割され、各店舗の配送は別々のチャネルで行われます。 そして、それは店のフィードに新製品が登場した後、即座に起こります", "lang": "jp" },
+        { "name": "これとは別に、Nikeのatkリンクの生成は、管理者によって活性化されると実装されます。", "lang": "jp" },
+
         { "name": "In the process of implementation, a large number of parsers were written, both ordinary data and meta, necessary for generating ATK links", "lang": "en" },
         { "name": "Implemented the ability to edit keywords and categories for selecting products to send to users", "lang": "en" },
         { "name": "Shipping is appropriately divided into channels, and shipping for each store occurs in a separate channel. And it happens instantly, after the appearance of new products in the store's feed", "lang": "en" },
         { "name": "Separately, the generation of atk links for Nike is implemented, upon activation by the administrator.", "lang": "en" },
+
         { "name": "В процессе реализации было написано большое количество парсеров, как обычных данных так и мета, необходимых для генерации АТК ссылок", "lang": "ru" },
         { "name": "Реализованная возможность редактирования ключевых слов и категорий для выборки товаров для отправки пользователям", "lang": "ru" },
         { "name": "Отправка соответствующе разделена на каналы, и отправка по каждому магазину происходит в отдельный канал.", "lang": "ru" },
@@ -124,19 +155,25 @@
       "title": "Just Portfolio",
       "sub_title": {
         "en": "A highly focused portfolio content management system",
-        "ru": "Узкоспециализированная CMS для портфолио"
+        "ru": "Узкоспециализированная CMS для портфолио",
+        "jp": "高度に焦点を当てたポートフォリオコンテンツ管理システム"
       },
       "description": {
         "en": "A highly focused portfolio content management system on GoLang",
-        "ru": "Узкоспециализированная CMS для портфолио, написанная на GoLang."
+        "ru": "Узкоспециализированная CMS для портфолио, написанная на GoLang.",
+        "jp": "GoLangの非常に焦点を当てたポートフォリオコンテンツマネジメントシステム"
       },
       "cards": [
         { "title": "Front-end","sub_title": "React, Redux ToolKit" },
         { "title": "Back-end", "sub_title": "GoLang, Gin, Gorm, PostgreSQL" }
       ],
       "features": [
+        { "name": "あなたは良い品質でプロジェクトの画像を保存することができます", "lang": "jp" },
+        { "name": "あなたのサイトの管理パネルとしてサービスを使用することができます", "lang": "jp" },
+
         { "name": "Allows you to store images for projects in good quality", "lang": "en" },
         { "name": "Allows you to use the service as an admin panel for your site", "lang": "en" },
+
         { "name": "Позволяет хранить изображения для проектов в хорошем качестве", "lang": "ru" },
         { "name": "Возможность использовать сервис как админ панель к вашему сайту", "lang": "ru" }
       ],
@@ -149,21 +186,29 @@
       "title": "EMIAS",
       "sub_title": {
         "en": "web platform for EMIAS emploees",
-        "ru": "Веб платформа для сотрудников компании EMIAS"
+        "ru": "Веб платформа для сотрудников компании EMIAS",
+        "jp": "従業員としてのEMIのためのwebプラットフォーム"
       },
       "description": {
         "en": "Web platform for EMIAS emploees.",
-        "ru": "Веб-платформа сотрудников компании EMIAS, которая предоставляет возможность удобно выполнять задачи и смотреть актуальный статус задач."
+        "ru": "Веб-платформа сотрудников компании EMIAS, которая предоставляет возможность удобно выполнять задачи и смотреть актуальный статус задач.",
+        "jp": "従業員としてのEMIのためのWebプラットフォーム。"
       },
       "cards": [
         { "title": "Front-end","sub_title": "Vue, Vue Router" },
         { "title": "Back-end", "sub_title": "NodeJs, Express, MySQL" }
       ],
       "features": [
+        { "name": "従業員のための個人アカウント", "lang": "jp" },
+        { "name": "参加者が自分のアイデアを提出する機会", "lang": "jp" },
+        { "name": "チームの進捗状況を表示する機能", "lang": "jp" },
+        { "name": "それらに値するユーザーにバッジを与える能力", "lang": "jp" },
+
         { "name": "Personal account for employees", "lang": "en" },
         { "name": "Opportunity for participants to submit their ideas", "lang": "en" },
         { "name": "Ability to view team progress", "lang": "en" },
         { "name": "Ability to give badges to users who deserve them", "lang": "en" },
+
         { "name": "Личный кабинет для сотрудников", "lang": "ru" },
         { "name": "Возможность участникам предлогать свои идеи", "lang": "ru" },
         { "name": "Возможность просматривать прогресс команды", "lang": "ru" },
@@ -178,14 +223,21 @@
       "title": "U.Business",
       "sub_title": {
         "en": "UBusiness lending with multilang",
-        "ru": "UBusiness сайт с мультиязычностью"
+        "ru": "UBusiness сайт с мультиязычностью",
+        "jp": "UBusiness 貸出"
       },
       "description": {
         "en": "Lending created on next.js for a company. With admin panel for text editing",
-        "ru": "Сайт созданный на next.js для компании. С админкой для редактирования текста"
+        "ru": "Сайт созданный на next.js для компании. С админкой для редактирования текста",
+        "jp": "融資は次の上に作成しました。会社のためのjs。 テキスト編集のための管理者パネル付き"
       },
       "features": [
+        { "name": "多言語化はi18nを使用して実装されています", "lang": "jp"},
+        { "name": "あなたが管理者であれば、サイト上で直接テキスト編集", "lang": "jp"},
+
         { "name": "Text editing directly on the site if you are an admin", "lang": "en"},
+        { "name": "Multilingualism is implemented using i18n", "lang": "en"},
+
         { "name": "Админ панель, позволяющая редактировать текст", "lang": "ru"},
         { "name": "Реализована мультиязычность с помощью i18n", "lang": "ru"}
       ],
@@ -201,20 +253,27 @@
       "title": "Secret Santa",
       "sub_title": {
         "en": "Secret Santa for company croc",
-        "ru": "Игра \"Тайный Санта\" для компании croc"
+        "ru": "Игра \"Тайный Санта\" для компании croc",
+        "jp": "会社のcrocのための秘密のサンタ"
       },
       "description": {
         "en": "Secret Santa for company croc",
-        "ru": "Игра \"Тайный Санта\" для компании croc. Традиционная рождественская игра, целью которой является анонимный обмен подарками в группе играющих людей"
+        "ru": "Игра \"Тайный Санта\" для компании croc. Традиционная рождественская игра, целью которой является анонимный обмен подарками в группе играющих людей",
+        "jp": "会社のcrocのための秘密のサンタ"
       },
       "cards": [
-        { "title": "Front-end", "sub_title": "Vue, VueRouter" },
-        { "title": "Back-end", "sub_title": "Python, Flask" }
+        { "title": "Front-end", "sub_title": "Vue 2, VueRouter" },
+        { "title": "Back-end", "sub_title": "Python 3, Flask, MySql" }
       ],
       "features": [
+        { "name": "異なる専門分野と部門を持つペアを作成するアルゴリズム", "lang": "jp" },
+        { "name": "メールをメールに送信する", "lang": "jp" },
+        { "name": "アカウント内のすべての機能", "lang": "jp" },
+
         { "name": "An algorithm that creates pairs with different specializations and departments", "lang": "en" },
         { "name": "Sending emails to mail", "lang": "en" },
         { "name": "All features in your account", "lang": "en" },
+
         { "name": "Алгоритм который создаёт пары, с разними специализациями и отделами", "lang": "ru" },
         { "name": "Рассылка писем на почту", "lang": "ru" },
         { "name": "Все функции в личном кабинете", "lang": "ru" }
