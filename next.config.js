@@ -16,6 +16,12 @@ const nextConfig = {
         port: '5500',
         pathname: '/images/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'nik19ta.pro',
+        port: '443',
+        pathname: '/images/**',
+      },
     ],
   },
 }
