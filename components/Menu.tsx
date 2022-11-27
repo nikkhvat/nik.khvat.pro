@@ -37,6 +37,7 @@ const Menu: React.FC = () => {
         <div className={styles.menu__list}>
           {menuList.map((menuItem) => (
             <Link
+              href="#"
               key={menuItem.id}
               activeClass="active"
               to={menuItem.id}
