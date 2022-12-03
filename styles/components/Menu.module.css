@@ -20,6 +20,10 @@
   justify-content: space-between;
 }
 
+.menu__list a {
+  text-decoration: none;
+}
+
 .menu__item {
   font-family: 'Open Sans';
   font-style: normal;
