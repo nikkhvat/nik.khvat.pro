@@ -161,6 +161,7 @@
   top: auto;
   bottom: 280px;
   min-width: 777px;
+  min-height: 263px;
 }
 
 .line_1, .line_2 {
@@ -399,6 +400,7 @@
     line-height: 170.1px;
   }
   .prewiew_text {
+    min-height: 235px;
     right: 190px;
     min-width: 442px;
   }
@@ -414,6 +416,7 @@
     line-height: 151.2px;
   }
   .prewiew_text {
+    min-height: 208px;
     right: 190px;
     min-width: 442px;
   }
@@ -429,6 +432,7 @@
     line-height: 132.3px;
   }
   .prewiew_text {
+    min-height: 181px;
     right: 190px;
     min-width: 442px;
   }
