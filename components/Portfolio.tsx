@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react"
 
 import { useRouter } from "next/router"
-
 import { useTranslation } from 'next-i18next'
-import Link from "next/link"
-import Image from 'next/image'
 
 import styles from "../styles/components/Portfolio.module.css"
 
-import useWindowSize from "../hooks/useWindowsSize"
+import PortfolioCard from "./PortfolioCard"
 
 const Portfolio: React.FC<any> = ({categories}) => {
   const { t } = useTranslation('common')
@@ -16,18 +13,9 @@ const Portfolio: React.FC<any> = ({categories}) => {
   
   const [activeTab, setActiveTab] = useState(-1)
 
-  const currentLang = router.locale
-  const [width]: number[] = useWindowSize();
-
   const [data, setData] = useState([])
 
   const [limit, setLimit] = useState(4)
-
-  const fetchProjects = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/projects/${currentLang}`)  
-    const data = await res.json()
-    setData(data.projects)
-  }
 
   useEffect(() => {
     setActiveTab(1)
@@ -37,6 +25,12 @@ const Portfolio: React.FC<any> = ({categories}) => {
   }, [])
 
   useEffect(() => {
+    const fetchProjects = async () => {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/projects/${router.locale}`)  
+      const data = await res.json()
+      setData(data.projects)
+    }
+    
     fetchProjects()
   }, [router.locale])
 
@@ -65,25 +59,7 @@ const Portfolio: React.FC<any> = ({categories}) => {
       </div>
       
       <div className={styles.portfolio_cards} >
-        {getProjects(limit).map((element: any) => <div 
-            key={element.id} 
-            className={styles.portfolio_cards__item} >
-              
-              <Link 
-                href={`/project/${element.id}`}
-                target="_blank" >
-                <Image
-                  width={635.5}
-                  height={328}
-                  src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${element.url}`}
-                  className={styles.portfolio_cards__item_photo} 
-                  alt={`preiew for ${element.title}`} />
-
-                <p className={styles.portfolio_cards__item_title}>{element.title}</p>
-                <p className={styles.portfolio_cards__item_subtitle}> {element.sub_title} </p>
-              </Link>
-            </div>
-        )}
+        {getProjects(limit).map((element: any) => <PortfolioCard key={element.id} card={element} />)}
       </div>
 
       <div className={styles.portfolio_screen__show_more_container}>
