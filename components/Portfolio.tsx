@@ -34,7 +34,7 @@ const Portfolio: React.FC<any> = ({categories}) => {
     fetchProjects()
   }, [router.locale])
 
-  const getProjects = (limit: number) => {
+  const projects = (limit: number) => {
     return data
       .filter((item: any) => item.categories.includes(activeTab) || activeTab === 1)
       .filter((item: any, index: number) => index < limit)
@@ -48,27 +48,35 @@ const Portfolio: React.FC<any> = ({categories}) => {
 
       <div className={styles.portfolio_screen__tabs}>
         {categories.map((item: any) => (
-          <div key={item.id} onClick={() => {
-            setActiveTab(item.id)
-            setLimit(4)
-          }}
-            className={`${styles.portfolio_screen__tabs_item} ${item.id === activeTab && styles.tabs_item_active}`} >
+          <div 
+            key={item.id} 
+            onClick={() => {
+              setActiveTab(item.id)
+              setLimit(4)
+            }}
+            className={`
+              ${styles.portfolio_screen__tabs_item} 
+              ${item.id === activeTab && styles.tabs_item_active}`} >
             {item.title}
           </div>
         ))}
       </div>
       
       <div className={styles.portfolio_cards} >
-        {getProjects(limit).map((element: any) => <PortfolioCard key={element.id} card={element} />)}
+        {projects(limit).map((element: any) => 
+          <PortfolioCard 
+            key={element.id} 
+            card={element} />)}
       </div>
 
       <div className={styles.portfolio_screen__show_more_container}>
 
-        {getProjects(limit).length > 3 && limit === 4 && <button 
-          className={styles.portfolio_screen__show_more} 
-          onClick={() => { 
-            localStorage.limit = 10;
-            setLimit(10)
+        {projects(limit).length > 3 && limit === 4 && 
+          <button 
+            className={styles.portfolio_screen__show_more} 
+            onClick={() => { 
+              localStorage.limit = 10;
+              setLimit(10)
             }} > 
 
           {t('portfolio.show_more')} 

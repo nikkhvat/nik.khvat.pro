@@ -3,7 +3,7 @@ import React from "react";
 import styles from "../styles/components/Service.module.css"
 
 interface iServiceItem {
-  size: string
+  size: "small" | "large" | "normal"
   name: string
   sub: string | null
 }
@@ -14,25 +14,29 @@ interface IService {
 
 const Service: React.FC<IService> = ({services}) => {
 
+  const classItem = (size: "small" | "large" | "normal") => {
+    switch (size) {
+      case 'small':
+        return `${styles.service_screen__item} ${styles.service_screen__small_item}`
+        case 'normal':
+        return `${styles.service_screen__item} ${styles.service_screen__normal_item}`
+        case 'large':
+        return `${styles.service_screen__item} ${styles.service_screen__large_item}`
+      default:
+        return styles.service_screen__item
+    }
+  }
+
   return (
     <div id="service" className={styles.service_screen} >
 
       <div className={styles.service_screen__items} >
-        {services.map(item => (
-          <div 
-            key={item.name} 
-            className={`
-              ${styles.service_screen__item} 
-              ${item.size === "small" && styles.service_screen__small_item}
-              ${item.size === "large" && styles.service_screen__large_item}
-              ${item.size === "normal" && styles.service_screen__normal_item}`
-            } >
-            <p className={styles.service_screen__item_title} >
-              {item.name}
-            </p>
+        {services.map(item => 
+          <div key={item.name} className={classItem(item.size)} >
+            <p className={styles.service_screen__item_title} > {item.name} </p>
             {item.sub !== null && <p className={styles.service_screen__item_sub_title} >{item.sub}</p>}
           </div>
-        ))}
+        )}
       </div>
 
       <div className={styles.services_title_container} >
