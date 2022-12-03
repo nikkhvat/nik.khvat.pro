@@ -1,7 +1,6 @@
 .loading {
   width: 100vw;
   height: 100vh;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,9 +10,7 @@
   width: 100vw;
   min-height: 100vh;
   max-width: 1591px;
-
   position: relative;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,60 +25,43 @@
   margin-top: 2px;
   text-transform: uppercase;
   max-width: 120px;
-
   color: var(--main-white-color);
-
   display: flex;
   justify-content: center;
-
   text-align: center;
-
   position: absolute;
-
   animation: name_amination 0.8s; 
   animation-fill-mode: forwards;
   animation-timing-function: linear;
-
 }
 
 
 @keyframes name_amination {
   0% {
     transform: scale(3);
-    /* margin-left: -360px; */
   }
   30% {
-    /* margin-left: 0px; */
     transform: scale(1);
-    /* font-size: 24px; */
   }
 }
 
 @keyframes container_amination {
   0% {
     transform: scale(3);
-    /* margin-left: -360px; */
   }
   30% {
-    /* margin-left: 0px; */
     transform: scale(1);
-    /* font-size: 24px; */
   }
 }
 
 .prewiew_container {
   height: 100vh;
   width: 100vw;
-
   top: 0;
   left: 0;
-  
   background-color: var(--main-dark-black-color);
-
   position: absolute;
-
   z-index: 999;
-
   animation: container_amination .95s; 
   animation-fill-mode: forwards;
   animation-timing-function: linear;
@@ -96,18 +76,13 @@
   line-height: 120%;
   text-transform: uppercase;
   max-width: 120px;
-  
   margin-top: 323px;
   margin-left: 600px;
-  color: #bebebe;
-
+  color: var(--main-second-light-grey-color);
   display: flex;
   justify-content: center;
-
   text-align: center;
-
   position: absolute;
-
   animation: prewiew_name_amination 1s; 
   animation-fill-mode: forwards;
 }

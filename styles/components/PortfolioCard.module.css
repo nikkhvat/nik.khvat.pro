@@ -1,21 +1,17 @@
-
 .portfolio_cards__item {
   width: calc(50% - 30px);
   cursor: pointer;
-
   list-style-type: none;
 }
 
-.portfolio_cards__item a { 
+.portfolio_cards__item a {
   text-decoration: none;
 }
 
 .portfolio_cards__item_photo {
   width: 100%;
-
   background-size: cover;
   background-position: center;
-
   max-height: 328px;
   object-fit: cover;
 }
@@ -26,7 +22,6 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 120%;
-
   color: var(--main-white-color);
   margin-top: 10px;
   margin-bottom: 0px;
@@ -38,9 +33,7 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 120%;
-
   margin-top: 5px;
-
   color: var(--main-light-grey-color);
 }
 

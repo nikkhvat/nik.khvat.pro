@@ -8,8 +8,6 @@
   font-weight: 600;
   font-size: 96px;
   line-height: 126px;
-
-
   color: var(--main-white-color);
 }
 
@@ -31,10 +29,7 @@
   font-weight: 400;
   font-size: 36px;
   line-height: 120%;
-
-  /* or 43px */
   text-transform: uppercase;
-
   color: var(--main-white-color);
 }
 
@@ -44,10 +39,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 120%;
-
-  /* identical to box height, or 22px */
   text-transform: capitalize;
-
   color: var(--main-light-grey-color);
   margin-top: 8px;
 }
@@ -76,10 +68,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 120%;
-
-  /* identical to box height, or 22px */
   text-transform: lowercase;
-
   color: var(--main-white-color);
   text-decoration: none;
   width: 195px;
@@ -120,16 +109,12 @@
 
 .footer_menu_list_item {
   margin-bottom: 20px;
-
   font-family: 'Open Sans';
   font-style: normal; 
   font-weight: 400;
   font-size: 18px;
   line-height: 25px;
-
-  /* identical to box height */
   text-transform: uppercase;
-
   color: var(--main-light-grey-color);
   cursor: pointer;
 }
@@ -209,10 +194,7 @@
     font-weight: 400;
     font-size: 36px;
     line-height: 120%;
-
-    /* or 43px */
     text-transform: uppercase;
-
     color: var(--main-white-color);
   }
 
@@ -222,12 +204,8 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 120%;
-
-    /* identical to box height, or 22px */
     text-transform: capitalize;
-
     color: var(--main-light-grey-color);
-
     margin-top: 8px;
   }
 
@@ -244,9 +222,6 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 25px;
-
-    /* identical to box height */
-
     margin-top: 20px;
     cursor: pointer;
     color: var(--main-light-grey-color);
@@ -312,9 +287,7 @@
     font-weight: 400;
     font-size: 24px;
     line-height: 120%;
-
     text-transform: uppercase;
-
     color: var(--main-white-color);
     margin-top: 30px;
   }
@@ -325,9 +298,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 120%;
-
     text-transform: capitalize;
-  
     color: var(--main-light-grey-color);
     margin-top: 6px;
   }

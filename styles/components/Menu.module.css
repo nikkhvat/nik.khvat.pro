@@ -30,21 +30,18 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 25px;
-
   text-transform: uppercase;
-
   color: var(--main-white-color);
-
   cursor: pointer;
 }
 
 .menu__list .menu__item {
-  animation:         menu_item__animatoin 1s; 
+  animation: menu_item__animatoin 1s;
   animation-fill-mode: forwards;
 }
 
 .language_switch__item {
-  animation:         menu_item__animatoin 1s; 
+  animation: menu_item__animatoin 1s;
   animation-fill-mode: forwards;
 }
 
@@ -52,11 +49,11 @@
   0% {
     margin-top: -90px;
   }
+
   100% {
     margin-top: 5;
   }
 }
-
 
 .full_name {
   font-family: 'Open Sans';
@@ -64,9 +61,7 @@
   font-weight: 400;
   font-size: 24px;
   line-height: 120%;
-
   margin-top: 2px;
-  
   text-transform: uppercase;
   max-width: 120px;
 }
@@ -107,18 +102,15 @@
   .menu__desktop {
     display: none;
   }
-  
+
   .menu__mobile {
     display: flex;
     justify-content: center;
     align-items: center;
-
     width: 34px;
     height: 34px;
-
     margin: 0;
     padding: 0;
-
     position: relative;
   }
 
@@ -135,15 +127,12 @@
 
   .menu__mobile_list {
     position: absolute;
-
     width: 219px;
     height: 348px;
     left: -155px;
     top: -35px;
-  
     z-index: 9;
     background: var(--main-dark-black-color);
-
     padding-right: 34px;
     padding-top: 95px;
   }
@@ -155,7 +144,6 @@
     font-size: 18px;
     line-height: 25px;
     text-align: right;
-  
     color: var(--main-white-color);
     text-transform: uppercase;
     margin-bottom: 20px;
@@ -188,17 +176,13 @@
     top: 45px;
     left: -55px;
     text-align: end;
-
     font-family: 'Open Sans';
-    
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 120%;
-
     text-align: right;
     text-transform: uppercase;
-
     color: var(--main-white-color);
   }
 }

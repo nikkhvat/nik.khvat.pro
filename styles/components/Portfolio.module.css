@@ -16,16 +16,13 @@
   font-weight: 600;
   line-height: 120%;
   margin-bottom: 60px;
-
   font-size: 232px;
-
   max-width: 100%;
-
   color: var(--main-white-color);
 }
 
 .portfolio_screen__tabs {
-  display: flex;  
+  display: flex;
   justify-content: space-between;
   margin-bottom: 90px;
 }
@@ -38,10 +35,7 @@
   font-weight: 400;
   font-size: 24px;
   line-height: 33px;
-
-  /* identical to box height */
   text-transform: uppercase;
-
   color: var(--main-light-grey-color);
 }
 
@@ -68,18 +62,14 @@
 .portfolio_screen__show_more {
   width: 163px;
   height: 45px;
-
   border: 1px solid var(--main-light-grey-color);
   box-sizing: border-box;
-
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 25px;
-
   margin-top: 40px;
-
   color: var(--main-light-grey-color);
   background: transparent;
   cursor: pointer;
@@ -90,31 +80,37 @@
     font-size: 212px;
   }
 }
+
 @media screen and (max-width: 1424px) {
   .portfolio_screen__title {
     font-size: 202px;
   }
 }
+
 @media screen and (max-width: 1340px) {
   .portfolio_screen__title {
     font-size: 182px;
   }
 }
+
 @media screen and (max-width: 1280px) {
   .portfolio_screen__title {
     font-size: 162px;
   }
 }
+
 @media screen and (max-width: 1150px) {
   .portfolio_screen__title {
     font-size: 142px;
   }
 }
+
 @media screen and (max-width: 1020px) {
   .portfolio_screen {
     padding: 60px;
   }
 }
+
 @media screen and (max-width: 1000px) {
   .btn_to_portfolio {
     width: 320px;
@@ -135,10 +131,12 @@
     justify-content: center;
     align-items: center;
   }
+
   .portfolio_screen__show_more {
     margin-top: 25px;
   }
 }
+
 @media screen and (max-width: 900px) {
   .portfolio_screen__title {
     font-size: 122px;
@@ -152,6 +150,7 @@
     margin-bottom: 30px;
     gap: 10px 10px;
   }
+
   .portfolio_screen__title {
     font-size: 102px;
   }
@@ -161,10 +160,12 @@
   .portfolio_screen__title {
     margin-bottom: 40px;
   }
+
   .portfolio_screen {
     margin-top: 120px;
     padding: 22px;
   }
+
   .portfolio_cards {
     flex-direction: column;
     justify-content: center;
@@ -180,7 +181,6 @@
   .portfolio_screen__tabs_item {
     width: 156px;
     height: 45px;
-
     font-weight: 400;
     font-size: 16px;
     line-height: 25px;

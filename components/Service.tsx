@@ -23,8 +23,8 @@ const Service: React.FC<IService> = ({services}) => {
             key={item.name} 
             className={`
               ${styles.service_screen__item} 
-              ${item.size === "small" && styles.service_screen__small_item} 
-              ${item.size === "large" && styles.service_screen__large_item} 
+              ${item.size === "small" && styles.service_screen__small_item}
+              ${item.size === "large" && styles.service_screen__large_item}
               ${item.size === "normal" && styles.service_screen__normal_item}`
             } >
             <p className={styles.service_screen__item_title} >
