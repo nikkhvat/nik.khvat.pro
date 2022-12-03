@@ -42,7 +42,11 @@ const Homepage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
     { categoryName: "Testing",   names: "Selenium, Mocha, jest", }
   ]
 
-  const services = [
+  const services: {
+    size: "small" | "large" | "normal"
+    name: string,
+    sub: string | null
+  }[] = [
     { size: "small",  name: t('services.website_development'), sub: null },
     { size: "large",  name: t('services.development_browser_extensions'), sub: "Chrome, Firefox"},
     { size: "normal", name: t('services.mobile_development'), sub: "React Native"},
