@@ -510,12 +510,12 @@
 
   @keyframes flipped_over {
     0% {
-      left: 287px;
-      width: 0;
+      width: 618px;
+      left: 0;
     }
-
+    
     100% {
-      left: 23px;
+      left: 0;
       width: 618px;
     }
   }
