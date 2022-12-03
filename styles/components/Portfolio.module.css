@@ -3,24 +3,6 @@
   padding: 00px 130px 130px 130px;
 }
 
-.portfolio_screen__title_container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.portfolio_screen__title {
-  font-family: 'Fira Code';
-  font-style: normal;
-  font-weight: 600;
-  line-height: 120%;
-  margin-bottom: 60px;
-  font-size: 232px;
-  max-width: 100%;
-  color: var(--main-white-color);
-}
-
 .portfolio_screen__tabs {
   display: flex;
   justify-content: space-between;
@@ -75,33 +57,23 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 1530px) {
-  .portfolio_screen__title {
-    font-size: 212px;
+.portfolio_title_image {
+  width: 100%;
+  margin-bottom: 45px;
+  height: auto;
+  margin-top: 65px;
+}
+
+@media screen and (max-width: 1200px) {
+  .portfolio_title_image {
+    margin-top: 65px;
   }
 }
 
-@media screen and (max-width: 1424px) {
-  .portfolio_screen__title {
-    font-size: 202px;
-  }
-}
-
-@media screen and (max-width: 1340px) {
-  .portfolio_screen__title {
-    font-size: 182px;
-  }
-}
-
-@media screen and (max-width: 1280px) {
-  .portfolio_screen__title {
-    font-size: 162px;
-  }
-}
-
-@media screen and (max-width: 1150px) {
-  .portfolio_screen__title {
-    font-size: 142px;
+@media screen and (max-width: 804px) {
+  .portfolio_title_image {
+    margin-top: 0px;
+    margin-bottom: 40px;
   }
 }
 
@@ -116,10 +88,6 @@
     width: 320px;
     left: 220px;
     top: 490px;
-  }
-
-  .portfolio_screen__title {
-    margin-bottom: 55px;
   }
 
   .portfolio_screen__tabs_item {
@@ -137,12 +105,6 @@
   }
 }
 
-@media screen and (max-width: 900px) {
-  .portfolio_screen__title {
-    font-size: 122px;
-  }
-}
-
 @media screen and (max-width: 808px) {
   .portfolio_screen__tabs {
     display: grid;
@@ -150,17 +112,9 @@
     margin-bottom: 30px;
     gap: 10px 10px;
   }
-
-  .portfolio_screen__title {
-    font-size: 102px;
-  }
 }
 
 @media screen and (max-width: 804px) {
-  .portfolio_screen__title {
-    margin-bottom: 40px;
-  }
-
   .portfolio_screen {
     margin-top: 120px;
     padding: 22px;
@@ -174,33 +128,11 @@
 }
 
 @media screen and (max-width: 667px) {
-  .portfolio_screen__title {
-    font-size: 82px;
-  }
-
   .portfolio_screen__tabs_item {
     width: 156px;
     height: 45px;
     font-weight: 400;
     font-size: 16px;
     line-height: 25px;
-  }
-}
-
-@media screen and (max-width: 520px) {
-  .portfolio_screen__title {
-    font-size: 72px;
-  }
-}
-
-@media screen and (max-width: 441px) {
-  .portfolio_screen__title {
-    font-size: 66px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .portfolio_screen__title {
-    font-size: 58px;
   }
 }

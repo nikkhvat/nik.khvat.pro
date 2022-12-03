@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react"
 
+import Image from "next/image"
+
 import { useRouter } from "next/router"
 import { useTranslation } from 'next-i18next'
 
 import styles from "../styles/components/Portfolio.module.css"
 
 import PortfolioCard from "./PortfolioCard"
+
+import portfolio from "../images/portfolio.svg"
 
 const Portfolio: React.FC<any> = ({categories}) => {
   const { t } = useTranslation('common')
@@ -42,9 +46,11 @@ const Portfolio: React.FC<any> = ({categories}) => {
 
   return (
     <div id="portfolio" className={styles.portfolio_screen}>
-      <div className={styles.portfolio_screen__title_container}>
-        <h2 className={styles.portfolio_screen__title}>Portfolio</h2>
-      </div>
+        <Image
+          className={styles.portfolio_title_image}
+          src={portfolio} 
+          alt={"portfolio"}          
+        />
 
       <div className={styles.portfolio_screen__tabs}>
         {categories.map((item: any) => (
