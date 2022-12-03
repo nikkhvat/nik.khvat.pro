@@ -11,6 +11,9 @@ import styles from "../../styles/Project.module.css"
 const Project: React.FC<InferGetStaticPropsType<any>> = (_props) => {
   const { t } = useTranslation('common')
 
+  const loaderProp =({ src }: {src: any}) => {
+    return src;
+  }
 
   const data = _props.data
   
@@ -50,6 +53,7 @@ const Project: React.FC<InferGetStaticPropsType<any>> = (_props) => {
         {data.photos?.map((photo: any, i: number) => (
           <div key={photo} className={styles.image_container} >
             <Image 
+              loader={loaderProp}
               layout={'responsive'}
               width="0"
               height="0"

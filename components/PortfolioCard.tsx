@@ -11,6 +11,10 @@ interface IPortfolioCard {
 }
 
 const PortfolioCard: React.FC<IPortfolioCard> = ({key, card}) => {
+  const loaderProp =({ src }: {src: any}) => {
+    return src;
+  }
+  
   return (
     <div key={key} className={styles.portfolio_cards__item} >
       <Link 
@@ -20,6 +24,7 @@ const PortfolioCard: React.FC<IPortfolioCard> = ({key, card}) => {
         <Image
           width={635.5}
           height={328}
+          loader={loaderProp}
           src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${card.url}`}
           className={styles.portfolio_cards__item_photo} 
           alt={`preiew for ${card.title}`} />
