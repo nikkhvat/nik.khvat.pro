@@ -2,17 +2,16 @@
 
 ## About the project
 
-my site on nextjs
+My personal website - built with React, React-Router, and GitHub Pages.
 
-Tools
+### Tools
 
 - Lang - `TypeScript`
 - Framework - `NextJs`
 - For multilingual - `i18n`
 - For CI/CD - `GitHub Actions (self-hosted ubuntu)`
-- Reverse Proxy / ssl - `Nginx & brotli`
 - Code analysis - `eslint`
-
+- Reverse Proxy / ssl - `Nginx & brotli`
 
 <br />
 
@@ -28,3 +27,10 @@ Tools
 - Get packages `npm i`
 - Set .env `cp .env.dev .env`
 - Start `npm run dev`
+
+<br />
+
+### SetUp Nginx on Server
+
+- [Nginx config](./nginx/sites-available/nik19ta.pro.conf)
+- [Install and setting nginx / ssl](https://github.com/pepelsbey/playground/tree/main/56)
