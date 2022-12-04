@@ -9,7 +9,7 @@ import styles from "../styles/components/Portfolio.module.css"
 
 import PortfolioCard from "./PortfolioCard"
 
-import portfolio from "../images/portfolio.svg"
+import portfolio from "../images/portfolioTitle.svg"
 
 const Portfolio: React.FC<any> = ({categories}) => {
   const { t } = useTranslation('common')

@@ -18,9 +18,9 @@ const Service: React.FC<IService> = ({services}) => {
     switch (size) {
       case 'small':
         return `${styles.service_screen__item} ${styles.service_screen__small_item}`
-        case 'normal':
+      case 'normal':
         return `${styles.service_screen__item} ${styles.service_screen__normal_item}`
-        case 'large':
+      case 'large':
         return `${styles.service_screen__item} ${styles.service_screen__large_item}`
       default:
         return styles.service_screen__item
