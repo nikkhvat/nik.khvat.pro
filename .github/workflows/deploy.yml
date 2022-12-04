@@ -10,7 +10,7 @@ jobs:
     steps:
       - run: git pull
       - run: npm i
-      - run: rm .env
+      - run: rm -f .env
       - run: cp .env.prod .env
       - run: npm run build
         env:
