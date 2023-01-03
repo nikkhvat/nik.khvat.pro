@@ -1,8 +1,8 @@
 package usecase
 
 import (
-	"log"
 	"nik19ta/backend/models"
+	"nik19ta/backend/projects"
 	Projects "nik19ta/backend/projects"
 )
 
@@ -17,17 +17,15 @@ func NewProjectsUseCase(userRepo Projects.UserRepository) *ProjectsUseCase {
 func (a *ProjectsUseCase) GetProjects(lang string) ([]models.ProjectsResponse, error) {
 	data, err := a.userRepo.GetProjects(lang)
 
-	if err != nil {
-		return nil, err
+	return data, err
+}
+
+func (a *ProjectsUseCase) GetProject(lang string, id string) (*models.ProjectResponse, error) {
+	data, err := a.userRepo.GetProject(lang, id)
+
+	if data.ID == "" {
+		return nil, projects.CouldNotFindProject
 	}
 
-	return data, nil
-}
-func (a *ProjectsUseCase) GetProject(lang string, id string) ([]models.ProjectsResponse, error) {
-	data, err := a.userRepo.GetProject(lang, id)
-	cards, err := a.userRepo.GetCards(id)
-
-	log.Println(data, cards, err)
-
-	return nil, nil
+	return data, err
 }

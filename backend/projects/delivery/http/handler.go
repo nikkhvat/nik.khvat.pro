@@ -2,6 +2,7 @@ package http
 
 import (
 	"net/http"
+	"nik19ta/backend/projects"
 	Projects "nik19ta/backend/projects"
 
 	gin "github.com/gin-gonic/gin"
@@ -34,12 +35,17 @@ func (h *Handler) GetProject(c *gin.Context) {
 	lang := c.Query("lang")
 	id := c.Param("id")
 
-	projects, err := h.useCase.GetProject(lang, id)
+	project, err := h.useCase.GetProject(lang, id)
 
 	if err != nil {
-		c.AbortWithStatus(http.StatusBadRequest)
+		if err == projects.CouldNotFindProject {
+			c.JSON(http.StatusNotFound, gin.H{"message": err.Error()})
+			return
+		}
+
+		c.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"data": projects})
+	c.JSON(http.StatusOK, project)
 }
