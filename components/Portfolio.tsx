@@ -30,9 +30,9 @@ const Portfolio: React.FC<any> = ({categories}) => {
 
   useEffect(() => {
     const fetchProjects = async () => {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/projects/${router.locale}`)  
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/projects?lang=${router.locale}`)  
       const data = await res.json()
-      setData(data.projects)
+      setData(data.data)
     }
     
     fetchProjects()
