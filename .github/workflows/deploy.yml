@@ -10,11 +10,12 @@ jobs:
     steps:
       - run: git pull
       - run: npm i
-      - run: rm -f .env
-      - run: cp .env.prod .env
+      # Build front-end
       - run: npm run build
+      # Build back-end
+      - run: make build
         env:
             CI: true
 
-      - run: pm2 restart nik19ta.next
-      # - run: pm2 restart nik19ta.next-back-end
+      - run: pm2 restart "nik19ta.next"
+      - run: pm2 restart "back-end nik19ta's site"
