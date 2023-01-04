@@ -1,5 +1,8 @@
 # Makefile
 
+prepare_env:
+	cp -r .env.dev .env
+
 build: # build server
 	go build -o ./backend/.bin/app ./backend/cmd/api/main.go
 
