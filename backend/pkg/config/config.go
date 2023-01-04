@@ -11,15 +11,15 @@ import (
 var once sync.Once
 
 type Config struct {
-	Port             string `json:"port"`
-	PostgresHost     string `json:"postgres_host"`
-	PostgresUser     string `json:"postgres_user"`
-	PostgresPassword string `json:"postgres_password"`
-	PostgresDbname   string `json:"postgres_dbname"`
-	PostgresPort     string `json:"postgres_port"`
-	PostgresSslmode  string `json:"postgres_sslmode"`
-	PostgresTimezone string `json:"postgres_timezone"`
-	JwtSecret        string `json:"jwt_secret"`
+	Port             string `json:"PORT"`
+	PostgresHost     string `json:"POSTGRES_HOST"`
+	PostgresUser     string `json:"POSTGRES_USER"`
+	PostgresPassword string `json:"POSTGRES_PASSWORD"`
+	PostgresDbname   string `json:"POSTGRES_DBNAME"`
+	PostgresPort     string `json:"POSTGRES_PORT"`
+	PostgresSslmode  string `json:"POSTGRES_SSLMODE"`
+	PostgresTimezone string `json:"POSTGRES_TIMEZONE"`
+	JwtSecret        string `json:"JWT_SECRET"`
 }
 
 var config Config
@@ -40,15 +40,15 @@ func GetConfig() Config {
 		envs := initConfig()
 
 		config = Config{
-			Port:             envs["port"],
-			PostgresHost:     envs["postgres_host"],
-			PostgresUser:     envs["postgres_user"],
-			PostgresPassword: envs["postgres_password"],
-			PostgresDbname:   envs["postgres_dbname"],
-			PostgresPort:     envs["postgres_port"],
-			PostgresSslmode:  envs["postgres_sslmode"],
-			PostgresTimezone: envs["postgres_timezone"],
-			JwtSecret:        envs["jwt_secret"],
+			Port:             envs["PORT"],
+			PostgresHost:     envs["POSTGRES_HOST"],
+			PostgresUser:     envs["POSTGRES_USER"],
+			PostgresPassword: envs["POSTGRES_PASSWORD"],
+			PostgresDbname:   envs["POSTGRES_DBNAME"],
+			PostgresPort:     envs["POSTGRES_PORT"],
+			PostgresSslmode:  envs["POSTGRES_SSLMODE"],
+			PostgresTimezone: envs["POSTGRES_TIMEZONE"],
+			JwtSecret:        envs["JWT_SECRET"],
 		}
 	}
 
