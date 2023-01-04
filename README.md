@@ -6,8 +6,11 @@ My personal website - built with React, React-Router, and GitHub Pages.
 
 ### Tools
 
-- Lang - `TypeScript`
-- Framework - `NextJs`
+- Lang - `TypeScript` / `Golang`
+- Framework (front-end) - `NextJs`
+- Framework (back-end) - `Gin`
+- DataBase - `PostgreSQL`
+- ORM - `GORM`
 - For multilingual - `i18n`
 - For CI/CD - `GitHub Actions (self-hosted ubuntu)`
 - Code analysis - `eslint`
