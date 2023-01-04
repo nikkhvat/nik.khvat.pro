@@ -30,7 +30,7 @@ const PortfolioCard: React.FC<IPortfolioCard> = ({key, card}) => {
           alt={`preiew for ${card.title}`} />
 
         <p className={styles.portfolio_cards__item_title}>{card.title}</p>
-        <p className={styles.portfolio_cards__item_subtitle}> {card.sub_title} </p>
+        <p className={styles.portfolio_cards__item_subtitle}> {card.subtitle} </p>
       </Link>
     </div>
   )

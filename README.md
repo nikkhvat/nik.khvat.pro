@@ -34,3 +34,26 @@ My personal website - built with React, React-Router, and GitHub Pages.
 
 - [Nginx config](./nginx/sites-available/nik19ta.pro.conf)
 - [Install and setting nginx / ssl](https://github.com/pepelsbey/playground/tree/main/56)
+
+### backend
+
+- create database
+
+```sql
+CREATE DATABASE nik19ta
+```
+
+- create user
+
+```sql
+INSERT INTO users (
+  uuid, 
+  mail, 
+  password, 
+  access)
+VALUES (
+  '01', 
+  'nik19ta.me@gmail.com', 
+  'password', 
+  true); 
+```

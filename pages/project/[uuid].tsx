@@ -44,7 +44,7 @@ const Project: React.FC<InferGetStaticPropsType<any>> = (_props) => {
 
         <ul className={styles.main_features} >
           {data.features.map((item: any) => (
-            <li key={item.name} > — {item.name}</li>
+            <li key={item.title} > — {item.title}</li>
           ))}
         </ul>
       </div>
@@ -68,8 +68,9 @@ const Project: React.FC<InferGetStaticPropsType<any>> = (_props) => {
 }
 
 export async function getServerSideProps({query, locale}: {query: any, locale: any}) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/project/${query.uuid}/${locale}`)  
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/projects/${query.uuid}?lang=${locale}`)  
   const data = await res.json()
+  
   return { 
     props: { 
       data,
