@@ -45,18 +45,4 @@ My personal website - built with React, React-Router, and GitHub Pages.
 ```sql
 CREATE DATABASE nik19ta
 ```
-
-- create user
-
-```sql
-INSERT INTO users (
-  uuid, 
-  mail, 
-  password, 
-  access)
-VALUES (
-  '01', 
-  'nik19ta.me@gmail.com', 
-  'password', 
-  true); 
-```
+> dump in `./backend/dumpdump.sql`
