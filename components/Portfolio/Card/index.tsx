@@ -3,7 +3,7 @@ import React from "react"
 import Link from "next/link"
 import Image from 'next/image'
 
-import styles from "../styles/components/PortfolioCard.module.css"
+import styles from './index.module.css'
 
 interface IPortfolioCard {
   key: string

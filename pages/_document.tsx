@@ -13,6 +13,7 @@ class MyDocument extends Document<Props> {
       <Html lang={currentLocale}>
         <Head title='Nikita Khvatov' >
 
+          {/* eslint-disable-next-line @next/next/no-title-in-document-head */}
           <title>Nikita Khvatov</title>
           <meta charSet='utf-8' />
           <meta name="description" content="My website about me, my services and my portfolio" />

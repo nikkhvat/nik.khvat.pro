@@ -52,16 +52,16 @@ func (r UserRepository) GetProject(lang string, uuid string) (*models.ProjectRes
 				jsonb_agg(jsonb_build_object('title', cards.title, 'sub_title', cards.sub_title)) 
 			FROM cards WHERE project_uuid = @id) AS cards,
 		
-			CASE 
-				WHEN (SELECT count(*) FROM features WHERE project_uuid = projects.uuid AND lang = @lang) > 0 THEN 
-					(SELECT 
-						jsonb_agg(jsonb_build_object('title', features.content, 'lang', features.lang)) 
-					FROM features WHERE project_uuid = @id AND lang = @lang)
-				ELSE 
-					(SELECT 
-						jsonb_agg(jsonb_build_object('title', features.content, 'lang', features.lang)) 
-					FROM features WHERE project_uuid = @id AND lang = 'en')
-			END AS features,
+		CASE 
+			WHEN (SELECT count(*) FROM features WHERE project_uuid = projects.uuid AND lang = @lang) > 0 THEN 
+				(SELECT 
+					jsonb_agg(jsonb_build_object('title', features.content, 'lang', features.lang)) 
+				FROM features WHERE project_uuid = @id AND lang = @lang)
+			ELSE 
+				(SELECT 
+					jsonb_agg(jsonb_build_object('title', features.content, 'lang', features.lang)) 
+				FROM features WHERE project_uuid = @id AND lang = 'en')
+		END AS features,
 
 		CASE 
 			WHEN (SELECT count(*) FROM subtitles WHERE project_uuid = projects.uuid AND lang = @lang) > 0 THEN 

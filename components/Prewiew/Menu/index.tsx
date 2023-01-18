@@ -7,10 +7,10 @@ import { useRouter } from 'next/router'
 
 import { Link } from "react-scroll/modules";
 
-import styles from '../styles/components/Menu.module.css'
+import styles from './index.module.css'
 
-import burger from "../images/mobile_menu/burger.svg";
-import close from "../images/mobile_menu/close.svg";
+import burger from "../../../images/mobile_menu/burger.svg";
+import close from "../../../images/mobile_menu/close.svg";
 
 const Menu: React.FC = () => {
   const router = useRouter()
