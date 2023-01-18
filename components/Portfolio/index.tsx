@@ -5,11 +5,11 @@ import Image from "next/image"
 import { useRouter } from "next/router"
 import { useTranslation } from 'next-i18next'
 
-import styles from "../styles/components/Portfolio.module.css"
+import styles from './index.module.css'
 
-import PortfolioCard from "./PortfolioCard"
+import PortfolioCard from "./Card"
 
-import portfolio from "../images/portfolioTitle.svg"
+import portfolio from "../../images/portfolioTitle.svg"
 
 const Portfolio: React.FC<any> = ({categories}) => {
   const { t } = useTranslation('common')

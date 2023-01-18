@@ -1,8 +1,8 @@
 import React from "react";
 
-import nikita_khvatov from "../images/nikita_khvatov_2.png"
+import nikita_khvatov from "../../images/nikita_khvatov_2.png"
 
-import styles from "../styles/components/About.module.css"
+import styles from './index.module.css'
 
 import { useTranslation } from 'next-i18next'
 
@@ -25,14 +25,14 @@ const About: React.FC<IAbout> = ({companies, skils}) => {
         <div className={styles.about_screen__line}></div>
 
         <div className={styles.skils_table}>
-          {skils.map(skilItem => 
+          {skils.map(item => 
             <div 
-              key={skilItem.categoryName} 
+              key={item.categoryName} 
               className={styles.skils_table__column}>
                 
-              <span className={styles.skils_table__column_title}>{skilItem.categoryName}</span>
+              <span className={styles.skils_table__column_title}>{item.categoryName}</span>
 
-              {skilItem.names.split(",").map(name => <span 
+              {item.names.split(",").map(name => <span 
                 key={name} 
                 className={styles.skils_table__column_item}>{name}</span>
               )}

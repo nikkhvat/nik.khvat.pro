@@ -1,7 +1,7 @@
 import * as React from "react";
 import Image from 'next/image'
 
-import styles from '../styles/components/Prewiew.module.css'
+import styles from './index.module.css'
 
 import Menu from './Menu'
 
@@ -11,7 +11,7 @@ import { useTranslation } from 'next-i18next'
 
 import anime from "animejs"
 import { useEffect, useState } from "react";
-import useWindowSize from "../hooks/useWindowsSize";
+import useWindowSize from "../../hooks/useWindowsSize";
 import { StaticImageData } from "next/image";
 
 interface IPrewiew {
@@ -62,14 +62,18 @@ const Prewiew: React.FC<IPrewiew> = ({linkContactsWithMe}) => {
 
       <div className={`${styles.flipped_over_text__desktop} ${styles.flipped_over_text}`} >
         <p className={styles.flipped_over_text__grey} >Middle <br /> 
-          {"Developer".split("").map((item, index) => <span className={styles.half_color} key={`dev-${item}-${index}`} id={item} >{item}</span> )}
+          {"Developer".split("").map((item, index) => 
+            <span className={styles.half_color} key={`dev-${item}-${index}`} id={item} >{item}</span> 
+          )}
         </p>
       </div>
 
       <div className={`${styles.flipped_over_text__mobile} ${styles.flipped_over_text}`} >
         <p className={styles.flipped_over_text__grey} >
-          {"Middle".split("").map((item, index) => <span className={styles.half_color} key={`mid-${item}-${index}`} id={item} >{item}</span> )}
-          <br /> 
+          {"Middle".split("").map((item, index) => 
+            <span className={styles.half_color} key={`mid-${item}-${index}`} id={item} >{item}</span> 
+          )}
+          <br />
           Developer
         </p>
       </div>
@@ -77,13 +81,21 @@ const Prewiew: React.FC<IPrewiew> = ({linkContactsWithMe}) => {
       <div className={styles.image_back} ></div>
 
       <div className={styles.prewiew_text} >
-        <p className={`${styles.prewiew_text__small} ${isTimingFullStack && styles.line_1} ${isTimingFullStack && styles.anim_typewriter}`} id="typewriter_fullstack" >Full-stack</p>
+        <p 
+          className={`
+            ${styles.prewiew_text__small}
+            ${isTimingFullStack && styles.line_1}
+            ${isTimingFullStack && styles.anim_typewriter}`}
+          id="typewriter_fullstack" >Full-stack</p>
         {showDeveloper && <p className={`${styles.prewiew_text__large} ${isTimingDeveloper && styles.line_2} ${isTimingDeveloper && styles.anim_typewriter_2}`} id="typewriter_developer" >Developer</p>}
       </div>
 
       <div className={`${styles.quote} ${width > 810 && styles.animation_quote}`} > {t('quote')} </div>
 
-      <Link activeClass="active" to="portfolio" spy={true} smooth={true} offset={10} duration={300} >
+      <Link 
+        activeClass="active" 
+        to="portfolio" 
+        spy={true} smooth={true} offset={10} duration={300} >
         <button className={styles.btn_to_portfolio} >{t('prewiew.view_portfolio')}</button>
       </Link>
 

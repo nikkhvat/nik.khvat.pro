@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../styles/components/Footer.module.css"
+import styles from './index.module.css'
 
 import Image from 'next/image'
 
