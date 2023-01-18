@@ -1,0 +1,31 @@
+{
+  "fullname": "Никита Хватов",
+  "quote": "Менің мақсатым – даму процесін жағымды ету үшін Қолдау көрсетілетін, таза және түсінікті код жазу",
+  "prewiew": {
+    "view_portfolio": "Портфолионы қарау"
+  },
+  "menu": {
+    "main": "Басты бет",
+    "about": "Өзі Туралы",
+    "portfolio": "Портфолио",
+    "services": "Қызметтер",
+    "contacts": "Байланыс"
+  },
+  "about": {
+    "hello": "Сәлем! Менің атым Никита, мен Middle full-stack Developer. Бұл салада мен 4 жылдан астам уақыт болдым."
+  },
+  "portfolio": {
+    "all_projects": "Барлық жұмыстар",
+    "show_more": "Көбірек көрсету",
+    "show_less": "Жасыру",
+    "main_features": "Функционал:"
+  },
+  "services": {
+    "website_development": "Веб-сайттар құру",
+    "development_browser_extensions": "Браузер кеңейтімдерін жасау",
+    "mobile_development": "Мобильді даму",
+    "web_aplication": "Веб-қосымшаларды құру",
+    "parsers": "Талдағыштар/қырғыштар жасау",
+    "back_end_development": "Back-end қосымшаларын әзірлеу және қолдау"
+  }
+}
