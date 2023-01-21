@@ -16,7 +16,7 @@
         "jp": "レストランのための拡張現実要素を備えた電子メニューのためのアプリケーション。"
       },
       "cards": [
-        { "title": "Front-end", "sub_title": "Vue.js, Three.js" },
+        { "title": "Front-end", "sub_title": "React Native, Three.js" },
         { "title": "Back-end", "sub_title": "NodeJs, Express, MySql" }
       ],
       "features": [
@@ -52,7 +52,7 @@
       "cards": [
         { "title": "Front-end","sub_title": "Vue.js, VueRouter" },
         { "title": "Back-end", "sub_title": "Python, Flask, MySql" },
-        { "title": "Mobile", "sub_title": "ReactNative" }
+        { "title": "Mobile", "sub_title": "React Native" }
       ],
       "features": [
         { "name": "評価と評判の個人アカウント", "lang": "jp"},

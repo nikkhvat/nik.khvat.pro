@@ -1,8 +1,6 @@
-
-
 -- Project "Ewys"
 INSERT INTO projects (uuid, photo_url, title, categories) VALUES ('81ee526d-beb0-4a71-a192-e2b5a9886146', 'EWYS.jpg', 'Ewys', '4');
-INSERT INTO cards (project_uuid,  uuid,  title,  sub_title) VALUES ('81ee526d-beb0-4a71-a192-e2b5a9886146', '7255b537-93de-4d7f-b7ef-d81dc5837e6a', 'Front-end', 'Vue.js, Three.js');
+INSERT INTO cards (project_uuid,  uuid,  title,  sub_title) VALUES ('81ee526d-beb0-4a71-a192-e2b5a9886146', '7255b537-93de-4d7f-b7ef-d81dc5837e6a', 'Front-end', 'React Native, Three.js');
 INSERT INTO cards (project_uuid,  uuid,  title,  sub_title) VALUES ('81ee526d-beb0-4a71-a192-e2b5a9886146', '17ac43b3-1ad9-4464-84be-0d39eb37aa69', 'Back-end', 'NodeJs, Express, MySql');
 INSERT INTO descriptions (project_uuid, uuid, lang, content) VALUES ('81ee526d-beb0-4a71-a192-e2b5a9886146', 'e90907e7-66e2-469a-b467-79bdf42bcf75', 'en', 'An application for an electronic menu with augmented reality elements for restaurants.');
 INSERT INTO descriptions (project_uuid, uuid, lang, content) VALUES ('81ee526d-beb0-4a71-a192-e2b5a9886146', '48ea710e-9d9d-4297-92e3-8299612fc709', 'ru', 'Приложение для электронного меню с элементами дополненной реальности для ресторанов.');
@@ -28,7 +26,7 @@ INSERT INTO subtitles( project_uuid, uuid, lang, content) VALUES ('81ee526d-beb0
 INSERT INTO projects (uuid, photo_url, title, categories) VALUES ('0b1dc4ba-541c-49e2-8d67-46875a85ad9f', 'BISUP.jpg', 'BUSINESS UP', '2,4');
 INSERT INTO cards (project_uuid,  uuid,  title,  sub_title) VALUES ('0b1dc4ba-541c-49e2-8d67-46875a85ad9f', '5ec414ad-c32b-4b68-a6e5-f3e1160f0b08', 'Front-end', 'Vue.js, VueRouter');
 INSERT INTO cards (project_uuid,  uuid,  title,  sub_title) VALUES ('0b1dc4ba-541c-49e2-8d67-46875a85ad9f', 'd13a4a91-f260-46ba-bc39-2339c392ff79', 'Back-end', 'Python, Flask, MySql');
-INSERT INTO cards (project_uuid,  uuid,  title,  sub_title) VALUES ('0b1dc4ba-541c-49e2-8d67-46875a85ad9f', '8272c77e-6d75-4797-8f4e-471f5785c95b', 'Mobile', 'ReactNative');
+INSERT INTO cards (project_uuid,  uuid,  title,  sub_title) VALUES ('0b1dc4ba-541c-49e2-8d67-46875a85ad9f', '8272c77e-6d75-4797-8f4e-471f5785c95b', 'Mobile', 'React Native');
 INSERT INTO descriptions (project_uuid, uuid, lang, content) VALUES ('0b1dc4ba-541c-49e2-8d67-46875a85ad9f', '6f73369f-f470-4587-927b-4f193d35c79e', 'en', 'The platform forms entrepreneurial skills by using online gaming solutions, building development, supporting the business community and participating in cyber championships.');
 INSERT INTO descriptions (project_uuid, uuid, lang, content) VALUES ('0b1dc4ba-541c-49e2-8d67-46875a85ad9f', '3a279f3d-84cb-4cf3-80c1-be445c775288', 'ru', 'Платформа формирует навыки предпринимателя с помощью игровых онлайн решений, выстраивая траектории развития, поддержки бизнес-комьюнити и участия в киберчемпионатах.');
 INSERT INTO descriptions (project_uuid, uuid, lang, content) VALUES ('0b1dc4ba-541c-49e2-8d67-46875a85ad9f', 'c44371a8-85ad-4a28-a2cb-c3c6ca4f2a27', 'jp', 'プラットフォームは、オンラインゲームのソリューションを使用して、開発を構築し、ビジネスコミュニティを支援し、サイバーシンショーに参加することにより、起業家のスキルを形成します。');
