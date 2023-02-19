@@ -6,12 +6,12 @@
   overflow-x: hidden;
 }
 
-.main_screen__line {
+.line {
   position: absolute;
   border: 1px solid var(--main-dark-grey-color);
 }
 
-.main_screen__line_left {
+.line_left {
   height: 0px;
   width: 0px;
   left: 130px;
@@ -31,7 +31,7 @@
   }
 }
 
-.main_screen__line_top {
+.line_top {
   width: 0;
   height: 0px;
   left: 245px;
@@ -58,9 +58,7 @@
   }
 }
 
-
-
-.main_screen__line_right_top {
+.line_right_top {
   height: 0px;
   width: 0px;
   right: 130px;
@@ -92,7 +90,7 @@
   }
 }
 
-.main_screen__line_right_bottom {
+.line_right_bottom {
   height: 0px;
   width: 0px;
   right: 130px;
@@ -165,18 +163,20 @@
 
 .line_1,
 .line_2 {
-  border-right: 2px solid rgba(255, 255, 255, .75);
+  border-right: 2px solid rgba(255, 255, 255, 0.75);
   white-space: nowrap;
   overflow: hidden;
   text-align: left;
 }
 
 .anim_typewriter {
-  animation: typewriter 1s steps(10) 0.2s 1 normal both, blinkTextCursor 800ms steps(10) infinite normal;
+  animation: typewriter 1s steps(10) 0.2s 1 normal both,
+    blinkTextCursor 800ms steps(10) infinite normal;
 }
 
 .anim_typewriter_2 {
-  animation: typewriter_2 1s steps(9) 0.2s 1 normal both, blinkTextCursor 800ms steps(9) infinite normal;
+  animation: typewriter_2 1s steps(9) 0.2s 1 normal both,
+    blinkTextCursor 800ms steps(9) infinite normal;
 }
 
 @keyframes typewriter {
@@ -201,16 +201,16 @@
 
 @keyframes blinkTextCursor {
   from {
-    border-right-color: rgba(255, 255, 255, .75);
+    border-right-color: var(--blink-text-cursor-from-from);
   }
 
   to {
-    border-right-color: rgb(0, 0, 0)
+    border-right-color: var(--blink-text-cursor-from-to);
   }
 }
 
 .prewiew_text__small {
-  font-family: 'Fira Code';
+  font-family: "Fira Code";
   font-style: normal;
   font-weight: 600;
   font-size: 64px;
@@ -223,7 +223,7 @@
 }
 
 .prewiew_text__large {
-  font-family: 'Fira Code';
+  font-family: "Fira Code";
   font-style: normal;
   font-weight: 600;
   font-size: 144px;
@@ -249,7 +249,7 @@
 }
 
 .quote {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -282,7 +282,7 @@
   top: 639px;
   background: var(--main-white-color);
   border: none;
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
@@ -319,22 +319,20 @@
   cursor: pointer;
 }
 
-
 .icons__item a img {
   width: 24px;
 }
 
-.flipped_over_text {
+.flipped_text {
   transform: rotate(-90deg) translate(0, -100%);
   position: absolute;
   width: 400px;
   white-space: nowrap;
   overflow: hidden;
-  animation: flipped_over 1s ease-in-out forwards;
+  animation: flipped 1s ease-in-out forwards;
 }
 
-
-@keyframes flipped_over {
+@keyframes flipped {
   0% {
     left: 400px;
     bottom: -44px;
@@ -348,9 +346,8 @@
   }
 }
 
-
-.flipped_over_text__grey {
-  font-family: 'Fira Code';
+.flipped_text__grey {
+  font-family: "Fira Code";
   font-style: normal;
   font-weight: 500;
   font-size: 96px;
@@ -455,16 +452,16 @@
     padding-right: 55px;
   }
 
-  .main_screen__line_left {
+  .line_left {
     left: 55px;
   }
 
-  .main_screen__line_right_top,
-  .main_screen__line_right_bottom {
+  .line_right_top,
+  .line_right_bottom {
     right: 55px;
   }
 
-  .main_screen__line_top {
+  .line_top {
     left: 160px;
     -webkit-animation: increase_second 1s;
     -moz-animation: increase_second 1s;
@@ -488,13 +485,12 @@
     }
   }
 
-
-  .flipped_over_text__grey {
+  .flipped_text__grey {
     font-size: 64px;
     line-height: 84px;
   }
 
-  .flipped_over_text__desktop {
+  .flipped_text__desktop {
     bottom: calc(50% - 92px);
     left: -20px !important;
   }
@@ -503,17 +499,16 @@
     left: 175px;
   }
 
-  .flipped_over_text {
-    animation: flipped_over 1s ease-in-out forwards;
+  .flipped_text {
+    animation: flipped 1s ease-in-out forwards;
   }
 
-
-  @keyframes flipped_over {
+  @keyframes flipped {
     0% {
       width: 618px;
       left: 0;
     }
-    
+
     100% {
       left: 0;
       width: 618px;
@@ -529,17 +524,17 @@
 }
 
 @media screen and (min-width: 810px) {
-  .flipped_over_text__mobile {
+  .flipped_text__mobile {
     display: none;
   }
 }
 
 @media screen and (max-width: 810px) {
-  .flipped_over_text__mobile {
+  .flipped_text__mobile {
     animation: none;
   }
 
-  .flipped_over_text__desktop {
+  .flipped_text__desktop {
     display: none;
   }
 
@@ -556,7 +551,7 @@
     right: 25px;
   }
 
-  .main_screen__line_top {
+  .line_top {
     top: 42px;
     left: 190px;
     -webkit-animation: increase_second 1s;
@@ -581,12 +576,12 @@
     }
   }
 
-  .main_screen__line_right_top,
-  .main_screen__line_right_bottom {
+  .line_right_top,
+  .line_right_bottom {
     right: 34px;
   }
 
-  .main_screen__line_right_top {
+  .line_right_top {
     top: 135px;
   }
 
@@ -610,7 +605,6 @@
     width: 337px !important;
     top: 540px;
   }
-
 
   .btn_to_portfolio {
     left: 22px;
@@ -645,15 +639,13 @@
     top: 200px;
   }
 
-
-
-  .flipped_over_text {
+  .flipped_text {
     left: auto;
     right: -80px;
     bottom: 296px;
   }
 
-  @keyframes flipped_over {
+  @keyframes flipped {
     0% {
       left: auto;
       right: 10px;
@@ -668,7 +660,7 @@
     }
   }
 
-  .flipped_over_text__grey {
+  .flipped_text__grey {
     font-weight: 500;
     font-size: 48px;
     line-height: 50px;
@@ -683,7 +675,7 @@
     font-size: 85px;
   }
 
-  .main_screen__line_left {
+  .line_left {
     display: none;
   }
 }

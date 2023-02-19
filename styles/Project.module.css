@@ -15,7 +15,6 @@
   padding-bottom: 120px;
 }
 
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -31,7 +30,7 @@
 }
 
 .header h1 {
-  font-family: 'Fira Code';
+  font-family: "Fira Code";
   font-style: normal;
   font-weight: 400;
   font-size: 96px;
@@ -45,7 +44,7 @@
 }
 
 .description_text {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 30px;
@@ -79,7 +78,7 @@
 }
 
 .card__title {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -89,7 +88,7 @@
 }
 
 .card__subtitle {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -99,8 +98,8 @@
   margin-top: 10px;
 }
 
-.main_features {  
-  font-family: 'Open Sans';
+.main_features {
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 32px;
@@ -114,7 +113,7 @@
 }
 
 .main_features li {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -127,7 +126,6 @@
   max-width: 80%;
 }
 
-
 .photos {
   padding-left: -130px;
   padding-right: -130px;
@@ -137,7 +135,6 @@
   width: 100%;
   margin-top: -6px;
 }
-
 
 @media screen and (max-width: 980px) {
   .main_features li {
@@ -150,11 +147,11 @@
     padding-top: 50px;
     padding-bottom: 50px;
   }
-  
+
   .header h1 {
     font-size: 82px;
   }
-  
+
   .description_text {
     font-size: 24px;
   }
@@ -197,12 +194,11 @@
     width: 100%;
     margin: 0 0 10px 0;
   }
-  
+
   .header h1 {
     font-size: 48px;
   }
-  
-  
+
   .description_text {
     font-size: 18px;
   }

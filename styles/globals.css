@@ -1,11 +1,13 @@
 :root {
   --white: #ffffff;
-  --main-white-color: #F5F5F5;
+  --main-white-color: #f5f5f5;
   --main-second-light-grey-color: #bebebe;
-  --main-light-grey-color: #A6A6A6;
-  --main-dark-grey-color: #3D3D3D;
+  --main-light-grey-color: #a6a6a6;
+  --main-dark-grey-color: #3d3d3d;
   --main-dark-black-color: #121212;
-  --main-grey-shadow-color-text: #A6A5A5;
+  --main-grey-shadow-color-text: #a6a5a5;
+  --blink-text-cursor-from-from: rgba(255, 255, 255, 0.75);
+  --blink-text-cursor-from-to: rgb(0, 0, 0);
 }
 
 * {

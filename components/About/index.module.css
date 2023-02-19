@@ -11,7 +11,7 @@
 }
 
 .about_screen__text {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 36px;
@@ -64,7 +64,7 @@
 }
 
 .skils_table__column_title {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -103,7 +103,7 @@
   position: absolute;
   left: -150.7px;
   top: 318px;
-  font-family: 'Fira Code';
+  font-family: "Fira Code";
   font-style: normal;
   font-weight: 600;
   font-size: 30px;
@@ -113,7 +113,7 @@
 }
 
 .skils_table__column_item {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -125,7 +125,7 @@
 }
 
 .about_screen__skills_title {
-  font-family: 'Fira Code';
+  font-family: "Fira Code";
   font-style: normal;
   font-weight: 600;
   font-size: 64px;
@@ -148,7 +148,7 @@
 }
 
 .about_screen__company_list__item {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 36px;
@@ -157,7 +157,7 @@
 }
 
 .about_screen__company_title {
-  font-family: 'Fira Code';
+  font-family: "Fira Code";
   font-style: normal;
   font-weight: 600;
   font-size: 64px;
@@ -181,7 +181,6 @@
     display: none;
   }
 }
-
 
 @media screen and (max-width: 1410px) {
   .about_screen__photo {
@@ -237,7 +236,7 @@
   }
 
   .about_screen__company_title_tablet {
-    font-family: 'Fira Code';
+    font-family: "Fira Code";
     font-style: normal;
     font-weight: 600;
     font-size: 64px;
@@ -261,7 +260,6 @@
   }
 }
 
-
 @media screen and (max-width: 1020px) {
   .about_screen {
     padding: 60px;
@@ -282,7 +280,6 @@
 }
 
 @media screen and (max-width: 804px) {
-
   .skils_table__column_title {
     font-weight: 400;
     font-size: 18px;
@@ -320,7 +317,7 @@
   }
 
   .about_screen__text {
-    font-family: 'Open Sans';
+    font-family: "Open Sans";
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -380,7 +377,7 @@
   }
 
   .about_screen__company_list__text {
-    font-family: 'Fira Code';
+    font-family: "Fira Code";
     font-style: normal;
     font-weight: 600;
     font-size: 48px;

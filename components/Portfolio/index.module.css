@@ -1,39 +1,41 @@
-.portfolio_screen {
+.block {
   width: 100%;
   padding: 00px 130px 130px 130px;
 }
 
-.portfolio_screen__tabs {
+.block__tabs {
   display: flex;
   justify-content: space-between;
   margin-bottom: 90px;
 }
 
-.portfolio_screen__tabs_item {
+.block__tabs_item {
   cursor: pointer;
   padding: 10px 30px 10px 30px;
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
   line-height: 33px;
   text-transform: uppercase;
   color: var(--main-light-grey-color);
+  background: transparent;
+  border: none;
 }
 
-.tabs_item_active {
+.block__tabs_item_active {
   border: 1px solid var(--main-white-color);
   color: var(--main-white-color);
 }
 
-.portfolio_cards {
+.block__cards {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   gap: 60px;
 }
 
-.portfolio_screen__show_more_container {
+.block__show_more_container {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -41,12 +43,12 @@
   margin-top: 40px;
 }
 
-.portfolio_screen__show_more {
+.block__show_more {
   width: 163px;
   height: 45px;
   border: 1px solid var(--main-light-grey-color);
   box-sizing: border-box;
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -57,7 +59,7 @@
   cursor: pointer;
 }
 
-.portfolio_title_image {
+.block__title_image {
   width: 100%;
   margin-bottom: 45px;
   height: auto;
@@ -65,32 +67,26 @@
 }
 
 @media screen and (max-width: 1200px) {
-  .portfolio_title_image {
+  .block__title_image {
     margin-top: 65px;
   }
 }
 
 @media screen and (max-width: 804px) {
-  .portfolio_title_image {
+  .block__title_image {
     margin-top: 0px;
     margin-bottom: 40px;
   }
 }
 
 @media screen and (max-width: 1020px) {
-  .portfolio_screen {
+  .block {
     padding: 60px;
   }
 }
 
 @media screen and (max-width: 1000px) {
-  .btn_to_portfolio {
-    width: 320px;
-    left: 220px;
-    top: 490px;
-  }
-
-  .portfolio_screen__tabs_item {
+  .block__tabs_item {
     width: 210px;
     height: 63px;
     font-size: 20px;
@@ -100,13 +96,13 @@
     align-items: center;
   }
 
-  .portfolio_screen__show_more {
+  .block__show_more {
     margin-top: 25px;
   }
 }
 
 @media screen and (max-width: 808px) {
-  .portfolio_screen__tabs {
+  .block__tabs {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin-bottom: 30px;
@@ -115,12 +111,12 @@
 }
 
 @media screen and (max-width: 804px) {
-  .portfolio_screen {
+  .block {
     margin-top: 120px;
     padding: 22px;
   }
 
-  .portfolio_cards {
+  .block__cards {
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -128,7 +124,7 @@
 }
 
 @media screen and (max-width: 667px) {
-  .portfolio_screen__tabs_item {
+  .block__tabs_item {
     width: 156px;
     height: 45px;
     font-weight: 400;

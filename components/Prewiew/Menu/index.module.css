@@ -25,7 +25,7 @@
 }
 
 .menu__item {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -56,7 +56,7 @@
 }
 
 .full_name {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -67,7 +67,7 @@
 }
 
 .language_switch__item {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -138,7 +138,7 @@
   }
 
   .menu__mobile_item {
-    font-family: 'Open Sans';
+    font-family: "Open Sans";
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -176,7 +176,7 @@
     top: 45px;
     left: -55px;
     text-align: end;
-    font-family: 'Open Sans';
+    font-family: "Open Sans";
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
