@@ -16,69 +16,44 @@ func NewUserRepository(db *gorm.DB) *UserRepository {
 }
 
 func (r UserRepository) GetProjects(lang string) ([]models.ProjectsResponse, error) {
-	var resp []models.ProjectsResponse
+	var projects []models.ProjectsResponse
 
-	result := r.db.Raw(`SELECT
-		uuid AS id,
-		photo_url AS url,
-		title,
-		
-		string_to_array(categories, ',')::int[] AS categories,
-		
-		CASE WHEN (SELECT count(*) FROM subtitles WHERE project_uuid = projects.uuid AND lang = @lang) = 1
-			THEN (SELECT content FROM subtitles WHERE project_uuid = projects.uuid AND lang = @lang)
-			ELSE (SELECT content FROM subtitles WHERE project_uuid = projects.uuid AND lang = 'en')
-		END AS sub_title
-		
-	FROM projects`, sql.Named("lang", lang)).Scan(&resp)
+	result := r.db.Table("projects").
+		Select("uuid AS id, photo_url AS url, title, string_to_array(categories, ',')::int[] AS categories, "+
+			"CASE WHEN (SELECT count(*) FROM subtitles WHERE project_uuid = projects.uuid AND lang = ?) = 1 "+
+			"THEN (SELECT content FROM subtitles WHERE project_uuid = projects.uuid AND lang = ?) "+
+			"ELSE (SELECT content FROM subtitles WHERE project_uuid = projects.uuid AND lang = 'en') "+
+			"END AS sub_title", lang, lang).
+		Find(&projects)
 
-	return resp, result.Error
+	return projects, result.Error
 }
 
 func (r UserRepository) GetProject(lang string, uuid string) (*models.ProjectResponse, error) {
-	var resp models.ProjectResponse
+	var project models.ProjectResponse
 
-	result := r.db.Raw(`SELECT 
-		uuid AS id,
-		photo_url AS url,
-		title,
-		string_to_array(categories, ',')::int[] AS categories,
-
-		(SELECT 
-				array_agg(path) 
-			FROM photos WHERE project_uuid = @id) AS photos,
-
-		(SELECT 
-				jsonb_agg(jsonb_build_object('title', cards.title, 'sub_title', cards.sub_title)) 
-			FROM cards WHERE project_uuid = @id) AS cards,
-		
-		CASE 
-			WHEN (SELECT count(*) FROM features WHERE project_uuid = projects.uuid AND lang = @lang) > 0 THEN 
-				(SELECT 
-					jsonb_agg(jsonb_build_object('title', features.content, 'lang', features.lang)) 
-				FROM features WHERE project_uuid = @id AND lang = @lang)
-			ELSE 
-				(SELECT 
-					jsonb_agg(jsonb_build_object('title', features.content, 'lang', features.lang)) 
-				FROM features WHERE project_uuid = @id AND lang = 'en')
-		END AS features,
-
-		CASE 
-			WHEN (SELECT count(*) FROM subtitles WHERE project_uuid = projects.uuid AND lang = @lang) > 0 THEN 
-				(SELECT content FROM subtitles WHERE project_uuid = projects.uuid AND lang = @lang)
-			ELSE 
-				(SELECT content FROM subtitles WHERE project_uuid = projects.uuid AND lang = 'en')
-		END AS sub_title,
-
-		CASE 
-			WHEN (SELECT count(*) FROM descriptions WHERE project_uuid = projects.uuid AND lang = @lang) > 0 THEN 
-				(SELECT content FROM descriptions WHERE project_uuid = projects.uuid AND lang = @lang)
-			ELSE 
-			(SELECT content FROM descriptions WHERE project_uuid = projects.uuid AND lang = 'en')
-		END AS description
-
+	result := r.db.Raw(`
+		SELECT 
+			uuid AS id,
+			photo_url AS url,
+			title,
+			string_to_array(categories, ',')::int[] AS categories,
+			(SELECT array_agg(path) FROM photos WHERE project_uuid = @id) AS photos,
+			(SELECT jsonb_agg(jsonb_build_object('title', title, 'sub_title', sub_title)) FROM cards WHERE project_uuid = @id) AS cards,
+			COALESCE(
+					(SELECT jsonb_agg(jsonb_build_object('title', content, 'lang', lang)) FROM features WHERE project_uuid = @id AND lang = @lang),
+					(SELECT jsonb_agg(jsonb_build_object('title', content, 'lang', lang)) FROM features WHERE project_uuid = @id AND lang = 'en')
+			) AS features,
+			COALESCE(
+					(SELECT content FROM subtitles WHERE project_uuid = @id AND lang = @lang),
+					(SELECT content FROM subtitles WHERE project_uuid = @id AND lang = 'en')
+			) AS sub_title,
+			COALESCE(
+					(SELECT content FROM descriptions WHERE project_uuid = @id AND lang = @lang),
+					(SELECT content FROM descriptions WHERE project_uuid = @id AND lang = 'en')
+			) AS description
 		FROM projects
-		WHERE uuid = @id;`, sql.Named("lang", lang), sql.Named("id", uuid)).Scan(&resp)
+		WHERE uuid = @id;`, sql.Named("lang", lang), sql.Named("id", uuid)).Scan(&project)
 
-	return &resp, result.Error
+	return &project, result.Error
 }
