@@ -21,7 +21,7 @@ This website uses the following tools and technologies:
 ### Links
 
 - Visit [nik19ta.pro](https://nik19ta.pro) to see the live website
-- View the [![wiew figma](./README/figma.png)](https://www.figma.com/file/NKcx7nhqQJoVLYecFC9USK/nik19ta.me) for the website layout and design
+- View the figma for the website layout and design [![wiew figma](./README/figma.png)](https://www.figma.com/file/NKcx7nhqQJoVLYecFC9USK/nik19ta.me)
 
 ## How to run
 
