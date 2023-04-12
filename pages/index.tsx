@@ -73,14 +73,14 @@ const Homepage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
   const skils: ISkils[] = [
     { categoryName: "Front-end", names: "TypeScript, React, Redux/ToolKit, Vue/Vuex, Ant.d" },
     { categoryName: "Back-end", names: "Postgre/MySQL, MongoDB, Go/Gin/Gorm, Node/Express/Nest, Python/Flask" },
-    { categoryName: "Tools", names: "Github CI/CD, Nginx/Brotly, Apache Kafka, Swagger" },
-    { categoryName: "Testing", names: "Selenium, Mocha, jest" },
+    { categoryName: "Tools", names: "Github CI/CD, Nginx/Brotly, Apache Kafka, Swagger, Selenium" },
+    { categoryName: "Testing", names: "Jest, Puppeteer, Enzyme, Mocha, Gonkey" },
   ];
 
   const services: IServices[] = [
     { size: "small", name: t("services.website_development"), sub: null },
     { size: "large", name: t("services.development_browser_extensions"), sub: "Chrome, Firefox" },
-    { size: "normal", name: t("services.m obile_development"),sub: "React Native" },
+    { size: "normal", name: t("services.mobile_development"),sub: "React Native" },
     { size: "normal", name: t("services.web_aplication"), sub: "PWA, SPA, SSR" },
     { size: "small", name: t("services.parsers"), sub: null },
     { size: "large", name: t("services.back_end_development"), sub: "GoLang, NodeJs, Python3" },

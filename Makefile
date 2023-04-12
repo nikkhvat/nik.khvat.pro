@@ -12,3 +12,7 @@ start: # start server
 dev: # build and start server
 	go build -o ./backend/.bin/app ./backend/cmd/api/main.go
 	./backend/.bin/app
+
+image:
+	rm -rf ./scripts/out
+	python3.11 ./scripts/image.py

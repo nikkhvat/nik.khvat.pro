@@ -6,7 +6,7 @@
 }
 
 .about_screen__left {
-  width: 590px;
+  width: 640px;
   position: relative;
 }
 
@@ -37,7 +37,7 @@
 
 .skils_table {
   display: flex;
-  width: 590px;
+  width: 640px;
   justify-content: space-between;
   gap: 50px;
 }
@@ -56,7 +56,7 @@
 }
 
 .about_screen__right {
-  width: calc(100% - 590px);
+  width: calc(100% - 640px);
   position: relative;
 
   display: flex;
