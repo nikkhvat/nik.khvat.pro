@@ -23,20 +23,18 @@ func InitDB() *gorm.DB {
 		conf.PostgresSslmode,
 		conf.PostgresTimezone)
 
-	db, err := gorm.Open(postgres.New(postgres.Config{
-		DSN: dsn,
-	}), &gorm.Config{})
+	db, err := gorm.Open(postgres.New(postgres.Config{DSN: dsn}), &gorm.Config{})
 
 	if err != nil {
 		log.Panicln(err)
 	}
 
-	migrateDB(db)
+	autoMigrateDB(db)
 
 	return db
 }
 
-func migrateDB(db *gorm.DB) {
+func autoMigrateDB(db *gorm.DB) {
 	// Users
 	db.AutoMigrate(&models.User{})
 
@@ -47,4 +45,10 @@ func migrateDB(db *gorm.DB) {
 	db.AutoMigrate(&models.Cards{})
 	db.AutoMigrate(&models.Features{})
 	db.AutoMigrate(&models.Photos{})
+
+	// Stats
+	db.AutoMigrate(&models.ProjectsStats{})
+	db.AutoMigrate(&models.VisitStats{})
+	db.AutoMigrate(&models.ClicksStat{})
+	db.AutoMigrate(&models.UniqueVisitStats{})
 }

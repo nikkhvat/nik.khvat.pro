@@ -2,8 +2,7 @@ package postgres
 
 import (
 	"nik19ta/backend/models"
-
-	jwt "nik19ta/backend/pkg/jwt"
+	"nik19ta/backend/utils/token"
 
 	"gorm.io/gorm"
 )
@@ -24,7 +23,7 @@ func (r UserRepository) GetUserToken(mail, password string) (*string, error) {
 		return nil, result.Error
 	}
 
-	token, err := jwt.MakeJWT(user.Mail, user.UUID, user.Access)
+	token, err := token.GenerateToken(user.UUID)
 
 	if err != nil {
 		return nil, err

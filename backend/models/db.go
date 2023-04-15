@@ -1,5 +1,6 @@
 package models
 
+// Projects DB struct
 type User struct {
 	UUID     string `json:"id"`
 	Mail     string `json:"mail"`
@@ -46,4 +47,25 @@ type Photos struct {
 	ProjectUUID string `json:"project_id"`
 	UUID        string `json:"uuid"`
 	Path        string `json:"path"`
+}
+
+// Stats DB struct
+type ProjectsStats struct {
+	UUID  string `json:"uuid"`
+	Count int    `json:"count"`
+}
+
+type VisitStats struct {
+	Count int `json:"count"`
+	Id    int `json:"id"`
+}
+
+type UniqueVisitStats struct {
+	Count int `json:"count"`
+	Id    int `json:"id"`
+}
+
+type ClicksStat struct {
+	Id    string `json:"id"`
+	Count int    `json:"count"`
 }

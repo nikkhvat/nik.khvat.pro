@@ -1,0 +1,180 @@
+.main {
+  width: 100vw;
+  min-height: 100vh;
+  display: block;
+}
+
+.header {
+  height: 60px;
+  width: 100%;
+  background-color: #212121;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.language_switch__item {
+  text-decoration: none;
+  margin-left: 5px;
+  font-size: 24px;
+}
+
+.header_title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  color: #F5F5F5;
+  font-family: 'Open Sans';
+}
+
+.content {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.selection_title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: start;
+  font-family: "Open Sans";
+  color: #F5F5F5;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.line {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.card {
+  width: 220px;
+  background-color: #212121;
+  height: 120px;
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.card_count {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  color: #F5F5F5;
+  text-align: start;
+  font-family: "Open Sans";
+}
+
+.card_title {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #A6A6A6;
+  margin-top: 6px;
+}
+
+.card_progress__nums {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 18px;
+}
+
+.card_progress__num {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #A6A6A6;
+}
+
+.card_progress__line {
+  background-color: #323232;
+  width: 100%;
+  height: 6px;
+  margin-top: 5px;
+}
+
+.card_progress__line_fill {
+  height: 6px;
+  background-color: #fdfdfd;
+}
+
+.project_card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 320px;
+  height: 120px;
+  background-color: #212121;
+}
+
+.project_card_image {
+  object-fit: cover;
+  width: 160px;
+  height: 120px;
+}
+
+.description {
+  padding: 8px;
+  padding-left: 12px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.description_count {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  color: #F5F5F5;
+  text-align: start;
+  font-family: "Open Sans";
+}
+
+.description_subcount {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #A6A6A6;
+  margin-top: 6px;
+  margin-left: 8px;
+}
+
+.project_title {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: #A6A6A6;
+  margin-top: 6px;
+  margin-bottom: 5px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}

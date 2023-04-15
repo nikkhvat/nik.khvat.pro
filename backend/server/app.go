@@ -9,45 +9,45 @@ import (
 	"time"
 
 	database "nik19ta/backend/pkg/database"
-	middleware "nik19ta/backend/pkg/middleware"
+	middlewareCors "nik19ta/backend/pkg/middleware/cors"
 
 	gin "github.com/gin-gonic/gin"
 
-	statistics "nik19ta/backend/statistics"
-	statisticshttp "nik19ta/backend/statistics/delivery/http"
-	statisticspostgres "nik19ta/backend/statistics/repository/postgres"
-	statisticsusecase "nik19ta/backend/statistics/usecase"
+	stat "nik19ta/backend/stat"
+	statHttp "nik19ta/backend/stat/delivery/http"
+	statPostgres "nik19ta/backend/stat/repository/postgres"
+	statUseCase "nik19ta/backend/stat/usecase"
 
 	auth "nik19ta/backend/auth"
-	authhttp "nik19ta/backend/auth/delivery/http"
-	authpostgres "nik19ta/backend/auth/repository/postgres"
-	authusecase "nik19ta/backend/auth/usecase"
+	authHttp "nik19ta/backend/auth/delivery/http"
+	authPostgres "nik19ta/backend/auth/repository/postgres"
+	authUseCase "nik19ta/backend/auth/usecase"
 
 	projects "nik19ta/backend/projects"
-	projectshttp "nik19ta/backend/projects/delivery/http"
-	projectspostgres "nik19ta/backend/projects/repository/postgres"
-	projectsusecase "nik19ta/backend/projects/usecase"
+	projectsHttp "nik19ta/backend/projects/delivery/http"
+	projectsPostgres "nik19ta/backend/projects/repository/postgres"
+	projectsUseCase "nik19ta/backend/projects/usecase"
 )
 
 type App struct {
 	httpServer *http.Server
 
-	statisticsUC statistics.UseCase
-	authUC       auth.UseCase
-	projectsUC   projects.UseCase
+	statsUC    stat.UseCase
+	authUC     auth.UseCase
+	projectsUC projects.UseCase
 }
 
 func NewApp() *App {
 	db := database.InitDB()
 
-	statisticsRepo := statisticspostgres.NewUserRepository(db)
-	authRepo := authpostgres.NewUserRepository(db)
-	projectsRepo := projectspostgres.NewUserRepository(db)
+	statsRepo := statPostgres.NewUserRepository(db)
+	authRepo := authPostgres.NewUserRepository(db)
+	projectsRepo := projectsPostgres.NewUserRepository(db)
 
 	return &App{
-		statisticsUC: statisticsusecase.NewAuthUseCase(statisticsRepo),
-		authUC:       authusecase.NewAuthUseCase(authRepo),
-		projectsUC:   projectsusecase.NewProjectsUseCase(projectsRepo),
+		statsUC:    statUseCase.NewStatUseCase(statsRepo),
+		authUC:     authUseCase.NewAuthUseCase(authRepo),
+		projectsUC: projectsUseCase.NewProjectsUseCase(projectsRepo),
 	}
 }
 
@@ -61,11 +61,11 @@ func (a *App) Run(port string) error {
 		gin.Logger(),
 	)
 
-	router.Use(middleware.CORSMiddleware())
+	router.Use(middlewareCors.CORSMiddleware())
 
-	statisticshttp.RegisterHTTPEndpoints(router, a.statisticsUC)
-	authhttp.RegisterHTTPEndpoints(router, a.authUC)
-	projectshttp.RegisterHTTPEndpoints(router, a.projectsUC)
+	statHttp.RegisterHTTPEndpoints(router, a.statsUC)
+	authHttp.RegisterHTTPEndpoints(router, a.authUC)
+	projectsHttp.RegisterHTTPEndpoints(router, a.projectsUC)
 
 	a.httpServer = &http.Server{
 		Addr:           ":" + port,
