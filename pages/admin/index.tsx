@@ -41,49 +41,64 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
   const loaderProp = ({ src }: { src: any }) => src;
 
   const getVisits = () => {
-    fetch("http://localhost:3030/api/stat/visits", { headers })
-      .then(response => response.json())
-      .then(result => setData((prev: any) => ({ ...prev, visits: result.data })))
-      .catch(error => console.log('error', error));
+    try {
+      fetch("http://localhost:3030/api/stat/visits", { headers })
+        .then(response => response.json())
+        .then(result => setData((prev: any) => ({ ...prev, visits: result.data })))
+        .catch(error => console.log('error', error));
+    } catch (error: any) {
+      push(`/admin/auth`)
+      Storage.delete("token")
+    }
   }
 
   const getProjects = async () => {
-    const respProjects = await fetch("http://localhost:3030/api/projects", {})
-    const jsonProjects = (await respProjects.json()).data
+    try {
+      const respProjects = await fetch("http://localhost:3030/api/projects", {})
+      const jsonProjects = (await respProjects.json()).data
 
-    const respStat = await fetch("http://localhost:3030/api/stat/projects", { headers })
-    const jsonStat = (await respStat.json()).data
+      const respStat = await fetch("http://localhost:3030/api/stat/projects", { headers })
+      const jsonStat = (await respStat.json()).data
 
-    const projects: any[] = []
+      const projects: any[] = []
 
-    let allCount = 0
-
-    for (let j = 0; j < jsonStat.length; j++) {
-      const eleStat = jsonStat[j];
-      allCount = allCount + eleStat.count
-    }
-
-    for (let i = 0; i < jsonProjects.length; i++) {
-      const elem = jsonProjects[i];
-
+      let allCount = 0
 
       for (let j = 0; j < jsonStat.length; j++) {
         const eleStat = jsonStat[j];
+        allCount = allCount + eleStat.count
+      }
 
-        if (elem.id === eleStat.uuid) {
-          projects.push({ ...elem, count: eleStat.count, percent: (100 / allCount) * eleStat.count })
+      for (let i = 0; i < jsonProjects.length; i++) {
+        const elem = jsonProjects[i];
+
+
+        for (let j = 0; j < jsonStat.length; j++) {
+          const eleStat = jsonStat[j];
+
+          if (elem.id === eleStat.uuid) {
+            projects.push({ ...elem, count: eleStat.count, percent: (100 / allCount) * eleStat.count })
+          }
         }
       }
-    }
 
-    setData((prev: any) => ({ ...prev, projects: projects.sort((a, b) => b.count - a.count), all: allCount }))
+      setData((prev: any) => ({ ...prev, projects: projects.sort((a, b) => b.count - a.count), all: allCount }))
+    } catch (error: any) {
+      push(`/admin/auth`)
+      Storage.delete("token")
+    }
   }
 
   const getUniqVisits = () => {
-    fetch("http://localhost:3030/api/stat/visits/unique", { headers })
-      .then(response => response.json())
-      .then(result => setData((prev: any) => ({ ...prev, unique: result.data })))
-      .catch(error => console.log('error', error));
+    try {
+      fetch("http://localhost:3030/api/stat/visits/unique", { headers })
+        .then(response => response.json())
+        .then(result => setData((prev: any) => ({ ...prev, unique: result.data })))
+        .catch(error => console.log('error', error));
+    } catch (error) {
+      push(`/admin/auth`)
+      Storage.delete("token")
+    }
   }
 
 
