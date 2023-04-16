@@ -7,6 +7,8 @@ import { InferGetStaticPropsType } from "next";
 
 import styles from "../../styles/Project.module.css";
 
+import Storage from "../../utils/storage"
+
 const Project: React.FC<InferGetStaticPropsType<any>> = (_props) => {
   const { t } = useTranslation("common");
 
@@ -17,6 +19,10 @@ const Project: React.FC<InferGetStaticPropsType<any>> = (_props) => {
   const data = _props.data;
 
   useEffect(() => {
+    const token = Storage.get("token");
+
+    if (token) return
+
     const requestOptions: any = { method: 'PUT', redirect: 'follow' };
 
     fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/update/projects/${data.id}`, requestOptions)

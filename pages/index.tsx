@@ -72,6 +72,9 @@ const Homepage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
   useEffect(() => {
     // Add visit on site
     const isVisited = Storage.get("visit");
+    const token = Storage.get("token");
+
+    if (token) return
 
     if (!isVisited) {
       const requestOptions: any = { method: 'PUT', redirect: 'follow'};
