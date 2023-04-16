@@ -51,21 +51,22 @@ type Photos struct {
 
 // Stats DB struct
 type ProjectsStats struct {
-	UUID  string `json:"uuid"`
+	UUID  string `json:"uuid" gorm:"type:uuid;uniqueIndex:idx_uuid_date"`
 	Count int    `json:"count"`
+	Date  string `json:"date" gorm:"uniqueIndex:idx_uuid_date"`
 }
 
 type VisitStats struct {
-	Count int `json:"count"`
-	Id    int `json:"id"`
+	Count int    `json:"count"`
+	Date  string `json:"date" gorm:"unique"`
 }
 
 type UniqueVisitStats struct {
-	Count int `json:"count"`
-	Id    int `json:"id"`
+	Count int    `json:"count"`
+	Date  string `json:"date" gorm:"unique"`
 }
 
 type ClicksStat struct {
-	Id    string `json:"id"`
 	Count int    `json:"count"`
+	Date  string `json:"date" gorm:"unique"`
 }

@@ -13,7 +13,7 @@ func NewStatUseCase(userRepo stat.UserRepository) *statUseCase {
 	return &statUseCase{userRepo: userRepo}
 }
 
-func (a *statUseCase) GetVisits() (*int, error) {
+func (a *statUseCase) GetVisits() (*models.VisitStatsWithTotal, error) {
 	visits, err := a.userRepo.GetVisits()
 	if err != nil {
 		return nil, stat.DataBaseError
@@ -22,7 +22,7 @@ func (a *statUseCase) GetVisits() (*int, error) {
 	return visits, nil
 }
 
-func (a *statUseCase) GetUniqueVisits() (*int, error) {
+func (a *statUseCase) GetUniqueVisits() (*models.UniqueVisitStatsWithTotal, error) {
 	visits, err := a.userRepo.GetUniqueVisits()
 	if err != nil {
 		return nil, stat.DataBaseError
@@ -40,8 +40,8 @@ func (a *statUseCase) GetCliksStat() (*[]models.ClicksStat, error) {
 	return clicks, nil
 }
 
-func (a *statUseCase) GetProjectStat() (*[]models.ProjectsStats, error) {
-	statProjects, err := a.userRepo.GetProjectStat()
+func (a *statUseCase) GetProjectStat() (map[string][]models.ProjectsStats, error) {
+	statProjects, err := a.userRepo.GetProjectVisits()
 	if err != nil {
 		return nil, stat.DataBaseError
 	}

@@ -3,10 +3,10 @@ package stat
 import "nik19ta/backend/models"
 
 type UseCase interface {
-	GetVisits() (*int, error)
-	GetUniqueVisits() (*int, error)
+	GetVisits() (*models.VisitStatsWithTotal, error)
+	GetUniqueVisits() (*models.UniqueVisitStatsWithTotal, error)
 	GetCliksStat() (*[]models.ClicksStat, error)
-	GetProjectStat() (*[]models.ProjectsStats, error)
+	GetProjectStat() (map[string][]models.ProjectsStats, error)
 
 	AddVisit() error
 	AddUniqueVisit() error

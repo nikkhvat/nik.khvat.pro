@@ -1,7 +1,9 @@
 .main {
   width: 100vw;
   min-height: 100vh;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header {
@@ -34,6 +36,8 @@
 .content {
   padding-left: 30px;
   padding-right: 30px;
+  width: 100%;
+  max-width: 1440px;
 }
 
 .selection_title {
@@ -58,7 +62,7 @@
 .card {
   width: 220px;
   background-color: #212121;
-  height: 120px;
+  height: 140px;
   padding: 12px;
 
   display: flex;
@@ -93,7 +97,7 @@
   justify-content: space-between;
   align-items: center;
 
-  margin-top: 18px;
+  margin-top: 35px;
 }
 
 .card_progress__num {
@@ -121,15 +125,15 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 320px;
-  height: 120px;
+  width: 330px;
+  height: 140px;
   background-color: #212121;
 }
 
 .project_card_image {
   object-fit: cover;
-  width: 160px;
-  height: 120px;
+  width: 170px;
+  height: 140px;
 }
 
 .description {

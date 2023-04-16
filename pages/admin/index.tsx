@@ -11,10 +11,52 @@ import Image from "next/image";
 import Storage from "../../utils/storage"
 import { useRouter } from 'next/navigation';
 import ProgressBar from "./Progress";
+import StatisticVisits from "./StatisticVisits";
 
 type Props = {
   // Add custom props here
 };
+
+export interface ProjectsStatData {
+  [key: string]: {
+    uuid: string
+    count: number
+    date: string
+  }[]
+}
+
+interface Data {
+  all: number
+  projects: {
+    count: number
+    id: string
+    percent: number
+    subtitle: string
+    title: string
+    url: string
+    categories: number[]
+    byDays: {
+      count: number,
+      date: string,
+      uuid: string
+    }[]
+  }[]
+  unique: {
+    by_days: {
+      count: number
+      date: string
+    }[]
+    total: number
+  },
+  visits: {
+    by_days: {
+      count: number
+      date: string
+    }[]
+    total: number
+  },
+}
+
 
 const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
   _props: InferGetStaticPropsType<typeof getStaticProps>
@@ -30,13 +72,22 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
     'Content-Type': "application/json"
   })
 
+  const [statVisits, setStatVisits] = useState("visits")
+
   const [load, setLoad] = useState(false)
 
   const [data, setData] = useState({
-    visits: 0,
-    unique: 0,
+    all: 0,
+    visits: {
+      by_days: [],
+      total: 0
+    },
+    unique: {
+      by_days: [],
+      total: 0
+    },
     projects: []
-  } as any)
+  } as Data)
 
   const loaderProp = ({ src }: { src: any }) => src;
 
@@ -58,28 +109,46 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
       const jsonProjects = (await respProjects.json()).data
 
       const respStat = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/projects`, { headers })
-      const jsonStat = (await respStat.json()).data
+      const jsonStat: ProjectsStatData = (await respStat.json()).data
+
 
       const projects: any[] = []
 
-      let allCount = 0
+      const sumCounts = (jsonData: ProjectsStatData): number => {
+        let totalCount = 0;
 
-      for (let j = 0; j < jsonStat.length; j++) {
-        const eleStat = jsonStat[j];
-        allCount = allCount + eleStat.count
+        for (const key in jsonData) {
+          // eslint-disable-next-line no-prototype-builtins
+          if (jsonData.hasOwnProperty(key)) {
+            const entries = jsonData[key];
+
+            for (const entry of entries) {
+              totalCount += entry.count;
+            }
+          }
+        }
+
+        return totalCount;
       }
+
+      const allCount = sumCounts(jsonStat)
 
       for (let i = 0; i < jsonProjects.length; i++) {
         const elem = jsonProjects[i];
-
-
-        for (let j = 0; j < jsonStat.length; j++) {
-          const eleStat = jsonStat[j];
-
-          if (elem.id === eleStat.uuid) {
-            projects.push({ ...elem, count: eleStat.count, percent: (100 / allCount) * eleStat.count })
-          }
+        
+        let all = 0
+        
+        for (let i = 0; i < jsonStat[elem.id].length; i++) {
+          const element = jsonStat[elem.id][i];
+          all += element.count
         }
+
+          projects.push({ 
+            ...elem, 
+            count: all, 
+            byDays: jsonStat[elem.id],
+            percent: (100 / allCount) * all
+          })
       }
 
       setData((prev: any) => ({ ...prev, projects: projects.sort((a, b) => b.count - a.count), all: allCount }))
@@ -133,6 +202,9 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
     {locale: "kk", img: "🇰🇿"},
   ]
 
+  console.log(data);
+  
+
   return (
     load === true ? <div className={styles.main} >
       <header className={styles.header} >
@@ -155,7 +227,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
         <p className={styles.selection_title} >{t("general_site_statistics")}</p>
         <div className={styles.line} >
           <div className={styles.card} >
-            <span className={styles.card_count} >{data.visits}</span>
+            <span className={styles.card_count} >{data.visits.total}</span>
             <span className={styles.card_title} >{t("visits")}</span>
 
             <div className={styles.card_progress} >
@@ -170,7 +242,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
             </div>
           </div>
           <div className={styles.card} >
-            <span className={styles.card_count} >{data.unique}</span>
+            <span className={styles.card_count} >{data.unique.total}</span>
             <span className={styles.card_title} >{(t("unique_visits"))}</span>
 
             <div className={styles.card_progress} >
@@ -180,11 +252,15 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               </div>
               <div className={styles.card_progress__line} >
                 <div
-                  style={{ width: 100 / data.visits * data.unique + "%" }}
+                  style={{ width: 100 / data.visits.total * data.unique.total + "%" }}
                   className={styles.card_progress__line_fill} />
               </div>
             </div>
           </div>
+
+          <StatisticVisits 
+            setStatVisits={setStatVisits}
+            days={statVisits === "visits" ? data.visits.by_days : data.unique.by_days} />
         </div>
         <p className={styles.selection_title} >{t("projects_statistics")}</p>
         <div className={styles.cards} >
@@ -212,7 +288,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
                   style={{
                     width: "160px",
                     marginLeft: "-12px",
-                    marginTop: "29px"
+                    marginTop: "49px"
                   }} />
               </div>
             </div>) : <></>}
