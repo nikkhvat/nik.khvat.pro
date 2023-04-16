@@ -1,6 +1,7 @@
 import React from "react";
 
 import styles from "./index.module.css"
+import { useTranslation } from "next-i18next";
 
 interface StatisticVisitsProps {
   days: {
@@ -11,6 +12,7 @@ interface StatisticVisitsProps {
 }
 
 const StatisticVisits: React.FC<StatisticVisitsProps> = ({ days, setStatVisits }) => {
+  const { t } = useTranslation("admin");
 
   const findMaxCount = (arr: { count: number, date: string }[]) => {
     let maxCount = -Infinity;
@@ -31,8 +33,8 @@ const StatisticVisits: React.FC<StatisticVisitsProps> = ({ days, setStatVisits }
     <div className={styles.container} >
 
       <div className={styles.buttons} >
-        <button onClick={() => setStatVisits("visits")} className={styles.button} >Визиты</button>
-        <button onClick={() => setStatVisits("unique")} className={styles.button_unique} >Уникальные</button>
+        <button onClick={() => setStatVisits("visits")} className={styles.button} >{ t("visits") }</button>
+        <button onClick={() => setStatVisits("unique")} className={styles.button_unique} >{ t("unique_visits") }</button>
       </div>
       {days.map(item => (
         <div className={styles.item} key={item.date} style={{
