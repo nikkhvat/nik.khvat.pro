@@ -2,13 +2,13 @@
 
 ## About the project
 
-Welcome to my personal website! This website was built using React, React-Router, and GitHub Pages. It's a platform where I can showcase my work, skills, and projects to the world.
+Welcome to my personal website! This website was built using React, React-Router and Golang (Gin, Gorm). It's a platform where I can showcase my work, skills, and projects to the world. 
 
 ### Tools
 
 This website uses the following tools and technologies:
 
-- Lang - `TypeScript` / `Golang`
+- Lang - `TypeScript` (front-end) / `Golang` (back-end)
 - Framework (front-end) - `NextJs`
 - Framework (back-end) - `Gin`
 - DataBase - `PostgreSQL`
@@ -17,6 +17,14 @@ This website uses the following tools and technologies:
 - For CI/CD - `GitHub Actions (self-hosted ubuntu)`
 - Code analysis - `eslint`
 - Reverse Proxy / ssl - `Nginx & brotli`
+
+### Self-written admin panel on golang with functionality:
+- View visits (by day and total for the month)
+- View unique visits (by day and total for the month)
+- See which projects are visited the most
+- (will be soon) Editing projects
+
+![admin panel](./README/admin.png)
 
 ### Links
 
