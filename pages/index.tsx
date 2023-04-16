@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "next-i18next";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -23,6 +23,8 @@ import footerGithub from "../images/footer/github.png";
 import footerTelergamm from "../images/footer/telergamm.png";
 
 import { StaticImageData } from "next/image";
+
+import Storage from "../utils/storage";
 
 type Props = {
   // Add custom props here
@@ -66,6 +68,25 @@ interface ICategories {
 const Homepage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
   _props: InferGetStaticPropsType<typeof getStaticProps>
 ) => {
+
+  useEffect(() => {
+    // Add visit on site
+    const isVisited = Storage.get("visit");
+
+    if (!isVisited) {
+      const requestOptions: any = { method: 'PUT', redirect: 'follow'};
+
+      fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/update/visits/unique`, requestOptions)
+        .then(_ => Storage.set("visit", true))
+
+    } else {
+      const requestOptions: RequestInit = { method: 'PUT', redirect: 'follow'};
+  
+      fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/update/visits`, requestOptions)
+    }
+
+  })
+
   const { t } = useTranslation("common");
 
   const companies: string[] = ["Sber Service", "Qiwi", "Croc", "VkDevLab", "ItHub"];

@@ -37,7 +37,7 @@ To start developing the website locally, follow these steps:
 
 If you want to host the website on a server using Nginx and SSL, follow these steps:
 
-- Create a new Nginx configuration file using the file at [nginx/sites-available/nik19ta.pro.conf](./nginx/sites-available/nik19ta.pro.conf) as a template.
+- Create a new Nginx configuration file using the file at [nginx/sites-available/nik19ta.pro.conf](./backend/nginx/sites-available/nik19ta.pro.conf) as a template.
 - Install and configure Nginx and SSL on your server using [these instructions](https://github.com/pepelsbey/playground/tree/main/56).
 
 ### backend

@@ -21,7 +21,7 @@ const Auth = () => {
     headers.append("Content-Type", "application/json");
 
     try {
-      const response = await fetch("http://localhost:3030/api/auth/sign-in", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/auth/sign-in`, {
         method: 'POST',
         headers: headers,
         body: JSON.stringify({

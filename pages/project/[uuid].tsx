@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Image from "next/image";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -15,6 +15,12 @@ const Project: React.FC<InferGetStaticPropsType<any>> = (_props) => {
   };
 
   const data = _props.data;
+
+  useEffect(() => {
+    const requestOptions: any = { method: 'PUT', redirect: 'follow' };
+
+    fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/update/projects/${data.id}`, requestOptions)
+  })
 
   return (
     <div className={styles.main}>

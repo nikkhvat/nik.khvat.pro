@@ -42,7 +42,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
 
   const getVisits = () => {
     try {
-      fetch("http://localhost:3030/api/stat/visits", { headers })
+      fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/visits`, { headers })
         .then(response => response.json())
         .then(result => setData((prev: any) => ({ ...prev, visits: result.data })))
         .catch(error => console.log('error', error));
@@ -54,10 +54,10 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
 
   const getProjects = async () => {
     try {
-      const respProjects = await fetch("http://localhost:3030/api/projects", {})
+      const respProjects = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/projects`, {})
       const jsonProjects = (await respProjects.json()).data
 
-      const respStat = await fetch("http://localhost:3030/api/stat/projects", { headers })
+      const respStat = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/projects`, { headers })
       const jsonStat = (await respStat.json()).data
 
       const projects: any[] = []
@@ -91,7 +91,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
 
   const getUniqVisits = () => {
     try {
-      fetch("http://localhost:3030/api/stat/visits/unique", { headers })
+      fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/visits/unique`, { headers })
         .then(response => response.json())
         .then(result => setData((prev: any) => ({ ...prev, unique: result.data })))
         .catch(error => console.log('error', error));
