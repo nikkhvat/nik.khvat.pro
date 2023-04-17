@@ -237,7 +237,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               </div>
 
               <div className={styles.card_progress__line} >
-                <div style={{ width: "100%" }} className={styles.card_progress__line_fill} ></div>
+                <div style={{ width: 100 / Math.max(data.visits.total, data.unique.total) * data.visits.total + "%" }} className={styles.card_progress__line_fill} ></div>
               </div>
             </div>
           </div>
@@ -252,7 +252,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               </div>
               <div className={styles.card_progress__line} >
                 <div
-                  style={{ width: 100 / data.visits.total * data.unique.total + "%" }}
+                  style={{ width: 100 / Math.max(data.visits.total, data.unique.total) * data.unique.total + "%" }}
                   className={styles.card_progress__line_fill} />
               </div>
             </div>
