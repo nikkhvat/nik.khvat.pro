@@ -2,7 +2,6 @@ package postgres
 
 import (
 	"errors"
-	"log"
 	"nik19ta/backend/models"
 	"time"
 
@@ -147,7 +146,6 @@ func (r UserRepository) SetCountry(ip string) error {
 		return errors.New("IP not found")
 	}
 
-	log.Println(results.Country_short)
 	country := results.Country_short
 
 	date := date.GetDate()
