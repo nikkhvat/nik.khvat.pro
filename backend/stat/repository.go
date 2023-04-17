@@ -6,9 +6,9 @@ type UserRepository interface {
 	GetVisits() (*models.VisitStatsWithTotal, error)
 	GetUniqueVisits() (*models.UniqueVisitStatsWithTotal, error)
 	GetCliksStat() (*[]models.ClicksStat, error)
-	// GetProjectStat() (*[]models.ProjectsStats, error)
 	GetProjectVisits() (map[string][]models.ProjectsStats, error)
 
+	SetCountry(ip string) error
 	AddVisit() error
 	AddUniqueVisit() error
 	AddClikc(buttonId string) error

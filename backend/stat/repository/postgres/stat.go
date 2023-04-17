@@ -1,10 +1,15 @@
 package postgres
 
 import (
+	"errors"
+	"log"
 	"nik19ta/backend/models"
 	"time"
 
+	"github.com/ip2location/ip2location-go"
 	"gorm.io/gorm"
+
+	config "nik19ta/backend/pkg/config"
 
 	date "nik19ta/backend/utils/date"
 )
@@ -117,6 +122,34 @@ func (r UserRepository) GetCliksStat() (*[]models.ClicksStat, error) {
 
 type Project struct {
 	UUID string `json:"uuid"`
+}
+
+func (r UserRepository) SetCountry(ip string) error {
+
+	if ip == "" {
+		return errors.New("Missing IP parameter")
+	}
+
+	db, err := ip2location.OpenDB(config.GetConfig().IpDataBasePath)
+
+	if err != nil {
+		return errors.New("Error opening IP2Location database")
+	}
+	defer db.Close()
+
+	results, err := db.Get_country_short(ip)
+
+	if err != nil {
+		return err
+	}
+
+	if results.Country_short == "-" {
+		return errors.New("IP not found")
+	}
+
+	log.Println(ip)
+
+	return nil
 }
 
 func (r UserRepository) GetProjectVisits() (map[string][]models.ProjectsStats, error) {

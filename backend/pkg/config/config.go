@@ -20,6 +20,7 @@ type Config struct {
 	PostgresSslmode  string `json:"POSTGRES_SSLMODE"`
 	PostgresTimezone string `json:"POSTGRES_TIMEZONE"`
 	JwtSecret        string `json:"JWT_SECRET"`
+	IpDataBasePath   string `json:"IP_DATABASE"`
 }
 
 var config Config
@@ -49,6 +50,7 @@ func GetConfig() Config {
 			PostgresSslmode:  envs["POSTGRES_SSLMODE"],
 			PostgresTimezone: envs["POSTGRES_TIMEZONE"],
 			JwtSecret:        envs["JWT_SECRET"],
+			IpDataBasePath:   envs["IP_DATABASE"],
 		}
 	}
 

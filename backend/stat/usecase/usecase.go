@@ -1,6 +1,7 @@
 package usecase
 
 import (
+	"log"
 	"nik19ta/backend/models"
 	"nik19ta/backend/stat"
 )
@@ -49,11 +50,24 @@ func (a *statUseCase) GetProjectStat() (map[string][]models.ProjectsStats, error
 	return statProjects, nil
 }
 
-func (a *statUseCase) AddVisit() error {
-	return a.userRepo.AddVisit()
+func (a *statUseCase) AddVisit(ip string) error {
+	addVisitsErr := a.userRepo.AddVisit()
+
+	if addVisitsErr != nil {
+		return addVisitsErr
+	}
+
+	addCountryErr := a.userRepo.SetCountry(ip)
+
+	if addCountryErr != nil {
+		return addCountryErr
+	}
+
+	return nil
 }
 
-func (a *statUseCase) AddUniqueVisit() error {
+func (a *statUseCase) AddUniqueVisit(ip string) error {
+	log.Println(ip)
 	return a.userRepo.AddUniqueVisit()
 }
 

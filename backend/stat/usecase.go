@@ -8,8 +8,8 @@ type UseCase interface {
 	GetCliksStat() (*[]models.ClicksStat, error)
 	GetProjectStat() (map[string][]models.ProjectsStats, error)
 
-	AddVisit() error
-	AddUniqueVisit() error
+	AddVisit(ip string) error
+	AddUniqueVisit(ip string) error
 	AddClikc(buttonId string) error
 	AddProjectVisit(projectId string) error
 }

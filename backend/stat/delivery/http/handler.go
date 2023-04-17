@@ -59,7 +59,7 @@ func (h *Handler) GetProjectStat(c *gin.Context) {
 }
 
 func (h *Handler) UpdateVisits(c *gin.Context) {
-	err := h.useCase.AddVisit()
+	err := h.useCase.AddVisit(c.ClientIP())
 
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
@@ -68,7 +68,7 @@ func (h *Handler) UpdateVisits(c *gin.Context) {
 }
 
 func (h *Handler) UpdateUniqueVisits(c *gin.Context) {
-	err := h.useCase.AddUniqueVisit()
+	err := h.useCase.AddUniqueVisit(c.ClientIP())
 
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
