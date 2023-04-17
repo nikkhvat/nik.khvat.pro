@@ -229,8 +229,10 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
         <p className={styles.selection_title} >{t("general_site_statistics")}</p>
         <div className={styles.line} >
           <div className={styles.card} >
-            <span className={styles.card_count} >{data.visits.total}</span>
-            <span className={styles.card_title} >{t("visits")}</span>
+            <div className={styles.card_count_container} >
+              <div className={styles.card_count} >{data.visits.total}</div>
+              <div className={styles.card_title} >{t("visits")}</div>
+            </div>
 
             <div className={styles.card_progress} >
               <div className={styles.card_progress__nums} >
@@ -244,8 +246,10 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
             </div>
           </div>
           <div className={styles.card} >
-            <span className={styles.card_count} >{data.unique.total}</span>
-            <span className={styles.card_title} >{(t("unique_visits"))}</span>
+            <div className={styles.card_count_container} >
+              <div className={styles.card_count} >{data.unique.total}</div>
+              <div className={styles.card_title} >{(t("unique_visits"))}</div>
+            </div>
 
             <div className={styles.card_progress} >
               <div className={styles.card_progress__nums} >

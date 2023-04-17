@@ -97,6 +97,8 @@
   line-height: 16px;
   color: #A6A6A6;
   margin-top: 6px;
+  display: flex;
+  height: 36px !important;
 }
 
 .card_progress__nums {
@@ -106,7 +108,7 @@
   justify-content: space-between;
   align-items: center;
 
-  margin-top: 35px;
+  margin-top: 15px;
 }
 
 .card_progress__num {
