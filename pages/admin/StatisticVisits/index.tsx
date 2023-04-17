@@ -36,6 +36,7 @@ const StatisticVisits: React.FC<StatisticVisitsProps> = ({ days, setStatVisits }
         <button onClick={() => setStatVisits("visits")} className={styles.button} >{ t("visits") }</button>
         <button onClick={() => setStatVisits("unique")} className={styles.button_unique} >{ t("unique_visits") }</button>
       </div>
+      
       {days.map(item => (
         <div className={styles.item} key={item.date} style={{
           width: (100 / days.length) + "%",

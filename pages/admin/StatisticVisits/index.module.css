@@ -56,6 +56,31 @@
   align-content: center;
 }
 
-/* .button_unique {
-  left: 60px;
-} */
+@media screen and (max-width: 1000px) {
+  .container {
+    width: 100%;
+    max-width: 1000px;
+  }
+}
+
+@media screen and (max-width: 525px) {
+  .item_text {
+    display: none;
+  }
+
+  .item {
+    background-color: #323232;
+    min-width: 5px;
+  }
+
+  .button .button_unique {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 391px) {
+  .item {
+    background-color: #323232;
+    min-width: 2px;
+  }
+}

@@ -286,7 +286,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
                   fs={data.all}
                   sc={item.count}
                   style={{
-                    width: "160px",
+                    width: "calc(100% + 20px)",
                     marginLeft: "-12px",
                     marginTop: "49px"
                   }} />
