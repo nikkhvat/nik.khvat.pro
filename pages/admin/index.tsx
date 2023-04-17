@@ -208,18 +208,20 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
   return (
     load === true ? <div className={styles.main} >
       <header className={styles.header} >
-        <p className={styles.header_title} >Dashboard</p>
+        <div className={styles.container} >
+          <p className={styles.header_title} >ADMIN</p>
 
-        <div className={styles.lang} >
-          {langs.map(lang => 
-            <LocaleLink 
-              key={lang.locale} 
-              className={styles.language_switch__item} 
-              href="/admin" 
-              locale={lang.locale} 
-            > 
-            {lang.img} 
-            </LocaleLink>)}
+          <div className={styles.lang} >
+            {langs.map(lang => 
+              <LocaleLink 
+                key={lang.locale} 
+                className={styles.language_switch__item} 
+                href="/admin" 
+                locale={lang.locale} 
+              > 
+              {lang.img} 
+              </LocaleLink>)}
+          </div>
         </div>
       </header>
 
