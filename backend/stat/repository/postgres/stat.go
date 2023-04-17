@@ -126,6 +126,8 @@ type Project struct {
 
 func (r UserRepository) SetCountry(ip string) error {
 
+	log.Println("IP DATECTED", ip)
+
 	if ip == "" {
 		return errors.New("Missing IP parameter")
 	}
@@ -148,6 +150,7 @@ func (r UserRepository) SetCountry(ip string) error {
 	}
 
 	log.Println(ip)
+	log.Println(results)
 
 	return nil
 }
