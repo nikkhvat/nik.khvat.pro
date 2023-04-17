@@ -126,8 +126,6 @@ type Project struct {
 
 func (r UserRepository) SetCountry(ip string) error {
 
-	log.Println("IP DATECTED", ip)
-
 	if ip == "" {
 		return errors.New("Missing IP parameter")
 	}
@@ -149,9 +147,22 @@ func (r UserRepository) SetCountry(ip string) error {
 		return errors.New("IP not found")
 	}
 
-	log.Println(ip)
-	log.Println(results)
+	log.Println(results.Country_short)
+	country := results.Country_short
 
+	date := date.GetDate()
+
+	sqlQuery := `
+		INSERT INTO country_stats (country, date, count)
+		VALUES (?, ?, 1)
+		ON CONFLICT (country, date) DO UPDATE SET
+			count = country_stats.count + 1
+		WHERE country_stats.country = ?`
+
+	err = r.db.Exec(sqlQuery, country, date, country).Error
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -198,18 +209,6 @@ func (r UserRepository) GetProjectVisits() (map[string][]models.ProjectsStats, e
 
 	return projectVisits, nil
 }
-
-// func (r UserRepository) GetProjectStat() (*[]models.ProjectsStats, error) {
-// 	// projectsStats := []models.ProjectsStats{}
-
-// 	// result := r.db.Find(&projectsStats)
-
-// 	// if result.Error != nil {
-// 	// 	return nil, result.Error
-// 	// }
-
-// 	return &projectsStats, nil
-// }
 
 func (r UserRepository) AddVisit() error {
 	date := date.GetDate()

@@ -6,7 +6,6 @@ import (
 	"github.com/gin-gonic/gin"
 
 	middlewareAuth "nik19ta/backend/pkg/middleware/auth"
-	middlewareProxy "nik19ta/backend/pkg/middleware/proxy"
 )
 
 func RegisterHTTPEndpoints(router *gin.Engine, uc stat.UseCase) {
@@ -22,7 +21,6 @@ func RegisterHTTPEndpoints(router *gin.Engine, uc stat.UseCase) {
 	}
 
 	statUpdateEndpoints := router.Group("/api/stat/update")
-	statUpdateEndpoints.Use(middlewareProxy.ProxyHeaders())
 	{
 		statUpdateEndpoints.PUT("/visits", h.UpdateVisits)
 		statUpdateEndpoints.PUT("/visits/unique", h.UpdateUniqueVisits)

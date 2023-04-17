@@ -56,6 +56,12 @@ type ProjectsStats struct {
 	Date  string `json:"date" gorm:"uniqueIndex:idx_uuid_date"`
 }
 
+type CountryStats struct {
+	Country string `json:"country" gorm:"column:country;uniqueIndex:idx_country_date"`
+	Count   int    `json:"count" gorm:"column:count"`
+	Date    string `json:"date" gorm:"column:date;uniqueIndex:idx_country_date"`
+}
+
 type VisitStats struct {
 	Count int    `json:"count"`
 	Date  string `json:"date" gorm:"unique"`
