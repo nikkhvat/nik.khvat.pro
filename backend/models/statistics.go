@@ -12,7 +12,13 @@ type VisitStatsWithTotal struct {
 	Total  int          `json:"total"`
 	ByDays []VisitStats `json:"by_days"`
 }
+
 type UniqueVisitStatsWithTotal struct {
 	Total  int                `json:"total"`
 	ByDays []UniqueVisitStats `json:"by_days"`
+}
+
+type CountriesResponse struct {
+	Country string `json:"country"`
+	Count   int    `json:"count"`
 }

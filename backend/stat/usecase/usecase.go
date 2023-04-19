@@ -65,6 +65,10 @@ func (a *statUseCase) AddVisit(ip string) error {
 	return nil
 }
 
+func (a *statUseCase) GetCountries() ([]models.CountriesResponse, error) {
+	return a.userRepo.GetCountries()
+}
+
 func (a *statUseCase) AddUniqueVisit(ip string) error {
 	addVisitsErr := a.userRepo.AddUniqueVisit()
 

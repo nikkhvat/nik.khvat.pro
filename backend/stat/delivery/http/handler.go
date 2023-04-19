@@ -67,6 +67,15 @@ func (h *Handler) UpdateVisits(c *gin.Context) {
 	c.Status(200)
 }
 
+func (h *Handler) GetCountries(c *gin.Context) {
+	resp, err := h.useCase.GetCountries()
+
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
+	}
+	c.JSON(200, gin.H{"data": resp})
+}
+
 func (h *Handler) UpdateUniqueVisits(c *gin.Context) {
 	err := h.useCase.AddUniqueVisit(c.ClientIP())
 

@@ -164,6 +164,25 @@ func (r UserRepository) SetCountry(ip string) error {
 	return nil
 }
 
+func (r UserRepository) GetCountries() ([]models.CountriesResponse, error) {
+	var countries []models.CountriesResponse
+	currentDate := time.Now()
+	startDate := currentDate.AddDate(0, 0, -30).Format("2006/01/02")
+
+	err := r.db.Table("country_stats").Select("country, SUM(count) as count").
+		Where("date >= ?", startDate).
+		Group("country").
+		Order("count DESC").
+		Scan(&countries).Error
+
+	if err != nil {
+		return nil, err
+	}
+
+	return countries, nil
+
+}
+
 func (r UserRepository) GetProjectVisits() (map[string][]models.ProjectsStats, error) {
 	// 1. Получить список всех проектов с их UUID
 	var projects []Project

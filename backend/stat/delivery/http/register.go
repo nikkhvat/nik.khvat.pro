@@ -18,6 +18,7 @@ func RegisterHTTPEndpoints(router *gin.Engine, uc stat.UseCase) {
 		statEndpoints.GET("/visits/unique", h.GetUniqueVisits)
 		statEndpoints.GET("/clicks", h.GetCliksStat)
 		statEndpoints.GET("/projects", h.GetProjectStat)
+		statEndpoints.GET("/countries", h.GetCountries)
 	}
 
 	statUpdateEndpoints := router.Group("/api/stat/update")

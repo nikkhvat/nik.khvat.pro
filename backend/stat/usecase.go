@@ -7,6 +7,7 @@ type UseCase interface {
 	GetUniqueVisits() (*models.UniqueVisitStatsWithTotal, error)
 	GetCliksStat() (*[]models.ClicksStat, error)
 	GetProjectStat() (map[string][]models.ProjectsStats, error)
+	GetCountries() ([]models.CountriesResponse, error)
 
 	AddVisit(ip string) error
 	AddUniqueVisit(ip string) error
