@@ -10,8 +10,8 @@ import Image from "next/image";
 
 import Storage from "../../utils/storage"
 import { useRouter } from 'next/navigation';
-import ProgressBar from "./Progress";
-import StatisticVisits from "./StatisticVisits";
+import ProgressBar from "../../components/Admin/Progress";
+import StatisticVisits from "../../components/Admin/StatisticVisits";
 
 type Props = {
   // Add custom props here
@@ -55,6 +55,10 @@ interface Data {
     }[]
     total: number
   },
+  countries: {
+    count: number
+    country: string
+  }[],
 }
 
 
@@ -86,12 +90,13 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
       by_days: [],
       total: 0
     },
+    countries: [],
     projects: []
   } as Data)
 
   const loaderProp = ({ src }: { src: any }) => src;
 
-  const getVisits = () => {
+  const getVisits = async () => {
     try {
       fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/visits`, { headers })
         .then(response => response.json())
@@ -158,11 +163,23 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
     }
   }
 
-  const getUniqVisits = () => {
+  const getUniqVisits = async () => {
     try {
       fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/visits/unique`, { headers })
         .then(response => response.json())
         .then(result => setData((prev: any) => ({ ...prev, unique: result.data })))
+        .catch(error => console.log('error', error));
+    } catch (error) {
+      push(`/admin/auth`)
+      Storage.delete("token")
+    }
+  }
+
+  const getStatisticsByCountries = async () => {
+    try {
+      fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/countries`, { headers })
+        .then(response => response.json())
+        .then(result => setData((prev: any) => ({ ...prev, countries: result.data.sort((a: any, b: any) => b.count - a.count) })))
         .catch(error => console.log('error', error));
     } catch (error) {
       push(`/admin/auth`)
@@ -175,6 +192,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
     getVisits()
     getUniqVisits()
     getProjects()
+    getStatisticsByCountries()
   }
 
   console.log(data);
@@ -202,8 +220,34 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
     {locale: "kk", img: "🇰🇿"},
   ]
 
-  console.log(data);
-  
+  const flags: { [key: string]: string } = {
+    DZ: "🇩🇿", BR: "🇧🇷", CZ: "🇨🇿", GD: "🇬🇩", KI: "🇰🇮", MX: "🇲🇽", PK: "🇵🇰", SC: "🇸🇨", TG: "🇹🇬",
+    AD: "🇦🇩", BN: "🇧🇳", DK: "🇩🇰", GT: "🇬🇹", KW: "🇰🇼", FM: "🇫🇲", PW: "🇵🇼", SL: "🇸🇱", TO: "🇹🇴",
+    AO: "🇦🇴", BG: "🇧🇬", DJ: "🇩🇯", GN: "🇬🇳", KG: "🇰🇬", MD: "🇲🇩", PA: "🇵🇦", SG: "🇸🇬", TT: "🇹🇹",
+    AG: "🇦🇬", BF: "🇧🇫", DM: "🇩🇲", GW: "🇬🇼", LA: "🇱🇦", MC: "🇲🇨", PG: "🇵🇬", SK: "🇸🇰", TN: "🇹🇳",
+    AR: "🇦🇷", BI: "🇧🇮", DO: "🇩🇴", GY: "🇬🇾", LV: "🇱🇻", MN: "🇲🇳", PY: "🇵🇾", SI: "🇸🇮", TR: "🇹🇷",
+    AM: "🇦🇲", KH: "🇰🇭", EC: "🇪🇨", HT: "🇭🇹", LB: "🇱🇧", ME: "🇲🇪", PH: "🇵🇭", SB: "🇸🇧", TM: "🇹🇲",
+    AU: "🇦🇺", CM: "🇨🇲", EG: "🇪🇬", HN: "🇭🇳", LS: "🇱🇸", MA: "🇲🇦", PL: "🇵🇱", SO: "🇸🇴", TV: "🇹🇻",
+    AT: "🇦🇹", CA: "🇨🇦", SV: "🇸🇻", HU: "🇭🇺", LR: "🇱🇷", MZ: "🇲🇿", PT: "🇵🇹", ZA: "🇿🇦", UG: "🇺🇬",
+    AZ: "🇦🇿", CV: "🇨🇻", GQ: "🇬🇶", IS: "🇮🇸", LY: "🇱🇾", MM: "🇲🇲", QA: "🇶🇦", KR: "🇰🇷", UA: "🇺🇦",
+    BS: "🇧🇸", CF: "🇨🇫", ER: "🇪🇷", IN: "🇮🇳", LI: "🇱🇮", NA: "🇳🇦", RO: "🇷🇴", SS: "🇸🇸", AE: "🇦🇪",
+    BH: "🇧🇭", TD: "🇹🇩", EE: "🇪🇪", ID: "🇮🇩", LT: "🇱🇹", NR: "🇳🇷", RU: "🇷🇺", ES: "🇪🇸", GB: "🇬🇧",
+    BD: "🇧🇩", CL: "🇨🇱", ET: "🇪🇹", IR: "🇮🇷", LU: "🇱🇺", NP: "🇳🇵", RW: "🇷🇼", LK: "🇱🇰", US: "🇺🇸",
+    BB: "🇧🇧", CN: "🇨🇳", FJ: "🇫🇯", IQ: "🇮🇶", MG: "🇲🇬", NL: "🇳🇱", KN: "🇰🇳", SD: "🇸🇩", UY: "🇺🇾",
+    BY: "🇧🇾", CO: "🇨🇴", FI: "🇫🇮", IE: "🇮🇪", MW: "🇲🇼", NZ: "🇳🇿", LC: "🇱🇨", SR: "🇸🇷", UZ: "🇺🇿",
+    BE: "🇧🇪", KM: "🇰🇲", FR: "🇫🇷", IL: "🇮🇱", MY: "🇲🇾", NI: "🇳🇮", VC: "🇻🇨", SZ: "🇸🇿", VU: "🇻🇺",
+    BZ: "🇧🇿", CG: "🇨🇬", GA: "🇬🇦", IT: "🇮🇹", MV: "🇲🇻", NE: "🇳🇪", WS: "🇼🇸", SE: "🇸🇪", VE: "🇻🇪",
+    BJ: "🇧🇯", CD: "🇨🇩", GM: "🇬🇲", JM: "🇯🇲", ML: "🇲🇱", NG: "🇳🇬", SM: "🇸🇲", CH: "🇨🇭", VN: "🇻🇳",
+    BT: "🇧🇹", CR: "🇨🇷", GE: "🇬🇪", JP: "🇯🇵", MT: "🇲🇹", KP: "🇰🇵", ST: "🇸🇹", SY: "🇸🇾", YE: "🇾🇪",
+    BO: "🇧🇴", HR: "🇭🇷", DE: "🇩🇪", JO: "🇯🇴", MH: "🇲🇭", MK: "🇲🇰", SA: "🇸🇦", TJ: "🇹🇯", ZM: "🇿🇲",
+    BA: "🇧🇦", CU: "🇨🇺", GH: "🇬🇭", KZ: "🇰🇿", MR: "🇲🇷", NO: "🇳🇴", SN: "🇸🇳", TZ: "🇹🇿", ZW: "🇿🇼",
+    BW: "🇧🇼", CY: "🇨🇾", GR: "🇬🇷", KE: "🇰🇪", MU: "🇲🇺", OM: "🇴🇲", RS: "🇷🇸", TH: "🇹🇭", PE: "🇵🇪",
+    AF: "🇦🇫", AL: "🇦🇱",
+  }
+
+  const getFlag = (country: string): string => {
+    return flags[country] ? flags[country] : country
+  }
 
   return (
     load === true ? <div className={styles.main} >
@@ -228,6 +272,14 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
       <main className={styles.content} >
         <p className={styles.selection_title} >{t("general_site_statistics")}</p>
         <div className={styles.line} >
+          <div className={styles.card} style={{width: "380px"}} >
+            <p className={styles.card_title} >Top countries</p>
+            <div className={styles.country_container} >
+              {data.countries.map(country => <div key={country.country} className={styles.country_line} >
+                {getFlag(country.country)} - {country.count}
+              </div>)}
+            </div>
+          </div>
           <div className={styles.card} >
             <div className={styles.card_count_container} >
               <div className={styles.card_count} >{data.visits.total}</div>

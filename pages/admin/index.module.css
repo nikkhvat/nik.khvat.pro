@@ -78,6 +78,33 @@
   flex-direction: column;
 }
 
+.card_btn {
+  font-family: "Open Sans";
+  background: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.card_title {
+  font-family: "Open Sans";
+}
+
+.country_line {
+  font-family: "Open Sans";
+  background-color: #323232;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 65px;
+}
+
+.country_container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
 .card_count {
   font-style: normal;
   font-weight: 700;
