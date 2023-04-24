@@ -272,15 +272,17 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
       <main className={styles.content} >
         <p className={styles.selection_title} >{t("general_site_statistics")}</p>
         <div className={styles.line} >
-          <div className={styles.card} style={{width: "380px"}} >
+          <div className={styles.card} style={{width: "460px"}} >
             <p className={styles.card_title} >Top countries</p>
             <div className={styles.country_container} >
-              {data.countries.map(country => <div key={country.country} className={styles.country_line} >
-                {getFlag(country.country)} - {country.count}
-              </div>)}
+              {data.countries.map(country => 
+                <div key={country.country} className={styles.country_line} >
+                  {getFlag(country.country)} <span className={styles.country_line_count} >{country.count}</span>
+                </div>
+              )}
             </div>
           </div>
-          <div className={styles.card} >
+          <div className={styles.card} style={{ width: "280px" }} >
             <div className={styles.card_count_container} >
               <div className={styles.card_count} >{data.visits.total}</div>
               <div className={styles.card_title} >{t("visits")}</div>
@@ -297,7 +299,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               </div>
             </div>
           </div>
-          <div className={styles.card} >
+          <div className={styles.card} style={{ width: "280px" }} >
             <div className={styles.card_count_container} >
               <div className={styles.card_count} >{data.unique.total}</div>
               <div className={styles.card_title} >{(t("unique_visits"))}</div>
