@@ -129,6 +129,7 @@
 .photos {
   padding-left: -130px;
   padding-right: -130px;
+  width: 100%;
 }
 
 .photos img {
