@@ -22,6 +22,7 @@ This website uses the following tools and technologies:
 - View visits (by day and total for the month)
 - View unique visits (by day and total for the month)
 - See which projects are visited the most
+- View statistics by country
 - (will be soon) Editing projects
 
 ![admin panel](./README/admin.png)
