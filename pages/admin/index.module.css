@@ -95,6 +95,11 @@
   background-color: #323232;
   padding-left: 8px;
   padding-right: 8px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60px;
 }
 
 .country_line_count {
@@ -275,4 +280,8 @@
     padding-left: 15px;
     padding-right: 15px;
   }
+}
+
+.card_full {
+  margin-top: 10px;
 }
