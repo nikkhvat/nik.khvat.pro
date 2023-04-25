@@ -101,6 +101,7 @@ export async function getStaticProps({ params, locale }: { params: any, locale: 
       data,
       ...(await serverSideTranslations(locale ?? "en", ["common"])),
     },
+    revalidate: 10, // In seconds
   };
 }
 
@@ -131,7 +132,7 @@ export async function getStaticPaths() {
 
   return {
     paths: generatedRoutes,
-    fallback: false, // can also be true or 'blocking'
+    fallback: 'blocking',
   }
 }
 
