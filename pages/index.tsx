@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { useTranslation } from "next-i18next";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import type { GetStaticProps, InferGetStaticPropsType } from "next";
+import type { GetStaticProps } from "next";
 
 import styles from "../styles/Home.module.css";
 
@@ -66,26 +66,32 @@ interface ICategories {
   title: string
 }
 
-const Homepage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
-  _props: InferGetStaticPropsType<typeof getStaticProps>
-) => {
+
+interface HomePageProps {
+  locale: string
+  projects: {
+    categories: number[]
+    id: string
+    subtitle: string
+    title: string
+    url: string
+  }[]
+}
+
+const Homepage: React.FC<HomePageProps> = ( _props: any) => {
 
   useEffect(() => {
-    // Add visit on site
     const isVisited = Storage.get("visit");
     const token = Storage.get("token");
 
     if (token) return
 
-    if (!isVisited) {
-      const requestOptions: any = { method: 'PUT', redirect: 'follow'};
+    const requestOptions: any = { method: 'PUT', redirect: 'follow'};
 
+    if (!isVisited) {
       fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/update/visits/unique`, requestOptions)
         .then(_ => Storage.set("visit", true))
-
     } else {
-      const requestOptions: RequestInit = { method: 'PUT', redirect: 'follow'};
-  
       fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/update/visits`, requestOptions)
     }
 
@@ -147,7 +153,7 @@ const Homepage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
       </Head>
       <Prewiew linkContactsWithMe={contectLinks} />
       <About companies={companies} skils={skils} />
-      <Portfolio categories={categories} />
+      <Portfolio categories={categories} projects={_props.projects} />
       <Service services={services} />
       <Footer
         linksFooter={linksFooter}
@@ -157,10 +163,18 @@ const Homepage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
   );
 };
 
-export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
-  props: {
-    ...(await serverSideTranslations(locale ?? "en", ["common"])),
-  },
-});
+export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/projects?lang=${locale}`);
+  const projects = await res.json();
+
+  return { 
+    props: {
+      projects: projects.data,
+      ...(await serverSideTranslations(locale ?? "en", ["common"])),
+    },
+    revalidate: 10, // In seconds
+  }
+};
 
 export default Homepage;

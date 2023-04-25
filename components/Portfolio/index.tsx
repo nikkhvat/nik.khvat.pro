@@ -1,46 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/router";
+
 import { useTranslation } from "next-i18next";
+
 import PortfolioCard from "./Card";
 import portfolioTitleImage from "../../images/portfolioTitle.svg";
 import styles from "./index.module.css";
 
 interface PortfolioProps {
   categories: { id: number; title: string }[];
+  projects: {
+    categories: number[]
+    id: string
+    subtitle: string
+    title: string
+    url: string
+  }[]
 }
 
-const Portfolio: React.FC<PortfolioProps> = ({ categories }) => {
+const Portfolio: React.FC<PortfolioProps> = ({ categories, projects }) => {
   const { t } = useTranslation("common");
-  const router = useRouter();
-
-  const [activeTab, setActiveTab] = useState(-1);
-  const [data, setData] = useState<any[]>([]);
+  
+  const [activeTab, setActiveTab] = useState(1);
   const [limit, setLimit] = useState(4);
 
-  useEffect(() => {
-    setActiveTab(1);
-    if (localStorage.limit) {
-      setLimit(+localStorage.limit);
-    }
-  }, []);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACK_END}/api/projects?lang=${router.locale}`
-      );
-      const data = await res.json();
-      setData(data.data);
-    };
-    fetchProjects();
-  }, [router.locale]);
-
-  const filteredProjects = data.filter(
-    (item: any) => item.categories.includes(activeTab) || activeTab === 1
-  );
-
-  const projects = filteredProjects.slice(0, limit);
+  const filteredProjects = projects.filter((item: any) => item.categories.includes(activeTab) || activeTab === 1);
+  const limitedProjects = filteredProjects.slice(0, limit);
 
   return (
     <div id="portfolio" className={styles.block}>
@@ -66,7 +51,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ categories }) => {
         ))}
       </div>
       <div className={styles.block__cards}>
-        {projects.map((element) => (
+        {limitedProjects.map((element) => (
           <PortfolioCard key={element.id} card={element} />
         ))}
       </div>
