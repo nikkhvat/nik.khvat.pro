@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-
+import Head from 'next/head'
 import Image from "next/image";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
@@ -30,6 +30,11 @@ const Project: React.FC<InferGetStaticPropsType<any>> = (_props) => {
 
   return (
     <div className={styles.main}>
+      <Head>
+        <title>{data.title}</title>
+        <meta name='description' content={data.description} />
+      </Head>
+
       <div className={styles.description}>
         <div className={styles.header}>
           <h1

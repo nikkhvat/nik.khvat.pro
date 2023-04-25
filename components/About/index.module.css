@@ -99,17 +99,11 @@
   position: relative;
 }
 
-.about_screen__photo_text {
+.about_screen__photo_description {
   position: absolute;
-  left: -150.7px;
-  top: 318px;
-  font-family: "Fira Code";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 30px;
-  line-height: 120%;
-  color: var(--main-dark-grey-color);
-  transform: rotate(-90deg);
+  height: 88%;
+  left: -30.5px;
+  bottom: 0;
 }
 
 .skils_table__column_item {
@@ -280,6 +274,9 @@
 }
 
 @media screen and (max-width: 804px) {
+  .about_screen__photo_description {
+      left: -25.5px;
+  }
   .skils_table__column_title {
     font-weight: 400;
     font-size: 18px;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Head from 'next/head'
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
@@ -251,6 +252,10 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
 
   return (
     load === true ? <div className={styles.main} >
+      <Head>
+        <title>Admin nik19ta.pro</title>
+        <meta name='description' content="Admin nik19ta.pro" />
+      </Head>
       <header className={styles.header} >
         <div className={styles.container} >
           <p className={styles.header_title} >ADMIN</p>

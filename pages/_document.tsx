@@ -11,8 +11,6 @@ class MyDocument extends Document<Props> {
     return (
       <Html lang={currentLocale} >
         <Head title="Nikita Khvatov">
-          {/* eslint-disable-next-line @next/next/no-title-in-document-head */}
-          <title>Nikita Khvatov</title>
           <meta charSet="utf-8" />
           <meta
             name="description"
@@ -43,10 +41,7 @@ class MyDocument extends Document<Props> {
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
 
-          <link
-            href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;600&family=Open+Sans&display=swap"
-            rel="stylesheet"
-          />
+          <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
         </Head>
 
         <body>

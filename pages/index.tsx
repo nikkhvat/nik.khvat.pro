@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Head from 'next/head'
 import { useTranslation } from "next-i18next";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -140,6 +141,10 @@ const Homepage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Nikita Khvatov</title>
+        <meta name='description' content='My website about me, my services and my portfolio' />
+      </Head>
       <Prewiew linkContactsWithMe={contectLinks} />
       <About companies={companies} skils={skils} />
       <Portfolio categories={categories} />

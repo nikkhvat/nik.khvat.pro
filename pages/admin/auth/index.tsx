@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Head from 'next/head'
 import styles from "./index.module.css";
 import { useRouter } from 'next/navigation';
 
@@ -40,7 +41,10 @@ const Auth = () => {
   }
 
   return <div className={styles.container} >
-    
+    <Head>
+      <title>Log in nik19ta.pro</title>
+      <meta name='description' content="Admin nik19ta.pro" />
+    </Head>
     <div className={styles.login} >
       <p className={styles.login_title} >Admin</p>
       <p className={styles.login_subtitle} >Log into nik19ta.pro admin</p>
@@ -57,7 +61,7 @@ const Auth = () => {
         type="password"
         onChange={(e: any) => setpassword(e.target.value)} />
 
-      <button onClick={signUp} className={styles.login_button} >Sign up</button>
+      <button onClick={signUp} className={styles.login_button} >Log in</button>
     </div>
 
   </div>

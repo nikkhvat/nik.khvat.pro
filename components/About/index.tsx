@@ -1,10 +1,12 @@
 import React from "react";
 
 import nikita_khvatov from "../../images/nikita_khvatov_2.png";
+import photo_description from "../../images/photo_description.svg"
 
 import styles from "./index.module.css";
 
 import { useTranslation } from "next-i18next";
+
 
 interface IAbout {
   companies: string[];
@@ -49,17 +51,8 @@ const About: React.FC<IAbout> = ({ companies, skils }) => {
           className={styles.about_screen__photo}
           style={{ backgroundImage: `url(${nikita_khvatov.src})` }}
         >
-          <p className={styles.about_screen__photo_text}>
-            {"Middle full-stack".split("").map((item, index) => (
-              <span
-                className={styles.half_color}
-                key={`mid-fs-${item}-${index}`}
-                id={item}
-              >
-                {item}
-              </span>
-            ))}
-          </p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className={styles.about_screen__photo_description} src={photo_description.src} alt="full-stack developer" />
         </div>
 
         <div className={styles.about_screen__company_list_tablet}>
