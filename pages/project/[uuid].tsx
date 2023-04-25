@@ -91,16 +91,9 @@ const Project: React.FC<InferGetStaticPropsType<any>> = (_props) => {
   );
 };
 
-export async function getServerSideProps({
-  query,
-  locale,
-}: {
-  query: any;
-  locale: any;
-}) {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACK_END}/api/projects/${query.uuid}?lang=${locale}`
-  );
+export async function getStaticProps({ params, locale }: { params: any, locale: any}) {
+  
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/projects/${params.uuid}?lang=${locale}`);
   const data = await res.json();
 
   return {
@@ -109,6 +102,37 @@ export async function getServerSideProps({
       ...(await serverSideTranslations(locale ?? "en", ["common"])),
     },
   };
+}
+
+// Generates `/project/81ee526d-beb0-4a71-a192-e2b5a9886146` and ...
+export async function getStaticPaths() {
+
+  const projectsList = []
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/projects`);
+  const data = (await res.json()).data;
+
+  for (let i = 0; i < data.length; i++) {
+    const project = data[i];
+    projectsList.push(project.id)
+  }
+
+  const langs = ['en', 'ru', 'jp', 'de', 'es', 'zh', 'fr', 'hi', 'kk'];
+  const generatedRoutes = []
+
+  for (let i = 0; i < projectsList.length; i++) {
+    const project = projectsList[i]
+
+    for (let j = 0; j < langs.length; j++) {
+      const lang = langs[j];
+
+      generatedRoutes.push({ params: { uuid: project }, locale: lang })
+    }
+  }
+
+  return {
+    paths: generatedRoutes,
+    fallback: false, // can also be true or 'blocking'
+  }
 }
 
 export default Project;
