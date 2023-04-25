@@ -9,7 +9,7 @@ class MyDocument extends Document<Props> {
   render() {
     const currentLocale = this.props.__NEXT_DATA__.locale ?? "en";
     return (
-      <Html lang={currentLocale}>
+      <Html lang={currentLocale} >
         <Head title="Nikita Khvatov">
           {/* eslint-disable-next-line @next/next/no-title-in-document-head */}
           <title>Nikita Khvatov</title>
@@ -30,7 +30,7 @@ class MyDocument extends Document<Props> {
 
           <meta
             property="og:image"
-            content="https://nik19ta.pro/README/prewiew.png"
+            content="https://nik19ta.pro/README/prewiew.jpg"
           />
           <meta
             property="og:description"
