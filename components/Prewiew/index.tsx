@@ -1,6 +1,4 @@
 import * as React from "react";
-import Image from "next/image";
-
 import styles from "./index.module.css";
 
 import Menu from "./Menu";
@@ -9,10 +7,10 @@ import { Link } from "react-scroll/modules";
 
 import { useTranslation } from "next-i18next";
 
-import anime from "animejs";
 import { useEffect, useState } from "react";
 import useWindowSize from "../../hooks/useWindowsSize";
 import { StaticImageData } from "next/image";
+import IconAnimation from "./AnimatedIcon";
 
 interface IPrewiew {
   linkContactsWithMe: {
@@ -31,8 +29,6 @@ const Prewiew: React.FC<IPrewiew> = ({ linkContactsWithMe }) => {
   const [isTimingDeveloper, setIsTimingDeveloper] = useState(false);
   const [showDeveloper, setShowDeveloper] = useState(false);
 
-  const [isAnimatedYet, setiIsAnimatedYet] = useState(false);
-
   useEffect(() => {
     setTimeout(() => {
       setIsTimingFullStack(false);
@@ -41,25 +37,6 @@ const Prewiew: React.FC<IPrewiew> = ({ linkContactsWithMe }) => {
     }, 1400);
     setTimeout(() => setIsTimingDeveloper(false), 2800);
   }, []);
-
-  useEffect(() => {
-    setTimeout(
-      () => {
-        anime({
-          targets: `.${styles.icons__item}`,
-          translateX:
-            window.innerWidth < 1060
-              ? window.innerWidth < 810
-                ? 0
-                : -224
-              : -298,
-          delay: anime.stagger(100, { direction: "normal" }),
-        });
-        setiIsAnimatedYet(true);
-      },
-      !isAnimatedYet ? 1300 : 0
-    );
-  }, [isAnimatedYet, width]);
 
   return (
     <div id="prewiew" className={styles.main_screen}>
@@ -146,13 +123,7 @@ const Prewiew: React.FC<IPrewiew> = ({ linkContactsWithMe }) => {
       </Link>
 
       <div id="logo" className={styles.icons_social_media}>
-        {linkContactsWithMe.map((item) => (
-          <div key={item.alt} className={styles.icons__item}>
-            <a href={item.link}>
-              <Image src={item.icon} alt={item.alt} width={24} height={24} />
-            </a>
-          </div>
-        ))}
+        <IconAnimation items={linkContactsWithMe} />
       </div>
     </div>
   );

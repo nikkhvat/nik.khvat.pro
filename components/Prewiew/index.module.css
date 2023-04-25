@@ -319,9 +319,6 @@
   cursor: pointer;
 }
 
-.icons__item a img {
-  width: 24px;
-}
 
 .flipped_text {
   transform: rotate(-90deg) translate(0, -100%);
