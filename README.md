@@ -32,6 +32,21 @@ This website uses the following tools and technologies:
 - Visit [nik19ta.pro](https://nik19ta.pro) to see the live website
 - View the figma for the website layout and design [![wiew figma](./README/figma.png)](https://www.figma.com/file/NKcx7nhqQJoVLYecFC9USK/nik19ta.me)
 
+
+### `Preact` instead of `ReactJS` (Why?)
+
+> I used the webpack-bundle-analyzer package to understand how much the bundle weighs after compilation with `react` and with `preact`
+
+| Treemap sizes | React | Preact |
+| --- | --- | --- |
+| `Stat` | 706.54 KB | 587.9 KB (`-20.17%`) |
+| `Parsed` | 466.78 KB | 354.47 KB (`-24.06%`) |
+| `Gzipped` | 126.05 KB | 90.26 KB (`-28.4%`) |
+
+| React | Preact |
+| --- | --- |
+| ![weight of the project with react](./README/analyze/react.jpg) | ![weight of the project with preact](./README/analyze/preact.jpg) |
+
 ## How to run
 
 ### Local development
@@ -59,4 +74,4 @@ CREATE DATABASE nik19ta
 
 A database dump is also included in the `./backend/dumpdump.sql` file.
 
-Thank you for your interest in my website! If you have any questions or feedback, please feel free to contact me.
+Thank you for your interest in my website! If you have any questions or feedback, please feel free to contact me. star me!
