@@ -4,9 +4,9 @@ import styles from "./index.module.css";
 
 import Image from "next/image";
 
-import { Link } from "react-scroll/modules";
 import { useTranslation } from "next-i18next";
 import { StaticImageData } from "next/image";
+import smoothScrollTo from "../../utils/scroll";
 
 interface IFooter {
   linkContactsWithMe: {
@@ -16,8 +16,6 @@ interface IFooter {
     alt: string;
   }[];
   linksFooter: {
-    offset: number;
-    duration: number;
     name: string;
     to: string;
   }[];
@@ -25,6 +23,13 @@ interface IFooter {
 
 const Footer: React.FC<IFooter> = ({ linkContactsWithMe, linksFooter }) => {
   const { t } = useTranslation("common");
+
+  const links = [
+    { to: "prewiew", title: t("menu.main") },
+    { to: "about", title: t("menu.about") },
+    { to: "portfolio", title: t("menu.portfolio") },
+    { to: "service", title: t("menu.services") }
+  ]
 
   return (
     <div id="concatcs" className={styles.footer}>
@@ -60,54 +65,15 @@ const Footer: React.FC<IFooter> = ({ linkContactsWithMe, linksFooter }) => {
         </div>
         <div className={styles.footer__item_menu}>
           <div className={styles.footer_menu_list}>
-            <Link
-              activeClass="active"
-              to="prewiew"
-              spy={true}
-              smooth={true}
-              offset={-100}
-              duration={300}
-            >
-              <div className={styles.footer_menu_list_item}>
-                {t("menu.main")}
-              </div>
-            </Link>
-            <Link
-              activeClass="active"
-              to="about"
-              spy={true}
-              smooth={true}
-              offset={0}
-              duration={300}
-            >
-              <div className={styles.footer_menu_list_item}>
-                {t("menu.about")}
-              </div>
-            </Link>
-            <Link
-              activeClass="active"
-              to="portfolio"
-              spy={true}
-              smooth={true}
-              offset={-100}
-              duration={300}
-            >
-              <div className={styles.footer_menu_list_item}>
-                {t("menu.portfolio")}
-              </div>
-            </Link>
-            <Link
-              activeClass="active"
-              to="service"
-              spy={true}
-              smooth={true}
-              offset={-100}
-              duration={300}
-            >
-              <div className={styles.footer_menu_list_item}>
-                {t("menu.services")}
-              </div>
-            </Link>
+            {links.map(link => (
+              <button
+                key={link.to}
+                onClick={() => smoothScrollTo(link.to)}
+                className={styles.footer_menu_list_item}
+              >
+                {link.title}
+              </button>
+            ))}
           </div>
         </div>
       </div>
@@ -121,56 +87,27 @@ const Footer: React.FC<IFooter> = ({ linkContactsWithMe, linksFooter }) => {
 
           <div className={styles.footer__items_tablet_menu}>
             <div className={styles.footer__items_tablet_menu_column}>
-              <Link
-                activeClass="active"
-                to="prewiew"
-                spy={true}
-                smooth={true}
-                offset={-100}
-                duration={300}
-              >
-                <div className={styles.footer__items_tablet_menu_row}>
-                  {t("menu.main")}
-                </div>
-              </Link>
-              <Link
-                activeClass="active"
-                to="about"
-                spy={true}
-                smooth={true}
-                offset={0}
-                duration={300}
-              >
-                <div className={styles.footer__items_tablet_menu_row}>
-                  {t("menu.about")}
-                </div>
-              </Link>
+              {[links[0], links[1]].map(link => (
+                <button
+                  key={link.to}
+                  onClick={() => smoothScrollTo(link.to)}
+                  className={styles.footer__items_tablet_menu_row}
+                >
+                  {link.title}
+                </button>
+              ))}
+              
             </div>
             <div className={styles.footer__items_tablet_menu_column}>
-              <Link
-                activeClass="active"
-                to="portfolio"
-                spy={true}
-                smooth={true}
-                offset={-100}
-                duration={300}
-              >
-                <div className={styles.footer__items_tablet_menu_row}>
-                  {t("menu.portfolio")}
-                </div>
-              </Link>
-              <Link
-                activeClass="active"
-                to="service"
-                spy={true}
-                smooth={true}
-                offset={-100}
-                duration={300}
-              >
-                <div className={styles.footer__items_tablet_menu_row}>
-                  {t("menu.services")}
-                </div>
-              </Link>
+              {[links[2], links[3]].map(link => (
+                <button
+                  key={link.to}
+                  onClick={() => smoothScrollTo(link.to)}
+                  className={styles.footer__items_tablet_menu_row}
+                >
+                  {link.title}
+                </button>
+              ))}
             </div>
           </div>
         </div>
@@ -221,18 +158,14 @@ const Footer: React.FC<IFooter> = ({ linkContactsWithMe, linksFooter }) => {
           </div>
 
           <div className={styles.footer_menu_list}>
-            {linksFooter.map((item) => (
-              <Link
-                key={item.to}
-                activeClass="active"
-                to="prewiew"
-                spy={true}
-                smooth={true}
-                offset={item.offset}
-                duration={item.duration}
+            {linksFooter.map((link) => (
+              <button
+                key={link.to}
+                onClick={() => smoothScrollTo(link.to)}
+                className={styles.footer_menu_list_item}
               >
-                <div className={styles.footer_menu_list_item}>{item.name}</div>
-              </Link>
+                {link.name}
+              </button>
             ))}
           </div>
         </div>

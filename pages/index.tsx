@@ -55,8 +55,6 @@ interface IFooterLinks {
 }
 
 interface IFooterLinksPage {
-  offset: number
-  duration: number
   name: string
   to: string
 }
@@ -132,10 +130,10 @@ const Homepage: React.FC<HomePageProps> = ( _props: any) => {
   ];
 
   const linksFooter: IFooterLinksPage[] = [
-    { offset: -100, duration: 300, name: t("menu.main"), to: "prewiew" },
-    { offset: 0, duration: 300, name: t("menu.about"), to: "about" },
-    { offset: -100, duration: 300, name: t("menu.portfolio"), to: "portfolio" },
-    { offset: -100, duration: 300, name: t("menu.services"), to: "service" },
+    { name: t("menu.main"), to: "prewiew" },
+    { name: t("menu.about"), to: "about" },
+    { name: t("menu.portfolio"), to: "portfolio" },
+    { name: t("menu.services"), to: "service" },
   ];
 
   const categories: ICategories[] = [

@@ -117,7 +117,10 @@
   text-transform: uppercase;
   color: var(--main-light-grey-color);
   cursor: pointer;
+  background-color: transparent;
+  border: none;
 }
+
 @media screen and (max-width: 1254px) {
   .contact_with_me_list div {
     margin-right: 30px;
@@ -215,6 +218,11 @@
     max-width: 250px;
   }
 
+  .footer__items_tablet_menu_column {
+    display: flex;
+    flex-direction: column;
+  }
+
   .footer__items_tablet_menu_row {
     font-family: "Open Sans";
     font-style: normal;
@@ -224,6 +232,8 @@
     margin-top: 20px;
     cursor: pointer;
     color: var(--main-light-grey-color);
+    background-color: transparent;
+    border: none;
   }
 
   .footer__items_tablet_right {

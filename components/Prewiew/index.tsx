@@ -3,14 +3,13 @@ import styles from "./index.module.css";
 
 import Menu from "./Menu";
 
-import { Link } from "react-scroll/modules";
-
 import { useTranslation } from "next-i18next";
 
 import { useEffect, useState } from "react";
 import useWindowSize from "../../hooks/useWindowsSize";
 import { StaticImageData } from "next/image";
 import IconAnimation from "./AnimatedIcon";
+import smoothScrollTo from "../../utils/scroll";
 
 interface IPrewiew {
   linkContactsWithMe: {
@@ -109,18 +108,9 @@ const Prewiew: React.FC<IPrewiew> = ({ linkContactsWithMe }) => {
         {t("quote")}{" "}
       </div>
 
-      <Link
-        activeClass="active"
-        to="portfolio"
-        spy={true}
-        smooth={true}
-        offset={10}
-        duration={300}
-      >
-        <button className={styles.btn_to_portfolio}>
-          {t("prewiew.view_portfolio")}
-        </button>
-      </Link>
+      <button onClick={() => smoothScrollTo("portfolio")} className={styles.btn_to_portfolio} >
+        {t("prewiew.view_portfolio")}
+      </button>
 
       <div id="logo" className={styles.icons_social_media}>
         <IconAnimation items={linkContactsWithMe} />

@@ -5,12 +5,11 @@ import { default as LocaleLink } from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-import { Link } from "react-scroll/modules";
-
 import styles from "./index.module.css";
 
 import burger from "../../../images/mobile_menu/burger.svg";
 import close from "../../../images/mobile_menu/close.svg";
+import smoothScrollTo from "../../../utils/scroll";
 
 const Menu: React.FC = () => {
   const router = useRouter();
@@ -21,10 +20,10 @@ const Menu: React.FC = () => {
   const [openedMenu, setOpenedMenu] = useState(false);
 
   const menuList = [
-    { text: t("menu.about"), id: "about", offset: 0 },
-    { text: t("menu.portfolio"), id: "portfolio", offset: -80 },
-    { text: t("menu.services"), id: "service", offset: -100 },
-    { text: t("menu.contacts"), id: "concatcs", offset: 0 },
+    { text: t("menu.about"), id: "about" },
+    { text: t("menu.portfolio"), id: "portfolio" },
+    { text: t("menu.services"), id: "service" },
+    { text: t("menu.contacts"), id: "concatcs" },
   ];
 
   return (
@@ -35,20 +34,15 @@ const Menu: React.FC = () => {
         </div>
 
         <div className={styles.menu__list}>
-          {menuList.map((menuItem) => (
-            <Link
-              href={`#${menuItem.id}`}
-              key={menuItem.id}
-              activeClass="active"
-              to={menuItem.id}
-              spy={true}
-              smooth={true}
-              offset={menuItem.offset}
-              duration={300}
-            >
-              <div className={styles.menu__item}>{menuItem.text}</div>
-            </Link>
-          ))}
+          {menuList.map((menuItem) => 
+            <button 
+              key={menuItem.id} 
+              onClick={() => smoothScrollTo(menuItem.id)} 
+              className={styles.menu__item} 
+            > 
+              {menuItem.text} 
+            </button>
+          )}
         </div>
 
         <div className={`${styles.menu__item} ${styles.language_switch}`}>
@@ -103,17 +97,13 @@ const Menu: React.FC = () => {
         {openedMenu && (
           <div className={styles.menu__mobile_list}>
             {menuList.map((menuItem) => (
-              <Link
-                key={menuItem.id}
-                activeClass="active"
-                to={menuItem.id}
-                spy={true}
-                smooth={true}
-                offset={menuItem.offset}
-                duration={300}
+              <button 
+                key={menuItem.id} 
+                onClick={() => smoothScrollTo(menuItem.id)} 
+                className={styles.menu__mobile_item} 
               >
-                <div className={styles.menu__mobile_item}>{menuItem.text}</div>
-              </Link>
+                {menuItem.text}
+              </button>
             ))}
 
             <div
