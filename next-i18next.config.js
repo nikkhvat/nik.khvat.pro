@@ -4,7 +4,7 @@ module.exports = {
     locales: [
       'en', 
       'ru', 
-      'jp', 
+      'ja', 
       'de', 
       'es', 
       'zh',

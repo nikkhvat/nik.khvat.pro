@@ -211,7 +211,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
 
   const langs = [
     {locale: "en", img: "🇺🇸"},
-    {locale: "jp", img: "🇯🇵"},
+    {locale: "ja", img: "🇯🇵"},
     {locale: "zh", img: "🇨🇳"},
     {locale: "hi", img: "🇮🇳"},
     {locale: "ru", img: "🇷🇺"},
