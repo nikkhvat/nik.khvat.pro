@@ -2,6 +2,7 @@
   width: 100%;
   min-height: 100px;
   padding: 130px 130px 130px 130px;
+  margin-top: 50px;
 }
 
 .service_screen__items {
@@ -120,6 +121,7 @@
 @media screen and (max-width: 1000px) {
   .service_screen {
     padding: 50px;
+    margin-top: 120px;
   }
 
   .services_title {
@@ -135,7 +137,7 @@
 @media screen and (max-width: 804px) {
   .service_screen {
     padding: 22px;
-    margin-top: 98px;
+    margin-top: 164px;
   }
 }
 
