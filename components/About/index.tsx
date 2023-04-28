@@ -1,7 +1,7 @@
 import React from "react";
 
-import nikita_khvatov from "../../images/nikita_khvatov_2.png";
-import photo_description from "../../images/photo_description.svg"
+import nikitaKhvatov from "../../images/nikita_khvatov_2.png";
+import photoDescription from "../../images/photo_description.svg"
 
 import styles from "./index.module.css";
 
@@ -10,13 +10,13 @@ import { useTranslation } from "next-i18next";
 
 interface IAbout {
   companies: string[];
-  skils: {
+  skills: {
     categoryName: string;
     names: string;
   }[];
 }
 
-const About: React.FC<IAbout> = ({ companies, skils }) => {
+const About: React.FC<IAbout> = ({ companies, skills }) => {
   const { t } = useTranslation("common");
 
   return (
@@ -26,15 +26,15 @@ const About: React.FC<IAbout> = ({ companies, skils }) => {
 
         <div className={styles.about_screen__line}></div>
 
-        <div className={styles.skils_table}>
-          {skils.map((item) => (
-            <div key={item.categoryName} className={styles.skils_table__column}>
-              <span className={styles.skils_table__column_title}>
+        <div className={styles.skills_table}>
+          {skills.map((item) => (
+            <div key={item.categoryName} className={styles.skills_table__column}>
+              <span className={styles.skills_table__column_title}>
                 {item.categoryName}
               </span>
 
               {item.names.split(",").map((name) => (
-                <span key={name} className={styles.skils_table__column_item}>
+                <span key={name} className={styles.skills_table__column_item}>
                   {name}
                 </span>
               ))}
@@ -49,10 +49,10 @@ const About: React.FC<IAbout> = ({ companies, skils }) => {
       <div className={styles.about_screen__right}>
         <div
           className={styles.about_screen__photo}
-          style={{ backgroundImage: `url(${nikita_khvatov.src})` }}
+          style={{ backgroundImage: `url(${nikitaKhvatov.src})` }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className={styles.about_screen__photo_description} src={photo_description.src} alt="full-stack developer" />
+          <img className={styles.about_screen__photo_description} src={photoDescription.src} alt="full-stack developer" />
         </div>
 
         <div className={styles.about_screen__company_list_tablet}>

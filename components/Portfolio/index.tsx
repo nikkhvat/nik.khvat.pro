@@ -28,13 +28,13 @@ const Portfolio: React.FC<PortfolioProps> = ({ categories, projects }) => {
   const limitedProjects = filteredProjects.slice(0, limit);
 
   return (
-    <div id="portfolio" className={styles.block}>
+    <div id="portfolio" className={styles.portfolio_screen}>
       <Image
-        className={styles.block__title_image}
+        className={styles.portfolio_title_image}
         src={portfolioTitleImage}
         alt={t("portfolio.title")}
       />
-      <div className={styles.block__tabs}>
+      <div className={styles.portfolio_screen__tabs}>
         {categories.map((item) => (
           <button
             key={item.id}
@@ -42,23 +42,23 @@ const Portfolio: React.FC<PortfolioProps> = ({ categories, projects }) => {
               setActiveTab(item.id);
               setLimit(4);
             }}
-            className={`${styles.block__tabs_item} ${
-              item.id === activeTab && styles.block__tabs_item_active
+            className={`${styles.portfolio_screen__tabs_item} ${
+              item.id === activeTab && styles.tabs_item_active
             }`}
           >
             {item.title}
           </button>
         ))}
       </div>
-      <div className={styles.block__cards}>
+      <div className={styles.portfolio_cards}>
         {limitedProjects.map((element) => (
           <PortfolioCard key={element.id} card={element} />
         ))}
       </div>
-      <div className={styles.block__show_more_container}>
+      <div className={styles.portfolio_screen__show_more_container}>
         {filteredProjects.length > 3 && limit === 4 && (
           <button
-            className={styles.block__show_more}
+            className={styles.portfolio_screen__show_more}
             onClick={() => {
               localStorage.limit = 10;
               setLimit(10);
@@ -69,7 +69,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ categories, projects }) => {
         )}
         {limit > 4 && (
           <button
-            className={styles.block__show_more}
+            className={styles.portfolio_screen__show_more}
             onClick={() => {
               localStorage.limit = 4;
               setLimit(4);

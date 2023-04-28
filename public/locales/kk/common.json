@@ -1,7 +1,7 @@
 {
   "fullname": "Никита Хватов",
   "quote": "Менің мақсатым – даму процесін жағымды ету үшін Қолдау көрсетілетін, таза және түсінікті код жазу",
-  "prewiew": {
+  "preview": {
     "view_portfolio": "Портфолионы қарау"
   },
   "menu": {
@@ -24,7 +24,7 @@
     "website_development": "Веб-сайттар құру",
     "development_browser_extensions": "Браузер кеңейтімдерін жасау",
     "mobile_development": "Мобильді даму",
-    "web_aplication": "Веб-қосымшаларды құру",
+    "web_application": "Веб-қосымшаларды құру",
     "parsers": "Талдағыштар/қырғыштар жасау",
     "back_end_development": "Back-end қосымшаларын әзірлеу және қолдау"
   }

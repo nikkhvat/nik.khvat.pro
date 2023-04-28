@@ -42,3 +42,5 @@ backend/.bin
 DATABASE.BIN
 
 /analyze
+
+.idea

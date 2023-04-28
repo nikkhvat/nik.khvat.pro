@@ -12,19 +12,19 @@
 }
 
 .line_left {
-  height: 0px;
-  width: 0px;
+  height: 0;
+  width: 0;
   left: 130px;
   top: 298px;
   -webkit-animation: increase_first 0.25s;
   -moz-animation: increase_first 0.25s;
   -o-animation: increase_first 0.25s;
-  animation: increase_first 0.25s;
+  animation: IncreaseFirst 0.25s;
   animation-fill-mode: forwards;
   animation-timing-function: linear;
 }
 
-@keyframes increase_first {
+@keyframes IncreaseFirst {
   100% {
     height: 170px;
     top: 128px;
@@ -33,24 +33,24 @@
 
 .line_top {
   width: 0;
-  height: 0px;
+  height: 0;
   left: 245px;
   top: 72px;
   -webkit-animation: increase_second 1s;
   -moz-animation: increase_second 1s;
   -o-animation: increase_second 1s;
-  animation: increase_second 1s;
+  animation: IncreaseSecond 1s;
   animation-fill-mode: forwards;
   animation-timing-function: linear;
 }
 
-@keyframes increase_second {
+@keyframes IncreaseSecond {
   0% {
-    width: 0px;
+    width: 0;
   }
 
   50% {
-    width: 0px;
+    width: 0;
   }
 
   100% {
@@ -59,19 +59,19 @@
 }
 
 .line_right_top {
-  height: 0px;
-  width: 0px;
+  height: 0;
+  width: 0;
   right: 130px;
   top: 140px;
   -webkit-animation: increase_third 1.5s;
   -moz-animation: increase_third 1.5s;
   -o-animation: increase_third 1.5s;
-  animation: increase_third 1.5s;
+  animation: IncreaseThird 1.5s;
   animation-fill-mode: forwards;
   animation-timing-function: linear;
 }
 
-@keyframes increase_third {
+@keyframes IncreaseThird {
   0% {
     border: none;
   }
@@ -82,7 +82,7 @@
 
   75% {
     border: 1px solid var(--main-dark-grey-color);
-    height: 0px;
+    height: 0;
   }
 
   100% {
@@ -91,19 +91,19 @@
 }
 
 .line_right_bottom {
-  height: 0px;
-  width: 0px;
+  height: 0;
+  width: 0;
   right: 130px;
   top: 455px;
   -webkit-animation: increase_fourth 2s;
   -moz-animation: increase_fourth 2s;
   -o-animation: increase_fourth 2s;
-  animation: increase_fourth 2s;
+  animation: IncreaseFourth 2s;
   animation-fill-mode: forwards;
   animation-timing-function: linear;
 }
 
-@keyframes increase_fourth {
+@keyframes IncreaseFourth {
   0% {
     border: none;
   }
@@ -114,7 +114,7 @@
 
   75% {
     border: 1px solid var(--main-dark-grey-color);
-    height: 0px;
+    height: 0;
   }
 
   100% {
@@ -123,7 +123,7 @@
 }
 
 .full_name {
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 .image_back {
@@ -136,13 +136,13 @@
   position: absolute;
   left: 283px;
   z-index: -1;
-  animation: image_back_amination 2s;
+  animation: BackImageAscent 2s;
   animation-fill-mode: forwards;
 }
 
-@keyframes image_back_amination {
+@keyframes BackImageAscent {
   0% {
-    height: 0px;
+    height: 0;
     top: 652px;
   }
 
@@ -152,7 +152,7 @@
   }
 }
 
-.prewiew_text {
+.preview_text {
   position: absolute;
   left: 432px;
   top: auto;
@@ -170,16 +170,16 @@
 }
 
 .anim_typewriter {
-  animation: typewriter 1s steps(10) 0.2s 1 normal both,
+  animation: TypeWriter 1s steps(10) 0.2s 1 normal both,
     blinkTextCursor 800ms steps(10) infinite normal;
 }
 
 .anim_typewriter_2 {
-  animation: typewriter_2 1s steps(9) 0.2s 1 normal both,
+  animation: TypeWriterSecond 1s steps(9) 0.2s 1 normal both,
     blinkTextCursor 800ms steps(9) infinite normal;
 }
 
-@keyframes typewriter {
+@keyframes TypeWriter {
   from {
     width: 0;
   }
@@ -189,7 +189,7 @@
   }
 }
 
-@keyframes typewriter_2 {
+@keyframes TypeWriterSecond {
   from {
     width: 0;
   }
@@ -209,8 +209,8 @@
   }
 }
 
-.prewiew_text__small {
-  font-family: "Fira Code";
+.preview_text__small {
+  font-family: "Fira Code", serif;
   font-style: normal;
   font-weight: 600;
   font-size: 64px;
@@ -218,12 +218,12 @@
   color: var(--main-light-grey-color);
 }
 
-.prewiew_text__small span {
+.preview_text__small span {
   color: var(--main-light-grey-color);
 }
 
-.prewiew_text__large {
-  font-family: "Fira Code";
+.preview_text__large {
+  font-family: "Fira Code", serif;
   font-style: normal;
   font-weight: 600;
   font-size: 144px;
@@ -249,7 +249,7 @@
 }
 
 .quote {
-  font-family: "Open Sans";
+  font-family: "Open Sans", serif;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -268,7 +268,7 @@
 @keyframes quote__animation {
   0% {
     top: 551px;
-    height: 0px;
+    height: 0;
   }
 
   100% {
@@ -279,10 +279,9 @@
 
 .btn_to_portfolio {
   height: 63px;
-  top: 639px;
   background: var(--main-white-color);
   border: none;
-  font-family: "Open Sans";
+  font-family: "Open Sans", serif;
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
@@ -292,15 +291,15 @@
   left: 715px;
   top: 580px;
   cursor: pointer;
-  animation: btn_to_portfolio_animatoin 2s;
+  animation: AscentButton 2s;
   animation-fill-mode: forwards;
   white-space: nowrap;
   padding-left: 5px;
 }
 
-@keyframes btn_to_portfolio_animatoin {
+@keyframes AscentButton {
   0% {
-    width: 0px;
+    width: 0;
   }
 
   100% {
@@ -326,10 +325,10 @@
   width: 400px;
   white-space: nowrap;
   overflow: hidden;
-  animation: flipped 1s ease-in-out forwards;
+  animation: FlippedText 1s ease-in-out forwards;
 }
 
-@keyframes flipped {
+@keyframes FlippedText {
   0% {
     left: 400px;
     bottom: -44px;
@@ -344,7 +343,7 @@
 }
 
 .flipped_text__grey {
-  font-family: "Fira Code";
+  font-family: "Fira Code", serif;
   font-style: normal;
   font-weight: 600;
   font-size: 96px;
@@ -353,7 +352,7 @@
 }
 
 @media screen and (max-width: 1365px) {
-  .prewiew_text {
+  .preview_text {
     left: auto;
     right: 170px;
   }
@@ -372,17 +371,17 @@
 }
 
 @media screen and (max-width: 1300px) {
-  .prewiew_text__small {
+  .preview_text__small {
     font-size: 57.6px;
     line-height: 75.6px;
   }
 
-  .prewiew_text__large {
+  .preview_text__large {
     font-size: 129.6px;
     line-height: 170.1px;
   }
 
-  .prewiew_text {
+  .preview_text {
     min-height: 235px;
     right: 190px;
     min-width: 442px;
@@ -390,17 +389,17 @@
 }
 
 @media screen and (max-width: 1255px) {
-  .prewiew_text__small {
+  .preview_text__small {
     font-size: 51.2px;
     line-height: 67.2px;
   }
 
-  .prewiew_text__large {
+  .preview_text__large {
     font-size: 115.2px;
     line-height: 151.2px;
   }
 
-  .prewiew_text {
+  .preview_text {
     min-height: 208px;
     right: 190px;
     min-width: 442px;
@@ -408,17 +407,17 @@
 }
 
 @media screen and (max-width: 1155px) {
-  .prewiew_text__small {
+  .preview_text__small {
     font-size: 44.8px;
     line-height: 58.8px;
   }
 
-  .prewiew_text__large {
+  .preview_text__large {
     font-size: 100.8px;
     line-height: 132.3px;
   }
 
-  .prewiew_text {
+  .preview_text {
     min-height: 181px;
     right: 190px;
     min-width: 442px;
@@ -426,17 +425,17 @@
 }
 
 @media screen and (max-width: 1060px) {
-  .prewiew_text__small {
+  .preview_text__small {
     font-size: 38.4px;
     line-height: 50.4px;
   }
 
-  .prewiew_text__large {
+  .preview_text__large {
     font-size: 86.4px;
     line-height: 113.4px;
   }
 
-  .prewiew_text {
+  .preview_text {
     right: 176px;
     min-width: 442px;
   }
@@ -463,18 +462,18 @@
     -webkit-animation: increase_second 1s;
     -moz-animation: increase_second 1s;
     -o-animation: increase_second 1s;
-    animation: increase_second 1s;
+    animation: IncreaseSecond 1s;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
   }
 
-  @keyframes increase_second {
+  @keyframes IncreaseSecond {
     0% {
-      width: 0px;
+      width: 0;
     }
 
     50% {
-      width: 0px;
+      width: 0;
     }
 
     100% {
@@ -497,10 +496,10 @@
   }
 
   .flipped_text {
-    animation: flipped 1s ease-in-out forwards;
+    animation: FlippedText 1s ease-in-out forwards;
   }
 
-  @keyframes flipped {
+  @keyframes FlippedText {
     0% {
       width: 618px;
       left: 0;
@@ -512,7 +511,7 @@
     }
   }
 
-  .prewiew_text,
+  .preview_text,
   .quote,
   .btn_to_portfolio {
     left: 230px;
@@ -554,23 +553,15 @@
     -webkit-animation: increase_second 1s;
     -moz-animation: increase_second 1s;
     -o-animation: increase_second 1s;
-    animation: increase_second 1s;
+    animation: IncreaseSecond 1s;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
   }
 
-  @keyframes increase_second {
-    0% {
-      width: 0px;
-    }
-
-    50% {
-      width: 0px;
-    }
-
-    100% {
-      width: calc(100% - 275px);
-    }
+  @keyframes IncreaseSecond {
+    0% { width: 0; }
+    50% { width: 0; }
+    100% { width: calc(100% - 275px); }
   }
 
   .line_right_top,
@@ -594,7 +585,6 @@
 
   .quote {
     left: 22px;
-    top: 580px;
     font-weight: 400;
     font-size: 17px;
     line-height: 120%;
@@ -613,9 +603,9 @@
     line-height: 25px;
   }
 
-  @keyframes btn_to_portfolio_animatoin {
+  @keyframes AscentButton {
     0% {
-      width: 0px;
+      width: 0;
     }
 
     100% {
@@ -623,7 +613,7 @@
     }
   }
 
-  .prewiew_text {
+  .preview_text {
     right: auto;
     width: auto;
     max-width: none;
@@ -642,7 +632,7 @@
     bottom: 296px;
   }
 
-  @keyframes flipped {
+  @keyframes FlippedText {
     0% {
       left: auto;
       right: 10px;
@@ -664,11 +654,11 @@
     color: var(--main-grey-shadow-color-text);
   }
 
-  .prewiew_text__small {
+  .preview_text__small {
     font-size: 42px;
   }
 
-  .prewiew_text__large {
+  .preview_text__large {
     font-size: 85px;
   }
 
@@ -677,7 +667,7 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 414px) {
   .quote {
     font-size: 15px;
   }
@@ -687,6 +677,43 @@
     width: 202px;
     height: 36px;
     font-size: 16px;
-    line-height: 25px;
+  }
+
+  .image_back {
+    width: 216px;
+  }
+
+  .flipped_text {
+    right: -100px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .image_back {
+    width: 186px;
+  }
+
+  .flipped_text {
+     right: -130px;
+   }
+}
+
+@media screen and (max-width: 370px) {
+  .image_back {
+    width: 166px;
+  }
+
+  .flipped_text {
+    right: -150px;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .image_back {
+    width: 146px;
+  }
+
+  .flipped_text {
+    right: -170px;
   }
 }

@@ -2,8 +2,8 @@ const smoothScrollTo = (elementId: string, duration = 500) => {
     const targetElement = document.getElementById(elementId);
     if (!targetElement) return;
 
-    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-    const startPosition = window.pageYOffset;
+    const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+    const startPosition = window.scrollY;
     const distance = targetPosition - startPosition;
     const startTime = performance.now();
 

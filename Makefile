@@ -16,3 +16,10 @@ dev: # build and start server
 image:
 	rm -rf ./scripts/out
 	python3.11 ./scripts/image.py
+
+start@front:
+	npm run build
+	npm run start
+
+dev@front:
+	npm run dev

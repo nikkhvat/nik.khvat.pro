@@ -1,7 +1,7 @@
 .service_screen {
   width: 100%;
   min-height: 100px;
-  padding: 0px 130px 130px 130px;
+  padding: 130px 130px 130px 130px;
 }
 
 .service_screen__items {
@@ -81,6 +81,12 @@
   height: 0;
 }
 
+@media screen and (max-width: 1360px) {
+  .service_screen {
+    padding: 9.7vw 9.7vw 0;
+  }
+}
+
 @media screen and (max-width: 1195px) {
   .service_screen__items {
     flex-direction: row;
@@ -129,7 +135,7 @@
 @media screen and (max-width: 804px) {
   .service_screen {
     padding: 22px;
-    margin-top: 120px;
+    margin-top: 98px;
   }
 }
 

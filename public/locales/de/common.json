@@ -1,7 +1,7 @@
 {
   "fullname": "Nikita Khvatov",
   "quote": "Mein Ziel ist es, wartbaren, sauberen und verständlichen Code zu schreiben, damit die Prozessentwicklung Spaß macht.",
-  "prewiew": {
+  "preview": {
     "view_portfolio": "Portfolio ansehen"
   },
   "menu": {
@@ -24,7 +24,7 @@
     "website_development": "Website-Entwicklung",
     "development_browser_extensions": "Entwicklung von Browser-Erweiterungen",
     "mobile_development": "Mobile Entwicklung",
-    "web_aplication": "Browser-Anwendung",
+    "web_application": "Browser-Anwendung",
     "parsers": "Parsers",
     "back_end_development": "Backend-Entwicklung und Support"
   }

@@ -1,7 +1,7 @@
 {
   "fullname": "Nikita Khvatov",
   "quote": "Mi objetivo es escribir un código fácil de mantener, limpio y comprensible para que el desarrollo del proceso sea agradable.",
-  "prewiew": {
+  "preview": {
     "view_portfolio": "Ver cartera"
   },
   "menu": {
@@ -24,7 +24,7 @@
     "website_development": "Desarrollo de sitios web",
     "development_browser_extensions": "Desarrollo de extensiones de navegador",
     "mobile_development": "Desarrollo móvil",
-    "web_aplication": "Aplicación Web",
+    "web_application": "Aplicación Web",
     "parsers": "Analizador",
     "back_end_development": "Desarrollo y soporte de back-end"
   }

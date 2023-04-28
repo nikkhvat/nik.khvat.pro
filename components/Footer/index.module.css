@@ -3,7 +3,7 @@
 }
 
 .footer_title {
-  font-family: "Fira Code";
+  font-family: "Fira Code", serif;
   font-style: normal;
   font-weight: 600;
   font-size: 96px;
@@ -24,7 +24,7 @@
 }
 
 .footer__item_name {
-  font-family: "Open Sans";
+  font-family: "Open Sans", serif;
   font-style: normal;
   font-weight: 400;
   font-size: 36px;
@@ -34,7 +34,7 @@
 }
 
 .footer__item_developer {
-  font-family: "Open Sans";
+  font-family: "Open Sans", serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -63,7 +63,7 @@
 }
 
 .footer__item_text {
-  font-family: "Open Sans";
+  font-family: "Open Sans", serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -79,7 +79,7 @@
   display: flex;
 }
 
-.footer__vartical_line {
+.footer__vertical_line {
   width: calc(100% - 606px);
   height: 0;
   border: 1px solid var(--main-dark-grey-color);
@@ -109,7 +109,7 @@
 
 .footer_menu_list_item {
   margin-bottom: 20px;
-  font-family: "Open Sans";
+  font-family: "Open Sans", serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -164,7 +164,7 @@
     padding: 0 50px 50px 50px;
   }
 
-  .footer__vartical_line {
+  .footer__vertical_line {
     width: calc(100% - 345px);
   }
 
@@ -186,12 +186,12 @@
     position: relative;
   }
 
-  .footer__vartical_line {
+  .footer__vertical_line {
     margin-top: 70px;
   }
 
   .footer__items_tablet_title {
-    font-family: "Open Sans";
+    font-family: "Open Sans", serif;
     font-style: normal;
     font-weight: 400;
     font-size: 36px;
@@ -201,7 +201,7 @@
   }
 
   .footer__items_tablet_subtitle {
-    font-family: "Open Sans";
+    font-family: "Open Sans", serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -224,7 +224,7 @@
   }
 
   .footer__items_tablet_menu_row {
-    font-family: "Open Sans";
+    font-family: "Open Sans", serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -272,7 +272,7 @@
 }
 
 @media screen and (max-width: 710px) {
-  .footer__vartical_line {
+  .footer__vertical_line {
     width: calc(100% - 235px);
     margin-top: 50px;
   }
@@ -291,7 +291,7 @@
   }
 
   .footer_mobile__title {
-    font-family: "Open Sans";
+    font-family: "Open Sans", serif;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -302,7 +302,7 @@
   }
 
   .footer_mobile__sub_title {
-    font-family: "Open Sans";
+    font-family: "Open Sans", serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -312,7 +312,7 @@
     margin-top: 6px;
   }
 
-  .footer_mobile__collumns {
+  .footer_mobile__columns {
     width: 100%;
     display: flex;
     margin-top: 30px;
@@ -327,7 +327,7 @@
   }
 
   .footer_menu_list::before {
-    right: 0px;
+    right: 0;
     left: auto;
     top: -144px;
     height: 265px;

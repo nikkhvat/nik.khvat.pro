@@ -28,7 +28,7 @@ class MyDocument extends Document<Props> {
 
           <meta
             property="og:image"
-            content="https://nik19ta.pro/README/prewiew.jpg"
+            content="https://nik19ta.pro/README/preview.jpg"
           />
           <meta
             property="og:description"

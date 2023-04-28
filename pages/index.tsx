@@ -11,7 +11,7 @@ import Footer from "../components/Footer";
 import Service from "../components/Service";
 import Portfolio from "../components/Portfolio";
 import About from "../components/About";
-import Prewiew from "../components/Prewiew";
+import Preview from "../components/Preview";
 
 import github from "../images/social_media/github.png";
 import linkedin from "../images/social_media/linkedin.png";
@@ -110,7 +110,7 @@ const Homepage: React.FC<HomePageProps> = ( _props: any) => {
     { size: "small", name: t("services.website_development"), sub: null },
     { size: "large", name: t("services.development_browser_extensions"), sub: "Chrome, Firefox" },
     { size: "normal", name: t("services.mobile_development"),sub: "React Native" },
-    { size: "normal", name: t("services.web_aplication"), sub: "PWA, SPA, SSR" },
+    { size: "normal", name: t("services.web_application"), sub: "PWA, SPA, SSR" },
     { size: "small", name: t("services.parsers"), sub: null },
     { size: "large", name: t("services.back_end_development"), sub: "GoLang, NodeJs, Python3" },
   ];
@@ -130,7 +130,7 @@ const Homepage: React.FC<HomePageProps> = ( _props: any) => {
   ];
 
   const linksFooter: IFooterLinksPage[] = [
-    { name: t("menu.main"), to: "prewiew" },
+    { name: t("menu.main"), to: "preview" },
     { name: t("menu.about"), to: "about" },
     { name: t("menu.portfolio"), to: "portfolio" },
     { name: t("menu.services"), to: "service" },
@@ -149,8 +149,8 @@ const Homepage: React.FC<HomePageProps> = ( _props: any) => {
         <title>Nikita Khvatov</title>
         <meta name='description' content='My website about me, my services and my portfolio' />
       </Head>
-      <Prewiew linkContactsWithMe={contectLinks} />
-      <About companies={companies} skils={skils} />
+      <Preview linkContactsWithMe={contectLinks} />
+      <About companies={companies} skills={skils} />
       <Portfolio categories={categories} projects={_props.projects} />
       <Service services={services} />
       <Footer

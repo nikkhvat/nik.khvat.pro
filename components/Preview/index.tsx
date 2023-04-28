@@ -11,7 +11,7 @@ import { StaticImageData } from "next/image";
 import IconAnimation from "./AnimatedIcon";
 import smoothScrollTo from "../../utils/scroll";
 
-interface IPrewiew {
+interface PreviewProps {
   linkContactsWithMe: {
     link: string;
     icon: StaticImageData;
@@ -19,7 +19,7 @@ interface IPrewiew {
   }[];
 }
 
-const Prewiew: React.FC<IPrewiew> = ({ linkContactsWithMe }) => {
+const Preview: React.FC<PreviewProps> = ({ linkContactsWithMe }) => {
   const { t } = useTranslation("common");
 
   const [width] = useWindowSize();
@@ -38,7 +38,7 @@ const Prewiew: React.FC<IPrewiew> = ({ linkContactsWithMe }) => {
   }, []);
 
   return (
-    <div id="prewiew" className={styles.main_screen}>
+    <div id="preview" className={styles.main_screen}>
       <div className={`${styles.line} ${styles.line_left}`}></div>
       <div className={`${styles.line} ${styles.line_top}`}></div>
       <div className={`${styles.line} ${styles.line_right_top}`}></div>
@@ -79,10 +79,10 @@ const Prewiew: React.FC<IPrewiew> = ({ linkContactsWithMe }) => {
 
       <div className={styles.image_back}></div>
 
-      <div className={styles.prewiew_text}>
+      <div className={styles.preview_text}>
         <p
           className={`
-            ${styles.prewiew_text__small}
+            ${styles.preview_text__small}
             ${isTimingFullStack && styles.line_1}
             ${isTimingFullStack && styles.anim_typewriter}`}
           id="typewriter_fullstack"
@@ -91,7 +91,7 @@ const Prewiew: React.FC<IPrewiew> = ({ linkContactsWithMe }) => {
         </p>
         {showDeveloper && (
           <p
-            className={`${styles.prewiew_text__large} ${
+            className={`${styles.preview_text__large} ${
               isTimingDeveloper && styles.line_2
             } ${isTimingDeveloper && styles.anim_typewriter_2}`}
             id="typewriter_developer"
@@ -109,7 +109,7 @@ const Prewiew: React.FC<IPrewiew> = ({ linkContactsWithMe }) => {
       </div>
 
       <button onClick={() => smoothScrollTo("portfolio")} className={styles.btn_to_portfolio} >
-        {t("prewiew.view_portfolio")}
+        {t("preview.view_portfolio")}
       </button>
 
       <div id="logo" className={styles.icons_social_media}>
@@ -119,4 +119,4 @@ const Prewiew: React.FC<IPrewiew> = ({ linkContactsWithMe }) => {
   );
 };
 
-export default Prewiew;
+export default Preview;

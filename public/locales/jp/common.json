@@ -1,7 +1,7 @@
 {
   "fullname": "Nikita Khvatov",
   "quote": "私の目標は、保守可能でクリーンで理解しやすいコードを記述してプロセス開発を行うことでした。",
-  "prewiew": {
+  "preview": {
     "view_portfolio": "ポートフォリオを見る"
   },
   "menu": {
@@ -24,7 +24,7 @@
     "website_development": "ウェブサイト開発",
     "development_browser_extensions": "ブラウザ拡張機能の開発",
     "mobile_development": "モバイル開発",
-    "web_aplication": "ブラウザアプリケーション",
+    "web_application": "ブラウザアプリケーション",
     "parsers": "パーサー",
     "back_end_development": "バックエンド開発とサポート"
   }

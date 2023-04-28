@@ -1,7 +1,7 @@
 {
   "fullname": "Nikita Khvatov",
   "quote": "मेरा लक्ष्य विकास को संसाधित करने के लिए बनाए रखने योग्य, स्वच्छ और समझने योग्य कोड लिखना सुखद था।",
-  "prewiew": {
+  "preview": {
     "view_portfolio": "पोर्टफोलियो देखें"
   },
   "menu": {
@@ -24,7 +24,7 @@
     "website_development": "वेबसाइट विकास",
     "development_browser_extensions": "ब्राउज़र एक्सटेंशन का विकास",
     "mobile_development": "मोबाइल विकास",
-    "web_aplication": "वेब अनुप्रयोग",
+    "web_application": "वेब अनुप्रयोग",
     "parsers": "पार्सर्स",
     "back_end_development": "बैक-एंड विकास और समर्थन"
   }

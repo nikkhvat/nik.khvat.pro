@@ -1,8 +1,8 @@
 .about_screen {
   width: 100%;
-  padding: 130px;
   display: flex;
   flex-wrap: wrap;
+  padding: 130px 130px 0;
 }
 
 .about_screen__left {
@@ -11,7 +11,7 @@
 }
 
 .about_screen__text {
-  font-family: "Open Sans";
+  font-family: "Open Sans", serif;
   font-style: normal;
   font-weight: 400;
   font-size: 36px;
@@ -35,22 +35,22 @@
   margin-bottom: 20px;
 }
 
-.skils_table {
+.skills_table {
   display: flex;
   width: 640px;
   justify-content: space-between;
   gap: 50px;
 }
 
-.skils_table div {
+.skills_table div {
   width: 50%;
 }
 
-.skils_table div div {
+.skills_table div div {
   width: 100%;
 }
 
-.skils_table__column {
+.skills_table__column {
   display: flex;
   flex-direction: column;
 }
@@ -63,8 +63,8 @@
   justify-content: flex-end;
 }
 
-.skils_table__column_title {
-  font-family: "Open Sans";
+.skills_table__column_title {
+  font-family: "Open Sans", serif;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -106,8 +106,8 @@
   bottom: 0;
 }
 
-.skils_table__column_item {
-  font-family: "Open Sans";
+.skills_table__column_item {
+  font-family: "Open Sans", serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -119,7 +119,7 @@
 }
 
 .about_screen__skills_title {
-  font-family: "Fira Code";
+  font-family: "Fira Code", serif;
   font-style: normal;
   font-weight: 600;
   font-size: 64px;
@@ -142,7 +142,7 @@
 }
 
 .about_screen__company_list__item {
-  font-family: "Open Sans";
+  font-family: "Open Sans", serif;
   font-style: normal;
   font-weight: 400;
   font-size: 36px;
@@ -151,7 +151,7 @@
 }
 
 .about_screen__company_title {
-  font-family: "Fira Code";
+  font-family: "Fira Code", serif;
   font-style: normal;
   font-weight: 600;
   font-size: 64px;
@@ -230,7 +230,7 @@
   }
 
   .about_screen__company_title_tablet {
-    font-family: "Fira Code";
+    font-family: "Fira Code", serif;
     font-style: normal;
     font-weight: 600;
     font-size: 64px;
@@ -248,7 +248,7 @@
     width: 418.25px;
   }
 
-  .skils_table {
+  .skills_table {
     width: 100%;
     padding-right: 20px;
   }
@@ -277,13 +277,13 @@
   .about_screen__photo_description {
       left: -25.5px;
   }
-  .skils_table__column_title {
+  .skills_table__column_title {
     font-weight: 400;
     font-size: 18px;
     line-height: 25px;
   }
 
-  .skils_table__column_item {
+  .skills_table__column_item {
     font-weight: 400;
     font-size: 14px;
     line-height: 19px;
@@ -304,7 +304,7 @@
     margin-bottom: 20px;
   }
 
-  .skils_table {
+  .skills_table {
     gap: 0;
   }
 
@@ -314,7 +314,7 @@
   }
 
   .about_screen__text {
-    font-family: "Open Sans";
+    font-family: "Open Sans", serif;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -323,19 +323,20 @@
 
   .about_screen {
     padding: 22px;
+    margin-top: 98px;
   }
 
-  .skils_table {
+  .skills_table {
     flex-wrap: wrap;
     justify-content: space-around;
   }
 
-  .skils_table__column {
+  .skills_table__column {
     width: 50%;
     margin-bottom: 30px;
   }
 
-  .skils_table__column_item {
+  .skills_table__column_item {
     margin-top: 10px;
   }
 
@@ -374,7 +375,7 @@
   }
 
   .about_screen__company_list__text {
-    font-family: "Fira Code";
+    font-family: "Fira Code", serif;
     font-style: normal;
     font-weight: 600;
     font-size: 48px;

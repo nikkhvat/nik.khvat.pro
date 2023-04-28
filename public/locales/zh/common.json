@@ -1,7 +1,7 @@
 {
   "fullname": "Nikita Khvatov",
   "quote": "我的目标是编写可维护、干净且易于理解的代码，以便开发过程充满乐趣。",
-  "prewiew": {
+  "preview": {
     "view_portfolio": "查看投资组合"
   },
   "menu": {
@@ -24,7 +24,7 @@
     "website_development": "网站发展",
     "development_browser_extensions": "浏览器扩展的开发",
     "mobile_development": "流动发展",
-    "web_aplication": "网上应用系统",
+    "web_application": "网上应用系统",
     "parsers": "解析器",
     "back_end_development": "后端开发和支持"
   }

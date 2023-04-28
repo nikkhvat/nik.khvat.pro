@@ -10,6 +10,6 @@ class Storage {
     static delete(key: string) {
         return localStorage.removeItem(`nik19ta_${key}`);
     };
-};
+}
 
 export default Storage;

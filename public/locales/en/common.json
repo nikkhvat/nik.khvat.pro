@@ -1,7 +1,7 @@
 {
   "fullname": "Nikita Khvatov",
   "quote": "My goal is to write maintainable, clean and understandable code to process development was enjoyable.",
-  "prewiew": {
+  "preview": {
     "view_portfolio": "View portfolio"
   },
   "menu": {
@@ -24,7 +24,7 @@
     "website_development": "Website development",
     "development_browser_extensions": "Development of browser extensions",
     "mobile_development": "Mobile development",
-    "web_aplication": "Web Aplication",
+    "web_application": "Web Application",
     "parsers": "Parsers",
     "back_end_development": "Back-end development and support"
   }

@@ -25,7 +25,7 @@ const Footer: React.FC<IFooter> = ({ linkContactsWithMe, linksFooter }) => {
   const { t } = useTranslation("common");
 
   const links = [
-    { to: "prewiew", title: t("menu.main") },
+    { to: "preview", title: t("menu.main") },
     { to: "about", title: t("menu.about") },
     { to: "portfolio", title: t("menu.portfolio") },
     { to: "service", title: t("menu.services") }
@@ -35,7 +35,7 @@ const Footer: React.FC<IFooter> = ({ linkContactsWithMe, linksFooter }) => {
     <div id="concatcs" className={styles.footer}>
       <div className={styles.footer__top_line}>
         <p className={styles.footer_title}>Contacts</p>
-        <div className={styles.footer__vartical_line}></div>
+        <div className={styles.footer__vertical_line}></div>
       </div>
 
       <div className={styles.footer__items}>
@@ -139,7 +139,7 @@ const Footer: React.FC<IFooter> = ({ linkContactsWithMe, linksFooter }) => {
           Middle full-stack Developer
         </p>
 
-        <div className={styles.footer_mobile__collumns}>
+        <div className={styles.footer_mobile__columns}>
           <div className={styles.footer__item}>
             {linkContactsWithMe.map((item) => (
               <div key={item.alt}>
