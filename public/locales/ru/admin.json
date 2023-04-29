@@ -1,7 +1,7 @@
 {
   "dashboard": "Dashboard",
   "general_site_statistics": "Общая статистика сайта",
-  "visits": "Посещений",
+  "visits": "Повторные посещения",
   "unique_visits": "Уникальные посещения",
   "projects_statistics": "Статистика проектов"
 }

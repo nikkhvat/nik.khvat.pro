@@ -8,12 +8,18 @@
       "sub_title": {
         "en": "Augmented Reality Menu for Restaurants",
         "ru": "Меню с дополненной реальностью для ресторанов",
-        "ja": "レストランのための拡張現実メニュー"
+        "ja": "レストランのための拡張現実メニュー",
+        "de": "Erweiterte Realität Menü für Restaurants",
+        "tr": "Restoranlar için Artırılmış Gerçeklik Menüsü",
+        "fr": "Menu en réalité augmentée pour les restaurants"
       },
       "description": {
         "en": "An application for electronic restaurant menus with augmented reality elements. This innovative solution enhances the dining experience by allowing customers to access the menu via a QR code, view detailed information about each dish, and see a 3D model of the dish in augmented reality.",
         "ru": "Это приложение для электронных меню с элементами дополненной реальности, предназначенное для улучшения взаимодействия клиентов с меню ресторанов. Привлекательный и удобный интерфейс позволяет погрузиться в мир гастрономических изысков и сделать правильный выбор блюда.",
-        "ja": "レストラン向けの電子メニューアプリで、拡張現実 (AR) の要素が含まれています。これにより、飲食店は、より効果的なプレゼンテーションと顧客エンゲージメントを提供できます。"
+        "ja": "レストラン向けの電子メニューアプリで、拡張現実 (AR) の要素が含まれています。これにより、飲食店は、より効果的なプレゼンテーションと顧客エンゲージメントを提供できます。",
+        "de": "Eine Anwendung für elektronische Restaurantmenüs mit erweiterter Realitätselementen. Diese innovative Lösung verbessert das Esserlebnis, indem sie den Kunden ermöglicht, das Menü über einen QR-Code abzurufen, detaillierte Informationen über jedes Gericht einzusehen und ein 3D-Modell des Gerichts in erweiterter Realität zu sehen.",
+        "tr": "Artırılmış gerçeklik öğeleri içeren elektronik restoran menüleri için bir uygulama. Bu yenilikçi çözüm, müşterilerin menüye bir QR kodu aracılığıyla erişmesine, her yemek hakkında ayrıntılı bilgileri görüntülemesine ve yemeğin artırılmış gerçeklikte 3D modelini görmesine olanak tanıyarak yemek deneyimini geliştirir.",
+        "fr": "Une application de menus de restaurant électroniques avec des éléments de réalité augmentée. Cette solution innovante améliore l'expérience culinaire en permettant aux clients d'accéder au menu via un code QR, de consulter des informations détaillées sur chaque plat et de voir un modèle 3D du plat en réalité augmentée."
       },
       "cards": [
         { "title": "Front-end", "sub_title": "React Native, Three.js" },
@@ -30,7 +36,19 @@
 
         { "name": "Быстрый доступ к меню ресторана: С помощью QR-кода клиенты могут легко и быстро получить доступ к меню ресторана, избегая контакта с физическими меню.", "lang": "ru" },
         { "name": "Подробная информация о блюде: Приложение предоставляет информацию о каждом блюде, включая описание, фотографии, время приготовления и ингредиенты. Это помогает клиентам сделать осознанный выбор и учитывать свои индивидуальные предпочтения и диетические ограничения.", "lang": "ru" },
-        { "name": "3D-модели блюд с использованием дополненной реальности: Уникальная функция AR позволяет клиентам рассмотреть трехмерные модели блюд прямо на их столе. Это не только увлекательный опыт, но и дает возможность клиентам представить внешний вид блюда, его размер и порцию перед заказом.", "lang": "ru" }
+        { "name": "3D-модели блюд с использованием дополненной реальности: Уникальная функция AR позволяет клиентам рассмотреть трехмерные модели блюд прямо на их столе. Это не только увлекательный опыт, но и дает возможность клиентам представить внешний вид блюда, его размер и порцию перед заказом.", "lang": "ru" },
+
+        { "name": "Zugang zum Restaurantmenü über einen QR-Code: Kunden können das Menü schnell und einfach abrufen, indem sie mit ihrem Smartphone einen QR-Code scannen, wodurch die Notwendigkeit von physischen Menüs entfällt.", "lang": "de" },
+        { "name": "Einzelne Gerichte mit Beschreibungen, Fotos, Zubereitungszeit und Zutaten anzeigen: Die Anwendung bietet detaillierte Informationen zu jedem Gericht, einschließlich Beschreibungen, hochwertigen Fotos, Zubereitungszeit und einer Liste der Zutaten, sodass Kunden genau wissen, was sie erwarten können.", "lang": "de" },
+        { "name": "Erweiterte Realität 3D-Modell von Gerichten: Die App hebt das Esserlebnis auf die nächste Stufe, indem sie Kunden ermöglicht, ein 3D-Modell des Gerichts in erweiterter Realität zu betrachten und so vor der Bestellung ein besseres Verständnis für das Aussehen und die Portionsgröße des Gerichts zu erhalten.", "lang": "de" },
+
+        { "name": "QR kodu ile restoran menüsüne erişin: Müşteriler, akıllı telefonlarıyla bir QR kodu tarayarak hızlı ve kolay bir şekilde menüye erişebilir, fiziksel menülere olan ihtiyacı ortadan kaldırır.", "lang": "tr" },
+        { "name": "Açıklamaları, fotoğrafları, hazırlık süresi ve içerikleri ile bireysel yemekleri görüntüleyin: Uygulama, her yemeğin ayrıntılı bilgilerini sunar, açıklamalar, yüksek kaliteli fotoğraflar, hazırlık süresi ve içerik listesi dahil olmak üzere, böylece müşteriler ne bekleyeceklerini tam olarak bilir.", "lang": "tr" },
+        { "name": "Yemeklerin artırılmış gerçeklik 3D modeli: Uygulama, müşterilerin yemeğin artırılmış gerçeklikte 3D modelini görüntülemelerine olanak tanıyarak yemek deneyimini bir üst seviyeye çıkarır ve böylece yemeğin görünümü ve porsiyon büyüklüğü hakkında daha iyi bir anlayış sağlar.", "lang": "tr" },
+
+        { "name": "Accéder au menu du restaurant via un code QR : Les clients peuvent accéder rapidement et facilement au menu en scannant un code QR avec leur smartphone, éliminant ainsi le besoin de menus physiques.", "lang": "fr" },
+        { "name": "Voir les plats individuels avec descriptions, photos, temps de préparation et ingrédients : L'application fournit des informations détaillées sur chaque plat, y compris les descriptions, des photos de haute qualité, le temps de préparation et une liste d'ingrédients, afin que les clients sachent exactement à quoi s'attendre.", "lang": "fr" },
+        { "name": "Modèle 3D en réalité augmentée des plats : L'application améliore l'expérience culinaire en permettant aux clients de visualiser un modèle 3D du plat en réalité augmentée, leur donnant une meilleure compréhension de l'apparence et de la taille des portions avant de commander.", "lang": "fr" }
       ],
       "photos": ["ewys/1.jpg", "ewys/2.jpg", "ewys/3.jpg"]
     },
@@ -42,12 +60,18 @@
       "sub_title": {
         "en": "The platform builds entrepreneurial skills through online gaming solutions.",
         "ru": "Business Up - develop your entrepreneurial skills through the game",
-        "ja": "ビジネスアップ-ゲームを通してあなたの起業家のスキルを開発"
+        "ja": "ビジネスアップ-ゲームを通してあなたの起業家のスキルを開発",
+        "de": "Die Plattform entwickelt unternehmerische Fähigkeiten durch Online-Spiellösungen.",
+        "tr": "Platform, çevrimiçi oyun çözümleri aracılığıyla girişimcilik becerilerini geliştirir.",
+        "fr": "La plateforme développe des compétences entrepreneuriales grâce à des solutions de jeux en ligne."
       },
       "description": {
         "en": "A platform that develops entrepreneurial skills through online game-based solutions. BUSINESS UP focuses on building development trajectories, supporting business communities, and participating in cyber championships to foster a comprehensive learning experience for aspiring entrepreneurs.",
-        "ru": "Описание: Business Up - это интеллектуальная платформа, созданная для развития предпринимательских навыков и формирования успешных бизнес-траекторий. С помощью инновационных игровых решений, дистанционного обучения и цифрового взаимодействия с бизнес-сообществом, Business Up подготавливает будущих предпринимателей к успешному старту и развитию своего бизнеса.",
-        "ja": "BUSINESS UPは、オンラインゲームソリューションを利用して起業家のスキルを育成するプラットフォームです。開発トラジェクトリー、ビジネスコミュニティのサポート、サイバーチャンピオンシップへの参加を通じて、起業家のスキルを向上させます。"
+        "ru": "Business Up - это интеллектуальная платформа, созданная для развития предпринимательских навыков и формирования успешных бизнес-траекторий. С помощью инновационных игровых решений, дистанционного обучения и цифрового взаимодействия с бизнес-сообществом, Business Up подготавливает будущих предпринимателей к успешному старту и развитию своего бизнеса.",
+        "ja": "BUSINESS UPは、オンラインゲームソリューションを利用して起業家のスキルを育成するプラットフォームです。開発トラジェクトリー、ビジネスコミュニティのサポート、サイバーチャンピオンシップへの参加を通じて、起業家のスキルを向上させます。",
+        "de": "Eine Plattform, die unternehmerische Fähigkeiten durch Online-Spiel-basierte Lösungen entwickelt. BUSINESS UP konzentriert sich auf den Aufbau von Entwicklungsverläufen, die Unterstützung von Geschäftsgemeinschaften und die Teilnahme an Cyber-Meisterschaften, um ein umfassendes Lernerlebnis für angehende Unternehmer zu fördern.",
+        "tr": "Çevrimiçi oyun tabanlı çözümler aracılığıyla girişimcilik becerilerini geliştiren bir platform. BUSINESS UP, gelişim yörüngeleri oluşturma, iş topluluklarını destekleme ve siber şampiyonalara katılma üzerine yoğunlaşarak, gelecekteki girişimciler için kapsamlı bir öğrenme deneyimi sunar.",
+        "fr": "Une plateforme qui développe des compétences entrepreneuriales grâce à des solutions basées sur des jeux en ligne. BUSINESS UP se concentre sur la construction de trajectoires de développement, le soutien aux communautés d'affaires et la participation à des championnats cybernétiques pour offrir une expérience d'apprentissage complète aux entrepreneurs en herbe."
       },
       "cards": [
         { "title": "Front-end","sub_title": "Vue.js, VueRouter" },
@@ -71,7 +95,25 @@
         { "name": "Бизнес-игры и чемпионаты: Участвуйте в увлекательных бизнес-играх и киберчемпионатах, развивая свои навыки и получая возможность применить их на практике.", "lang": "ru"},
         { "name": "Дистанционное обучение: Получайте доступ к высококачественным образовательным материалам и курсам, которые помогут вам освоить ключевые компетенции в сфере предпринимательства.", "lang": "ru"},
         { "name": "Цифровое бизнес-коммьюнити: Взаимодействуйте с другими предпринимателями и экспертами в рамках платформы, обменивайтесь опытом и идеями для успешного развития своего бизнеса.", "lang": "ru"},
-        { "name": "Социальный проект: Вовлекайтесь в реализацию социальных проектов, которые способствуют улучшению жизни окружающих вас людей и общества в целом.", "lang": "ru"}
+        { "name": "Социальный проект: Вовлекайтесь в реализацию социальных проектов, которые способствуют улучшению жизни окружающих вас людей и общества в целом.", "lang": "ru"},
+
+        { "name": "Persönliches Dashboard mit Bewertungen und Reputation: Benutzer verfügen über ein eigenes Dashboard, auf dem sie ihren Fortschritt, ihre Bewertungen und ihren Ruf innerhalb der Plattform verfolgen können.", "lang": "de"},
+        { "name": "Business-Spiele und Meisterschaften: Spannende Business-Spiele und Meisterschaften bieten eine wettbewerbsfähige und unterhaltsame Umgebung, in der Benutzer ihre unternehmerischen Fähigkeiten entwickeln und verfeinern können.", "lang": "de"},
+        { "name": "Fernlernen: Die Plattform bietet Möglichkeiten zum Fernlernen und ermöglicht es Benutzern, auf Bildungsressourcen zuzugreifen und ihr Wissen im Bereich Unternehmertum zu erweitern.", "lang": "de"},
+        { "name": "Digitale Geschäftsgemeinschaft: BUSINESS UP fördert eine digitale Geschäftsgemeinschaft, in der Benutzer Kontakte knüpfen, zusammenarbeiten und Ideen mit Gleichgesinnten austauschen können.", "lang": "de"},
+        { "name": "Soziales Projekt: Die Plattform beinhaltet eine soziale Projekt-Komponente, die es Benutzern ermöglicht, einen positiven Einfluss auf die Gesellschaft zu nehmen und gleichzeitig ihre unternehmerischen Fähigkeiten zu verfeinern.", "lang": "de"},
+
+        { "name": "Puan ve itibar içeren kişisel kontrol paneli: Kullanıcıların, platformdaki ilerlemelerini, puanlarını ve itibarını takip edebilecekleri kendi kontrol paneli bulunmaktadır.", "lang": "tr"},
+        { "name": "İş oyunları ve şampiyonalar: Kullanıcıların girişimcilik becerilerini geliştirmeleri ve mükemmelleştirmeleri için rekabetçi ve eğlenceli bir ortam sunan etkileyici iş oyunları ve şampiyonaları.", "lang": "tr"},
+        { "name": "Uzaktan öğrenme: Platform, kullanıcıların eğitim kaynaklarına erişebilmelerini ve girişimcilik alanındaki bilgilerini genişletmelerini sağlayan uzaktan öğrenme fırsatları sunar.", "lang": "tr"},
+        { "name": "Dijital iş topluluğu: BUSINESS UP, kullanıcıların benzer düşünen bireylerle iletişim kurabileceği, işbirliği yapabileceği ve fikir alışverişinde bulunabileceği dijital bir iş topluluğunu teşvik eder.", "lang": "tr"},
+        { "name": "Sosyal proje: Platform, kullanıcıların girişimcilik becerilerini geliştirirken toplum üzerinde olumlu bir etki yapmalarını sağlayan bir sosyal proje bileşenini içerir.", "lang": "tr"},
+
+        { "name": "Tableau de bord personnel avec notes et réputation : Les utilisateurs disposent de leur propre tableau de bord où ils peuvent suivre leur progression, leurs notes et leur réputation au sein de la plateforme.", "lang": "fr"},
+        { "name": "Jeux d'affaires et championnats : Des jeux d'affaires captivants et des championnats offrent un environnement compétitif et amusant pour les utilisateurs afin de développer et d'affiner leurs compétences entrepreneuriales.", "lang": "fr"},
+        { "name": "Apprentissage à distance : La plateforme propose des opportunités d'apprentissage à distance, permettant aux utilisateurs d'accéder à des ressources éducatives et d'étendre leurs connaissances dans le domaine de l'entrepreneuriat.", "lang": "fr"},
+        { "name": "Communauté d'affaires numérique : BUSINESS UP favorise une communauté d'affaires numérique où les utilisateurs peuvent réseauter, collaborer et échanger des idées avec des personnes partageant les mêmes idées.", "lang": "fr"},
+        { "name": "Projet social : La plateforme comprend un volet de projet social, permettant aux utilisateurs d'avoir un impact positif sur la société tout en affinant leurs compétences entrepreneuriales.", "lang": "fr"}
       ],
       "photos": ["business-up/1.jpg", "business-up/2.jpg", "business-up/3.jpg"]
     },
@@ -83,13 +125,19 @@
       "sub_title": {
         "en": "Optimization of sales on Ozon and Wildberries",
         "ru": "Оптимизация продаж на Ozon и Wildberries",
-        "ja": "オゾンとワイルドベリーズでの販売最適化"
-    },
+        "ja": "オゾンとワイルドベリーズでの販売最適化",
+        "de": "Optimierung von Verkäufen auf Ozon und Wildberries",
+        "tr": "Ozon ve Wildberries'te satış optimizasyonu",
+        "fr": "Optimisation des ventes sur Ozon et Wildberries"
+      },
       "description": {
         "en": "A service assistant for sellers on Ozon and Wildberries platforms. OWSUP is designed to optimize sales performance by providing a variety of helpful features, allowing sellers to streamline their operations and maximize profits.",
         "ru": "OWSUP - это интуитивный и удобный сервис-помощник для продавцов на платформах Ozon и Wildberries. Сервис разработан с целью оптимизации продаж и упрощения управления аккаунтами продавцов на обеих площадках. OWSUP предоставляет продавцам все необходимые инструменты и аналитику для успешного ведения бизнеса в сфере электронной коммерции.",
-        "ja": "オゾンとワイルドベリーズのプラットフォームでの販売者向けのサービスアシスタント。OWSUPは、さまざまな便利な機能を提供することで、販売者が業務を効率化し、利益を最大化することを目的とした販売パフォーマンスの最適化を行います。"
-    },
+        "ja": "オゾンとワイルドベリーズのプラットフォームでの販売者向けのサービスアシスタント。OWSUPは、さまざまな便利な機能を提供することで、販売者が業務を効率化し、利益を最大化することを目的とした販売パフォーマンスの最適化を行います。",
+        "de": "Ein Serviceassistent für Verkäufer auf den Plattformen Ozon und Wildberries. OWSUP wurde entwickelt, um die Verkaufsleistung zu optimieren, indem eine Vielzahl hilfreicher Funktionen bereitgestellt wird, die es Verkäufern ermöglichen, ihre Abläufe zu straffen und den Gewinn zu maximieren.",
+        "tr": "Ozon ve Wildberries platformlarındaki satıcılar için bir hizmet asistanı. OWSUP, satıcıların işlemlerini düzenlemelerine ve karlarını en üst düzeye çıkarmalarına olanak tanıyan çeşitli yardımcı özellikler sunarak satış performansını optimize etmek için tasarlanmıştır.",
+        "fr": "Un assistant de service pour les vendeurs sur les plateformes Ozon et Wildberries. OWSUP est conçu pour optimiser les performances de vente en fournissant une variété de fonctionnalités utiles, permettant aux vendeurs de rationaliser leurs opérations et de maximiser leurs profits."
+      },
       "cards": [
         { "title": "Front-end","sub_title": "React, Redux Toolkit, Ant.d" },
         { "title": "Back-end", "sub_title": "GoLang, Gin, Gorm, PostgreSQL" }
@@ -108,7 +156,22 @@
         { "name": "Копирование карточек товаров между кабинетами или платформами: Благодаря интеграции с Ozon и Wildberries, OWSUP позволяет легко копировать и перемещать карточки товаров между различными аккаунтами и платформами, экономя ваше время и усилия.", "lang": "ru" },
         { "name": "Общая аналитика всех кабинетов в одном Dashboard: OWSUP предоставляет удобный обзор всех ваших аккаунтов на Ozon и Wildberries в одной панели управления, облегчая анализ и сравнение продаж.", "lang": "ru" },
         { "name": "Аналитика заказов со всех кабинетов: Получайте подробную аналитику заказов с обеих платформ, что позволит вам лучше понимать предпочтения и ожидания вашей целевой аудитории, а также принимать своевременные решения для повышения эффективности продаж.", "lang": "ru" },
-        { "name": "Калькуляторы прибыли и комиссии товара: OWSUP включает в себя инструменты для расчета прибыли и комиссий, связанных с доставкой товаров и другими аспектами ведения бизнеса на платформах Ozon и Wildberries. Это позволяет продавцам точно оценить свою рентабельность и определить оптимальные стратегии ценообразования.", "lang": "ru" }
+        { "name": "Калькуляторы прибыли и комиссии товара: OWSUP включает в себя инструменты для расчета прибыли и комиссий, связанных с доставкой товаров и другими аспектами ведения бизнеса на платформах Ozon и Wildberries. Это позволяет продавцам точно оценить свою рентабельность и определить оптимальные стратегии ценообразования.", "lang": "ru" },
+
+        { "name": "Kopieren von Produktkarten zwischen Konten oder Verkaufsplattformen: OWSUP ermöglicht es Benutzern, Produktkarten einfach zwischen verschiedenen Konten oder Plattformen zu kopieren und vereinfacht so das Verwalten mehrerer Verkaufsflächen.", "lang": "de" },
+        { "name": "Einheitliches Analyse-Dashboard für alle Konten: Der Service bietet ein umfassendes Analyse-Dashboard, das Daten aus allen Benutzerkonten zusammenfasst und eine praktische Möglichkeit bietet, die Verkaufsleistung auf verschiedenen Plattformen zu überwachen.", "lang": "de" },
+        { "name": "Bestellanalytics von allen Konten: OWSUP fasst Bestelldaten aus allen verknüpften Konten zusammen, sodass es für Verkäufer einfach ist, ihre Verkaufshistorie zu verfolgen und Trends zu erkennen.", "lang": "de" },
+        { "name": "Gewinn- und Provisionsrechner für Produktlieferungen und andere Gebühren: Der Service beinhaltet integrierte Rechner, die Verkäufern helfen, ihre Gewinne zu ermitteln und verschiedene Gebühren, wie Provisionen und Lieferkosten, zu berücksichtigen.", "lang": "de" },
+
+        { "name": "Ürün kartlarını hesaplar veya satış platformları arasında kopyalama: OWSUP, kullanıcıların ürün kartlarını farklı hesaplar veya platformlar arasında kolayca kopyalamalarını sağlayarak, birden fazla vitrin yönetme sürecini basitleştirir.", "lang": "tr" },
+        { "name": "Tüm hesaplar için birleşik analitik gösterge paneli: Hizmet, tüm kullanıcı hesaplarından verileri birleştiren kapsamlı bir analitik gösterge paneli sunarak, çeşitli platformlarda satış performansını izleme için uygun bir yol sunar.", "lang": "tr" },
+        { "name": "Tüm hesaplardan sipariş analitiği: OWSUP, bağlantılı tüm hesaplardan sipariş verilerini toplar, satıcıların satış geçmişini takip etmelerini ve eğilimleri belirlemelerini kolaylaştırır.", "lang": "tr" },
+        { "name": "Ürün teslimatı ve diğer ücretler için kar ve komisyon hesaplayıcıları: Hizmet, satıcıların karlarını belirlemelerine ve komisyon ve teslimat maliyetleri gibi çeşitli ücretlere göre hesaplamalarına yardımcı olacak dahili hesaplayıcılar içerir.", "lang": "tr" },
+
+        { "name": "Copie des fiches produits entre comptes ou plateformes de vente : OWSUP permet aux utilisateurs de copier facilement les fiches produits entre différents comptes ou plateformes, simplifiant ainsi la gestion de plusieurs points de vente.", "lang": "fr" },
+        { "name": "Tableau de bord d'analyse unifié pour tous les comptes : Le service propose un tableau de bord d'analyse complet qui regroupe les données de tous les comptes utilisateurs, offrant un moyen pratique de surveiller les performances de vente sur différentes plateformes.", "lang": "fr" },
+        { "name": "Analyse des commandes de tous les comptes : OWSUP agrège les données de commandes de tous les comptes liés, facilitant ainsi le suivi de l'historique des ventes et l'identification des tendances pour les vendeurs.", "lang": "fr" },
+        { "name": "Calculatrices de profit et de commission pour la livraison des produits et autres frais : Le service inclut des calculatrices intégrées pour aider les vendeurs à déterminer leurs profits et à tenir compte des divers frais, tels que les commissions et les coûts de livraison.", "lang": "fr" }
       ],
       "photos": ["owsup/1.jpg", "owsup/2.jpg", "owsup/3.jpg"]
     },
@@ -120,12 +183,18 @@
       "sub_title": {
         "en": "Discord bot for notifications about new products",
         "ru": "Discord бот для оповещений о новых товарах",
-        "ja": "新製品に関する通知のためのDiscordボット"
-    },
+        "ja": "新製品に関する通知のためのDiscordボット",
+        "de": "Discord-Bot für Benachrichtigungen über neue Produkte",
+        "tr": "Yeni ürünler hakkında bildirimler için Discord botu",
+        "fr": "Bot Discord pour les notifications concernant les nouveaux produits"
+      },
       "description": {
         "en": "A Discord bot designed to provide information about newly arrived products. EPICHERISION is equipped with a variety of parsers for collecting data and generating ATK links, making it a valuable resource for users looking to stay informed about the latest product offerings.",
         "ru": "EPICHERISION - это интеллектуальный Discord бот, созданный для предоставления информации о поступлении новых товаров в различных магазинах. Благодаря мощным парсерам и гибким настройкам, EPICHERISION обеспечивает своевременные и релевантные оповещения, которые помогут пользователям быть в курсе последних новинок и успеть приобрести желанные товары.",
-        "ja": "新しく入荷した製品に関する情報を提供するために設計されたDiscordボット。EPICHERISIONは、データ収集とATKリンク生成のためのさまざまなパーサを備えており、最新の製品情報を追い求めるユーザーにとって貴重なリソースとなります。"
+        "ja": "新しく入荷した製品に関する情報を提供するために設計されたDiscordボット。EPICHERISIONは、データ収集とATKリンク生成のためのさまざまなパーサを備えており、最新の製品情報を追い求めるユーザーにとって貴重なリソースとなります。",
+        "de": "Ein Discord-Bot, der entwickelt wurde, um Informationen über neu eingetroffene Produkte zu liefern. EPICHERISION ist mit einer Vielzahl von Parsern zum Sammeln von Daten und Generieren von ATK-Links ausgestattet, was ihn zu einer wertvollen Ressource für Benutzer macht, die über die neuesten Produktangebote informiert bleiben möchten.",
+        "tr": "Yeni gelen ürünler hakkında bilgi sağlamak için tasarlanmış bir Discord botu. EPICHERISION, veri toplamak ve ATK bağlantıları oluşturmak için çeşitli ayrıştırıcılarla donatılmıştır, bu da kullanıcıların en son ürün teklifleri hakkında bilgi sahibi olmalarını sağlayan değerli bir kaynak haline getirir.",
+        "fr": "Un bot Discord conçu pour fournir des informations sur les nouveaux produits arrivés. EPICHERISION est équipé d'une variété de parseurs pour collecter les données et générer des liens ATK, ce qui en fait une ressource précieuse pour les utilisateurs cherchant à rester informés des dernières offres de produits."
       },
       "cards": [
         { "title": "Bot", "sub_title": "NodeJs, node-html-parser" }
@@ -144,7 +213,22 @@
         { "name": "Мощные парсеры данных: В процессе реализации EPICHERISION было создано множество парсеров, обрабатывающих как обычные, так и метаданные, необходимые для генерации АТК ссылок.", "lang": "ru" },
         { "name": "Гибкая настройка ключевых слов и категорий: Пользователи имеют возможность редактировать ключевые слова и категории товаров, которые они хотят отслеживать, получая только релевантные оповещения.", "lang": "ru" },
         { "name": "Отдельные каналы для разных магазинов: Оповещения о новых товарах отправляются в отдельные каналы для каждого магазина, обеспечивая удобную и структурированную информацию.", "lang": "ru" },
-        { "name": "Генерация АТК ссылок для Nike: EPICHERISION предоставляет специализированный функционал для генерации атк ссылок для магазина Nike, активируемый администратором сервера.", "lang": "ru" }
+        { "name": "Генерация АТК ссылок для Nike: EPICHERISION предоставляет специализированный функционал для генерации атк ссылок для магазина Nike, активируемый администратором сервера.", "lang": "ru" },
+
+        { "name": "Umfangreiche Parser für Daten und Metadaten: EPICHERISION ist mit zahlreichen Parsern ausgestattet, um sowohl Standarddaten als auch Metadaten zu sammeln, die für die Generierung von ATK-Links erforderlich sind, und stellt sicher, dass Benutzer genaue und aktuelle Informationen erhalten.", "lang": "de" },
+        { "name": "Anpassbare Stichwort- und Kategorieauswahl: Benutzer können Stichworte und Kategorien für die Produktauswahl bearbeiten, sodass sie die Benachrichtigungen des Bots an ihre speziellen Interessen und Vorlieben anpassen können.", "lang": "de" },
+        { "name": "Kanalspezifische Benachrichtigungen für jeden Laden: Der Bot sendet Produktaktualisierungen an separate Kanäle für jeden Laden, um sicherzustellen, dass Benutzer die benötigten Informationen leicht abrufen und verfolgen können.", "lang": "de" },
+        { "name": "ATK-Link-Generierung auf Anfrage für Nike: EPICHERISION kann ATK-Links für Nike-Produkte bei Aktivierung durch den Administrator generieren und bietet Benutzern so noch mehr Kontrolle über ihr Einkaufserlebnis.", "lang": "de" },
+
+        { "name": "Veri ve meta veri için kapsamlı ayrıştırıcılar: EPICHERISION, kullanıcıların doğru ve güncel bilgilere ulaşmasını sağlamak için ATK bağlantıları oluşturmak için gerekli olan hem standart verileri hem de meta verileri toplamak için çok sayıda ayrıştırıcıyla inşa edilmiştir.", "lang": "tr" },
+        { "name": "Özelleştirilebilir anahtar kelime ve kategori seçimi: Kullanıcılar, ürün seçimi için anahtar kelimeleri ve kategorileri düzenleyebilir, böylece botun bildirimlerini belirli ilgi alanlarına ve tercihlerine göre uyarlayabilirler.", "lang": "tr" },
+        { "name": "Her mağaza için kanala özel bildirimler: Bot, kullanıcıların ihtiyaç duydukları bilgilere kolayca erişebilmelerini ve takip edebilmelerini sağlamak için her mağaza için ayrı kanallara ürün güncellemeleri gönderir.", "lang": "tr" },
+        { "name": "Nike için talep üzerine ATK bağlantısı oluşturma: EPICHERISION, yönetici aktivasyonu üzerine Nike ürünleri için ATK bağlantıları oluşturma yeteneğine sahiptir, kullanıcılara alışveriş deneyimlerinde daha fazla kontrol sağlar.", "lang": "tr" },
+
+        { "name": "Parseurs étendus pour les données et les métadonnées : EPICHERISION est construit avec de nombreux parseurs pour collecter à la fois les données standard et les métadonnées nécessaires à la génération de liens ATK, garantissant ainsi que les utilisateurs reçoivent des informations précises et à jour.", "lang": "fr" },
+        { "name": "Sélection personnalisable de mots-clés et de catégories : Les utilisateurs peuvent modifier les mots-clés et les catégories pour la sélection des produits, leur permettant d'adapter les notifications du bot à leurs intérêts et préférences spécifiques.", "lang": "fr" },
+        { "name": "Notifications spécifiques à chaque chaîne pour chaque magasin : Le bot envoie des mises à jour de produits sur des chaînes séparées pour chaque magasin, garantissant que les utilisateurs peuvent accéder et suivre facilement les informations dont ils ont besoin.", "lang": "fr" },
+        { "name": "Génération de liens ATK à la demande pour Nike : EPICHERISION est capable de générer des liens ATK pour les produits Nike lors de l'activation par l'administrateur, offrant aux utilisateurs un contrôle encore plus grand sur leur expérience d'achat.", "lang": "fr" }
       ],
       "photos": ["epicherision/1.jpg", "epicherision/2.jpg", "epicherision/3.jpg"]
     },
@@ -156,12 +240,18 @@
       "sub_title": {
         "en": "Go Portfolio - an engine for portfolio websites in the Go language",
         "ru": "Go Portfolio - движок для сайтов-портфолио на языке Go",
-        "ja": "Go Portfolio - Go言語で作成されたポートフォリオWebサイトのエンジン"
+        "ja": "Go Portfolio - Go言語で作成されたポートフォリオWebサイトのエンジン",
+        "de": "Go Portfolio - ein Motor für Portfolio-Websites in der Go-Sprache",
+        "tr": "Go Portfolio - Go dilinde portföy web siteleri için bir motor",
+        "fr": "Go Portfolio - un moteur pour les sites web de portfolio en langage Go"
       },
       "description": {
         "en": "A specialized content management system (CMS) for portfolio websites, written in Go. Go Portfolio is designed to showcase your work in a visually appealing and professional manner, offering a range of features to help you create the perfect online portfolio.",
         "ru": "Go Portfolio - это узкоспециализированный движок для создания сайтов-портфолио, разработанный на языке программирования Go. Простой и мощный, Go Portfolio предоставляет удобную CMS для управления вашим портфолио, сохранения изображений высокого качества и отслеживания популярности проектов.",
-        "ja": "Go言語で作成されたポートフォリオWebサイトのための専門的なコンテンツ管理システム（CMS）。Go Portfolioは、視覚的に魅力的でプロフェッショナルな方法であなたの作品を展示するように設計されており、完璧なオンラインポートフォリオを作成するのに役立つさまざまな機能を提供しています。"
+        "ja": "Go言語で作成されたポートフォリオWebサイトのための専門的なコンテンツ管理システム（CMS）。Go Portfolioは、視覚的に魅力的でプロフェッショナルな方法であなたの作品を展示するように設計されており、完璧なオンラインポートフォリオを作成するのに役立つさまざまな機能を提供しています。",
+        "de": "Ein spezialisiertes Content-Management-System (CMS) für Portfolio-Websites, geschrieben in Go. Go Portfolio wurde entwickelt, um Ihre Arbeit auf ansprechende und professionelle Weise zu präsentieren und bietet eine Reihe von Funktionen, um das perfekte Online-Portfolio zu erstellen.",
+        "tr": "Go diliyle yazılmış portföy web siteleri için özel bir içerik yönetim sistemi (CMS). Go Portfolio, işinizi görsel olarak çekici ve profesyonel bir şekilde sergilemek için tasarlanmış olup, mükemmel bir çevrimiçi portföy oluşturmanıza yardımcı olacak bir dizi özellik sunar.",
+        "fr": "Un système de gestion de contenu (CMS) spécialisé pour les sites web de portfolio, écrit en Go. Go Portfolio est conçu pour mettre en valeur vos travaux de manière visuellement attrayante et professionnelle, offrant une gamme de fonctionnalités pour vous aider à créer le portfolio en ligne parfait."
       },
       "cards": [
         { "title": "Front-end","sub_title": "React, Redux ToolKit" },
@@ -178,7 +268,19 @@
 
         { "name": "Хранение изображений высокого качества: Go Portfolio позволяет сохранять изображения ваших проектов в высоком качестве, гарантируя яркое и четкое воспроизведение на вашем сайте.", "lang": "ru" },
         { "name": "Интуитивная админ-панель: Сервис предоставляет удобную и простую в использовании админ-панель для управления содержимым вашего сайта-портфолио.", "lang": "ru" },
-        { "name": "Статистика популярности проектов: Go Portfolio позволяет отслеживать популярность различных проектов на вашем сайте, предоставляя статистику о просмотрах и взаимодействиях посетителей.", "lang": "ru" }
+        { "name": "Статистика популярности проектов: Go Portfolio позволяет отслеживать популярность различных проектов на вашем сайте, предоставляя статистику о просмотрах и взаимодействиях посетителей.", "lang": "ru" },
+
+        { "name": "Hochwertiger Bildspeicher für Projekte: Go Portfolio ermöglicht es Ihnen, hochauflösende Bilder für Ihre Projekte zu speichern und sicherzustellen, dass Ihre Arbeit in bestmöglicher Qualität dargestellt wird.", "lang": "de" },
+        { "name": "Verwenden Sie den Service als Admin-Panel für Ihre Website: Die Plattform kann auch als Admin-Panel fungieren und Ihnen die volle Kontrolle über den Inhalt und das Erscheinungsbild Ihrer Website geben.", "lang": "de" },
+        { "name": "Statistiken zur Projektbeliebtheit anzeigen: Go Portfolio bietet Einblicke, welche Projekte bei Besuchern am beliebtesten sind, sodass Sie Ihre Content-Strategie entsprechend anpassen können.", "lang": "de" },
+
+        { "name": "Projeler için yüksek kaliteli resim depolama: Go Portfolio, işlerinizin mümkün olan en iyi kalitede görüntülenmesini sağlayarak projeleriniz için yüksek çözünürlüklü resimleri depolamanıza olanak tanır.", "lang": "tr" },
+        { "name": "Hizmeti web siteniz için bir yönetici paneli olarak kullanın: Platform, aynı zamanda bir yönetici paneli olarak da işlev görebilir ve web sitenizin içeriği ve görünümü üzerinde tam kontrol sağlar.", "lang": "tr" },
+        { "name": "Proje popülaritesi istatistiklerini görüntüleyin: Go Portfolio, ziyaretçiler arasında en popüler olan projeler hakkında bilgi sunarak içerik stratejinizi buna göre şekillendirmenize olanak tanır.", "lang": "tr" },
+
+        { "name": "Stockage d'images haute qualité pour les projets : Go Portfolio vous permet de stocker des images haute résolution pour vos projets, garantissant que votre travail est affiché dans la meilleure qualité possible.", "lang": "fr" },
+        { "name": "Utilisez le service en tant que panneau d'administration pour votre site web : La plateforme peut également servir de panneau d'administration, vous donnant un contrôle total sur le contenu et l'apparence de votre site web.", "lang": "fr" },
+        { "name": "Consultez les statistiques de popularité des projets : Go Portfolio donne un aperçu des projets les plus populaires parmi les visiteurs, vous permettant d'adapter votre stratégie de contenu en conséquence.", "lang": "fr" }
       ],
       "photos": ["just-portfolio/1.jpg", "just-portfolio/2.jpg", "just-portfolio/3.jpg"]
     },
@@ -190,22 +292,28 @@
       "sub_title": {
         "en": "Web platform for EMIAS emploees",
         "ru": "Веб-платформа для сотрудников компании EMIAS",
-        "ja": "EMIAS従業員向けのウェブプラットフォーム"
+        "ja": "EMIAS従業員向けのウェブプラットフォーム",
+        "de": "Webplattform für EMIAS-Mitarbeiter",
+        "tr": "EMIAS çalışanları için web platformu",
+        "fr": "Plateforme web pour les employés d'EMIAS"
       },
       "description": {
         "en": "A web platform for EMIAS company employees, designed to facilitate efficient task management and provide real-time updates on task statuses. The platform streamlines workflows and fosters collaboration among team members, enabling them to work more effectively and achieve their goals.",
         "ru": "EMIAS - это уникальная веб-платформа, разработанная специально для сотрудников компании EMIAS. Платформа предоставляет интуитивные инструменты для эффективного управления задачами, отслеживания прогресса команды и предложения идей. EMIAS также включает в себя систему наград и значков, поощряющую активность и достижения сотрудников.",
-        "ja": "EMIAS社の従業員向けに設計されたウェブプラットフォームは、効率的なタスク管理を促進し、タスクのステータスに関するリアルタイムの更新を提供します。プラットフォームはワークフローを合理化し、チームメンバー間の協力を促進し、彼らがより効果的に働き、目標を達成することができるようにします。"
+        "ja": "EMIAS社の従業員向けに設計されたウェブプラットフォームは、効率的なタスク管理を促進し、タスクのステータスに関するリアルタイムの更新を提供します。プラットフォームはワークフローを合理化し、チームメンバー間の協力を促進し、彼らがより効果的に働き、目標を達成することができるようにします。",
+        "de": "Eine Webplattform für Mitarbeiter des Unternehmens EMIAS, die darauf abzielt, ein effizientes Aufgabenmanagement zu ermöglichen und Echtzeit-Updates zu Aufgabenstatus bereitzustellen. Die Plattform optimiert Arbeitsabläufe und fördert die Zusammenarbeit zwischen Teammitgliedern, sodass sie effektiver arbeiten und ihre Ziele erreichen können.",
+        "tr": "EMIAS şirketi çalışanları için tasarlanmış, etkili görev yönetimini kolaylaştırmak ve görev durumlarına ilişkin gerçek zamanlı güncellemeler sağlamak amacıyla oluşturulan bir web platformu. Platform, iş akışlarını düzenler ve ekip üyeleri arasında işbirliğini teşvik eder, böylece daha etkili çalışmalarını ve hedeflerine ulaşmalarını sağlar.",
+        "fr": "Une plateforme web pour les employés de l'entreprise EMIAS, conçue pour faciliter la gestion efficace des tâches et fournir des mises à jour en temps réel sur l'état des tâches. La plateforme rationalise les flux de travail et favorise la collaboration entre les membres de l'équipe, leur permettant de travailler plus efficacement et d'atteindre leurs objectifs."
       },
       "cards": [
         { "title": "Front-end","sub_title": "Vue, Vue Router" },
         { "title": "Back-end", "sub_title": "NodeJs, Express, MySQL" }
       ],
       "features": [
-        {"name": "従業員のためのパーソナルダッシュボード：EMIASは、各従業員のパーソナルダッシュボードを備えており、タスクを管理し、整理された状態を維持することができます。", "lang": "ja"},
-        {"name": "アイデア提出機能：チームメンバーは自分のアイデアを提案することができ、協力的で革新的な作業環境を促進します。", "lang": "ja"},
-        {"name": "チームの進捗状況の追跡：従業員はチームの進捗状況を監視し、プロジェクト内の最新の動向に常に最新情報を保つことができます。", "lang": "ja"},
-        {"name": "功績のあるユーザーにバッジを授与する：プラットフォームは、管理者が特別なバッジを授与することで、優れた従業員を認識し、報われることができます。", "lang": "ja"},
+        { "name": "従業員のためのパーソナルダッシュボード：EMIASは、各従業員のパーソナルダッシュボードを備えており、タスクを管理し、整理された状態を維持することができます。", "lang": "ja" },
+        { "name": "アイデア提出機能：チームメンバーは自分のアイデアを提案することができ、協力的で革新的な作業環境を促進します。", "lang": "ja" },
+        { "name": "チームの進捗状況の追跡：従業員はチームの進捗状況を監視し、プロジェクト内の最新の動向に常に最新情報を保つことができます。", "lang": "ja" },
+        { "name": "功績のあるユーザーにバッジを授与する：プラットフォームは、管理者が特別なバッジを授与することで、優れた従業員を認識し、報われることができます。", "lang": "ja" },
 
         { "name": "Personal dashboard for employees: EMIAS features a personal dashboard for each employee, allowing them to manage their tasks and stay organized.", "lang": "en" },
         { "name": "Idea submission capability: Team members can propose their own ideas, fostering a collaborative and innovative work environment.", "lang": "en" },
@@ -215,7 +323,22 @@
         { "name": "Личный кабинет для сотрудников: Каждый сотрудник имеет доступ к своему личному кабинету, где он может управлять своими задачами, отслеживать выполнение и следить за актуальным статусом работы.", "lang": "ru" },
         { "name": "Возможность предлагать идеи: Сотрудники могут предлагать свои идеи для улучшения процессов, продуктов или услуг компании, обсуждать их с коллегами и реализовывать наиболее перспективные предложения.", "lang": "ru" },
         { "name": "Просмотр прогресса команды: Платформа предоставляет возможность просматривать общий прогресс команды, отслеживать выполнение задач и сравнивать результаты разных подразделений.", "lang": "ru" },
-        { "name": "Система наград и значков: EMIAS включает систему значков, которые могут быть присвоены сотрудникам за особые достижения, активность или вклад в развитие компании. Это способствует мотивации и вовлеченности персонала.", "lang": "ru" }
+        { "name": "Система наград и значков: EMIAS включает систему значков, которые могут быть присвоены сотрудникам за особые достижения, активность или вклад в развитие компании. Это способствует мотивации и вовлеченности персонала.", "lang": "ru" },
+
+        { "name": "Persönliches Dashboard für Mitarbeiter: EMIAS bietet jedem Mitarbeiter ein persönliches Dashboard, mit dem sie ihre Aufgaben verwalten und organisiert bleiben können.", "lang": "de" },
+        { "name": "Ideen-Einreichungsfunktion: Teammitglieder können eigene Ideen vorschlagen und so eine kollaborative und innovative Arbeitsumgebung fördern.", "lang": "de" },
+        { "name": "Team-Fortschrittsverfolgung: Mitarbeiter können den Fortschritt ihres Teams überwachen und über die neuesten Entwicklungen in ihren Projekten auf dem Laufenden bleiben.", "lang": "de" },
+        { "name": "Verleihung von Abzeichen an verdiente Benutzer: Die Plattform ermöglicht es Administratoren, herausragende Mitarbeiter durch die Vergabe von besonderen Abzeichen zu würdigen und zu belohnen.", "lang": "de" },
+
+        { "name": "Çalışanlar için kişisel kontrol paneli: EMIAS, çalışanların görevlerini yönetmelerine ve organize kalmalarına olanak tanıyan her çalışan için kişisel bir kontrol paneli sunar.", "lang": "tr" },
+        { "name": "Fikir sunma yeteneği: Ekip üyeleri kendi fikirlerini önererek işbirlikçi ve yenilikçi bir çalışma ortamını teşvik edebilir.", "lang": "tr" },
+        { "name": "Takım ilerlemesini takip etme: Çalışanlar, takımlarının ilerlemesini izleyebilir ve projelerindeki en son gelişmeler konusunda güncel kalabilir.", "lang": "tr" },
+        { "name": "Hak eden kullanıcılara rozet verme: Platform, yöneticilerin başarılı çalışanları özel rozetler vererek tanımalarına ve ödüllendirmelerine olanak tanır.", "lang": "tr" },
+
+        { "name": "Tableau de bord personnel pour les employés : EMIAS dispose d'un tableau de bord personnel pour chaque employé, ce qui leur permet de gérer leurs tâches et de rester organisés.", "lang": "fr" },
+        { "name": "Capacité de soumission d'idées : Les membres de l'équipe peuvent proposer leurs propres idées, favorisant un environnement de travail collaboratif et innovant.", "lang": "fr" },
+        { "name": "Suivi de la progression de l'équipe : Les employés peuvent suivre la progression de leur équipe et rester informés des derniers développements au sein de leurs projets.", "lang": "fr" },
+        { "name": "Attribution de badges aux utilisateurs méritants : La plateforme permet aux administrateurs de reconnaître et de récompenser les employés exceptionnels en leur accordant des badges spéciaux.", "lang": "fr" }
       ],
       "photos": ["emias/1.jpg", "emias/2.jpg", "emias/3.jpg"]
     },
@@ -227,12 +350,18 @@
       "sub_title": {
         "en": "Multilingual website for a company with an admin panel",
         "ru": "Мультиязычный сайт для компании с админ-панелью",
-        "ja": "管理パネル付きの企業向け多言語ウェブサイト"
+        "ja": "管理パネル付きの企業向け多言語ウェブサイト",
+        "de": "Mehrsprachige Website für ein Unternehmen mit Admin-Panel",
+        "tr": "Yönetici paneli bulunan bir şirket için çok dilli web sitesi",
+        "fr": "Site web multilingue pour une entreprise avec un panneau d'administration"
       },
       "description": {
         "en": "A multilingual website built using Next.js for a company. U.Business features an admin panel for easy text editing, providing a user-friendly experience for both site administrators and visitors.",
         "ru": "U.Business - это современный и функциональный сайт, разработанный на next.js для компании, предоставляющий мультиязычность и удобную админ-панель для редактирования текста. Сайт обеспечивает гибкость и адаптивность, позволяя компании обращаться к международному рынку с помощью интуитивно понятного и простого в управлении веб-ресурса.",
-        "ja": "企業向けにNext.jsを使用して構築された多言語ウェブサイトです。U.Businessは、テキスト編集が簡単な管理パネルを備えており、サイト管理者と訪問者の両方にとって使いやすい体験を提供します。"
+        "ja": "企業向けにNext.jsを使用して構築された多言語ウェブサイトです。U.Businessは、テキスト編集が簡単な管理パネルを備えており、サイト管理者と訪問者の両方にとって使いやすい体験を提供します。",
+        "de": "Eine mehrsprachige Website, die mit Next.js für ein Unternehmen erstellt wurde. U.Business verfügt über ein Admin-Panel für einfache Textbearbeitung und bietet eine benutzerfreundliche Erfahrung für Administratoren und Besucher der Website.",
+        "tr": "Bir şirket için Next.js kullanılarak oluşturulan çok dilli bir web sitesi. U.Business, hem site yöneticileri hem de ziyaretçiler için kullanıcı dostu bir deneyim sunan, kolay metin düzenleme için bir yönetici paneline sahiptir.",
+        "fr": "Un site web multilingue construit en utilisant Next.js pour une entreprise. U.Business dispose d'un panneau d'administration pour faciliter la modification du texte, offrant une expérience conviviale pour les administrateurs du site et les visiteurs."
       },
       "features": [
         { "name": "テキスト編集用の管理パネル：U.Businessには、ウェブサイトのコンテンツが最新かつ関連性のある状態を維持できるように、シンプルなテキスト編集が可能な管理パネルが含まれています。", "lang": "ja"},
@@ -242,7 +371,16 @@
         { "name": "Multilingual support with i18n: The website is built with i18n, enabling seamless support for multiple languages and catering to a diverse range of users.", "lang": "en"},
 
         { "name": "Админ-панель для редактирования текста: U.Business предоставляет удобную и простую в использовании админ-панель, которая позволяет редактировать и обновлять текст на сайте без необходимости обращаться к разработчикам.", "lang": "ru"},
-        { "name": "Мультиязычность с помощью i18n: Благодаря интеграции с библиотекой i18n, сайт поддерживает мультиязычность и позволяет компании легко добавлять новые языковые версии, адаптируясь к потребностям международного рынка.", "lang": "ru"}
+        { "name": "Мультиязычность с помощью i18n: Благодаря интеграции с библиотекой i18n, сайт поддерживает мультиязычность и позволяет компании легко добавлять новые языковые версии, адаптируясь к потребностям международного рынка.", "lang": "ru"},
+
+        { "name": "Admin-Panel zur Textbearbeitung: U.Business beinhaltet ein Admin-Panel, das eine einfache Textbearbeitung ermöglicht und sicherstellt, dass der Inhalt der Website aktuell und relevant bleibt.", "lang": "de"},
+        { "name": "Mehrsprachige Unterstützung mit i18n: Die Website ist mit i18n erstellt, wodurch eine nahtlose Unterstützung für mehrere Sprachen ermöglicht wird und eine vielfältige Benutzergruppe bedient wird.", "lang": "de"},
+
+        { "name": "Metin düzenleme için yönetici paneli: U.Business, web sitesi içeriğinin güncel ve ilgi çekici kalmasını sağlayan, basit metin düzenlemeye olanak tanıyan bir yönetici paneli içerir.", "lang": "tr"},
+        { "name": "i18n ile çok dilli destek: Web sitesi, i18n ile oluşturulmuştur ve bu sayede birden fazla dilde sorunsuz destek sağlar ve çeşitli kullanıcılara hitap eder.", "lang": "tr"},
+
+        { "name": "Panneau d'administration pour la modification du texte : U.Business comprend un panneau d'administration qui permet une modification simple du texte, garantissant que le contenu du site reste à jour et pertinent.", "lang": "fr"},
+        { "name": "Support multilingue avec i18n : Le site web est construit avec i18n, permettant une prise en charge transparente de plusieurs langues et répondant aux besoins d'une large gamme d'utilisateurs.", "lang": "fr"}
       ],
       "cards": [
         { "title": "Front-end", "sub_title": "NextJs, i18n"}
@@ -257,12 +395,18 @@
       "sub_title": {
         "en": "Secret Santa for company croc",
         "ru": "Игра \"Тайный Санта\" для компании croc",
-        "ja": "CROC社のためのシークレットサンタ"
+        "ja": "CROC社のためのシークレットサンタ",
+        "de": "Wichteln für die Firma CROC",
+        "tr": "Şirket timsahı için \"Secret Santa\"",
+        "fr": "Père Noël Secret pour l'entreprise CROC"
       },
       "description": {
         "en": "A \"Secret Santa\" game designed for the CROC company. This traditional Christmas game involves anonymous gift exchanges among a group of participating individuals, bringing fun and festive cheer to the workplace.",
         "ru": "Secret Santa - это онлайн-версия традиционной рождественской игры \"Тайный Санта\" для компании Croc. Цель игры - анонимный обмен подарками между участниками, работающими в разных отделах и специализациях. Secret Santa предоставляет удобный личный кабинет для управления всеми аспектами игры, а также интеллектуальный алгоритм подбора пар и рассылку писем на почту участников.",
-        "ja": "CROC社向けにデザインされた「シークレットサンタ」というゲームです。この伝統的なクリスマスゲームは、参加者が匿名でプレゼントを交換することで、職場に楽しさと祝祭の喜びをもたらします。"
+        "ja": "CROC社向けにデザインされた「シークレットサンタ」というゲームです。この伝統的なクリスマスゲームは、参加者が匿名でプレゼントを交換することで、職場に楽しさと祝祭の喜びをもたらします。",
+        "de": "Ein \"Wichteln\"-Spiel, das für das Unternehmen CROC entwickelt wurde. Bei diesem traditionellen Weihnachtsspiel tauschen die Teilnehmer anonym Geschenke untereinander aus und bringen so Spaß und festliche Stimmung an den Arbeitsplatz.",
+        "tr": "CROC şirketi için tasarlanmış bir \"Secret Santa\" oyunu. Bu geleneksel Noel oyunu, katılan bireyler arasında anonim hediye değişimini içerir ve iş yerine eğlence ve neşe getirir.",
+        "fr": "Un jeu de \"Père Noël Secret\" conçu pour l'entreprise CROC. Ce jeu traditionnel de Noël implique des échanges de cadeaux anonymes entre un groupe de participants, apportant ainsi de la joie et de l'ambiance festive sur le lieu de travail."
       },
       "cards": [
         { "title": "Front-end", "sub_title": "Vue 2, VueRouter" },
@@ -279,7 +423,19 @@
 
         { "name": "Интеллектуальный алгоритм подбора пар: Secret Santa использует алгоритм, который создает пары для обмена подарками, учитывая разные специализации и отделы участников. Это способствует интерактивности и интеграции сотрудников компании", "lang": "ru" },
         { "name": "Рассылка писем на почту: Все уведомления об игре, включая информацию о вашем \"Тайном Санте\" и его предпочтениях, отправляются участникам на электронную почту.", "lang": "ru" },
-        { "name": "Личный кабинет: Secret Santa предоставляет удобный личный кабинет, в котором участники могут управлять своим участием в игре, просматривать информацию о своем \"Тайном Санте\" и получать уведомления о событиях.", "lang": "ru" }
+        { "name": "Личный кабинет: Secret Santa предоставляет удобный личный кабинет, в котором участники могут управлять своим участием в игре, просматривать информацию о своем \"Тайном Санте\" и получать уведомления о событиях.", "lang": "ru" },
+
+        { "name": "Algorithmus zur Erstellung vielfältiger Paarungen: Das Spiel verwendet einen einzigartigen Algorithmus, um Paare von Teilnehmern aus verschiedenen Fachgebieten und Abteilungen zu bilden und so eine abwechslungsreiche und ansprechende Erfahrung für alle Spieler zu gewährleisten.", "lang": "de" },
+        { "name": "E-Mail-Benachrichtigungen: Wichteln verschickt E-Mail-Benachrichtigungen, um die Teilnehmer auf dem Laufenden zu halten und eine reibungslose Kommunikation während des Spiels zu gewährleisten.", "lang": "de" },
+        { "name": "Persönliche Dashboard-Funktionen: Alle Spielfunktionen können über das persönliche Dashboard jedes Teilnehmers aufgerufen werden, was es den Spielern erleichtert, ihre Beteiligung am Spiel zu verwalten.", "lang": "de" },
+
+        { "name": "Çeşitli eşleşmeler oluşturma algoritması: Oyun, farklı uzmanlık alanlarından ve bölümlerden katılımcı çiftleri oluşturmak için benzersiz bir algoritma kullanarak tüm oyuncular için çeşitli ve ilgi çekici bir deneyim sunar.", "lang": "tr" },
+        { "name": "E-posta bildirimleri: Gizli Noel Baba, katılımcıları bilgilendirmek ve oyun boyunca sorunsuz iletişim sağlamak için e-posta bildirimleri gönderir.", "lang": "tr" },
+        { "name": "Kişisel gösterge paneli özellikleri: Tüm oyun işlevleri, her katılımcının kişisel gösterge panelinden erişilebilir, böylece oyuncuların oyun içindeki katılımlarını yönetmelerini kolaylaştırır.", "lang": "tr" },
+
+        { "name": "Algorithme de création de paires diverses : Le jeu utilise un algorithme unique pour créer des paires de participants de différentes spécialisations et départements, garantissant une expérience diversifiée et engageante pour tous les joueurs.", "lang": "fr" },
+        { "name": "Notifications par e-mail : Père Noël Secret envoie des notifications par e-mail pour tenir les participants informés et assurer une communication fluide tout au long du jeu.", "lang": "fr" },
+        { "name": "Fonctionnalités personnelles du tableau de bord : Toutes les fonctions du jeu peuvent être accessibles via le tableau de bord personnel de chaque participant, ce qui facilite la gestion de leur participation au jeu.", "lang": "fr" }
       ],
       "photos": [ "secret-santa/1.jpg", "secret-santa/2.jpg", "secret-santa/3.jpg" ]
     }

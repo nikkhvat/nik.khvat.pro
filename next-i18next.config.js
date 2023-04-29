@@ -10,7 +10,9 @@ module.exports = {
       'zh',
       'fr',
       'hi',
-      'kk'
+      'kk',
+      'ko',
+      'tr'
     ],
     localeDetection: true
   }

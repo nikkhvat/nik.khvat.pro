@@ -117,7 +117,7 @@ export async function getStaticPaths() {
     projectsList.push(project.id)
   }
 
-  const langs = ['en', 'ru', 'ja', 'de', 'es', 'zh', 'fr', 'hi', 'kk'];
+  const langs = ['en', 'ru', 'ja', 'de', 'es', 'zh', 'fr', 'hi', 'kk', 'ko', 'tr'];
   const generatedRoutes = []
 
   for (let i = 0; i < projectsList.length; i++) {

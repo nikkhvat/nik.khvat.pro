@@ -1,0 +1,31 @@
+{
+  "fullname": "Nikita Khvatov",
+  "quote": "Amacım, geliştirme sürecinin keyifli olması için desteklenen, temiz ve anlaşılır kod yazmaktır",
+  "preview": {
+    "view_portfolio": "Portföyü Görüntüle"
+  },
+  "menu": {
+    "main": "Ana Sayfa",
+    "about": "Hakkımda",
+    "portfolio": "Portföy",
+    "services": "Hizmetler",
+    "contacts": "İletişim"
+  },
+  "about": {
+    "hello": "Merhaba! Benim adım Nikita ve ben Orta seviye tam yığın geliştiriciyim. Bu alanda zaten 4 yılı aşkın süredir çalışıyorum."
+  },
+  "portfolio": {
+    "all_projects": "Tüm Projeler",
+    "show_more": "Daha fazla göster",
+    "show_less": "Gizle",
+    "main_features": "Fonksiyonlar:"
+  },
+  "services": {
+    "website_development": "Web Sitesi Oluşturma",
+    "development_browser_extensions": "Tarayıcı Eklentileri Oluşturma",
+    "mobile_development": "Mobil Geliştirme",
+    "web_application": "Web Uygulaması Oluşturma",
+    "parsers": "Ayrıştırıcılar/Örümcekler Oluşturma",
+    "back_end_development": "Back-end Uygulamaları Geliştirme ve Destekleme"
+  }
+}

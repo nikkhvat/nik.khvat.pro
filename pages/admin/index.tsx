@@ -210,15 +210,16 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
   }, [push])
 
   const langs = [
-    {locale: "en", img: "🇺🇸"},
-    {locale: "ja", img: "🇯🇵"},
-    {locale: "zh", img: "🇨🇳"},
-    {locale: "hi", img: "🇮🇳"},
-    {locale: "ru", img: "🇷🇺"},
-    {locale: "de", img: "🇩🇪"},
-    {locale: "fr", img: "🇫🇷"},
-    {locale: "es", img: "🇮🇹"},
-    {locale: "kk", img: "🇰🇿"},
+    { locale: "en", img: "🇺🇸" },
+    { locale: "ja", img: "🇯🇵" },
+    { locale: "zh", img: "🇨🇳" },
+    { locale: "hi", img: "🇮🇳" },
+    { locale: "ru", img: "🇷🇺" },
+    { locale: "de", img: "🇩🇪" },
+    { locale: "fr", img: "🇫🇷" },
+    { locale: "es", img: "🇮🇹" },
+    { locale: "kk", img: "🇰🇿" },
+    { locale: "ko", img: "🇰🇷" },
   ]
 
   const flags: { [key: string]: string } = {

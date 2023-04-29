@@ -1,0 +1,31 @@
+{
+  "fullname": "니키타 코바토",
+  "quote": "내 목표는 지원 가능하고 깨끗하고 이해하기 쉬운 코드를 작성하여 개발 프로세스를 즐겁게 만드는 것입니다.",
+  "preview": {
+    "view_portfolio": "포트폴리오보기"
+  },
+  "menu": {
+    "main": "홈",
+    "about": "자기소개",
+    "portfolio": "포트폴리오",
+    "services": "서비스",
+    "contacts": "연락처"
+  },
+  "about": {
+    "hello": "안녕하세요! 제 이름은 니키타이고, 저는 중급 전체 스택 개발자입니다. 이 분야에서 이미 4년 이상 경험이 있습니다."
+  },
+  "portfolio": {
+    "all_projects": "모든 작업",
+    "show_more": "더보기",
+    "show_less": "숨기기",
+    "main_features": "기능:"
+  },
+  "services": {
+    "website_development": "웹사이트 제작",
+    "development_browser_extensions": "브라우저 확장 개발",
+    "mobile_development": "모바일 개발",
+    "web_application": "웹 애플리케이션 개발",
+    "parsers": "파서/스크래퍼 개발",
+    "back_end_development": "백엔드 애플리케이션 개발 및 지원"
+  }
+}
