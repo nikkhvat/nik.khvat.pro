@@ -72,6 +72,7 @@
   color: var(--main-white-color);
   text-decoration: none;
   width: 195px;
+  height: 26px;
 }
 
 .footer__top_line {

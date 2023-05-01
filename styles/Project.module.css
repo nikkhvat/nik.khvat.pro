@@ -29,7 +29,6 @@
   font-style: normal;
   font-weight: 400;
   font-size: 96px;
-  line-height: 120%;
   text-transform: capitalize;
   color: var(--main-white-color);
   white-space: nowrap;
@@ -40,7 +39,6 @@
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  line-height: 120%;
 
   color: var(--main-white-color);
 
@@ -71,7 +69,6 @@
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  line-height: 120%;
 
   color: var(--main-white-color);
 }
@@ -81,7 +78,6 @@
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
-  line-height: 120%;
 
   color: var(--main-light-grey-color);
   margin-top: 10px;
@@ -92,7 +88,6 @@
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  line-height: 120%;
   color: var(--main-white-color);
   margin-top: 60px;
 }

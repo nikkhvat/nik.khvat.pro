@@ -17,8 +17,6 @@ interface Props {
 const PortfolioCard: React.FC<Props> = ({ card }) => {
   return (
     <div key={card.id} className={styles.portfolio_cards__item}>
-      <Link href={`/project/${card.id}`} target="_blank">
-
         <picture>
           <source 
             className={styles.portfolio_cards__item_photo} 
@@ -35,11 +33,9 @@ const PortfolioCard: React.FC<Props> = ({ card }) => {
             alt={`preiew for ${card.title}`} />
         </picture>
 
+      <Link className={styles.link} href={`/project/${card.id}`} target="_blank">
         <p className={styles.portfolio_cards__item_title}>{card.title}</p>
-        <p className={styles.portfolio_cards__item_subtitle}>
-          {" "}
-          {card.subtitle}{" "}
-        </p>
+        <p className={styles.portfolio_cards__item_subtitle}>{card.subtitle}{" "}</p>
       </Link>
     </div>
   );
