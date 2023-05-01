@@ -9,8 +9,6 @@ class MyDocument extends Document<Props> {
   render() {
     const currentLocale = this.props.__NEXT_DATA__.locale ?? "en";
 
-    console.log("currentLocale", currentLocale);
-
     return (
       <Html lang={currentLocale} >
         <Head title="Nikita Khvatov">

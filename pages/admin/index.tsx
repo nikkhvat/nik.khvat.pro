@@ -7,7 +7,6 @@ import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import { default as LocaleLink } from "next/link";
 
 import styles from "./index.module.css";
-import Image from "next/image";
 
 import Storage from "../../utils/storage"
 import { useRouter } from 'next/navigation';
@@ -94,8 +93,6 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
     countries: [],
     projects: []
   } as Data)
-
-  const loaderProp = ({ src }: { src: any }) => src;
 
   const getVisits = async () => {
     try {
@@ -195,8 +192,6 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
     getProjects()
     getStatisticsByCountries()
   }
-
-  console.log(data);
 
   useEffect(() => {
 
@@ -334,14 +329,21 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
         <div className={styles.cards} >
           {data.projects ? data.projects.map((item: any) =>
             <div key={item.id} className={styles.project_card} >
-              <Image
-                className={styles.project_card_image}
-                loader={loaderProp}
-                width="160"
-                height="120"
-                src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${item.url}`}
-                alt={`photo`}
-              />
+              <picture>
+                <source
+                  className={styles.project_card_image}
+                  type="image/avif"
+                  srcSet={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${item.url}@1x.avif 1x, ${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${item.url}@2x.avif 2x`} />
+                <source
+                  className={styles.project_card_image}
+                  type="image/webp"
+                  srcSet={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${item.url}@1x.webp 1x, ${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${item.url}@2x.webp 2x`} />
+                <img
+                  className={styles.project_card_image}
+                  src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${item.url}@1x.jpg`}
+                  srcSet={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${item.url}@2x.jpg 2x`}
+                  alt={`preiew for ${item.title}`} />
+              </picture>
 
               <div className={styles.description} >
                 <p>
