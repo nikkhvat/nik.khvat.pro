@@ -8,6 +8,9 @@ type Props = DocumentProps & {
 class MyDocument extends Document<Props> {
   render() {
     const currentLocale = this.props.__NEXT_DATA__.locale ?? "en";
+
+    console.log("currentLocale", currentLocale);
+
     return (
       <Html lang={currentLocale} >
         <Head title="Nikita Khvatov">
@@ -41,7 +44,8 @@ class MyDocument extends Document<Props> {
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
 
-          <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
+          {/* eslint-disable-next-line @next/next/google-font-display */}
+          <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&family=Open+Sans&display=block" rel="stylesheet" />
         </Head>
 
         <body>
