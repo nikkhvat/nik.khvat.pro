@@ -253,11 +253,11 @@
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  line-height: 120%;
   color: var(--main-white-color);
   position: absolute;
   left: 715px;
   max-width: 470px;
+  line-height: 120%;
   overflow: hidden;
 }
 
@@ -587,7 +587,6 @@
     left: 22px;
     font-weight: 400;
     font-size: 17px;
-    line-height: 120%;
     max-width: calc(100% - 60px) !important;
     width: 337px !important;
     top: 540px;

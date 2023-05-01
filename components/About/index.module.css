@@ -15,7 +15,6 @@
   font-style: normal;
   font-weight: 400;
   font-size: 36px;
-  line-height: 120%;
   color: var(--main-white-color);
 }
 
@@ -61,6 +60,7 @@
 
   display: flex;
   justify-content: flex-end;
+  padding-top: 40px;
 }
 
 .skills_table__column_title {
@@ -95,15 +95,21 @@
   width: 480px;
   height: 480px;
   background-position: top center;
-  background-size: cover;
+  object-fit: cover;
   position: relative;
+  /* display: block; */
+  /* margin-bottom: -200px; */
 }
 
 .about_screen__photo_description {
   position: absolute;
-  height: 88%;
-  left: -30.5px;
-  bottom: 0;
+  height: 86%;
+  left: -31px;
+  bottom: 18px;
+}
+
+.about_screen__photo_container {
+  position: relative;
 }
 
 .skills_table__column_item {
@@ -123,7 +129,6 @@
   font-style: normal;
   font-weight: 600;
   font-size: 64px;
-  line-height: 120%;
   text-transform: capitalize;
   color: var(--main-dark-grey-color);
   width: 100%;
@@ -146,7 +151,6 @@
   font-style: normal;
   font-weight: 400;
   font-size: 36px;
-  line-height: 120%;
   color: var(--main-white-color);
 }
 
@@ -155,7 +159,6 @@
   font-style: normal;
   font-weight: 600;
   font-size: 64px;
-  line-height: 120%;
   letter-spacing: 0.08em;
   text-transform: capitalize;
   color: var(--main-dark-grey-color);
@@ -186,11 +189,11 @@
   }
 }
 
-@media screen and (max-width: 1295px) {
+@media screen and (max-width: 1345px) {
+
   .about_screen__company_list__item {
     font-weight: 400;
     font-size: 24px;
-    line-height: 120%;
     color: var(--main-white-color);
     margin-top: 15px;
   }
@@ -220,6 +223,12 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    padding: 0;
+  }
+
+  .about_screen__photo_description {
+    bottom: 4px;
+    left: -30px;
   }
 
   .about_screen__company_list_tablet {
@@ -234,7 +243,6 @@
     font-style: normal;
     font-weight: 600;
     font-size: 64px;
-    line-height: 120%;
     letter-spacing: 0.08em;
     text-transform: capitalize;
     color: var(--main-dark-grey-color);
@@ -275,7 +283,7 @@
 
 @media screen and (max-width: 804px) {
   .about_screen__photo_description {
-      left: -25.5px;
+      left: -69px;
   }
   .skills_table__column_title {
     font-weight: 400;
@@ -292,7 +300,6 @@
   .about_screen__skills_title {
     font-weight: 600;
     font-size: 48px;
-    line-height: 120%;
     transform: rotate(-90deg);
     position: absolute;
     bottom: 95px;
@@ -318,7 +325,6 @@
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
-    line-height: 120%;
   }
 
   .about_screen {
@@ -379,7 +385,6 @@
     font-style: normal;
     font-weight: 600;
     font-size: 48px;
-    line-height: 120%;
     letter-spacing: 0.08em;
     text-transform: capitalize;
     color: var(--main-dark-grey-color);

@@ -1,6 +1,8 @@
 import React from "react";
 
-import nikitaKhvatov from "../../images/nikita_khvatov_2.png";
+import nikitaKhvatovPng from "../../images/nikita_khvatov_2.png";
+import nikitaKhvatovAvif from "../../images/nikita_khvatov_2.avif";
+import nikitaKhvatovWebp from "../../images/nikita_khvatov_2.webp";
 import photoDescription from "../../images/photo_description.svg"
 
 import styles from "./index.module.css";
@@ -47,12 +49,27 @@ const About: React.FC<IAbout> = ({ companies, skills }) => {
       </div>
 
       <div className={styles.about_screen__right}>
-        <div
-          className={styles.about_screen__photo}
-          style={{ backgroundImage: `url(${nikitaKhvatov.src})` }}
-        >
+
+        <div className={styles.about_screen__photo_container}  >
+          <picture>
+            <source
+              className={styles.about_screen__photo}
+              type="image/avif"
+              srcSet={nikitaKhvatovAvif.src} />
+            <source
+              className={styles.about_screen__photo}
+              type="image/webp"
+              srcSet={nikitaKhvatovWebp.src} />
+            <img
+              className={styles.about_screen__photo}
+              src={nikitaKhvatovPng.src}
+              alt={`Nikita Khvato`} />
+          </picture>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className={styles.about_screen__photo_description} src={photoDescription.src} alt="full-stack developer" />
+          <img 
+            className={styles.about_screen__photo_description} 
+            src={photoDescription.src} 
+            alt="full-stack developer" />
         </div>
 
         <div className={styles.about_screen__company_list_tablet}>

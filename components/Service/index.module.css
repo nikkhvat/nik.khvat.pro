@@ -44,7 +44,6 @@
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  line-height: 120%;
   color: var(--main-white-color);
   margin: 0;
 }
@@ -54,7 +53,6 @@
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
-  line-height: 120%;
   color: var(--main-light-grey-color);
   margin-top: 10px;
 }
@@ -156,14 +154,12 @@
   .service_screen__item_title {
     font-weight: 400;
     font-size: 18px;
-    line-height: 120%;
   }
 
   .service_screen__item_sub_title {
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 120%;
   }
 
   .service_screen__item {
