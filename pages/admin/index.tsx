@@ -262,8 +262,8 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
 
   const getPlatformIcon = (key: string): StaticImageData | null => {
     const platforms: { [key: string]: StaticImageData } = {
-
       "Android": android,
+      "Linux": android,
       "iPad": ipad,
       "iPhone": iphone,
       "Macintosh": macbook,
