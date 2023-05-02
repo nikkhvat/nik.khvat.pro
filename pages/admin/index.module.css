@@ -95,6 +95,8 @@
   background-color: #323232;
   padding-left: 8px;
   padding-right: 8px;
+  padding-top: 2px;
+  padding-bottom: 2px;
 
   display: flex;
   justify-content: space-between;
@@ -102,11 +104,31 @@
   width: 60px;
 }
 
+.browser_line {
+  font-family: "Open Sans";
+  background-color: #323232;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .country_line_count {
   margin-left: 8px;
 }
 
 .country_container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.browser_container {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;

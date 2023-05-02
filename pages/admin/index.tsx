@@ -17,6 +17,32 @@ type Props = {
   // Add custom props here
 };
 
+export interface SiteStats {
+  top_countries: { [key: string]: number }
+  total_visits: number
+  unique_visits: number
+  unique_visits_by_day: { [key: string]: number }
+  total_visits_by_day: { [key: string]: number }
+  top_os: { [key: string]: number }
+  top_browsers: { [key: string]: number }
+  avg_time_on_site: number
+  visits_details_by_days: {
+    date: string
+    details: {
+      uid: string
+      time_entry: string
+      browser: string
+      os: string
+      time_leaving: string
+      country: string
+      unique: boolean
+      ip: string
+      utm: string
+    }[]
+  }[]
+}
+
+
 export interface ProjectsStatData {
   [key: string]: {
     uuid: string
@@ -82,29 +108,11 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
 
   const [data, setData] = useState({
     all: 0,
-    visits: {
-      by_days: [],
-      total: 0
-    },
-    unique: {
-      by_days: [],
-      total: 0
-    },
+    visits: { by_days: [], total: 0 },
+    unique: { by_days: [], total: 0 },
     countries: [],
     projects: []
   } as Data)
-
-  const getVisits = async () => {
-    try {
-      fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/visits`, { headers })
-        .then(response => response.json())
-        .then(result => setData((prev: any) => ({ ...prev, visits: result.data })))
-        .catch(error => console.log('error', error));
-    } catch (error: any) {
-      push(`/admin/auth`)
-      Storage.delete("token")
-    }
-  }
 
   const getProjects = async () => {
     try {
@@ -161,36 +169,16 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
     }
   }
 
-  const getUniqVisits = async () => {
-    try {
-      fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/visits/unique`, { headers })
-        .then(response => response.json())
-        .then(result => setData((prev: any) => ({ ...prev, unique: result.data })))
-        .catch(error => console.log('error', error));
-    } catch (error) {
-      push(`/admin/auth`)
-      Storage.delete("token")
-    }
-  }
-
-  const getStatisticsByCountries = async () => {
-    try {
-      fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/countries`, { headers })
-        .then(response => response.json())
-        .then(result => setData((prev: any) => ({ ...prev, countries: result.data.sort((a: any, b: any) => b.count - a.count) })))
-        .catch(error => console.log('error', error));
-    } catch (error) {
-      push(`/admin/auth`)
-      Storage.delete("token")
-    }
-  }
-
+  const [general, setGenerat] = useState({} as SiteStats)
 
   const init = async () => {
-    getVisits()
-    getUniqVisits()
     getProjects()
-    getStatisticsByCountries()
+ 
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/visits`, { headers })
+    const data: SiteStats = (await response.json()).data
+    console.log("data", data);
+    setGenerat(data)
+
   }
 
   useEffect(() => {
@@ -239,7 +227,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
     BO: "🇧🇴", HR: "🇭🇷", DE: "🇩🇪", JO: "🇯🇴", MH: "🇲🇭", MK: "🇲🇰", SA: "🇸🇦", TJ: "🇹🇯", ZM: "🇿🇲",
     BA: "🇧🇦", CU: "🇨🇺", GH: "🇬🇭", KZ: "🇰🇿", MR: "🇲🇷", NO: "🇳🇴", SN: "🇸🇳", TZ: "🇹🇿", ZW: "🇿🇼",
     BW: "🇧🇼", CY: "🇨🇾", GR: "🇬🇷", KE: "🇰🇪", MU: "🇲🇺", OM: "🇴🇲", RS: "🇷🇸", TH: "🇹🇭", PE: "🇵🇪",
-    AF: "🇦🇫", AL: "🇦🇱",
+    AF: "🇦🇫", AL: "🇦🇱", "-": "❌"
   }
 
   const getFlag = (country: string): string => {
@@ -276,7 +264,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
         <div className={styles.line} >
           <div className={styles.card}>
             <div className={styles.card_count_container} >
-              <div className={styles.card_count} >{data.visits.total}</div>
+              <div className={styles.card_count} >{general.total_visits}</div>
               <div className={styles.card_title} >{t("visits")}</div>
             </div>
 
@@ -287,13 +275,13 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               </div>
 
               <div className={styles.card_progress__line} >
-                <div style={{ width: 100 / Math.max(data.visits.total, data.unique.total) * data.visits.total + "%" }} className={styles.card_progress__line_fill} ></div>
+                <div style={{ width: 100 / Math.max(general.total_visits, general.unique_visits) * general.total_visits + "%" }} className={styles.card_progress__line_fill} ></div>
               </div>
             </div>
           </div>
           <div className={styles.card} >
             <div className={styles.card_count_container} >
-              <div className={styles.card_count} >{data.unique.total}</div>
+              <div className={styles.card_count} >{general.unique_visits}</div>
               <div className={styles.card_title} >{(t("unique_visits"))}</div>
             </div>
 
@@ -304,7 +292,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               </div>
               <div className={styles.card_progress__line} >
                 <div
-                  style={{ width: 100 / Math.max(data.visits.total, data.unique.total) * data.unique.total + "%" }}
+                  style={{ width: 100 / Math.max(general.total_visits, general.unique_visits) * general.unique_visits + "%" }}
                   className={styles.card_progress__line_fill} />
               </div>
             </div>
@@ -312,17 +300,41 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
 
           <StatisticVisits 
             setStatVisits={setStatVisits}
-            days={statVisits === "visits" ? data.visits.by_days : data.unique.by_days} />
+            daysObject={statVisits === "unique" ? general.total_visits_by_day : general.unique_visits_by_day} />
         </div>
         <div className={styles.line} >
           <div className={styles.card_full} >
             <p className={styles.card_title} >Top countries</p>
             <div className={styles.country_container} >
-              {data.countries.map(country =>
-                <div key={country.country} className={styles.country_line} >
-                  {getFlag(country.country)} <span className={styles.country_line_count} >{country.count}</span>
+              {general.top_countries ? Object.keys(general.top_countries).map(key =>
+                <div key={key} className={styles.country_line} >
+                  {getFlag(key)} <span className={styles.country_line_count} >{general.top_countries[key]}</span>
                 </div>
-              )}
+              ) : <></>}
+            </div>
+          </div>
+        </div>
+        <div className={styles.line} >
+          <div className={styles.card_full} >
+            <p className={styles.card_title} >Top browsers</p>
+            <div className={styles.browser_container} >
+              {general.top_browsers ? Object.keys(general.top_browsers).map(key =>
+                <div key={key} className={styles.browser_line} >
+                  {key} <span className={styles.browser_line_count} >{": "}{general.top_browsers[key]}</span>
+                </div>
+              ) : <></>}
+            </div>
+          </div>
+        </div>
+        <div className={styles.line} >
+          <div className={styles.card_full} >
+            <p className={styles.card_title} >Top os</p>
+            <div className={styles.browser_container} >
+              {general.top_os ? Object.keys(general.top_os).map(key =>
+                <div key={key} className={styles.browser_line} >
+                  {key} <span className={styles.browser_line_count} >{": "}{general.top_os[key]}</span>
+                </div>
+              ) : <></>}
             </div>
           </div>
         </div>

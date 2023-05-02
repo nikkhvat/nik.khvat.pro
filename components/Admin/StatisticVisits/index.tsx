@@ -4,14 +4,11 @@ import styles from "./index.module.css"
 import { useTranslation } from "next-i18next";
 
 interface StatisticVisitsProps {
-  days: {
-    count: number
-    date: string
-  }[],
+  daysObject: {[key: string]: number},
   setStatVisits: (type: "visits" | "unique") => void
 }
 
-const StatisticVisits: React.FC<StatisticVisitsProps> = ({ days, setStatVisits }) => {
+const StatisticVisits: React.FC<StatisticVisitsProps> = ({ daysObject, setStatVisits }) => {
   const { t } = useTranslation("admin");
 
   const findMaxCount = (arr: { count: number, date: string }[]) => {
@@ -26,8 +23,33 @@ const StatisticVisits: React.FC<StatisticVisitsProps> = ({ days, setStatVisits }
     return maxCount;
   }
 
+  function fillMissingDates(data: { [key: string]: number }) {
+    if (!data) return []
 
+    const result = [];
+    const now = new Date();
+    now.setDate(now.getDate() + 1);
+    
+    const startDate = new Date();
+    startDate.setDate(now.getDate() - 29);
+
+    for (let d = startDate; d <= now; d.setDate(d.getDate() + 1)) {
+      const dateKey = d.toISOString().split('T')[0];
+      result.push({
+        date: dateKey,
+        count: data[dateKey] || 0
+      });
+    }
+
+    return result;
+  }
+
+  const days = fillMissingDates(daysObject);  
   const max = findMaxCount(days)
+
+  console.log("days", days);
+  console.log("daysObject", daysObject);
+  
 
   return (
     <div className={styles.container} >
