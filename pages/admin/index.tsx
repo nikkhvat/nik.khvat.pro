@@ -13,6 +13,20 @@ import { useRouter } from 'next/navigation';
 import ProgressBar from "../../components/Admin/Progress";
 import StatisticVisits from "../../components/Admin/StatisticVisits";
 
+import chrome from '../../images/admin/chrome.png'
+import firefox from '../../images/admin/firefox.png'
+import microsoft from '../../images/admin/microsoft.png'
+import opera from '../../images/admin/opera.png'
+import safari from '../../images/admin/safari.png'
+
+import android from '../../images/admin/platforms/android.png'
+import ipad from '../../images/admin/platforms/ipad.png'
+import iphone from '../../images/admin/platforms/iphone.png'
+import macbook from '../../images/admin/platforms/macbook.png'
+import windows from '../../images/admin/platforms/windows.png'
+
+import { StaticImageData } from "next/image";
+
 type Props = {
   // Add custom props here
 };
@@ -234,6 +248,31 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
     return flags[country] ? flags[country] : country
   }
 
+  const getBrowserIcon = (key: string): StaticImageData | null => {
+    const browsers: { [key: string]: StaticImageData } = {
+      "Chrome": chrome,
+      "Firefox": firefox,
+      "Microsoft": microsoft,
+      "Opera": opera,
+      "Safari": safari,
+    }
+
+    return browsers[key] ? browsers[key] : null
+  }
+
+  const getPlatformIcon = (key: string): StaticImageData | null => {
+    const platforms: { [key: string]: StaticImageData } = {
+
+      "Android": android,
+      "iPad": ipad,
+      "iPhone": iphone,
+      "Macintosh": macbook,
+      "Windows": windows,
+    }
+
+    return platforms[key] ? platforms[key] : null
+  }
+
   return (
     load === true ? <div className={styles.main} >
       <Head>
@@ -320,7 +359,9 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
             <div className={styles.browser_container} >
               {general.top_browsers ? Object.keys(general.top_browsers).map(key =>
                 <div key={key} className={styles.browser_line} >
-                  {key} <span className={styles.browser_line_count} >{": "}{general.top_browsers[key]}</span>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  {getBrowserIcon(key) !== null ? <img className={styles.browser} src={getBrowserIcon(key)?.src} alt="" /> : "unknown"}
+                  <span className={styles.browser_line_count} >{"  "}{general.top_browsers[key]}</span>
                 </div>
               ) : <></>}
             </div>
@@ -332,7 +373,9 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
             <div className={styles.browser_container} >
               {general.top_os ? Object.keys(general.top_os).map(key =>
                 <div key={key} className={styles.browser_line} >
-                  {key} <span className={styles.browser_line_count} >{": "}{general.top_os[key]}</span>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  {getPlatformIcon(key) !== null ? <img className={styles.browser} src={getPlatformIcon(key)?.src} alt="" /> : ""} {key}
+                  <span className={styles.platform_line_count} >{general.top_os[key]}</span>
                 </div>
               ) : <></>}
             </div>

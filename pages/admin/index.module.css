@@ -97,7 +97,7 @@
   padding-right: 8px;
   padding-top: 2px;
   padding-bottom: 2px;
-
+  height: 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -109,8 +109,7 @@
   background-color: #323232;
   padding-left: 8px;
   padding-right: 8px;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  height: 28px;
 
   display: flex;
   justify-content: space-between;
@@ -119,6 +118,10 @@
 
 .country_line_count {
   margin-left: 8px;
+}
+
+.platform_line_count {
+  margin-left: 16px;
 }
 
 .country_container {
@@ -250,6 +253,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+}
+
+.browser {
+  width: 18px;
+  margin-right: 12px;
 }
 
 
