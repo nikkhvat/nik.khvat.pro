@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Head from 'next/head'
-import Image from "next/image";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { InferGetStaticPropsType } from "next";
@@ -11,10 +10,6 @@ import Storage from "../../utils/storage"
 
 const Project: React.FC<InferGetStaticPropsType<any>> = (_props) => {
   const { t } = useTranslation("common");
-
-  const loaderProp = ({ src }: { src: any }) => {
-    return src;
-  };
 
   const data = _props.data;
 
@@ -33,6 +28,7 @@ const Project: React.FC<InferGetStaticPropsType<any>> = (_props) => {
       <Head>
         <title>{data.title}</title>
         <meta name='description' content={data.description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
       <div className={styles.description}>
@@ -76,14 +72,8 @@ const Project: React.FC<InferGetStaticPropsType<any>> = (_props) => {
       <div className={styles.photos}>
         {data.photos?.map((photo: any, i: number) => (
           <div key={photo} className={styles.image_container}>
-            <Image
-              loader={loaderProp}
-              layout={"responsive"}
-              width="0"
-              height="0"
-              src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${photo}`}
-              alt={`photo ${i + 1}`}
-            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${photo}`} alt={`${i + 1}`} />
           </div>
         ))}
       </div>

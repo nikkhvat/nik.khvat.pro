@@ -19,7 +19,7 @@
 }
 
 .portfolio_cards__item_title {
-  font-family: 'Open Sans', serif;
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -30,7 +30,7 @@
 }
 
 .portfolio_cards__item_subtitle {
-  font-family: 'Open Sans', serif;
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;

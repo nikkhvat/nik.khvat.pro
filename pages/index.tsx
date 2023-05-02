@@ -147,7 +147,8 @@ const Homepage: React.FC<HomePageProps> = ( _props: any) => {
     <div className={styles.container}>
       <Head>
         <title>Nikita Khvatov</title>
-        <meta name='description' content='My website about me, my services and my portfolio' />
+        <meta name='description' content={t('description')} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <Preview linkContactsWithMe={contectLinks} />
       <About companies={companies} skills={skils} />

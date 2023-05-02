@@ -8,9 +8,13 @@
 import 'i18next'
 
 import type common from '../public/locales/en/common.json'
+import type admin from '../public/locales/en/common.json'
+import type meta from '../public/locales/en/common.json'
 
 interface I18nNamespaces {
   common: typeof common
+  admin: typeof admin
+  meta: typeof meta
 }
 
 declare module 'i18next' {

@@ -11,7 +11,7 @@
 }
 
 .about_screen__text {
-  font-family: "Open Sans", serif;
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 36px;
@@ -64,7 +64,7 @@
 }
 
 .skills_table__column_title {
-  font-family: "Open Sans", serif;
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -113,7 +113,7 @@
 }
 
 .skills_table__column_item {
-  font-family: "Open Sans", serif;
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -125,7 +125,7 @@
 }
 
 .about_screen__skills_title {
-  font-family: "Fira Code", serif;
+  font-family: "Fira Code", monospace;
   font-style: normal;
   font-weight: 600;
   font-size: 64px;
@@ -147,7 +147,7 @@
 }
 
 .about_screen__company_list__item {
-  font-family: "Open Sans", serif;
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 36px;
@@ -155,7 +155,7 @@
 }
 
 .about_screen__company_title {
-  font-family: "Fira Code", serif;
+  font-family: "Fira Code", monospace;
   font-style: normal;
   font-weight: 600;
   font-size: 64px;
@@ -239,7 +239,7 @@
   }
 
   .about_screen__company_title_tablet {
-    font-family: "Fira Code", serif;
+    font-family: "Fira Code", monospace;
     font-style: normal;
     font-weight: 600;
     font-size: 64px;
@@ -321,7 +321,7 @@
   }
 
   .about_screen__text {
-    font-family: "Open Sans", serif;
+    font-family: "Open Sans", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -381,7 +381,7 @@
   }
 
   .about_screen__company_list__text {
-    font-family: "Fira Code", serif;
+    font-family: "Fira Code", monospace;
     font-style: normal;
     font-weight: 600;
     font-size: 48px;

@@ -44,6 +44,7 @@ const Auth = () => {
     <Head>
       <title>Log in nik19ta.pro</title>
       <meta name='description' content="Admin nik19ta.pro" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </Head>
     <div className={styles.login} >
       <p className={styles.login_title} >Admin</p>

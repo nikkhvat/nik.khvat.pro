@@ -3,7 +3,7 @@
 }
 
 .footer_title {
-  font-family: "Fira Code", serif;
+  font-family: "Fira Code", monospace;
   font-style: normal;
   font-weight: 600;
   font-size: 96px;
@@ -24,7 +24,7 @@
 }
 
 .footer__item_name {
-  font-family: "Open Sans", serif;
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 36px;
@@ -33,7 +33,7 @@
 }
 
 .footer__item_developer {
-  font-family: "Open Sans", serif;
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -61,7 +61,7 @@
 }
 
 .footer__item_text {
-  font-family: "Open Sans", serif;
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -107,7 +107,7 @@
 
 .footer_menu_list_item {
   margin-bottom: 20px;
-  font-family: "Open Sans", serif;
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -189,7 +189,7 @@
   }
 
   .footer__items_tablet_title {
-    font-family: "Open Sans", serif;
+    font-family: "Open Sans", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 36px;
@@ -198,7 +198,7 @@
   }
 
   .footer__items_tablet_subtitle {
-    font-family: "Open Sans", serif;
+    font-family: "Open Sans", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -220,7 +220,7 @@
   }
 
   .footer__items_tablet_menu_row {
-    font-family: "Open Sans", serif;
+    font-family: "Open Sans", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -287,7 +287,7 @@
   }
 
   .footer_mobile__title {
-    font-family: "Open Sans", serif;
+    font-family: "Open Sans", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -297,7 +297,7 @@
   }
 
   .footer_mobile__sub_title {
-    font-family: "Open Sans", serif;
+    font-family: "Open Sans", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
