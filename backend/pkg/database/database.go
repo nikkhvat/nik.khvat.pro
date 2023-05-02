@@ -48,8 +48,6 @@ func autoMigrateDB(db *gorm.DB) {
 
 	// Stats
 	db.AutoMigrate(&models.ProjectsStats{})
-	db.AutoMigrate(&models.VisitStats{})
 	db.AutoMigrate(&models.ClicksStat{})
-	db.AutoMigrate(&models.UniqueVisitStats{})
-	db.AutoMigrate(&models.CountryStats{})
+	db.AutoMigrate(&models.Visits{})
 }

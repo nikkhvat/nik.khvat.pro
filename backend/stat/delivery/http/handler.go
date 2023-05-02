@@ -18,31 +18,12 @@ func NewHandler(useCase stat.UseCase) *Handler {
 	}
 }
 
-func (h *Handler) GetVisits(c *gin.Context) {
-	visits, err := h.useCase.GetVisits()
-
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
-	}
-
-	c.JSON(200, gin.H{"data": visits})
-}
-
-func (h *Handler) GetUniqueVisits(c *gin.Context) {
-	visits, err := h.useCase.GetUniqueVisits()
-
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
-	}
-
-	c.JSON(200, gin.H{"data": visits})
-}
-
 func (h *Handler) GetCliksStat(c *gin.Context) {
 	clicks, err := h.useCase.GetCliksStat()
 
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
+		return
 	}
 
 	c.JSON(200, gin.H{"data": clicks})
@@ -53,36 +34,51 @@ func (h *Handler) GetProjectStat(c *gin.Context) {
 
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
+		return
 	}
 
 	c.JSON(200, gin.H{"data": statsProjects})
 }
 
-func (h *Handler) UpdateVisits(c *gin.Context) {
-	err := h.useCase.AddVisit(c.ClientIP())
+func (h *Handler) VisitExtend(c *gin.Context) {
+	session := c.DefaultQuery("session", "")
+
+	err := h.useCase.VisitExtend(session)
 
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
+		c.JSON(400, gin.H{"error": "something went wrong"})
+		return
 	}
-	c.Status(200)
+
+	c.JSON(200, gin.H{"message": "successfully"})
 }
 
-func (h *Handler) GetCountries(c *gin.Context) {
-	resp, err := h.useCase.GetCountries()
+func (h *Handler) GetVisits(c *gin.Context) {
+	data, err := h.useCase.GetVisits()
 
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
+		c.JSON(400, gin.H{"error": "something went wrong"})
+		return
 	}
-	c.JSON(200, gin.H{"data": resp})
+
+	c.JSON(200, gin.H{"data": data})
 }
 
-func (h *Handler) UpdateUniqueVisits(c *gin.Context) {
-	err := h.useCase.AddUniqueVisit(c.ClientIP())
+func (h *Handler) SetVisit(c *gin.Context) {
+	un := c.DefaultQuery("un", "0")
+	utm := c.DefaultQuery("utm", "")
+
+	unique := un == "1"
+
+	userAgent := c.Request.Header.Get("User-Agent")
+	session, err := h.useCase.AddVisit(c.ClientIP(), userAgent, utm, unique)
 
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
+		return
 	}
-	c.Status(200)
+
+	c.JSON(200, gin.H{"session": session})
 }
 
 func (h *Handler) UpdateProjectsStat(c *gin.Context) {
@@ -96,12 +92,13 @@ func (h *Handler) UpdateProjectsStat(c *gin.Context) {
 
 	if updateErr != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": updateErr.Error()})
+		return
 	}
 
 	c.Status(200)
 }
 
-func (h *Handler) UpdateCLicsStat(c *gin.Context) {
+func (h *Handler) UpdateCLicksStat(c *gin.Context) {
 	var button models.StatUpdateParamButtons
 	if err := c.ShouldBindUri(&button); err != nil {
 		c.JSON(400, gin.H{"message": "not uuid"})
@@ -112,6 +109,7 @@ func (h *Handler) UpdateCLicsStat(c *gin.Context) {
 
 	if updateErr != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": updateErr.Error()})
+		return
 	}
 
 	c.Status(200)

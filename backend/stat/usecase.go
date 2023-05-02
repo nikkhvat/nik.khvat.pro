@@ -1,16 +1,19 @@
 package stat
 
-import "nik19ta/backend/models"
+import (
+	"github.com/google/uuid"
+	"nik19ta/backend/models"
+)
 
 type UseCase interface {
-	GetVisits() (*models.VisitStatsWithTotal, error)
-	GetUniqueVisits() (*models.UniqueVisitStatsWithTotal, error)
 	GetCliksStat() (*[]models.ClicksStat, error)
 	GetProjectStat() (map[string][]models.ProjectsStats, error)
-	GetCountries() ([]models.CountriesResponse, error)
+	//GetCountries() ([]models.CountriesResponse, error)
 
-	AddVisit(ip string) error
-	AddUniqueVisit(ip string) error
+	AddVisit(ip, userAgent, utm string, unique bool) (uuid.UUID, error)
+	VisitExtend(session string) error
+	GetVisits() (models.SiteStats, error)
+
 	AddClikc(buttonId string) error
 	AddProjectVisit(projectId string) error
 }

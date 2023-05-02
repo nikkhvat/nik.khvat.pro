@@ -3,15 +3,13 @@ package stat
 import "nik19ta/backend/models"
 
 type UserRepository interface {
-	GetVisits() (*models.VisitStatsWithTotal, error)
-	GetUniqueVisits() (*models.UniqueVisitStatsWithTotal, error)
 	GetCliksStat() (*[]models.ClicksStat, error)
 	GetProjectVisits() (map[string][]models.ProjectsStats, error)
-	GetCountries() ([]models.CountriesResponse, error)
 
-	SetCountry(ip string) error
-	AddVisit() error
-	AddUniqueVisit() error
+	AddVisit(data models.Visits) error
+	VisitExtend(session string) error
+	GetVisits() ([]models.Visits, error)
+
 	AddClikc(buttonId string) error
 	AddProjectVisit(projectId string) error
 }
