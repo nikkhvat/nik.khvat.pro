@@ -319,7 +319,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               {general.top_countries ? Object.keys(general.top_countries).map(key =>
                 <div key={key} className={styles.country_line} >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  {key !== "-" ? <img className={styles.countryFlag} src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/../icons/${key}.svg`} alt="" /> : <span className={styles.unk} >unk</span>}
+                  {key !== "-" ? <img className={styles.countryFlag} src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/../icons/${key.toLocaleLowerCase()}.svg`} alt="" /> : <span className={styles.unk} >unk</span>}
                   <span className={styles.country_line_count} >{general.top_countries[key]}</span>
                 </div>
               ) : <></>}
