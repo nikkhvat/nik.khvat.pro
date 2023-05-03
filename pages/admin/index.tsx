@@ -216,35 +216,6 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
     { locale: "ko", img: "🇰🇷" },
   ]
 
-  const flags: { [key: string]: string } = {
-    DZ: "🇩🇿", BR: "🇧🇷", CZ: "🇨🇿", GD: "🇬🇩", KI: "🇰🇮", MX: "🇲🇽", PK: "🇵🇰", SC: "🇸🇨", TG: "🇹🇬",
-    AD: "🇦🇩", BN: "🇧🇳", DK: "🇩🇰", GT: "🇬🇹", KW: "🇰🇼", FM: "🇫🇲", PW: "🇵🇼", SL: "🇸🇱", TO: "🇹🇴",
-    AO: "🇦🇴", BG: "🇧🇬", DJ: "🇩🇯", GN: "🇬🇳", KG: "🇰🇬", MD: "🇲🇩", PA: "🇵🇦", SG: "🇸🇬", TT: "🇹🇹",
-    AG: "🇦🇬", BF: "🇧🇫", DM: "🇩🇲", GW: "🇬🇼", LA: "🇱🇦", MC: "🇲🇨", PG: "🇵🇬", SK: "🇸🇰", TN: "🇹🇳",
-    AR: "🇦🇷", BI: "🇧🇮", DO: "🇩🇴", GY: "🇬🇾", LV: "🇱🇻", MN: "🇲🇳", PY: "🇵🇾", SI: "🇸🇮", TR: "🇹🇷",
-    AM: "🇦🇲", KH: "🇰🇭", EC: "🇪🇨", HT: "🇭🇹", LB: "🇱🇧", ME: "🇲🇪", PH: "🇵🇭", SB: "🇸🇧", TM: "🇹🇲",
-    AU: "🇦🇺", CM: "🇨🇲", EG: "🇪🇬", HN: "🇭🇳", LS: "🇱🇸", MA: "🇲🇦", PL: "🇵🇱", SO: "🇸🇴", TV: "🇹🇻",
-    AT: "🇦🇹", CA: "🇨🇦", SV: "🇸🇻", HU: "🇭🇺", LR: "🇱🇷", MZ: "🇲🇿", PT: "🇵🇹", ZA: "🇿🇦", UG: "🇺🇬",
-    AZ: "🇦🇿", CV: "🇨🇻", GQ: "🇬🇶", IS: "🇮🇸", LY: "🇱🇾", MM: "🇲🇲", QA: "🇶🇦", KR: "🇰🇷", UA: "🇺🇦",
-    BS: "🇧🇸", CF: "🇨🇫", ER: "🇪🇷", IN: "🇮🇳", LI: "🇱🇮", NA: "🇳🇦", RO: "🇷🇴", SS: "🇸🇸", AE: "🇦🇪",
-    BH: "🇧🇭", TD: "🇹🇩", EE: "🇪🇪", ID: "🇮🇩", LT: "🇱🇹", NR: "🇳🇷", RU: "🇷🇺", ES: "🇪🇸", GB: "🇬🇧",
-    BD: "🇧🇩", CL: "🇨🇱", ET: "🇪🇹", IR: "🇮🇷", LU: "🇱🇺", NP: "🇳🇵", RW: "🇷🇼", LK: "🇱🇰", US: "🇺🇸",
-    BB: "🇧🇧", CN: "🇨🇳", FJ: "🇫🇯", IQ: "🇮🇶", MG: "🇲🇬", NL: "🇳🇱", KN: "🇰🇳", SD: "🇸🇩", UY: "🇺🇾",
-    BY: "🇧🇾", CO: "🇨🇴", FI: "🇫🇮", IE: "🇮🇪", MW: "🇲🇼", NZ: "🇳🇿", LC: "🇱🇨", SR: "🇸🇷", UZ: "🇺🇿",
-    BE: "🇧🇪", KM: "🇰🇲", FR: "🇫🇷", IL: "🇮🇱", MY: "🇲🇾", NI: "🇳🇮", VC: "🇻🇨", SZ: "🇸🇿", VU: "🇻🇺",
-    BZ: "🇧🇿", CG: "🇨🇬", GA: "🇬🇦", IT: "🇮🇹", MV: "🇲🇻", NE: "🇳🇪", WS: "🇼🇸", SE: "🇸🇪", VE: "🇻🇪",
-    BJ: "🇧🇯", CD: "🇨🇩", GM: "🇬🇲", JM: "🇯🇲", ML: "🇲🇱", NG: "🇳🇬", SM: "🇸🇲", CH: "🇨🇭", VN: "🇻🇳",
-    BT: "🇧🇹", CR: "🇨🇷", GE: "🇬🇪", JP: "🇯🇵", MT: "🇲🇹", KP: "🇰🇵", ST: "🇸🇹", SY: "🇸🇾", YE: "🇾🇪",
-    BO: "🇧🇴", HR: "🇭🇷", DE: "🇩🇪", JO: "🇯🇴", MH: "🇲🇭", MK: "🇲🇰", SA: "🇸🇦", TJ: "🇹🇯", ZM: "🇿🇲",
-    BA: "🇧🇦", CU: "🇨🇺", GH: "🇬🇭", KZ: "🇰🇿", MR: "🇲🇷", NO: "🇳🇴", SN: "🇸🇳", TZ: "🇹🇿", ZW: "🇿🇼",
-    BW: "🇧🇼", CY: "🇨🇾", GR: "🇬🇷", KE: "🇰🇪", MU: "🇲🇺", OM: "🇴🇲", RS: "🇷🇸", TH: "🇹🇭", PE: "🇵🇪",
-    AF: "🇦🇫", AL: "🇦🇱", "-": "❌"
-  }
-
-  const getFlag = (country: string): string => {
-    return flags[country] ? flags[country] : country
-  }
-
   const getBrowserIcon = (key: string): StaticImageData | null => {
     const browsers: { [key: string]: StaticImageData } = {
       "Chrome": chrome,
@@ -347,7 +318,9 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
             <div className={styles.country_container} >
               {general.top_countries ? Object.keys(general.top_countries).map(key =>
                 <div key={key} className={styles.country_line} >
-                  {getFlag(key)} <span className={styles.country_line_count} >{general.top_countries[key]}</span>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  {key !== "-" ? <img className={styles.countryFlag} src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/../icons/${key}.svg`} alt="" /> : <span className={styles.unk} >unk</span>}
+                  <span className={styles.country_line_count} >{general.top_countries[key]}</span>
                 </div>
               ) : <></>}
             </div>

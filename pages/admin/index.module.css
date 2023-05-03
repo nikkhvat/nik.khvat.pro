@@ -93,15 +93,24 @@
 .country_line {
   font-family: "Open Sans";
   background-color: #323232;
-  padding-left: 8px;
   padding-right: 8px;
   padding-top: 2px;
   padding-bottom: 2px;
-  height: 28px;
+  height: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 60px;
+  width: 80px;
+}
+
+.countryFlag {
+  width: 34px;
+  border-radius: 0px;
+}
+
+.unk {
+  margin-top: -2px;
+  margin-left: 4px;
 }
 
 .browser_line {

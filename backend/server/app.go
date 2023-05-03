@@ -55,6 +55,7 @@ func (a *App) Run(port string) error {
 	router := gin.Default()
 
 	router.Static("/images", "./images/portfolio")
+	router.Static("/icons", "./images/icons")
 
 	router.Use(
 		gin.Recovery(),
