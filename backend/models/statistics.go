@@ -32,6 +32,7 @@ type Visits struct {
 	UId         uuid.UUID `json:"uid"`          // Уникальный идентификатор
 	TimeEntry   time.Time `json:"time_entry"`   // Время в которое человек зашёл
 	Browser     string    `json:"browser"`      // Браузер (Chrome, Firefox и тд)
+	Platform    string    `json:"platform"`     // Платформа (Linux, Macintosh, iPhone)
 	Os          string    `json:"os"`           // Операционная система (Windows, MacOs и тд)
 	TimeLeaving time.Time `json:"time_leaving"` // Время когда пользователь покинул сайт
 	Country     string    `json:"country"`      // Короткий код страны (EE, DE и тд )

@@ -88,11 +88,14 @@ func (a *statUseCase) AddVisit(ip, userAgent, utm string, unique bool) (uuid.UUI
 
 	country := countryDefinition(ip)
 
+	ua.Model()
+
 	data := models.Visits{
 		UId:         session,
 		TimeEntry:   time.Now(),
 		Browser:     browserName,
-		Os:          ua.Platform(),
+		Platform:    ua.Platform(),
+		Os:          ua.OS(),
 		TimeLeaving: time.Now(),
 		Country:     country,
 		Unique:      unique,
@@ -124,7 +127,7 @@ func calculateSiteStats(visits []models.Visits) models.SiteStats {
 		if visit.Browser == "Googlebot" {
 			visit.Os = "Googlebot"
 		}
-		
+
 		stats.TopCountries[visit.Country]++
 		if !uniqueVisitors[visit.Ip] {
 			stats.UniqueVisits++

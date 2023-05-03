@@ -36,18 +36,17 @@ func InitDB() *gorm.DB {
 
 func autoMigrateDB(db *gorm.DB) {
 	// Users
-	db.AutoMigrate(&models.User{})
-
+	_ = db.AutoMigrate(&models.User{})
 	// Projects
-	db.AutoMigrate(&models.Project{})
-	db.AutoMigrate(&models.Subtitles{})
-	db.AutoMigrate(&models.Descriptions{})
-	db.AutoMigrate(&models.Cards{})
-	db.AutoMigrate(&models.Features{})
-	db.AutoMigrate(&models.Photos{})
+	_ = db.AutoMigrate(&models.Project{})
+	_ = db.AutoMigrate(&models.Subtitles{})
+	_ = db.AutoMigrate(&models.Descriptions{})
+	_ = db.AutoMigrate(&models.Cards{})
+	_ = db.AutoMigrate(&models.Features{})
+	_ = db.AutoMigrate(&models.Photos{})
 
 	// Stats
-	db.AutoMigrate(&models.ProjectsStats{})
-	db.AutoMigrate(&models.ClicksStat{})
-	db.AutoMigrate(&models.Visits{})
+	_ = db.AutoMigrate(&models.ProjectsStats{})
+	_ = db.AutoMigrate(&models.ClicksStat{})
+	_ = db.AutoMigrate(&models.Visits{})
 }
