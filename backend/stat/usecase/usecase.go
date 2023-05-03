@@ -121,6 +121,10 @@ func calculateSiteStats(visits []models.Visits) models.SiteStats {
 	var totalTimeOnSite time.Duration
 
 	for _, visit := range visits {
+		if visit.Browser == "Googlebot" {
+			visit.Os = "Googlebot"
+		}
+		
 		stats.TopCountries[visit.Country]++
 		if !uniqueVisitors[visit.Ip] {
 			stats.UniqueVisits++
@@ -141,10 +145,6 @@ func calculateSiteStats(visits []models.Visits) models.SiteStats {
 		found := false
 		for i, details := range stats.VisitsDetailsByDays {
 			if details.Date == date {
-
-				if visit.Browser == "Googlebot" {
-					visit.Os = "Googlebot"
-				}
 
 				stats.VisitsDetailsByDays[i].Details = append(details.Details, visit)
 				found = true
