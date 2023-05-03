@@ -1,11 +1,12 @@
 package usecase
 
 import (
-	"github.com/ip2location/ip2location-go"
 	"nik19ta/backend/models"
 	"nik19ta/backend/pkg/config"
 	"nik19ta/backend/stat"
 	"time"
+
+	"github.com/ip2location/ip2location-go"
 
 	"github.com/google/uuid"
 	"github.com/mssola/useragent"
@@ -126,6 +127,10 @@ func calculateSiteStats(visits []models.Visits) models.SiteStats {
 	for _, visit := range visits {
 		if visit.Browser == "Googlebot" {
 			visit.Os = "Googlebot"
+		}
+
+		if visit.Browser == "AhrefsBot" {
+			visit.Os = "AhrefsBot"
 		}
 
 		stats.TopCountries[visit.Country]++

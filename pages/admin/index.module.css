@@ -96,16 +96,18 @@
   padding-right: 8px;
   padding-top: 2px;
   padding-bottom: 2px;
-  height: 24px;
+  height: 22px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 80px;
+  width: 70px;
 }
 
 .countryFlag {
-  width: 34px;
+  width: 28px;
+  height: 22px;
   border-radius: 0px;
+  object-fit: cover;
 }
 
 .unk {

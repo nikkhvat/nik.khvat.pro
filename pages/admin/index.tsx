@@ -224,6 +224,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
       "Opera": opera,
       "Safari": safari,
       "Googlebot": search,
+      "AhrefsBot": search,
     }
 
     return browsers[key] ? browsers[key] : null
@@ -239,6 +240,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
       "Windows": windows,
       "Windows 10": windows,
       "Googlebot": search,
+      "AhrefsBot": search,
     }
 
     return platforms[key] ? platforms[key] : null
