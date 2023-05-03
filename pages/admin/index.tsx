@@ -18,6 +18,7 @@ import firefox from '../../images/admin/firefox.png'
 import microsoft from '../../images/admin/microsoft.png'
 import opera from '../../images/admin/opera.png'
 import safari from '../../images/admin/safari.png'
+import search from '../../images/admin/search.png'
 
 import android from '../../images/admin/platforms/android.png'
 import ipad from '../../images/admin/platforms/ipad.png'
@@ -255,6 +256,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
       "Microsoft": microsoft,
       "Opera": opera,
       "Safari": safari,
+      "Googlebot": search,
     }
 
     return browsers[key] ? browsers[key] : null
