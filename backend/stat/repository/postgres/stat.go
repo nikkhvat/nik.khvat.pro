@@ -94,6 +94,7 @@ func (r UserRepository) GetUniqueVisits() (*models.UniqueVisitStatsWithTotal, er
 	}
 
 	result := make([]models.UniqueVisitStats, 0, 30)
+
 	for i := 0; i < 30; i++ {
 		date := now.AddDate(0, 0, -i).Format("2006/01/02")
 		count, ok := visitMap[date]

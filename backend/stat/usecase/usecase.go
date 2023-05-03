@@ -141,6 +141,11 @@ func calculateSiteStats(visits []models.Visits) models.SiteStats {
 		found := false
 		for i, details := range stats.VisitsDetailsByDays {
 			if details.Date == date {
+
+				if visit.Browser == "Googlebot" {
+					visit.Os = "Googlebot"
+				}
+
 				stats.VisitsDetailsByDays[i].Details = append(details.Details, visit)
 				found = true
 				break
