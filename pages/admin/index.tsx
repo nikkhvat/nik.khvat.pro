@@ -191,18 +191,14 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
  
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/visits`, { headers })
     const data: SiteStats = (await response.json()).data
-    console.log("data", data);
     setGenerat(data)
-
   }
 
   useEffect(() => {
-
     if (!token) {
       push(`/admin/auth`)
     } else {
-      init()
-      setLoad(true)
+      init().then(_ => setLoad(true))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [push])
@@ -270,6 +266,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
       "iPhone": iphone,
       "Macintosh": macbook,
       "Windows": windows,
+      "Googlebot": search,
     }
 
     return platforms[key] ? platforms[key] : null
@@ -287,7 +284,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
           <p className={styles.header_title} >ADMIN</p>
 
           <div className={styles.lang} >
-            {langs.map(lang => 
+            {langs.map(lang =>
               <LocaleLink 
                 key={lang.locale} 
                 className={styles.language_switch__item} 
