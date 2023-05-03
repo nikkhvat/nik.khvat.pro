@@ -266,6 +266,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
       "iPhone": iphone,
       "Macintosh": macbook,
       "Windows": windows,
+      "Windows 10": windows,
       "Googlebot": search,
     }
 
