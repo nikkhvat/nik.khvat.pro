@@ -17,7 +17,7 @@ type Config struct {
 	PostgresPassword string `json:"POSTGRES_PASSWORD"`
 	PostgresDbname   string `json:"POSTGRES_DBNAME"`
 	PostgresPort     string `json:"POSTGRES_PORT"`
-	PostgresSslmode  string `json:"POSTGRES_SSLMODE"`
+	PostgresSSLMode  string `json:"POSTGRES_SSLMODE"`
 	PostgresTimezone string `json:"POSTGRES_TIMEZONE"`
 	JwtSecret        string `json:"JWT_SECRET"`
 	IpDataBasePath   string `json:"IP_DATABASE"`
@@ -47,7 +47,7 @@ func GetConfig() Config {
 			PostgresPassword: envs["POSTGRES_PASSWORD"],
 			PostgresDbname:   envs["POSTGRES_DBNAME"],
 			PostgresPort:     envs["POSTGRES_PORT"],
-			PostgresSslmode:  envs["POSTGRES_SSLMODE"],
+			PostgresSSLMode:  envs["POSTGRES_SSLMODE"],
 			PostgresTimezone: envs["POSTGRES_TIMEZONE"],
 			JwtSecret:        envs["JWT_SECRET"],
 			IpDataBasePath:   envs["IP_DATABASE"],

@@ -4,6 +4,23 @@ import (
 	"context"
 	"log"
 	"net/http"
+	"nik19ta/backend/services/auth"
+	authHttp "nik19ta/backend/services/auth/delivery/http"
+	authPostgres "nik19ta/backend/services/auth/repository/postgres"
+	authUseCase "nik19ta/backend/services/auth/usecase"
+	"nik19ta/backend/services/links"
+	linksHttp "nik19ta/backend/services/links/delivery/http"
+	linksPostgres "nik19ta/backend/services/links/repository/postgres"
+	linksUseCase "nik19ta/backend/services/links/usecase"
+	"nik19ta/backend/services/projects"
+	projectsHttp "nik19ta/backend/services/projects/delivery/http"
+	projectsPostgres "nik19ta/backend/services/projects/repository/postgres"
+	projectsUseCase "nik19ta/backend/services/projects/usecase"
+	"nik19ta/backend/services/stat"
+	statHttp "nik19ta/backend/services/stat/delivery/http"
+	statPostgres "nik19ta/backend/services/stat/repository/postgres"
+	statUseCase "nik19ta/backend/services/stat/usecase"
+
 	"os"
 	"os/signal"
 	"time"
@@ -12,21 +29,6 @@ import (
 	middlewareCors "nik19ta/backend/pkg/middleware/cors"
 
 	gin "github.com/gin-gonic/gin"
-
-	stat "nik19ta/backend/stat"
-	statHttp "nik19ta/backend/stat/delivery/http"
-	statPostgres "nik19ta/backend/stat/repository/postgres"
-	statUseCase "nik19ta/backend/stat/usecase"
-
-	auth "nik19ta/backend/auth"
-	authHttp "nik19ta/backend/auth/delivery/http"
-	authPostgres "nik19ta/backend/auth/repository/postgres"
-	authUseCase "nik19ta/backend/auth/usecase"
-
-	projects "nik19ta/backend/projects"
-	projectsHttp "nik19ta/backend/projects/delivery/http"
-	projectsPostgres "nik19ta/backend/projects/repository/postgres"
-	projectsUseCase "nik19ta/backend/projects/usecase"
 
 	docs "nik19ta/backend/docs"
 
@@ -40,6 +42,7 @@ type App struct {
 	statsUC    stat.UseCase
 	authUC     auth.UseCase
 	projectsUC projects.UseCase
+	linksUC    links.UseCase
 }
 
 func NewApp() *App {
@@ -48,11 +51,13 @@ func NewApp() *App {
 	statsRepo := statPostgres.NewUserRepository(db)
 	authRepo := authPostgres.NewUserRepository(db)
 	projectsRepo := projectsPostgres.NewUserRepository(db)
+	linksRepo := linksPostgres.NewLinksRepository(db)
 
 	return &App{
 		statsUC:    statUseCase.NewStatUseCase(statsRepo),
 		authUC:     authUseCase.NewAuthUseCase(authRepo),
 		projectsUC: projectsUseCase.NewProjectsUseCase(projectsRepo),
+		linksUC:    linksUseCase.NewLinkUseCase(linksRepo),
 	}
 }
 
@@ -72,15 +77,12 @@ func (a *App) Run(port string) error {
 	statHttp.RegisterHTTPEndpoints(router, a.statsUC)
 	authHttp.RegisterHTTPEndpoints(router, a.authUC)
 	projectsHttp.RegisterHTTPEndpoints(router, a.projectsUC)
+	linksHttp.RegisterHTTPEndpoints(router, a.linksUC)
 
 	// * Swagger
-	docs.SwaggerInfo.BasePath = "/api/v1"
+	docs.SwaggerInfo.BasePath = "/"
 
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
-
-	ginSwagger.WrapHandler(swaggerfiles.Handler,
-		ginSwagger.URL("http://localhost:8080/swagger/doc.json"),
-		ginSwagger.DefaultModelsExpandDepth(-1))
 
 	a.httpServer = &http.Server{
 		Addr:           ":" + port,

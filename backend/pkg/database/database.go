@@ -3,9 +3,12 @@ package database
 import (
 	"fmt"
 	"log"
-
-	"nik19ta/backend/models"
 	"nik19ta/backend/pkg/config"
+	"nik19ta/backend/services/auth"
+	"nik19ta/backend/services/links"
+	stat "nik19ta/backend/services/stat"
+
+	projects "nik19ta/backend/services/projects"
 
 	postgres "gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -20,7 +23,7 @@ func InitDB() *gorm.DB {
 		conf.PostgresPassword,
 		conf.PostgresDbname,
 		conf.PostgresPort,
-		conf.PostgresSslmode,
+		conf.PostgresSSLMode,
 		conf.PostgresTimezone)
 
 	db, err := gorm.Open(postgres.New(postgres.Config{DSN: dsn}), &gorm.Config{})
@@ -36,17 +39,20 @@ func InitDB() *gorm.DB {
 
 func autoMigrateDB(db *gorm.DB) {
 	// Users
-	_ = db.AutoMigrate(&models.User{})
+	_ = db.AutoMigrate(&auth.User{})
 	// Projects
-	_ = db.AutoMigrate(&models.Project{})
-	_ = db.AutoMigrate(&models.Subtitles{})
-	_ = db.AutoMigrate(&models.Descriptions{})
-	_ = db.AutoMigrate(&models.Cards{})
-	_ = db.AutoMigrate(&models.Features{})
-	_ = db.AutoMigrate(&models.Photos{})
+	_ = db.AutoMigrate(&projects.Project{})
+	_ = db.AutoMigrate(&projects.Subtitles{})
+	_ = db.AutoMigrate(&projects.Descriptions{})
+	_ = db.AutoMigrate(&projects.Cards{})
+	_ = db.AutoMigrate(&projects.Features{})
+	_ = db.AutoMigrate(&projects.Photos{})
 
 	// Stats
-	_ = db.AutoMigrate(&models.ProjectsStats{})
-	_ = db.AutoMigrate(&models.ClicksStat{})
-	_ = db.AutoMigrate(&models.Visits{})
+	_ = db.AutoMigrate(&stat.ProjectsStats{})
+	_ = db.AutoMigrate(&stat.ClicksStat{})
+	_ = db.AutoMigrate(&stat.Visits{})
+
+	// Links
+	_ = db.AutoMigrate(&links.Link{})
 }

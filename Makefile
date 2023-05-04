@@ -4,7 +4,6 @@ prepare_env:
 	cp -r .env.dev .env
 
 build: # build server
-	swag init --generalInfo ./backend/cmd/api/main.go --output ./backend/docs
 	go build -o ./backend/.bin/app ./backend/cmd/api/main.go
 
 start: # start server
@@ -25,3 +24,6 @@ start@front:
 
 dev@front:
 	npm run dev
+
+docs:
+	swag init --generalInfo ./backend/cmd/api/main.go --output ./backend/docs

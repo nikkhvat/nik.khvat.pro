@@ -28,12 +28,11 @@ const docTemplate = `{
                 "tags": [
                     "Auth"
                 ],
-                "summary": "Sign Up",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.SingUpResp"
+                            "$ref": "#/definitions/auth.SingUpResp"
                         }
                     },
                     "400": {
@@ -41,6 +40,35 @@ const docTemplate = `{
                     },
                     "401": {
                         "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/links/to": {
+            "get": {
+                "description": "Link redirect ( for stat )",
+                "tags": [
+                    "Links"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "the link to which the redirect will be made",
+                        "name": "link",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "the page from which the link was clicked",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
                     }
                 }
             }
@@ -57,12 +85,11 @@ const docTemplate = `{
                 "tags": [
                     "Projects"
                 ],
-                "summary": "Get list  Projects",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.ProjectsResp"
+                            "$ref": "#/definitions/projects.ProjectsResp"
                         }
                     },
                     "400": {
@@ -83,7 +110,6 @@ const docTemplate = `{
                 "tags": [
                     "Projects"
                 ],
-                "summary": "Get information about the project by id",
                 "parameters": [
                     {
                         "type": "string",
@@ -103,7 +129,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.ProjectResponse"
+                            "$ref": "#/definitions/projects.ProjectResponse"
                         }
                     },
                     "400": {
@@ -127,7 +153,6 @@ const docTemplate = `{
                 "tags": [
                     "Stat"
                 ],
-                "summary": "Get statistics by link",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -150,7 +175,6 @@ const docTemplate = `{
                 "tags": [
                     "Stat"
                 ],
-                "summary": "Get project statistics",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -159,7 +183,7 @@ const docTemplate = `{
                             "additionalProperties": {
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/definitions/models.ProjectsStats"
+                                    "$ref": "#/definitions/stat.ProjectsStats"
                                 }
                             }
                         }
@@ -179,7 +203,6 @@ const docTemplate = `{
                 "tags": [
                     "Stat"
                 ],
-                "summary": "Updating the statistics of visits to the project",
                 "parameters": [
                     {
                         "type": "string",
@@ -208,7 +231,6 @@ const docTemplate = `{
                 "tags": [
                     "Stat"
                 ],
-                "summary": "add a visit",
                 "parameters": [
                     {
                         "type": "integer",
@@ -228,7 +250,7 @@ const docTemplate = `{
                     "200": {
                         "description": "Successful registration of the session and return of the session ID",
                         "schema": {
-                            "$ref": "#/definitions/models.SessionResponse"
+                            "$ref": "#/definitions/stat.SessionResponse"
                         }
                     },
                     "400": {
@@ -249,7 +271,6 @@ const docTemplate = `{
                 "tags": [
                     "Stat"
                 ],
-                "summary": "Extending the time spent on the site",
                 "parameters": [
                     {
                         "type": "string",
@@ -281,12 +302,11 @@ const docTemplate = `{
                 "tags": [
                     "Stat"
                 ],
-                "summary": "Get session statistics",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.VisitsResponse"
+                            "$ref": "#/definitions/stat.VisitsResponse"
                         }
                     }
                 }
@@ -294,93 +314,119 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "models.ProjectResponse": {
+        "auth.SingUpResp": {
+            "type": "object",
+            "properties": {
+                "token": {
+                    "description": "token for authorization",
+                    "type": "string"
+                }
+            }
+        },
+        "projects.ProjectResponse": {
             "type": "object",
             "properties": {
                 "cards": {
+                    "description": "Project's card",
                     "type": "string"
                 },
                 "categories": {
+                    "description": "Category ids",
                     "type": "array",
                     "items": {
                         "type": "number"
                     }
                 },
                 "description": {
+                    "description": "Project's description",
                     "type": "string"
                 },
                 "features": {
+                    "description": "Project's features",
                     "type": "string"
                 },
                 "id": {
+                    "description": "Project's id",
                     "type": "string"
                 },
                 "photos": {
+                    "description": "Project's photos",
                     "type": "array",
                     "items": {
                         "type": "number"
                     }
                 },
                 "subtitle": {
+                    "description": "Project's subtitle",
                     "type": "string"
                 },
                 "title": {
+                    "description": "Project's title",
                     "type": "string"
                 },
                 "url": {
+                    "description": "url preview",
                     "type": "string"
                 }
             }
         },
-        "models.ProjectsResp": {
+        "projects.ProjectsResp": {
             "type": "object",
             "properties": {
                 "data": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/models.ProjectsResponse"
+                        "$ref": "#/definitions/projects.ProjectsResponse"
                     }
                 }
             }
         },
-        "models.ProjectsResponse": {
+        "projects.ProjectsResponse": {
             "type": "object",
             "properties": {
                 "categories": {
+                    "description": "Category ids",
                     "type": "array",
                     "items": {
                         "type": "number"
                     }
                 },
                 "id": {
+                    "description": "Project's id",
                     "type": "string"
                 },
                 "subtitle": {
+                    "description": "Project's subtitle",
                     "type": "string"
                 },
                 "title": {
+                    "description": "Project's title",
                     "type": "string"
                 },
                 "url": {
+                    "description": "Url preview",
                     "type": "string"
                 }
             }
         },
-        "models.ProjectsStats": {
+        "stat.ProjectsStats": {
             "type": "object",
             "properties": {
                 "count": {
+                    "description": "Count visits",
                     "type": "integer"
                 },
                 "date": {
+                    "description": "Date",
                     "type": "string"
                 },
                 "uuid": {
+                    "description": "Project Id",
                     "type": "string"
                 }
             }
         },
-        "models.SessionResponse": {
+        "stat.SessionResponse": {
             "type": "object",
             "properties": {
                 "session": {
@@ -388,15 +434,7 @@ const docTemplate = `{
                 }
             }
         },
-        "models.SingUpResp": {
-            "type": "object",
-            "properties": {
-                "token": {
-                    "type": "string"
-                }
-            }
-        },
-        "models.SiteStats": {
+        "stat.SiteStats": {
             "type": "object",
             "properties": {
                 "avg_time_on_site": {
@@ -450,12 +488,12 @@ const docTemplate = `{
                     "description": "Full statistics of visits by users",
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/models.VisitsDetails"
+                        "$ref": "#/definitions/stat.VisitsDetails"
                     }
                 }
             }
         },
-        "models.Visits": {
+        "stat.Visits": {
             "type": "object",
             "properties": {
                 "browser": {
@@ -500,7 +538,7 @@ const docTemplate = `{
                 }
             }
         },
-        "models.VisitsDetails": {
+        "stat.VisitsDetails": {
             "type": "object",
             "properties": {
                 "date": {
@@ -511,16 +549,16 @@ const docTemplate = `{
                     "description": "Details",
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/models.Visits"
+                        "$ref": "#/definitions/stat.Visits"
                     }
                 }
             }
         },
-        "models.VisitsResponse": {
+        "stat.VisitsResponse": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/models.SiteStats"
+                    "$ref": "#/definitions/stat.SiteStats"
                 }
             }
         }

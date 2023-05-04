@@ -1,71 +1,89 @@
 definitions:
-  models.ProjectResponse:
+  auth.SingUpResp:
+    properties:
+      token:
+        description: token for authorization
+        type: string
+    type: object
+  projects.ProjectResponse:
     properties:
       cards:
+        description: Project's card
         type: string
       categories:
+        description: Category ids
         items:
           type: number
         type: array
       description:
+        description: Project's description
         type: string
       features:
+        description: Project's features
         type: string
       id:
+        description: Project's id
         type: string
       photos:
+        description: Project's photos
         items:
           type: number
         type: array
       subtitle:
+        description: Project's subtitle
         type: string
       title:
+        description: Project's title
         type: string
       url:
+        description: url preview
         type: string
     type: object
-  models.ProjectsResp:
+  projects.ProjectsResp:
     properties:
       data:
         items:
-          $ref: '#/definitions/models.ProjectsResponse'
+          $ref: '#/definitions/projects.ProjectsResponse'
         type: array
     type: object
-  models.ProjectsResponse:
+  projects.ProjectsResponse:
     properties:
       categories:
+        description: Category ids
         items:
           type: number
         type: array
       id:
+        description: Project's id
         type: string
       subtitle:
+        description: Project's subtitle
         type: string
       title:
+        description: Project's title
         type: string
       url:
+        description: Url preview
         type: string
     type: object
-  models.ProjectsStats:
+  stat.ProjectsStats:
     properties:
       count:
+        description: Count visits
         type: integer
       date:
+        description: Date
         type: string
       uuid:
+        description: Project Id
         type: string
     type: object
-  models.SessionResponse:
+  stat.SessionResponse:
     properties:
       session:
         type: string
     type: object
-  models.SingUpResp:
-    properties:
-      token:
-        type: string
-    type: object
-  models.SiteStats:
+  stat.SiteStats:
     properties:
       avg_time_on_site:
         description: Average time spent on the site
@@ -104,10 +122,10 @@ definitions:
       visits_details_by_days:
         description: Full statistics of visits by users
         items:
-          $ref: '#/definitions/models.VisitsDetails'
+          $ref: '#/definitions/stat.VisitsDetails'
         type: array
     type: object
-  models.Visits:
+  stat.Visits:
     properties:
       browser:
         description: Browser (Chrome, Firefox, etc.)
@@ -140,7 +158,7 @@ definitions:
         description: the UTM tag id came in
         type: string
     type: object
-  models.VisitsDetails:
+  stat.VisitsDetails:
     properties:
       date:
         description: Date
@@ -148,13 +166,13 @@ definitions:
       details:
         description: Details
         items:
-          $ref: '#/definitions/models.Visits'
+          $ref: '#/definitions/stat.Visits'
         type: array
     type: object
-  models.VisitsResponse:
+  stat.VisitsResponse:
     properties:
       data:
-        $ref: '#/definitions/models.SiteStats'
+        $ref: '#/definitions/stat.SiteStats'
     type: object
 info:
   contact: {}
@@ -170,14 +188,32 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.SingUpResp'
+            $ref: '#/definitions/auth.SingUpResp'
         "400":
           description: Bad Request
         "401":
           description: Unauthorized
-      summary: Sign Up
       tags:
       - Auth
+  /api/links/to:
+    get:
+      description: Link redirect ( for stat )
+      parameters:
+      - description: the link to which the redirect will be made
+        in: query
+        name: link
+        required: true
+        type: string
+      - description: the page from which the link was clicked
+        in: query
+        name: page
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+      tags:
+      - Links
   /api/projects:
     get:
       consumes:
@@ -189,10 +225,9 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.ProjectsResp'
+            $ref: '#/definitions/projects.ProjectsResp'
         "400":
           description: Bad Request
-      summary: Get list  Projects
       tags:
       - Projects
   /api/projects/{id}:
@@ -216,12 +251,11 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.ProjectResponse'
+            $ref: '#/definitions/projects.ProjectResponse'
         "400":
           description: Bad Request
         "404":
           description: Not Found
-      summary: Get information about the project by id
       tags:
       - Projects
   /api/stat/clicks:
@@ -236,7 +270,6 @@ paths:
           description: OK
         "400":
           description: Bad Request
-      summary: Get statistics by link
       tags:
       - Stat
   /api/stat/projects:
@@ -252,10 +285,9 @@ paths:
           schema:
             additionalProperties:
               items:
-                $ref: '#/definitions/models.ProjectsStats'
+                $ref: '#/definitions/stat.ProjectsStats'
               type: array
             type: object
-      summary: Get project statistics
       tags:
       - Stat
   /api/stat/update/projects/{uuid}:
@@ -274,7 +306,6 @@ paths:
       responses:
         "200":
           description: Successful statistics update
-      summary: Updating the statistics of visits to the project
       tags:
       - Stat
   /api/stat/update/visit:
@@ -300,10 +331,9 @@ paths:
           description: Successful registration of the session and return of the session
             ID
           schema:
-            $ref: '#/definitions/models.SessionResponse'
+            $ref: '#/definitions/stat.SessionResponse'
         "400":
           description: Bad Request
-      summary: add a visit
       tags:
       - Stat
   /api/stat/updatevisit/extend:
@@ -324,7 +354,6 @@ paths:
           description: OK
         "400":
           description: Bad Request
-      summary: Extending the time spent on the site
       tags:
       - Stat
   /api/stat/visits:
@@ -339,8 +368,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.VisitsResponse'
-      summary: Get session statistics
+            $ref: '#/definitions/stat.VisitsResponse'
       tags:
       - Stat
 swagger: "2.0"
