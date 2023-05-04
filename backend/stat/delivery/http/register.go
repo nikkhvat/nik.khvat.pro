@@ -23,8 +23,6 @@ func RegisterHTTPEndpoints(router *gin.Engine, uc stat.UseCase) {
 	{
 		statUpdateEndpoints.PUT("/visit", h.SetVisit)
 		statUpdateEndpoints.PUT("/visit/extend", h.VisitExtend)
-
 		statUpdateEndpoints.PUT("/projects/:id", h.UpdateProjectsStat)
-		statUpdateEndpoints.PUT("/clicks/:id", h.UpdateCLicksStat)
 	}
 }

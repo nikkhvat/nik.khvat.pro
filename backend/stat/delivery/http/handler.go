@@ -18,6 +18,14 @@ func NewHandler(useCase stat.UseCase) *Handler {
 	}
 }
 
+// @Summary Get statistics by link
+// @Description Get how many times clicked on links
+// @Tags Stat
+// @Accept json
+// @Produce json
+// @Success 200
+// @Failure 400
+// @Router /api/stat/clicks [get]
 func (h *Handler) GetCliksStat(c *gin.Context) {
 	clicks, err := h.useCase.GetCliksStat()
 
@@ -29,6 +37,13 @@ func (h *Handler) GetCliksStat(c *gin.Context) {
 	c.JSON(200, gin.H{"data": clicks})
 }
 
+// @Summary Get project statistics
+// @Description Get project visits by day in 30 days
+// @Tags Stat
+// @Accept json
+// @Produce json
+// @Success 200 {object} map[string][]models.ProjectsStats
+// @Router /api/stat/projects [get]
 func (h *Handler) GetProjectStat(c *gin.Context) {
 	statsProjects, err := h.useCase.GetProjectStat()
 
@@ -40,6 +55,33 @@ func (h *Handler) GetProjectStat(c *gin.Context) {
 	c.JSON(200, gin.H{"data": statsProjects})
 }
 
+// @Summary Get session statistics
+// @Description Get information about site visits, including the number of visits, unique visits, top countries, top browsers and top OS
+// @Tags Stat
+// @Accept json
+// @Produce json
+// @Success 200 {object} models.VisitsResponse
+// @Router /api/stat/visits [get]
+func (h *Handler) GetVisits(c *gin.Context) {
+	data, err := h.useCase.GetVisits()
+
+	if err != nil {
+		c.JSON(400, gin.H{"error": "something went wrong"})
+		return
+	}
+
+	c.JSON(200, gin.H{"data": data})
+}
+
+// @Summary Extending the time spent on the site
+// @Description Extends the time spent on the site by session ID
+// @Tags Stat
+// @Accept json
+// @Produce json
+// @Param session query string true "Session ID"
+// @Success 200
+// @Failure 400
+// @Router /api/stat/updatevisit/extend [put]
 func (h *Handler) VisitExtend(c *gin.Context) {
 	session := c.DefaultQuery("session", "")
 
@@ -53,17 +95,16 @@ func (h *Handler) VisitExtend(c *gin.Context) {
 	c.JSON(200, gin.H{"message": "successfully"})
 }
 
-func (h *Handler) GetVisits(c *gin.Context) {
-	data, err := h.useCase.GetVisits()
-
-	if err != nil {
-		c.JSON(400, gin.H{"error": "something went wrong"})
-		return
-	}
-
-	c.JSON(200, gin.H{"data": data})
-}
-
+// @Summary add a visit
+// @Description add a visit to the site, gets the IP, country, time of entry and uniqueness of the visit
+// @Tags Stat
+// @Accept json
+// @Produce json
+// @Param un query int true "Unique visit or not (0 - not unique, 1 - unique)"
+// @Param utm query string false "UTM tag ID (optional parameter)"
+// @Success 200 {object} models.SessionResponse "Successful registration of the session and return of the session ID"
+// @Failure 400
+// @Router /api/stat/update/visit [put]
 func (h *Handler) SetVisit(c *gin.Context) {
 	un := c.DefaultQuery("un", "0")
 	utm := c.DefaultQuery("utm", "")
@@ -78,9 +119,17 @@ func (h *Handler) SetVisit(c *gin.Context) {
 		return
 	}
 
-	c.JSON(200, gin.H{"session": session})
+	c.JSON(200, models.SessionResponse{Session: session})
 }
 
+// @Summary Updating the statistics of visits to the project
+// @Description Increments the number of project visits by 1 for the current day
+// @Tags Stat
+// @Accept json
+// @Produce json
+// @Param uuid path string true "project id"
+// @Success 200 "Successful statistics update"
+// @Router /api/stat/update/projects/{uuid} [put]
 func (h *Handler) UpdateProjectsStat(c *gin.Context) {
 	var project models.StatUpdateParam
 	if err := c.ShouldBindUri(&project); err != nil {
@@ -89,23 +138,6 @@ func (h *Handler) UpdateProjectsStat(c *gin.Context) {
 	}
 
 	updateErr := h.useCase.AddProjectVisit(project.ID)
-
-	if updateErr != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"message": updateErr.Error()})
-		return
-	}
-
-	c.Status(200)
-}
-
-func (h *Handler) UpdateCLicksStat(c *gin.Context) {
-	var button models.StatUpdateParamButtons
-	if err := c.ShouldBindUri(&button); err != nil {
-		c.JSON(400, gin.H{"message": "not uuid"})
-		return
-	}
-
-	updateErr := h.useCase.AddClikc(button.ID)
 
 	if updateErr != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": updateErr.Error()})

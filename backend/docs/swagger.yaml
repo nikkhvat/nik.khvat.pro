@@ -1,0 +1,346 @@
+definitions:
+  models.ProjectResponse:
+    properties:
+      cards:
+        type: string
+      categories:
+        items:
+          type: number
+        type: array
+      description:
+        type: string
+      features:
+        type: string
+      id:
+        type: string
+      photos:
+        items:
+          type: number
+        type: array
+      subtitle:
+        type: string
+      title:
+        type: string
+      url:
+        type: string
+    type: object
+  models.ProjectsResp:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/models.ProjectsResponse'
+        type: array
+    type: object
+  models.ProjectsResponse:
+    properties:
+      categories:
+        items:
+          type: number
+        type: array
+      id:
+        type: string
+      subtitle:
+        type: string
+      title:
+        type: string
+      url:
+        type: string
+    type: object
+  models.ProjectsStats:
+    properties:
+      count:
+        type: integer
+      date:
+        type: string
+      uuid:
+        type: string
+    type: object
+  models.SessionResponse:
+    properties:
+      session:
+        type: string
+    type: object
+  models.SingUpResp:
+    properties:
+      token:
+        type: string
+    type: object
+  models.SiteStats:
+    properties:
+      avg_time_on_site:
+        description: Average time spent on the site
+        type: integer
+      top_browsers:
+        additionalProperties:
+          type: integer
+        description: Top browsers
+        type: object
+      top_countries:
+        additionalProperties:
+          type: integer
+        description: Top countries
+        type: object
+      top_os:
+        additionalProperties:
+          type: integer
+        description: Top Operating systems
+        type: object
+      total_visits:
+        description: Visits
+        type: integer
+      total_visits_by_day:
+        additionalProperties:
+          type: integer
+        description: Visits per day
+        type: object
+      unique_visits:
+        description: Unique visits
+        type: integer
+      unique_visits_by_day:
+        additionalProperties:
+          type: integer
+        description: Unique visits per day
+        type: object
+      visits_details_by_days:
+        description: Full statistics of visits by users
+        items:
+          $ref: '#/definitions/models.VisitsDetails'
+        type: array
+    type: object
+  models.Visits:
+    properties:
+      browser:
+        description: Browser (Chrome, Firefox, etc.)
+        type: string
+      country:
+        description: Short country code (EE, DE, etc.)
+        type: string
+      ip:
+        description: The IP address from which
+        type: string
+      os:
+        description: Operating system (Windows, macOS, etc.)
+        type: string
+      platform:
+        description: Platform (Linux, Macintosh, iPhone)
+        type: string
+      time_entry:
+        description: The time at which the person entered
+        type: string
+      time_leaving:
+        description: The time when the user left the site
+        type: string
+      uid:
+        description: Unique identifier
+        type: string
+      unique:
+        description: Has the user already logged in or not
+        type: boolean
+      utm:
+        description: the UTM tag id came in
+        type: string
+    type: object
+  models.VisitsDetails:
+    properties:
+      date:
+        description: Date
+        type: string
+      details:
+        description: Details
+        items:
+          $ref: '#/definitions/models.Visits'
+        type: array
+    type: object
+  models.VisitsResponse:
+    properties:
+      data:
+        $ref: '#/definitions/models.SiteStats'
+    type: object
+info:
+  contact: {}
+paths:
+  /api/auth/sign-in:
+    post:
+      consumes:
+      - application/json
+      description: Log in to the admin panel, get a token
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.SingUpResp'
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+      summary: Sign Up
+      tags:
+      - Auth
+  /api/projects:
+    get:
+      consumes:
+      - application/json
+      description: Get list Projects
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ProjectsResp'
+        "400":
+          description: Bad Request
+      summary: Get list  Projects
+      tags:
+      - Projects
+  /api/projects/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get information about the project by its ID and language, if specified
+      parameters:
+      - description: project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Project language (English by default)
+        in: query
+        name: lang
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ProjectResponse'
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+      summary: Get information about the project by id
+      tags:
+      - Projects
+  /api/stat/clicks:
+    get:
+      consumes:
+      - application/json
+      description: Get how many times clicked on links
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+      summary: Get statistics by link
+      tags:
+      - Stat
+  /api/stat/projects:
+    get:
+      consumes:
+      - application/json
+      description: Get project visits by day in 30 days
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                $ref: '#/definitions/models.ProjectsStats'
+              type: array
+            type: object
+      summary: Get project statistics
+      tags:
+      - Stat
+  /api/stat/update/projects/{uuid}:
+    put:
+      consumes:
+      - application/json
+      description: Increments the number of project visits by 1 for the current day
+      parameters:
+      - description: project id
+        in: path
+        name: uuid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful statistics update
+      summary: Updating the statistics of visits to the project
+      tags:
+      - Stat
+  /api/stat/update/visit:
+    put:
+      consumes:
+      - application/json
+      description: add a visit to the site, gets the IP, country, time of entry and
+        uniqueness of the visit
+      parameters:
+      - description: Unique visit or not (0 - not unique, 1 - unique)
+        in: query
+        name: un
+        required: true
+        type: integer
+      - description: UTM tag ID (optional parameter)
+        in: query
+        name: utm
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful registration of the session and return of the session
+            ID
+          schema:
+            $ref: '#/definitions/models.SessionResponse'
+        "400":
+          description: Bad Request
+      summary: add a visit
+      tags:
+      - Stat
+  /api/stat/updatevisit/extend:
+    put:
+      consumes:
+      - application/json
+      description: Extends the time spent on the site by session ID
+      parameters:
+      - description: Session ID
+        in: query
+        name: session
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+      summary: Extending the time spent on the site
+      tags:
+      - Stat
+  /api/stat/visits:
+    get:
+      consumes:
+      - application/json
+      description: Get information about site visits, including the number of visits,
+        unique visits, top countries, top browsers and top OS
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.VisitsResponse'
+      summary: Get session statistics
+      tags:
+      - Stat
+swagger: "2.0"

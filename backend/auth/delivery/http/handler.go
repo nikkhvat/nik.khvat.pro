@@ -19,6 +19,15 @@ func NewHandler(useCase auth.UseCase) *Handler {
 	}
 }
 
+// @Summary Sign Up
+// @Description Log in to the admin panel, get a token
+// @Tags Auth
+// @Accept json
+// @Produce json
+// @Success 200 {object} models.SingUpResp
+// @Failure 400
+// @Failure 401
+// @Router /api/auth/sign-in [post]
 func (h *Handler) SignIn(c *gin.Context) {
 	inp := new(models.SignIn)
 
@@ -35,9 +44,9 @@ func (h *Handler) SignIn(c *gin.Context) {
 			return
 		}
 
-		c.AbortWithStatus(http.StatusInternalServerError)
+		c.AbortWithStatus(http.StatusBadRequest)
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"token": token})
+	c.JSON(http.StatusOK, models.SingUpResp{Token: *token})
 }

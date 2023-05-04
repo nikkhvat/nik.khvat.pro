@@ -1,8 +1,9 @@
 package models
 
 import (
-	"github.com/google/uuid"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 type StatUpdateParam struct {
@@ -28,32 +29,45 @@ type CountriesResponse struct {
 	Count   int    `json:"count"`
 }
 
+// swagger:model Visits
 type Visits struct {
-	UId         uuid.UUID `json:"uid"`          // Уникальный идентификатор
-	TimeEntry   time.Time `json:"time_entry"`   // Время в которое человек зашёл
-	Browser     string    `json:"browser"`      // Браузер (Chrome, Firefox и тд)
-	Platform    string    `json:"platform"`     // Платформа (Linux, Macintosh, iPhone)
-	Os          string    `json:"os"`           // Операционная система (Windows, MacOs и тд)
-	TimeLeaving time.Time `json:"time_leaving"` // Время когда пользователь покинул сайт
-	Country     string    `json:"country"`      // Короткий код страны (EE, DE и тд )
-	Unique      bool      `json:"unique"`       // Заходил ли пользователь уже или нет
-	Ip          string    `json:"ip"`           // Ip адресс с которого заходили
-	Utm         string    `json:"utm"`          // id UTM метки
+	UId         uuid.UUID `json:"uid"`          // Unique identifier
+	TimeEntry   time.Time `json:"time_entry"`   // The time at which the person entered
+	Browser     string    `json:"browser"`      // Browser (Chrome, Firefox, etc.)
+	Platform    string    `json:"platform"`     // Platform (Linux, Macintosh, iPhone)
+	Os          string    `json:"os"`           // Operating system (Windows, macOS, etc.)
+	TimeLeaving time.Time `json:"time_leaving"` // The time when the user left the site
+	Country     string    `json:"country"`      // Short country code (EE, DE, etc.)
+	Unique      bool      `json:"unique"`       // Has the user already logged in or not
+	Ip          string    `json:"ip"`           // The IP address from which
+	Utm         string    `json:"utm"`          // the UTM tag id came in
 }
 
+// swagger:model SiteStats
 type SiteStats struct {
-	TopCountries        map[string]int  `json:"top_countries"`          // Топ стран
-	TotalVisits         int             `json:"total_visits"`           // Посещения
-	UniqueVisits        int             `json:"unique_visits"`          // Уникальные посещения
-	UniqueVisitsByDay   map[string]int  `json:"unique_visits_by_day"`   // Уникальные посещения за день
-	TotalVisitsByDay    map[string]int  `json:"total_visits_by_day"`    // Визиты за день
-	TopOS               map[string]int  `json:"top_os"`                 // Топ операционных систем
-	TopBrowsers         map[string]int  `json:"top_browsers"`           // Топ бразуреов
-	AvgTimeOnSite       time.Duration   `json:"avg_time_on_site"`       // Среднее время нахождение на сайте
-	VisitsDetailsByDays []VisitsDetails `json:"visits_details_by_days"` // Полная статистика посещений по пользывателям
+	TopCountries        map[string]int  `json:"top_countries"`          // Top countries
+	TotalVisits         int             `json:"total_visits"`           // Visits
+	UniqueVisits        int             `json:"unique_visits"`          // Unique visits
+	UniqueVisitsByDay   map[string]int  `json:"unique_visits_by_day"`   // Unique visits per day
+	TotalVisitsByDay    map[string]int  `json:"total_visits_by_day"`    // Visits per day
+	TopOS               map[string]int  `json:"top_os"`                 // Top Operating systems
+	TopBrowsers         map[string]int  `json:"top_browsers"`           // Top browsers
+	AvgTimeOnSite       int64           `json:"avg_time_on_site"`       // Average time spent on the site
+	VisitsDetailsByDays []VisitsDetails `json:"visits_details_by_days"` // Full statistics of visits by users
 }
 
+// swagger:model VisitsDetails
 type VisitsDetails struct {
-	Date    string   `json:"date"`    // Дата
-	Details []Visits `json:"details"` // Детали
+	Date    string   `json:"date"`    // Date
+	Details []Visits `json:"details"` // Details
+}
+
+// swagger:model VisitsResponse
+type VisitsResponse struct {
+	Data SiteStats `json:"data"`
+}
+
+// swagger:model SessionResponse
+type SessionResponse struct {
+	Session uuid.UUID `json:"session"`
 }

@@ -160,7 +160,7 @@ func calculateSiteStats(visits []models.Visits) models.SiteStats {
 		}
 	}
 
-	stats.AvgTimeOnSite = totalTimeOnSite / time.Duration(stats.TotalVisits)
+	stats.AvgTimeOnSite = int64(totalTimeOnSite / time.Duration(stats.TotalVisits))
 
 	return stats
 }

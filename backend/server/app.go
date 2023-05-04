@@ -27,6 +27,11 @@ import (
 	projectsHttp "nik19ta/backend/projects/delivery/http"
 	projectsPostgres "nik19ta/backend/projects/repository/postgres"
 	projectsUseCase "nik19ta/backend/projects/usecase"
+
+	docs "nik19ta/backend/docs"
+
+	swaggerfiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 type App struct {
@@ -67,6 +72,15 @@ func (a *App) Run(port string) error {
 	statHttp.RegisterHTTPEndpoints(router, a.statsUC)
 	authHttp.RegisterHTTPEndpoints(router, a.authUC)
 	projectsHttp.RegisterHTTPEndpoints(router, a.projectsUC)
+
+	// * Swagger
+	docs.SwaggerInfo.BasePath = "/api/v1"
+
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
+
+	ginSwagger.WrapHandler(swaggerfiles.Handler,
+		ginSwagger.URL("http://localhost:8080/swagger/doc.json"),
+		ginSwagger.DefaultModelsExpandDepth(-1))
 
 	a.httpServer = &http.Server{
 		Addr:           ":" + port,

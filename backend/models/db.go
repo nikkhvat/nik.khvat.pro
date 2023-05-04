@@ -49,7 +49,7 @@ type Photos struct {
 	Path        string `json:"path"`
 }
 
-// Stats DB struct
+// swagger:model ProjectsStats
 type ProjectsStats struct {
 	UUID  string `json:"uuid" gorm:"type:uuid;uniqueIndex:idx_uuid_date"`
 	Count int    `json:"count"`
