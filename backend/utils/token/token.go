@@ -11,9 +11,9 @@ import (
 	jwt "github.com/golang-jwt/jwt"
 )
 
-func GenerateToken(user_id string) (string, error) {
+func GenerateToken(userId string) (string, error) {
 	conf := config.GetConfig()
-	token_lifespan, err := strconv.Atoi("720")
+	tokenLifespan, err := strconv.Atoi("720")
 
 	if err != nil {
 		return "", err
@@ -21,15 +21,15 @@ func GenerateToken(user_id string) (string, error) {
 
 	claims := jwt.MapClaims{}
 	claims["authorized"] = true
-	claims["user_id"] = user_id
-	claims["exp"] = time.Now().Add(time.Hour * time.Duration(token_lifespan)).Unix()
+	claims["user_id"] = userId
+	claims["exp"] = time.Now().Add(time.Hour * time.Duration(tokenLifespan)).Unix()
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
 	return token.SignedString([]byte(conf.JwtSecret))
 
 }
 
-func TokenValid(c *gin.Context) error {
+func ValidToken(c *gin.Context) error {
 	conf := config.GetConfig()
 
 	tokenString := ExtractToken(c)

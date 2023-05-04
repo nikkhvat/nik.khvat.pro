@@ -3,5 +3,5 @@ package projects
 import "errors"
 
 var (
-	CouldNotFindProject = errors.New("Not found project by ID")
+	CouldNotFindProject = errors.New("not found project by ID")
 )

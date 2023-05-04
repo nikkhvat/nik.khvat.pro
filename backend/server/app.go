@@ -4,6 +4,7 @@ import (
 	"context"
 	"log"
 	"net/http"
+	middlewareCors "nik19ta/backend/pkg/middleware/cors"
 	"nik19ta/backend/services/auth"
 	authHttp "nik19ta/backend/services/auth/delivery/http"
 	authPostgres "nik19ta/backend/services/auth/repository/postgres"
@@ -25,10 +26,8 @@ import (
 	"os/signal"
 	"time"
 
-	database "nik19ta/backend/pkg/database"
-	middlewareCors "nik19ta/backend/pkg/middleware/cors"
-
 	gin "github.com/gin-gonic/gin"
+	database "nik19ta/backend/pkg/database"
 
 	docs "nik19ta/backend/docs"
 
@@ -66,13 +65,13 @@ func (a *App) Run(port string) error {
 
 	router.Static("/images", "./images/portfolio")
 	router.Static("/icons", "./images/icons")
+	router.Static("/files", "./images/files")
 
 	router.Use(
 		gin.Recovery(),
 		gin.Logger(),
+		middlewareCors.CORSMiddleware(),
 	)
-
-	router.Use(middlewareCors.CORSMiddleware())
 
 	statHttp.RegisterHTTPEndpoints(router, a.statsUC)
 	authHttp.RegisterHTTPEndpoints(router, a.authUC)
