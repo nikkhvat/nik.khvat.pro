@@ -141,9 +141,9 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/stat/clicks": {
+        "/api/stat/links": {
             "get": {
-                "description": "Get how many times clicked on links",
+                "description": "Get links statistics",
                 "consumes": [
                     "application/json"
                 ],
@@ -155,10 +155,13 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK"
-                    },
-                    "400": {
-                        "description": "Bad Request"
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/links.Link"
+                            }
+                        }
                     }
                 }
             }
@@ -319,6 +322,23 @@ const docTemplate = `{
             "properties": {
                 "token": {
                     "description": "token for authorization",
+                    "type": "string"
+                }
+            }
+        },
+        "links.Link": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "page": {
+                    "type": "string"
+                },
+                "uuid": {
                     "type": "string"
                 }
             }

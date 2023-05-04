@@ -16,25 +16,6 @@ func NewHandler(useCase stat.UseCase) *Handler {
 	}
 }
 
-// GetCliksStat @Summary Get statistics by link
-// @Description Get how many times clicked on links
-// @Tags Stat
-// @Accept json
-// @Produce json
-// @Success 200
-// @Failure 400
-// @Router /api/stat/clicks [get]
-func (h *Handler) GetCliksStat(c *gin.Context) {
-	clicks, err := h.useCase.GetClicksStat()
-
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
-		return
-	}
-
-	c.JSON(200, gin.H{"data": clicks})
-}
-
 // GetProjectStat @Summary Get project statistics
 // @Description Get project visits by day in 30 days
 // @Tags Stat
@@ -143,4 +124,22 @@ func (h *Handler) UpdateProjectsStat(c *gin.Context) {
 	}
 
 	c.Status(200)
+}
+
+// GetLinks @Summary Get links statistics
+// @Description Get links statistics
+// @Tags Stat
+// @Accept json
+// @Produce json
+// @Success 200 {object} []links.Link
+// @Router /api/stat/links [get]
+func (h *Handler) GetLinks(c *gin.Context) {
+	data, err := h.useCase.GetLinks()
+
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
+		return
+	}
+
+	c.JSON(200, stat.ResponseLinks{Data: data})
 }

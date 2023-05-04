@@ -2,6 +2,7 @@ package postgres
 
 import (
 	"errors"
+	"nik19ta/backend/services/links"
 	"time"
 
 	stat "nik19ta/backend/services/stat"
@@ -74,18 +75,6 @@ func (r UserRepository) GetUniqueVisits() (*stat.UniqueVisitStatsWithTotal, erro
 	}
 
 	return &data, nil
-}
-
-func (r UserRepository) GetCliksStat() (*[]stat.ClicksStat, error) {
-	clicks := []stat.ClicksStat{}
-
-	result := r.db.Find(&clicks)
-
-	if result.Error != nil {
-		return nil, result.Error
-	}
-
-	return &clicks, nil
 }
 
 type Project struct {
@@ -222,6 +211,20 @@ func (r UserRepository) AddUniqueVisit() error {
 		return err
 	}
 	return nil
+}
+
+func (r UserRepository) GetLinks() ([]links.Link, error) {
+	var linksArray []links.Link
+	now := time.Now()
+	monthAgo := now.AddDate(0, -1, 0)
+
+	result := r.db.Where("date >= ? AND date <= ?", monthAgo, now).Find(&linksArray)
+
+	if result.Error != nil {
+		return nil, result.Error
+	}
+
+	return linksArray, nil
 }
 
 func (r UserRepository) AddProjectVisit(projectId string) error {

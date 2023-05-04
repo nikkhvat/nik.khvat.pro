@@ -1,6 +1,7 @@
 package stat
 
 import (
+	"nik19ta/backend/services/links"
 	"time"
 
 	"github.com/google/uuid"
@@ -98,4 +99,9 @@ type ProjectsStats struct {
 	UUID  string `json:"uuid" gorm:"type:uuid;uniqueIndex:idx_uuid_date"` // Project Id
 	Count int    `json:"count"`                                           // Count visits
 	Date  string `json:"date" gorm:"uniqueIndex:idx_uuid_date"`           // Date
+}
+
+// swagger:model ResponseLinks
+type ResponseLinks struct {
+	Data []links.Link `json:"data"`
 }

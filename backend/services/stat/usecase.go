@@ -2,10 +2,10 @@ package stat
 
 import (
 	"github.com/google/uuid"
+	"nik19ta/backend/services/links"
 )
 
 type UseCase interface {
-	GetClicksStat() (*[]ClicksStat, error)
 	GetProjectStat() (map[string][]ProjectsStats, error)
 
 	AddVisit(ip, userAgent, utm string, unique bool) (uuid.UUID, error)
@@ -13,4 +13,5 @@ type UseCase interface {
 	GetVisits() (SiteStats, error)
 
 	AddProjectVisit(projectId string) error
+	GetLinks() ([]links.Link, error)
 }

@@ -1,7 +1,8 @@
 package stat
 
+import "nik19ta/backend/services/links"
+
 type UserRepository interface {
-	GetCliksStat() (*[]ClicksStat, error)
 	GetProjectVisits() (map[string][]ProjectsStats, error)
 
 	AddVisit(data Visits) error
@@ -9,4 +10,5 @@ type UserRepository interface {
 	GetVisits() ([]Visits, error)
 
 	AddProjectVisit(projectId string) error
+	GetLinks() ([]links.Link, error)
 }

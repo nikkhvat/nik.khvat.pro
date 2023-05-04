@@ -5,6 +5,17 @@ definitions:
         description: token for authorization
         type: string
     type: object
+  links.Link:
+    properties:
+      date:
+        type: string
+      link:
+        type: string
+      page:
+        type: string
+      uuid:
+        type: string
+    type: object
   projects.ProjectResponse:
     properties:
       cards:
@@ -258,18 +269,20 @@ paths:
           description: Not Found
       tags:
       - Projects
-  /api/stat/clicks:
+  /api/stat/links:
     get:
       consumes:
       - application/json
-      description: Get how many times clicked on links
+      description: Get links statistics
       produces:
       - application/json
       responses:
         "200":
           description: OK
-        "400":
-          description: Bad Request
+          schema:
+            items:
+              $ref: '#/definitions/links.Link'
+            type: array
       tags:
       - Stat
   /api/stat/projects:

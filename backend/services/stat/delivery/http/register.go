@@ -13,9 +13,9 @@ func RegisterHTTPEndpoints(router *gin.Engine, uc stat.UseCase) {
 	statEndpoints := router.Group("/api/stat")
 	statEndpoints.Use(middlewareAuth.JwtAuthMiddleware())
 	{
-		statEndpoints.GET("/clicks", h.GetCliksStat)
 		statEndpoints.GET("/projects", h.GetProjectStat)
 		statEndpoints.GET("/visits", h.GetVisits)
+		statEndpoints.GET("/links", h.GetLinks)
 	}
 
 	statUpdateEndpoints := router.Group("/api/stat/update")

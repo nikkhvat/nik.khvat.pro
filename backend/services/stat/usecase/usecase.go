@@ -2,6 +2,7 @@ package usecase
 
 import (
 	"nik19ta/backend/pkg/config"
+	"nik19ta/backend/services/links"
 	stat "nik19ta/backend/services/stat"
 	"time"
 
@@ -17,15 +18,6 @@ type statUseCase struct {
 
 func NewStatUseCase(userRepo stat.UserRepository) *statUseCase {
 	return &statUseCase{userRepo: userRepo}
-}
-
-func (a *statUseCase) GetClicksStat() (*[]stat.ClicksStat, error) {
-	clicks, err := a.userRepo.GetCliksStat()
-	if err != nil {
-		return nil, stat.DataBaseError
-	}
-
-	return clicks, nil
 }
 
 func (a *statUseCase) GetProjectStat() (map[string][]stat.ProjectsStats, error) {
@@ -160,4 +152,8 @@ func (a *statUseCase) GetVisits() (stat.SiteStats, error) {
 
 func (a *statUseCase) AddProjectVisit(projectId string) error {
 	return a.userRepo.AddProjectVisit(projectId)
+}
+
+func (a *statUseCase) GetLinks() ([]links.Link, error) {
+	return a.userRepo.GetLinks()
 }
