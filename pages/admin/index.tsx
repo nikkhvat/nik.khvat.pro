@@ -18,7 +18,6 @@ import firefox from '../../images/admin/firefox.png'
 import microsoft from '../../images/admin/microsoft.png'
 import opera from '../../images/admin/opera.png'
 import safari from '../../images/admin/safari.png'
-import search from '../../images/admin/search.png'
 
 import android from '../../images/admin/platforms/android.png'
 import ipad from '../../images/admin/platforms/ipad.png'
@@ -26,6 +25,8 @@ import iphone from '../../images/admin/platforms/iphone.png'
 import macbook from '../../images/admin/platforms/macbook.png'
 import windows from '../../images/admin/platforms/windows.png'
 import windows7 from '../../images/admin/platforms/windows7.png'
+import apple from '../../images/admin/platforms/apple.png'
+import bot from '../../images/admin/platforms/bot.png'
 
 import { StaticImageData } from "next/image";
 
@@ -224,14 +225,18 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
       "Microsoft": microsoft,
       "Opera": opera,
       "Safari": safari,
-      "Googlebot": search,
-      "AhrefsBot": search,
+      "Googlebot": bot,
+      "AhrefsBot": bot,
+      "Vercelbot": bot
     }
 
     return browsers[key] ? browsers[key] : null
   }
 
   const getPlatformIcon = (key: string): StaticImageData | null => {
+
+    if (key.indexOf("Mac") !== -1) return apple
+
     const platforms: { [key: string]: StaticImageData } = {
       "Android": android,
       "Linux": android,
@@ -241,8 +246,9 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
       "Windows": windows,
       "Windows 10": windows,
       "Windows 7": windows7,
-      "Googlebot": search,
-      "AhrefsBot": search,
+      "Googlebot": bot,
+      "AhrefsBot": bot,
+      "Vercelbot": bot
     }
 
     return platforms[key] ? platforms[key] : null

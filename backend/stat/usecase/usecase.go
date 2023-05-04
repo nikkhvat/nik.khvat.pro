@@ -125,12 +125,8 @@ func calculateSiteStats(visits []models.Visits) models.SiteStats {
 	var totalTimeOnSite time.Duration
 
 	for _, visit := range visits {
-		if visit.Browser == "Googlebot" {
-			visit.Os = "Googlebot"
-		}
-
-		if visit.Browser == "AhrefsBot" {
-			visit.Os = "AhrefsBot"
+		if visit.Browser == "Googlebot" || visit.Browser == "AhrefsBot" || visit.Browser == "Vercelbot" {
+			visit.Os = visit.Browser
 		}
 
 		stats.TopCountries[visit.Country]++
