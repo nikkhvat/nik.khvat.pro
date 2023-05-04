@@ -31,6 +31,7 @@ This website uses the following tools and technologies:
 
 - Visit [nik19ta.pro](https://nik19ta.pro) to see the live website
 - View the figma for the website layout and design [![wiew figma](./README/figma.png)](https://www.figma.com/file/NKcx7nhqQJoVLYecFC9USK/nik19ta.me)
+- View [swagger](https://nik19ta.pro/swagger/index.html)
 
 
 ### `Preact` instead of `ReactJS` (Why?)
