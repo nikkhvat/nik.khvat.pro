@@ -25,6 +25,7 @@ import ipad from '../../images/admin/platforms/ipad.png'
 import iphone from '../../images/admin/platforms/iphone.png'
 import macbook from '../../images/admin/platforms/macbook.png'
 import windows from '../../images/admin/platforms/windows.png'
+import windows7 from '../../images/admin/platforms/windows7.png'
 
 import { StaticImageData } from "next/image";
 
@@ -239,6 +240,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
       "Macintosh": macbook,
       "Windows": windows,
       "Windows 10": windows,
+      "Windows 7": windows7,
       "Googlebot": search,
       "AhrefsBot": search,
     }
