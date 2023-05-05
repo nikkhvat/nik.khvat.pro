@@ -29,6 +29,7 @@ import windows from '../../images/admin/platforms/windows.png'
 import windows7 from '../../images/admin/platforms/windows7.png'
 import apple from '../../images/admin/platforms/apple.png'
 import bot from '../../images/admin/platforms/bot.png'
+import yandex from '../../images/admin/yandex.png'
 
 import { StaticImageData } from "next/image";
 
@@ -250,9 +251,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
       "Microsoft": microsoft,
       "Opera": opera,
       "Safari": safari,
-      "Googlebot": bot,
-      "AhrefsBot": bot,
-      "Vercelbot": bot
+      "YaBrowser": yandex
     }
 
     return browsers[key] ? browsers[key] : null
@@ -375,7 +374,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               {general.top_browsers ? Object.keys(general.top_browsers).map(key =>
                 key.toLowerCase().indexOf("bot") === -1 ? <div key={key} className={styles.browser_line} >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  {getBrowserIcon(key) !== null ? <img className={styles.browser} src={getBrowserIcon(key)?.src} alt="" /> : "unknown"}
+                  {getBrowserIcon(key) !== null ? <img className={styles.browser} src={getBrowserIcon(key)?.src} alt="" /> : ""}
                   <span className={styles.browser_line_count} >{key} - {general.top_browsers[key]}</span>
                 </div> : <></>
               ) : <></>}

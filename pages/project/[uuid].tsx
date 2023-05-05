@@ -73,7 +73,20 @@ const Project: React.FC<InferGetStaticPropsType<any>> = (_props) => {
         {data.photos?.map((photo: any, i: number) => (
           <div key={photo} className={styles.image_container}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${photo}`} alt={`${i + 1}`} />
+            <picture>
+              <source
+                className={styles.img}
+                type="image/avif"
+                srcSet={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${photo}.avif 1x`} />
+              <source
+                className={styles.img}
+                type="image/webp"
+                srcSet={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${photo}.webp 1x`} />
+              <img
+                className={styles.img}
+                src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${photo}.jpg`}
+                alt={`${i + 1}`} />
+            </picture>
           </div>
         ))}
       </div>

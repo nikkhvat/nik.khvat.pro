@@ -15,7 +15,7 @@
   background-size: cover;
   background-position: center;
   object-fit: cover;
-  height: auto;
+  height: 410px;
 }
 
 .portfolio_cards__item_title {
@@ -57,9 +57,36 @@
   left: 0;
 }
 
+@media screen and (max-width: 1324px) {
+  .portfolio_cards__item_photo {
+    height: 340px;
+  }
+}
+
+@media screen and (max-width: 1202px) {
+  .portfolio_cards__item_photo {
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .portfolio_cards__item_photo {
+    height: 260px;
+  }
+}
+
+@media screen and (max-width: 756px) {
+  .portfolio_cards__item_photo {
+    height: 220px;
+  }
+}
+
 @media screen and (max-width: 648px) {
   .portfolio_cards__item {
     width: 100%;
+  }
+  .portfolio_cards__item_photo {
+    height: auto;
   }
 }
 

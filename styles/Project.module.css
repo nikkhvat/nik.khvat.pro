@@ -120,6 +120,11 @@
   margin-top: -6px;
 }
 
+.photos .img {
+  width: 100%;
+  margin-top: -6px;
+}
+
 @media screen and (max-width: 980px) {
   .main_features li {
     max-width: 100%;
