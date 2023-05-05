@@ -94,7 +94,7 @@ const StatisticBots: React.FC<StatisticVisitsProps> = ({ daysObject }) => {
               <div
                   key={detail.uid}
                   className={styles.item_slice}
-                  style={{ minHeight: max * 28.8 + "px", background: getColor(detail.browser)}} ></div>
+                  style={{ minHeight: max * 27 + "px", background: getColor(detail.browser)}} ></div>
           )) : <></> }
         </div>
       ))}

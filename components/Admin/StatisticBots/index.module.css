@@ -7,7 +7,7 @@
   align-items: flex-end;
   padding-left: 10px;
   padding-right: 10px;
-  padding-top: 25px;
+  padding-top: 32px;
   gap: 5px;
   position: relative;
 }
@@ -106,5 +106,13 @@
   .item {
     background-color: #323232;
     min-width: 2px;
+  }
+
+  .marker {
+    font-size: 10px;
+  }
+
+  .markers {
+    gap: 8px;
   }
 }
