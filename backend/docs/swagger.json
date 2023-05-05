@@ -470,9 +470,20 @@
                         "type": "integer"
                     }
                 },
+                "total_bots": {
+                    "description": "Total bots visit",
+                    "type": "integer"
+                },
                 "total_visits": {
                     "description": "Visits",
                     "type": "integer"
+                },
+                "total_visits_bot": {
+                    "description": "Total bots visit by days",
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    }
                 },
                 "total_visits_by_day": {
                     "description": "Visits per day",

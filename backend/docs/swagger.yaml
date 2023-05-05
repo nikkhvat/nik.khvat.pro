@@ -114,9 +114,17 @@ definitions:
           type: integer
         description: Top Operating systems
         type: object
+      total_bots:
+        description: Total bots visit
+        type: integer
       total_visits:
         description: Visits
         type: integer
+      total_visits_bot:
+        additionalProperties:
+          type: integer
+        description: Total bots visit by days
+        type: object
       total_visits_by_day:
         additionalProperties:
           type: integer

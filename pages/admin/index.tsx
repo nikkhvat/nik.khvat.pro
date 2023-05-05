@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Head from 'next/head'
+import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
@@ -53,8 +54,10 @@ export interface SiteStats {
   top_countries: { [key: string]: number }
   total_visits: number
   unique_visits: number
+  total_bots: number
   unique_visits_by_day: { [key: string]: number }
   total_visits_by_day: { [key: string]: number }
+  total_visits_bot: { [key: string]: number }
   top_os: any
   top_browsers: { [key: string]: number }
   avg_time_on_site: number
@@ -343,6 +346,12 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
           </div>
           <div className={styles.card} >
             <div className={styles.card_count_container} >
+              <div className={styles.card_count} >{general.total_bots}</div>
+              <div className={styles.card_title} >{t("total_bots")}</div>
+            </div>
+          </div>
+          <div className={styles.card} >
+            <div className={styles.card_count_container} >
               <div className={styles.card_count} >{"1m 36s"}</div>
               <div className={styles.card_title} >{t("average_time_spent")}</div>
             </div>
@@ -373,8 +382,12 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
             <div className={styles.browser_container} >
               {general.top_browsers ? Object.keys(general.top_browsers).map(key =>
                 key.toLowerCase().indexOf("bot") === -1 ? <div key={key} className={styles.browser_line} >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  {getBrowserIcon(key) !== null ? <img className={styles.browser} src={getBrowserIcon(key)?.src} alt="" /> : ""}
+                  {getBrowserIcon(key) !== null ? 
+                    <Image 
+                      className={styles.browser} 
+                      width={14}
+                      height={14}
+                      src={getBrowserIcon(key)!.src} alt="" /> : ""}
                   <span className={styles.browser_line_count} >{key} - {general.top_browsers[key]}</span>
                 </div> : <></>
               ) : <></>}
@@ -385,8 +398,12 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
             <ul className={styles.browser_container} >
               {general.top_os ? Object.keys(general.top_os).map(key =>
                   key.toLowerCase().indexOf("bot") === -1 ? <li key={key} className={styles.browser_line} >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    {getPlatformIcon(key) !== null ? <img className={styles.browser} src={getPlatformIcon(key)?.src} alt="" /> : ""}
+                    {getPlatformIcon(key) !== null ? 
+                      <Image
+                        className={styles.browser}
+                        width={14}
+                        height={14}
+                        src={getPlatformIcon(key)!.src} alt="" /> : ""}
                   <span className={styles.platform_line_count} >{key} - {general.top_os[key]}</span>
                 </li> : <></>
               ) : <></>}

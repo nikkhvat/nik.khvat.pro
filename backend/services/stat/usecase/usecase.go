@@ -1,9 +1,11 @@
 package usecase
 
 import (
+	"log"
 	"nik19ta/backend/pkg/config"
 	"nik19ta/backend/services/links"
 	stat "nik19ta/backend/services/stat"
+	"strings"
 	"time"
 
 	"github.com/ip2location/ip2location-go"
@@ -85,10 +87,12 @@ func (a *statUseCase) AddVisit(ip, userAgent, utm string, unique bool) (uuid.UUI
 func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 	stats := stat.SiteStats{
 		TopCountries:      make(map[string]int),
-		TotalVisits:       len(visits),
+		TotalVisits:       0,
+		TotalBots:         0,
 		UniqueVisits:      0,
 		UniqueVisitsByDay: make(map[string]int),
 		TotalVisitsByDay:  make(map[string]int),
+		VisitsBotByDay:    make(map[string]int),
 		TopOS:             make(map[string]int),
 		TopBrowsers:       make(map[string]int),
 		AvgTimeOnSite:     0,
@@ -102,21 +106,30 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 			visit.Os = visit.Browser
 		}
 
-		stats.TopCountries[visit.Country]++
-		if !uniqueVisitors[visit.Ip] {
-			stats.UniqueVisits++
-			uniqueVisitors[visit.Ip] = true
-		}
-
 		date := visit.TimeEntry.Format("2006-01-02")
-		stats.UniqueVisitsByDay[date]++
-		stats.TotalVisitsByDay[date]++
 
-		stats.TopOS[visit.Os]++
-		stats.TopBrowsers[visit.Browser]++
+		browser := strings.ToLower(visit.Browser)
 
-		timeOnSite := visit.TimeLeaving.Sub(visit.TimeEntry)
-		totalTimeOnSite += timeOnSite
+		if strings.Contains(browser, "bot") {
+			log.Println("BOT FOUND")
+			stats.VisitsBotByDay[date]++
+			stats.TotalBots++
+		} else {
+			stats.UniqueVisitsByDay[date]++
+			stats.TotalVisitsByDay[date]++
+			stats.TopOS[visit.Os]++
+			stats.TopBrowsers[visit.Browser]++
+			stats.TotalVisits++
+
+			timeOnSite := visit.TimeLeaving.Sub(visit.TimeEntry)
+			totalTimeOnSite += timeOnSite
+
+			stats.TopCountries[visit.Country]++
+			if !uniqueVisitors[visit.Ip] {
+				stats.UniqueVisits++
+				uniqueVisitors[visit.Ip] = true
+			}
+		}
 
 		// Подробности посещения
 		found := false
