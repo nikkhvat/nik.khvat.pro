@@ -3,5 +3,9 @@
     "general_site_statistics": "सामान्य साइट सांख्यिकी",
     "visits": "भ्रमण",
     "unique_visits": "अद्वितीय भ्रमण",
-    "projects_statistics": "परियोजना सांख्यिकी"
+    "projects_statistics": "परियोजना सांख्यिकी",
+    "average_time_spent": "औसत समय बिताया",
+    "top_countries": "शीर्ष देश",
+    "top_browsers": "शीर्ष ब्राउज़र",
+    "top_os": "शीर्ष ऑपरेटिंग सिस्टम"
 }

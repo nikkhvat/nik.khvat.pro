@@ -3,5 +3,9 @@
     "general_site_statistics": "Сайттың жалпы статистикасы",
     "visits": "Сапарлар",
     "unique_visits": "Бірегей сапарлар",
-    "projects_statistics": "Жобалар статистикасы"
+    "projects_statistics": "Жобалар статистикасы",
+    "average_time_spent": "Орташа уақыт сарынды",
+    "top_countries": "Ең жоғарғы елдер",
+    "top_browsers": "Ең жоғарғы браузерлер",
+    "top_os": "Ең жоғарғы әмірлер жүйесі"
 }

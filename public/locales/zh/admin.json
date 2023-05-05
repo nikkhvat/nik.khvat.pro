@@ -3,5 +3,9 @@
     "general_site_statistics": "网站总体统计",
     "visits": "访问次数",
     "unique_visits": "独立访问次数",
-    "projects_statistics": "项目统计"
+    "projects_statistics": "项目统计",
+    "average_time_spent": "平均花费时间",
+    "top_countries": "热门国家",
+    "top_browsers": "热门浏览器",
+    "top_os": "热门操作系统"
 }

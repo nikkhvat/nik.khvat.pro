@@ -3,5 +3,9 @@
     "general_site_statistics": "Statistiques générales du site",
     "visits": "Visites",
     "unique_visits": "Visites uniques",
-    "projects_statistics": "Statistiques des projets"
+    "projects_statistics": "Statistiques des projets",
+    "average_time_spent": "Temps moyen passé",
+    "top_countries": "Pays les plus populaires",
+    "top_browsers": "Navigateurs les plus populaires",
+    "top_os": "Systèmes d'exploitation les plus populaires"
 }

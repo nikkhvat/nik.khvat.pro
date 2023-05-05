@@ -13,6 +13,8 @@ import { useRouter } from 'next/navigation';
 import ProgressBar from "../../components/Admin/Progress";
 import StatisticVisits from "../../components/Admin/StatisticVisits";
 
+import StatisticBots from "../../components/Admin/StatisticBots"
+
 import chrome from '../../images/admin/chrome.png'
 import firefox from '../../images/admin/firefox.png'
 import microsoft from '../../images/admin/microsoft.png'
@@ -34,29 +36,30 @@ type Props = {
   // Add custom props here
 };
 
+export interface VisitDetail {
+  uid: string
+  time_entry: string
+  browser: string
+  os: string
+  time_leaving: string
+  country: string
+  unique: boolean
+  ip: string
+  utm: string
+}
+
 export interface SiteStats {
   top_countries: { [key: string]: number }
   total_visits: number
   unique_visits: number
   unique_visits_by_day: { [key: string]: number }
   total_visits_by_day: { [key: string]: number }
-  top_os: { [key: string]: number }
+  top_os: any
   top_browsers: { [key: string]: number }
   avg_time_on_site: number
-  visits_details_by_days: {
-    date: string
-    details: {
-      uid: string
-      time_entry: string
-      browser: string
-      os: string
-      time_leaving: string
-      country: string
-      unique: boolean
-      ip: string
-      utm: string
-    }[]
-  }[]
+  no_bots: { date: string, details: VisitDetail[], count: number }[],
+  bots: { date: string, details: VisitDetail[], count: number }[],
+  visits_details_by_days: { date: string, details: VisitDetail[] }[]
 }
 
 
@@ -179,6 +182,8 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
           })
       }
 
+
+
       setData((prev: any) => ({ ...prev, projects: projects.sort((a, b) => b.count - a.count), all: allCount }))
     } catch (error: any) {
       push(`/admin/auth`)
@@ -193,7 +198,27 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
  
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/visits`, { headers })
     const data: SiteStats = (await response.json()).data
-    setGenerat(data)
+
+    const bots = data.visits_details_by_days.map(day => {
+      const details = day.details.filter(item => item.browser.toLowerCase().indexOf("bot") !== -1);
+      return {
+        details: details,
+        date: day.date,
+        count: details.length
+      }
+    });
+    const noBots = data.visits_details_by_days.map(
+        day => {
+          const details = day.details.filter(item => item.browser.toLowerCase().indexOf("bot") == -1);
+          return {
+            details: details,
+            date: day.date,
+            count: details.length
+        }}
+    );
+
+    console.log({...data, no_bots: noBots, bots: bots, top_os: data.top_os})
+    setGenerat({...data, no_bots: noBots, bots: bots, top_os: data.top_os})
   }
 
   useEffect(() => {
@@ -317,53 +342,63 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               </div>
             </div>
           </div>
+          <div className={styles.card} >
+            <div className={styles.card_count_container} >
+              <div className={styles.card_count} >{"1m 36s"}</div>
+              <div className={styles.card_title} >{t("average_time_spent")}</div>
+            </div>
+          </div>
 
           <StatisticVisits 
             setStatVisits={setStatVisits}
             daysObject={statVisits === "unique" ? general.total_visits_by_day : general.unique_visits_by_day} />
         </div>
-        <div className={styles.line} >
-          <div className={styles.card_full} >
-            <p className={styles.card_title} >Top countries</p>
+
+        <div className={styles.line_flex} >
+          <div className={`${styles.card} ${styles.card1}`} >
+            {/** Топ стран  */}
+            <p className={styles.card_title} >{t("top_countries")}</p>
             <div className={styles.country_container} >
               {general.top_countries ? Object.keys(general.top_countries).map(key =>
-                <div key={key} className={styles.country_line} >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  {key !== "-" ? <img className={styles.countryFlag} src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/../icons/${key.toLocaleLowerCase()}.svg`} alt="" /> : <span className={styles.unk} >unk</span>}
-                  <span className={styles.country_line_count} >{general.top_countries[key]}</span>
-                </div>
+                  <div key={key} className={styles.country_line} >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    {key !== "-" ? <img className={styles.countryFlag} src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/../icons/${key.toLocaleLowerCase()}.svg`} alt="" /> : <span className={styles.unk} >unk</span>}
+                    <span className={styles.country_line_count} >{general.top_countries[key]}</span>
+                  </div>
               ) : <></>}
             </div>
           </div>
-        </div>
-        <div className={styles.line} >
-          <div className={styles.card_full} >
-            <p className={styles.card_title} >Top browsers</p>
+
+          <div className={`${styles.card} ${styles.card2}`} >
+            <p className={styles.card_title} >{t("top_browsers")}</p>
             <div className={styles.browser_container} >
               {general.top_browsers ? Object.keys(general.top_browsers).map(key =>
-                <div key={key} className={styles.browser_line} >
+                key.toLowerCase().indexOf("bot") === -1 ? <div key={key} className={styles.browser_line} >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   {getBrowserIcon(key) !== null ? <img className={styles.browser} src={getBrowserIcon(key)?.src} alt="" /> : "unknown"}
-                  <span className={styles.browser_line_count} >{"  "}{general.top_browsers[key]}</span>
-                </div>
+                  <span className={styles.browser_line_count} >{key} - {general.top_browsers[key]}</span>
+                </div> : <></>
               ) : <></>}
             </div>
           </div>
-        </div>
-        <div className={styles.line} >
-          <div className={styles.card_full} >
-            <p className={styles.card_title} >Top os</p>
-            <div className={styles.browser_container} >
+          <div className={`${styles.card} ${styles.card3}`} >
+            <p className={styles.card_title} >{t("top_os")}</p>
+            <ul className={styles.browser_container} >
               {general.top_os ? Object.keys(general.top_os).map(key =>
-                <div key={key} className={styles.browser_line} >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  {getPlatformIcon(key) !== null ? <img className={styles.browser} src={getPlatformIcon(key)?.src} alt="" /> : ""} {key}
-                  <span className={styles.platform_line_count} >{general.top_os[key]}</span>
-                </div>
+                  key.toLowerCase().indexOf("bot") === -1 ? <li key={key} className={styles.browser_line} >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    {getPlatformIcon(key) !== null ? <img className={styles.browser} src={getPlatformIcon(key)?.src} alt="" /> : ""}
+                  <span className={styles.platform_line_count} >{key} - {general.top_os[key]}</span>
+                </li> : <></>
               ) : <></>}
-            </div>
+            </ul>
+          </div>
+
+          <div className={`${styles.card} ${styles.card4}`}>
+            <StatisticBots daysObject={general.bots} />
           </div>
         </div>
+
         <p className={styles.selection_title} >{t("projects_statistics")}</p>
         <div className={styles.cards} >
           {data.projects ? data.projects.map((item: any) =>

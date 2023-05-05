@@ -3,5 +3,9 @@
   "general_site_statistics": "Общая статистика сайта",
   "visits": "Повторные посещения",
   "unique_visits": "Уникальные посещения",
-  "projects_statistics": "Статистика проектов"
+  "projects_statistics": "Статистика проектов",
+  "average_time_spent": "Среднее время на сайте",
+  "top_countries": "Топ стран",
+  "top_browsers": "Топ браузеров",
+  "top_os": "Топ ОС"
 }

@@ -3,5 +3,9 @@
   "general_site_statistics": "Genel Site İstatistikleri",
   "visits": "Tekrarlayan Ziyaretler",
   "unique_visits": "Benzersiz Ziyaretler",
-  "projects_statistics": "Proje İstatistikleri"
+  "projects_statistics": "Proje İstatistikleri",
+  "average_time_spent": "Ortalama Harcanan Zaman",
+  "top_countries": "En Popüler Ülkeler",
+  "top_browsers": "En Popüler Tarayıcılar",
+  "top_os": "En Popüler İşletim Sistemleri"
 }

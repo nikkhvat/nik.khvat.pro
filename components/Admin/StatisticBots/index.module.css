@@ -1,6 +1,5 @@
 .container {
   width: 100%;
-  max-width: 705px;
   height: 140px;
   background: #212121;
 
@@ -8,7 +7,7 @@
   align-items: flex-end;
   padding-left: 10px;
   padding-right: 10px;
-  padding-top: 10px;
+  padding-top: 25px;
   gap: 5px;
   position: relative;
 }
@@ -20,9 +19,14 @@
   cursor: pointer;
 }
 
-.item:hover {
-  filter: contrast(110%);
+.item_slice {
+  width: 100%;
 }
+
+.item:hover, .item_slice:hover {
+  filter: contrast(120%);
+}
+
 
 .item_text {
   position: absolute;
@@ -50,15 +54,30 @@
   border-radius: 2px;
 }
 
-.buttons {
+.markers {
   position: absolute;
   top: 5px;
-  left: 5px;
+  left: 10px;
 
   display: flex;
   justify-content: flex-start;
-  gap: 5px;
+  gap: 18px;
   align-content: center;
+}
+
+.marker {
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.marker__color {
+  width: 5px;
+  height: 5px;
+  background: red;
 }
 
 @media screen and (max-width: 1000px) {

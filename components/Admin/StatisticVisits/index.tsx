@@ -47,10 +47,6 @@ const StatisticVisits: React.FC<StatisticVisitsProps> = ({ daysObject, setStatVi
   const days = fillMissingDates(daysObject);  
   const max = findMaxCount(days)
 
-  console.log("days", days);
-  console.log("daysObject", daysObject);
-  
-
   return (
     <div className={styles.container} >
 
@@ -63,9 +59,9 @@ const StatisticVisits: React.FC<StatisticVisitsProps> = ({ daysObject, setStatVi
         <div className={styles.item} key={item.date} style={{
           width: (100 / days.length) + "%",
           height: (100 / max) * item.count + "%",
-          minHeight: "20px"
+          minHeight: "3px"
         }} >
-          <p className={styles.item_text} >{item.count}</p>
+          {item.count !== 0 ? <p className={styles.item_text} >{item.count}</p> : <></>}
         </div>
       ))}
     </div>

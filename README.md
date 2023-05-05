@@ -17,12 +17,17 @@ This website uses the following tools and technologies:
 - For CI/CD - `GitHub Actions (self-hosted ubuntu)`
 - Code analysis - `eslint`
 - Reverse Proxy / ssl - `Nginx & brotli`
+- Docs - Swagger `swag`
 
 ### Self-written admin panel on golang with functionality:
 - View visits (by day and total for the month)
 - View unique visits (by day and total for the month)
 - See which projects are visited the most
 - View statistics by country
+- Browsing browsers
+- View operating systems
+- Showing which bots visit the site
+- Viewing link click statistics
 - (will be soon) Editing projects
 
 ![admin panel](./README/admin.png)
@@ -54,9 +59,8 @@ This website uses the following tools and technologies:
 
 To start developing the website locally, follow these steps:
 
-- Get packages `npm i`
-- Set .env `cp .env.dev .env`
-- Start `npm run dev`
+- front: `yarn dev`
+- back `make dev`
 
 ### Setting up Nginx on a server
 
@@ -70,9 +74,9 @@ If you want to host the website on a server using Nginx and SSL, follow these st
 To create the necessary database for the backend, run the following SQL query:
 
 ```sql
-CREATE DATABASE nik19ta
+CREATE DATABASE nik19ta;
 ```
 
-A database dump is also included in the `./backend/dumpdump.sql` file.
+A database dump is also included in the `./backend/dump/dump.sql` file.
 
 Thank you for your interest in my website! If you have any questions or feedback, please feel free to contact me. star me!
