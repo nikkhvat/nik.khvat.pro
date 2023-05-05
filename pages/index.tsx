@@ -13,17 +13,9 @@ import Portfolio from "../components/Portfolio";
 import About from "../components/About";
 import Preview from "../components/Preview";
 
-import github from "../images/social_media/github.png";
-import linkedin from "../images/social_media/linkedin.png";
-import instagram from "../images/social_media/instagram.png";
-import telegramm from "../images/social_media/telegramm.png";
-
-import footerMail from "../images/footer/mail.png";
-import footerInstagram from "../images/footer/instagram.png";
-import footerGithub from "../images/footer/github.png";
-import footerTelergamm from "../images/footer/telergamm.png";
-
 import { StaticImageData } from "next/image";
+
+import { github, instagram, linkedin, mail, telegramm } from "../images/images";
 
 import Storage from "../utils/storage";
 
@@ -134,10 +126,10 @@ const Homepage: React.FC<HomePageProps> = ( _props: any) => {
   ];
 
   const footerLinks: IFooterLinks[] = [
-    { link: "mailto:nik19ta.me@gmail.com", text: "nik19ta.me@gmail.com", icon: footerMail, alt: "mail" },
-    { link: "https://www.instagram.com/nik19ta.me/", text: "@nik19ta.me", icon: footerInstagram, alt: "instagram" },
-    { link: "https://github.com/nik19ta/", text: "github.com/nik19ta", icon: footerGithub, alt: "github" },
-    { link: "https://t.me/nik19ta", text: "@nik19ta", icon: footerTelergamm, alt: "telergamm" },
+    { link: "mailto:nik19ta.me@gmail.com", text: "nik19ta.me@gmail.com", icon: mail, alt: "mail" },
+    { link: "https://www.instagram.com/nik19ta.me/", text: "@nik19ta.me", icon: instagram, alt: "instagram" },
+    { link: "https://github.com/nik19ta/", text: "github.com/nik19ta", icon: github, alt: "github" },
+    { link: "https://t.me/nik19ta", text: "@nik19ta", icon: telegramm, alt: "telergamm" },
   ];
 
   const linksFooter: IFooterLinksPage[] = [
