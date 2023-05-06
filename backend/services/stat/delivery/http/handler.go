@@ -90,8 +90,13 @@ func (h *Handler) SetVisit(c *gin.Context) {
 
 	unique := un == "1"
 
+	httpReferer := c.Request.Header.Get("Referer")
+	if httpReferer == "" {
+		httpReferer = ""
+	}
+
 	userAgent := c.Request.Header.Get("User-Agent")
-	session, err := h.useCase.AddVisit(c.ClientIP(), userAgent, utm, unique)
+	session, err := h.useCase.AddVisit(c.ClientIP(), userAgent, utm, httpReferer, unique)
 
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})

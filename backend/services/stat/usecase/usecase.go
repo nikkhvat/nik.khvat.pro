@@ -56,7 +56,7 @@ func (a *statUseCase) VisitExtend(session string) error {
 	return a.userRepo.VisitExtend(session)
 }
 
-func (a *statUseCase) AddVisit(ip, userAgent, utm string, unique bool) (uuid.UUID, error) {
+func (a *statUseCase) AddVisit(ip, userAgent, utm, httpReferer string, unique bool) (uuid.UUID, error) {
 	ua := useragent.New(userAgent)
 	session := uuid.New()
 
@@ -77,6 +77,7 @@ func (a *statUseCase) AddVisit(ip, userAgent, utm string, unique bool) (uuid.UUI
 		Unique:      unique,
 		Ip:          ip,
 		Utm:         utm,
+		HTTPReferer: httpReferer,
 	}
 
 	err := a.userRepo.AddVisit(data)

@@ -63,6 +63,7 @@ type Visits struct {
 	Unique      bool      `json:"unique"`       // Has the user already logged in or not
 	Ip          string    `json:"ip"`           // The IP address from which
 	Utm         string    `json:"utm"`          // the UTM tag id came in
+	HTTPReferer string    `json:"http_referer"` // Http Refer
 }
 
 // swagger:model SiteStats
