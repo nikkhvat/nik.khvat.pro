@@ -281,6 +281,15 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
     return platforms[key] ? platforms[key] : null
   }
 
+  const formatDuration = (milliseconds: number) => {
+    const totalSeconds = Math.floor(milliseconds / 1000);
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    return `${hours}h, ${minutes}m, ${seconds}s`;
+  }
+
   return (
     load === true ? <div className={styles.main} >
       <Head>
@@ -352,7 +361,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
           </div>
           <div className={styles.card} >
             <div className={styles.card_count_container} >
-              <div className={styles.card_count} >{"1m 36s"}</div>
+              <div className={styles.card_count} >{formatDuration(general.avg_time_on_site / 1000000)}</div>
               <div className={styles.card_title} >{t("average_time_spent")}</div>
             </div>
           </div>

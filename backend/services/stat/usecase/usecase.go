@@ -99,7 +99,9 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 	}
 
 	uniqueVisitors := make(map[string]bool)
-	var totalTimeOnSite time.Duration
+	//var totalTimeOnSite time.Duration
+	var totalDuration time.Duration
+	var peoples int
 
 	for _, visit := range visits {
 		if visit.Browser == "Googlebot" || visit.Browser == "AhrefsBot" || visit.Browser == "Vercelbot" {
@@ -121,8 +123,11 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 			stats.TopBrowsers[visit.Browser]++
 			stats.TotalVisits++
 
-			timeOnSite := visit.TimeLeaving.Sub(visit.TimeEntry)
-			totalTimeOnSite += timeOnSite
+			//timeOnSite := visit.TimeLeaving.Sub(visit.TimeEntry)
+			duration := visit.TimeLeaving.Sub(visit.TimeEntry)
+			totalDuration += duration
+
+			peoples++
 
 			stats.TopCountries[visit.Country]++
 			if !uniqueVisitors[visit.Ip] {
@@ -146,7 +151,8 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 		}
 	}
 
-	stats.AvgTimeOnSite = int64(totalTimeOnSite / time.Duration(stats.TotalVisits))
+	stats.AvgTimeOnSite = int64(totalDuration / time.Duration(peoples))
+	//stats.AvgTimeOnSite = int64(totalTimeOnSite / time.Duration(stats.TotalVisits))
 
 	return stats
 }
