@@ -317,8 +317,9 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
 
       <main className={styles.content} >
         <p className={styles.selection_title} >{t("general_site_statistics")}</p>
-        <div className={styles.line} >
-          <div className={styles.card}>
+
+        <div className={styles.general_container}>
+          <div className={`${styles.grid_card} ${styles.visits}`} >
             <div className={styles.card_count_container} >
               <div className={styles.card_count} >{general.total_visits}</div>
               <div className={styles.card_title} >{t("visits")}</div>
@@ -326,8 +327,9 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
 
             <div className={styles.card_progress} >
               <div className={styles.card_progress__nums} >
-                <span className={styles.card_progress__num} >0%</span>
-                <span className={styles.card_progress__num} >100%</span>
+                <span
+                  className={styles.card_progress__num}
+                  style={{left: `76%`}} >100%</span>
               </div>
 
               <div className={styles.card_progress__line} >
@@ -335,7 +337,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               </div>
             </div>
           </div>
-          <div className={styles.card} >
+          <div className={`${styles.grid_card} ${styles.unique_visits}`} >
             <div className={styles.card_count_container} >
               <div className={styles.card_count} >{general.unique_visits}</div>
               <div className={styles.card_title} >{(t("unique_visits"))}</div>
@@ -343,8 +345,9 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
 
             <div className={styles.card_progress} >
               <div className={styles.card_progress__nums} >
-                <span className={styles.card_progress__num} >0%</span>
-                <span className={styles.card_progress__num} >100%</span>
+                <span 
+                  className={styles.card_progress__num}
+                  style={{ left: (100 / Math.max(general.total_visits, general.unique_visits) * general.unique_visits) + "%" }} >{Math.max(general.total_visits, general.unique_visits) * general.unique_visits + "%"}</span>
               </div>
               <div className={styles.card_progress__line} >
                 <div
@@ -353,73 +356,85 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               </div>
             </div>
           </div>
-          <div className={styles.card} >
+          <div className={`${styles.grid_card} ${styles.total_bots}`} >
             <div className={styles.card_count_container} >
               <div className={styles.card_count} >{general.total_bots}</div>
               <div className={styles.card_title} >{t("total_bots")}</div>
             </div>
+
+            <div className={styles.card_progress} >
+              <div className={styles.card_progress__nums} >
+                <span
+                  className={styles.card_progress__num}
+                  style={{ left: (100 / Math.max(general.total_visits, general.unique_visits) * general.unique_visits) + "%" }} >{Math.max(general.total_visits, general.unique_visits) * general.unique_visits + "%"}</span>
+              </div>
+
+              <div className={styles.card_progress__line} >
+                <div 
+                  style={{ width: 100 / Math.max(general.total_visits) * general.total_bots + "%" }} className={styles.card_progress__line_fill} ></div>
+              </div>
+            </div>
           </div>
-          <div className={styles.card} >
+          <div className={`${styles.grid_card} ${styles.average_time_spent}`} >
             <div className={styles.card_count_container} >
               <div className={styles.card_count} >{formatDuration(general.avg_time_on_site)}</div>
               <div className={styles.card_title} >{t("average_time_spent")}</div>
             </div>
           </div>
-
-          <StatisticVisits 
-            setStatVisits={setStatVisits}
-            daysObject={statVisits === "unique" ? general.total_visits_by_day : general.unique_visits_by_day} />
-        </div>
-
-        <div className={styles.line_flex} >
-          <div className={`${styles.card} ${styles.card1}`} >
-            {/** Топ стран  */}
+          <div className={`${styles.grid_card} ${styles.first_stat}`} >
+            <StatisticVisits setStatVisits={setStatVisits} daysObject={statVisits === "unique" ? general.total_visits_by_day : general.unique_visits_by_day} />
+          </div>
+          <div className={`${styles.grid_card} ${styles.top_countries}`} >
             <p className={styles.card_title} >{t("top_countries")}</p>
             <div className={styles.country_container} >
               {general.top_countries ? general.top_countries.map((country) =>
                 <div key={country.name} className={styles.country_line} >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  {country.name !== "-" ? <img className={styles.countryFlag} src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/../icons/${country.name.toLocaleLowerCase()}.svg`} alt="" /> : <span className={styles.unk} >unk</span>}
+                  {country.name !== "-" ?
+                    <Image
+                      title={country.name}
+                      className={styles.countryFlag}
+                      width={32}
+                      height={22}
+                      src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/../icons/${country.name.toLocaleLowerCase()}.svg`}
+                      alt="" /> : <span className={styles.unk} >-</span>}
                   <span className={styles.country_line_count} >{country.count}</span>
-                  </div>
+                </div>
               ) : <></>}
             </div>
           </div>
-
-          <div className={`${styles.card} ${styles.card2}`} >
+          <div className={`${styles.grid_card} ${styles.top_browsers}`} >
             <p className={styles.card_title} >{t("top_browsers")}</p>
             <div className={styles.browser_container} >
               {general.top_browsers ? general.top_browsers.map((browser) =>
                 browser.name.toLowerCase().indexOf("bot") === -1 ? <div key={browser.name} className={styles.browser_line} >
-                  {getBrowserIcon(browser.name) !== null ? 
-                    <Image 
-                      className={styles.browser} 
+                  {getBrowserIcon(browser.name) !== null ?
+                    <Image
+                      className={styles.browser}
                       width={14}
                       height={14}
                       src={getBrowserIcon(browser.name)!.src} alt="" /> : ""}
-                  <span className={styles.browser_line_count} >{browser.name} - {browser.count}</span>
+                  <span className={styles.browser_line_count} >{browser.name}: {browser.count}</span>
                 </div> : <></>
               ) : <></>}
             </div>
           </div>
-          <div className={`${styles.card} ${styles.card3}`} >
+          <div className={`${styles.grid_card} ${styles.top_os}`} >
             <p className={styles.card_title} >{t("top_os")}</p>
             <ul className={styles.browser_container} >
               {general.top_os ? general.top_os.map((os) =>
                 os.name.toLowerCase().indexOf("bot") === -1 ? <li key={os.name} className={styles.browser_line} >
-                {getPlatformIcon(os.name) !== null ? 
-                  <Image
-                    className={styles.browser}
-                    width={14}
-                    height={14}
-                    src={getPlatformIcon(os.name)!.src} alt="" /> : ""}
-                <span className={styles.platform_line_count} >{os.name} - {os.count}</span>
+                  {getPlatformIcon(os.name) !== null ?
+                    <Image
+                      className={styles.browser}
+                      width={14}
+                      height={14}
+                      src={getPlatformIcon(os.name)!.src} alt="" /> : ""}
+                  <span className={styles.platform_line_count} >{os.name}: {os.count}</span>
                 </li> : <></>
               ) : <></>}
             </ul>
           </div>
-
-          <div className={`${styles.card} ${styles.card4}`}>
+          <div className={`${styles.grid_card} ${styles.second_stat}`} >
             <StatisticBots daysObject={general.bots} />
           </div>
         </div>

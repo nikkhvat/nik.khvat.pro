@@ -12,18 +12,10 @@ const nextConfig = {
   i18n,
   images: {
     remotePatterns: [
-      {
-        protocol: 'http',
-        hostname: '127.0.0.1',
-        port: '5500',
-        pathname: '/images/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'nik19ta.pro',
-        port: '443',
-        pathname: '/images/**',
-      },
+      { protocol: 'http', hostname: 'localhost', port: '3030', pathname: '/images/**' },
+      { protocol: 'https', hostname: 'nik19ta.pro', port: '443', pathname: '/images/**' },
+      { protocol: 'http', hostname: 'localhost', port: '3030', pathname: '/icons/**' },
+      { protocol: 'https', hostname: 'nik19ta.pro', port: '443', pathname: '/icons/**' },
     ],
   },
   webpack: (config, { dev, buildId, isServer }) => {

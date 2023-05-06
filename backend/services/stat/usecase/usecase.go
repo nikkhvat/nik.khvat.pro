@@ -1,7 +1,6 @@
 package usecase
 
 import (
-	"log"
 	"nik19ta/backend/pkg/config"
 	"nik19ta/backend/services/links"
 	stat "nik19ta/backend/services/stat"
@@ -137,7 +136,6 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 		browser := strings.ToLower(visit.Browser)
 
 		if strings.Contains(browser, "bot") {
-			log.Println("BOT FOUND")
 			stats.VisitsBotByDay[date]++
 			stats.TotalBots++
 		} else {

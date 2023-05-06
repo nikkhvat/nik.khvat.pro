@@ -117,15 +117,16 @@ const StatisticBots: React.FC<StatisticVisitsProps> = ({ daysObject }) => {
       <div className={styles.markers} >
 
         {bots.map(bot => (
-          <div key={bot.name} className={styles.marker} onClick={() => clickBot(bot.name)} >
+          <button key={bot.name} className={styles.marker} onClick={() => clickBot(bot.name)} >
             <div 
               className={styles.marker__color} 
-              style={{ background: bot.show === true ? bot.color : "grey"}}></div>
-              {bot.name}
+              style={{ background: bot.show === true ? bot.color : "grey"}}>
             </div>
+            {bot.name}
+          </button>
         ))}
 
-      </div>
+      </div>  
       {days.map(item => (
         <div className={styles.item} key={item.date} style={{
           width: (100 / days.length) + "%",
@@ -136,7 +137,7 @@ const StatisticBots: React.FC<StatisticVisitsProps> = ({ daysObject }) => {
               <div
                 key={detail.uid}
                 className={styles.item_slice}
-                style={{minHeight: (108 / max) + "px", background: getColor(detail.browser)}} ></div>
+                style={{minHeight: (103 / max) + "px", background: getColor(detail.browser)}} ></div>
           )) : <></> }
         </div>
       ))}
