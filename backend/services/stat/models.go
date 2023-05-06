@@ -66,17 +66,22 @@ type Visits struct {
 	HTTPReferer string    `json:"http_referer"` // Http Refer
 }
 
+type Entry struct {
+	Name  string `json:"name"`  // key
+	Count int    `json:"count"` // value
+}
+
 // swagger:model SiteStats
 type SiteStats struct {
-	TopCountries        map[string]int  `json:"top_countries"`          // Top countries
+	TopCountries        []Entry         `json:"top_countries"`          // Top countries
 	TotalVisits         int             `json:"total_visits"`           // Visits
 	TotalBots           int             `json:"total_bots"`             // Total bots visit
 	UniqueVisits        int             `json:"unique_visits"`          // Unique visits
 	UniqueVisitsByDay   map[string]int  `json:"unique_visits_by_day"`   // Unique visits per day
 	TotalVisitsByDay    map[string]int  `json:"total_visits_by_day"`    // Visits per day
 	VisitsBotByDay      map[string]int  `json:"total_visits_bot"`       // Total bots visit by days
-	TopOS               map[string]int  `json:"top_os"`                 // Top Operating systems
-	TopBrowsers         map[string]int  `json:"top_browsers"`           // Top browsers
+	TopOS               []Entry         `json:"top_os"`                 // Top Operating systems
+	TopBrowsers         []Entry         `json:"top_browsers"`           // Top browsers
 	AvgTimeOnSite       int64           `json:"avg_time_on_site"`       // Average time spent on the site
 	VisitsDetailsByDays []VisitsDetails `json:"visits_details_by_days"` // Full statistics of visits by users
 }

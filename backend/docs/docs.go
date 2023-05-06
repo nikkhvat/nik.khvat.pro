@@ -429,6 +429,19 @@ const docTemplate = `{
                 }
             }
         },
+        "stat.Entry": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "description": "value",
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "key",
+                    "type": "string"
+                }
+            }
+        },
         "stat.ProjectsStats": {
             "type": "object",
             "properties": {
@@ -463,23 +476,23 @@ const docTemplate = `{
                 },
                 "top_browsers": {
                     "description": "Top browsers",
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "integer"
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/stat.Entry"
                     }
                 },
                 "top_countries": {
                     "description": "Top countries",
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "integer"
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/stat.Entry"
                     }
                 },
                 "top_os": {
                     "description": "Top Operating systems",
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "integer"
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/stat.Entry"
                     }
                 },
                 "total_bots": {
@@ -533,6 +546,10 @@ const docTemplate = `{
                 },
                 "country": {
                     "description": "Short country code (EE, DE, etc.)",
+                    "type": "string"
+                },
+                "http_referer": {
+                    "description": "Http Refer",
                     "type": "string"
                 },
                 "ip": {

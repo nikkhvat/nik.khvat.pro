@@ -77,6 +77,15 @@ definitions:
         description: Url preview
         type: string
     type: object
+  stat.Entry:
+    properties:
+      count:
+        description: value
+        type: integer
+      name:
+        description: key
+        type: string
+    type: object
   stat.ProjectsStats:
     properties:
       count:
@@ -100,20 +109,20 @@ definitions:
         description: Average time spent on the site
         type: integer
       top_browsers:
-        additionalProperties:
-          type: integer
         description: Top browsers
-        type: object
+        items:
+          $ref: '#/definitions/stat.Entry'
+        type: array
       top_countries:
-        additionalProperties:
-          type: integer
         description: Top countries
-        type: object
+        items:
+          $ref: '#/definitions/stat.Entry'
+        type: array
       top_os:
-        additionalProperties:
-          type: integer
         description: Top Operating systems
-        type: object
+        items:
+          $ref: '#/definitions/stat.Entry'
+        type: array
       total_bots:
         description: Total bots visit
         type: integer
@@ -151,6 +160,9 @@ definitions:
         type: string
       country:
         description: Short country code (EE, DE, etc.)
+        type: string
+      http_referer:
+        description: Http Refer
         type: string
       ip:
         description: The IP address from which

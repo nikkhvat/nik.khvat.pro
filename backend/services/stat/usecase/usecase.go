@@ -5,6 +5,7 @@ import (
 	"nik19ta/backend/pkg/config"
 	"nik19ta/backend/services/links"
 	stat "nik19ta/backend/services/stat"
+	"sort"
 	"strings"
 	"time"
 
@@ -85,24 +86,46 @@ func (a *statUseCase) AddVisit(ip, userAgent, utm, httpReferer string, unique bo
 	return session, err
 }
 
+type Pair struct {
+	Key   string
+	Value int
+}
+
+type PairList []Pair
+
+func (p PairList) Len() int           { return len(p) }
+func (p PairList) Less(i, j int) bool { return p[i].Value > p[j].Value } // Сортировка по убыванию
+func (p PairList) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
+
+func sortMapByValue(m map[string]int) PairList {
+	pl := make(PairList, len(m))
+	i := 0
+	for k, v := range m {
+		pl[i] = Pair{k, v}
+		i++
+	}
+	sort.Sort(pl)
+	return pl
+}
+
 func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 	stats := stat.SiteStats{
-		TopCountries:      make(map[string]int),
 		TotalVisits:       0,
 		TotalBots:         0,
 		UniqueVisits:      0,
 		UniqueVisitsByDay: make(map[string]int),
 		TotalVisitsByDay:  make(map[string]int),
 		VisitsBotByDay:    make(map[string]int),
-		TopOS:             make(map[string]int),
-		TopBrowsers:       make(map[string]int),
 		AvgTimeOnSite:     0,
 	}
 
 	uniqueVisitors := make(map[string]bool)
-	//var totalTimeOnSite time.Duration
 	var totalDuration time.Duration
 	var peoples int
+
+	TopCountries := make(map[string]int)
+	TopBrowsers := make(map[string]int)
+	TopOS := make(map[string]int)
 
 	for _, visit := range visits {
 		if visit.Browser == "Googlebot" || visit.Browser == "AhrefsBot" || visit.Browser == "Vercelbot" {
@@ -120,9 +143,11 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 		} else {
 			stats.UniqueVisitsByDay[date]++
 			stats.TotalVisitsByDay[date]++
-			stats.TopOS[visit.Os]++
-			stats.TopBrowsers[visit.Browser]++
+
 			stats.TotalVisits++
+
+			TopOS[visit.Os]++
+			TopBrowsers[visit.Browser]++
 
 			//timeOnSite := visit.TimeLeaving.Sub(visit.TimeEntry)
 			duration := visit.TimeLeaving.Sub(visit.TimeEntry)
@@ -130,7 +155,7 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 
 			peoples++
 
-			stats.TopCountries[visit.Country]++
+			TopCountries[visit.Country]++
 			if !uniqueVisitors[visit.Ip] {
 				stats.UniqueVisits++
 				uniqueVisitors[visit.Ip] = true
@@ -152,8 +177,52 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 		}
 	}
 
-	stats.AvgTimeOnSite = int64(totalDuration / time.Duration(peoples))
-	//stats.AvgTimeOnSite = int64(totalTimeOnSite / time.Duration(stats.TotalVisits))
+	stats.AvgTimeOnSite = int64(totalDuration/time.Duration(peoples)) / 1000000
+
+	// Sort TopCountries
+	sortedCountries := make([]stat.Entry, 0, len(TopCountries))
+
+	for k, v := range TopCountries {
+		sortedCountries = append(sortedCountries, stat.Entry{Name: k, Count: v})
+	}
+
+	sort.Slice(sortedCountries, func(i, j int) bool {
+		return sortedCountries[i].Count > sortedCountries[j].Count
+	})
+
+	stats.TopCountries = sortedCountries
+
+	// Sort TopCountries END
+
+	// Sort Browser
+	sortedBrowsers := make([]stat.Entry, 0, len(TopBrowsers))
+
+	for k, v := range TopBrowsers {
+		sortedBrowsers = append(sortedBrowsers, stat.Entry{Name: k, Count: v})
+	}
+
+	sort.Slice(sortedBrowsers, func(i, j int) bool {
+		return sortedBrowsers[i].Count > sortedBrowsers[j].Count
+	})
+
+	stats.TopBrowsers = sortedBrowsers
+
+	// Sort Browser END
+
+	// Sort top os
+	sortedTopOs := make([]stat.Entry, 0, len(TopOS))
+
+	for k, v := range TopOS {
+		sortedTopOs = append(sortedTopOs, stat.Entry{Name: k, Count: v})
+	}
+
+	sort.Slice(sortedTopOs, func(i, j int) bool {
+		return sortedTopOs[i].Count > sortedTopOs[j].Count
+	})
+
+	stats.TopOS = sortedTopOs
+
+	// Sort top os END
 
 	return stats
 }

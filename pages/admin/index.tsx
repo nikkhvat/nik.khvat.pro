@@ -51,15 +51,15 @@ export interface VisitDetail {
 }
 
 export interface SiteStats {
-  top_countries: { [key: string]: number }
+  top_countries: { name: string, count: number }[]
   total_visits: number
   unique_visits: number
   total_bots: number
   unique_visits_by_day: { [key: string]: number }
   total_visits_by_day: { [key: string]: number }
   total_visits_bot: { [key: string]: number }
-  top_os: any
-  top_browsers: { [key: string]: number }
+  top_os: { name: string, count: number }[]
+  top_browsers: { name: string, count: number }[]
   avg_time_on_site: number
   no_bots: { date: string, details: VisitDetail[], count: number }[],
   bots: { date: string, details: VisitDetail[], count: number }[],
@@ -287,7 +287,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
 
-    return `${hours}h, ${minutes}m, ${seconds}s`;
+    return `${hours ? `${hours}h, ` : ""} ${minutes}m, ${seconds}s`;
   }
 
   return (
@@ -361,7 +361,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
           </div>
           <div className={styles.card} >
             <div className={styles.card_count_container} >
-              <div className={styles.card_count} >{formatDuration(general.avg_time_on_site / 1000000)}</div>
+              <div className={styles.card_count} >{formatDuration(general.avg_time_on_site)}</div>
               <div className={styles.card_title} >{t("average_time_spent")}</div>
             </div>
           </div>
@@ -376,11 +376,11 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
             {/** Топ стран  */}
             <p className={styles.card_title} >{t("top_countries")}</p>
             <div className={styles.country_container} >
-              {general.top_countries ? Object.keys(general.top_countries).map(key =>
-                  <div key={key} className={styles.country_line} >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    {key !== "-" ? <img className={styles.countryFlag} src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/../icons/${key.toLocaleLowerCase()}.svg`} alt="" /> : <span className={styles.unk} >unk</span>}
-                    <span className={styles.country_line_count} >{general.top_countries[key]}</span>
+              {general.top_countries ? general.top_countries.map((country) =>
+                <div key={country.name} className={styles.country_line} >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  {country.name !== "-" ? <img className={styles.countryFlag} src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/../icons/${country.name.toLocaleLowerCase()}.svg`} alt="" /> : <span className={styles.unk} >unk</span>}
+                  <span className={styles.country_line_count} >{country.count}</span>
                   </div>
               ) : <></>}
             </div>
@@ -389,15 +389,15 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
           <div className={`${styles.card} ${styles.card2}`} >
             <p className={styles.card_title} >{t("top_browsers")}</p>
             <div className={styles.browser_container} >
-              {general.top_browsers ? Object.keys(general.top_browsers).map(key =>
-                key.toLowerCase().indexOf("bot") === -1 ? <div key={key} className={styles.browser_line} >
-                  {getBrowserIcon(key) !== null ? 
+              {general.top_browsers ? general.top_browsers.map((browser) =>
+                browser.name.toLowerCase().indexOf("bot") === -1 ? <div key={browser.name} className={styles.browser_line} >
+                  {getBrowserIcon(browser.name) !== null ? 
                     <Image 
                       className={styles.browser} 
                       width={14}
                       height={14}
-                      src={getBrowserIcon(key)!.src} alt="" /> : ""}
-                  <span className={styles.browser_line_count} >{key} - {general.top_browsers[key]}</span>
+                      src={getBrowserIcon(browser.name)!.src} alt="" /> : ""}
+                  <span className={styles.browser_line_count} >{browser.name} - {browser.count}</span>
                 </div> : <></>
               ) : <></>}
             </div>
@@ -405,15 +405,15 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
           <div className={`${styles.card} ${styles.card3}`} >
             <p className={styles.card_title} >{t("top_os")}</p>
             <ul className={styles.browser_container} >
-              {general.top_os ? Object.keys(general.top_os).map(key =>
-                  key.toLowerCase().indexOf("bot") === -1 ? <li key={key} className={styles.browser_line} >
-                    {getPlatformIcon(key) !== null ? 
-                      <Image
-                        className={styles.browser}
-                        width={14}
-                        height={14}
-                        src={getPlatformIcon(key)!.src} alt="" /> : ""}
-                  <span className={styles.platform_line_count} >{key} - {general.top_os[key]}</span>
+              {general.top_os ? general.top_os.map((os) =>
+                os.name.toLowerCase().indexOf("bot") === -1 ? <li key={os.name} className={styles.browser_line} >
+                {getPlatformIcon(os.name) !== null ? 
+                  <Image
+                    className={styles.browser}
+                    width={14}
+                    height={14}
+                    src={getPlatformIcon(os.name)!.src} alt="" /> : ""}
+                <span className={styles.platform_line_count} >{os.name} - {os.count}</span>
                 </li> : <></>
               ) : <></>}
             </ul>
