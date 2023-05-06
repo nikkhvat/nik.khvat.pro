@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styles from "./index.module.css"
 // import { useTranslation } from "next-i18next";
@@ -53,15 +53,55 @@ const StatisticBots: React.FC<StatisticVisitsProps> = ({ daysObject }) => {
     });
   }
 
-  const days = fillMissingDates(daysObject).map(item => ({...item, details: sortByName(item.details)}))
+  
+  const [bots, setBots] = useState([
+    { show: true, id: "Googlebot", name: "Google Bot", color: "#2196F3" },
+    { show: true, id: "AhrefsBot", name: "Ahrefs Bot", color: "#4CAF50" },
+    { show: true, id: "Vercelbot", name: "Vercel Bot", color: "#FF9800" },
+    { show: true, id: "-", name: "Another Bot", color: "#9C27B0" },
+  ])
+  
+  const getBotByName = (name: string) => {
+    for (let i = 0; i < bots.length; i++) {
+      const element = bots[i];
+      
+      console.log(element.name, name);
+      if (element.id === name) return element
+    }
+    
+    return bots[bots.length - 1]
+  }
+
+  const days = fillMissingDates(daysObject)
+    .map(item => ({ 
+      ...item, 
+      details: sortByName(item.details).filter((item) => getBotByName(item.browser).show === true)
+    }))
+
+  console.log(days);
+
   const max = findMaxCount(days)
 
-  const bots = [
-    { name: "Google Bot", color: "#2196F3" },
-    { name: "Ahrefs Bot", color: "#4CAF50" },
-    { name: "Vercel Bot", color: "#FF9800" },
-    { name: "Another Bot", color: "#9C27B0" },
-  ]
+  const clickBot = (name: string) => {
+    console.log("click");
+    
+    const arr: any = []
+
+    for (let i = 0; i < bots.length; i++) {
+      const element = bots[i];
+      
+      if (element.name === name) {
+        arr.push({ ...element, show: !element.show })
+      } else {
+        arr.push(element)
+      }
+    }
+
+    console.log(arr);
+    
+    setBots(_ => arr)
+  }
+
   const getColor = (name: string) => {
     const colors: {[key: string]: string} = {
       "Googlebot": "#2196F3",
@@ -77,8 +117,10 @@ const StatisticBots: React.FC<StatisticVisitsProps> = ({ daysObject }) => {
       <div className={styles.markers} >
 
         {bots.map(bot => (
-            <div key={bot.name} className={styles.marker} >
-              <div className={styles.marker__color} style={{background: bot.color}} ></div>
+          <div key={bot.name} className={styles.marker} onClick={() => clickBot(bot.name)} >
+            <div 
+              className={styles.marker__color} 
+              style={{ background: bot.show === true ? bot.color : "grey"}}></div>
               {bot.name}
             </div>
         ))}
@@ -87,15 +129,14 @@ const StatisticBots: React.FC<StatisticVisitsProps> = ({ daysObject }) => {
       {days.map(item => (
         <div className={styles.item} key={item.date} style={{
           width: (100 / days.length) + "%",
-          height: (100 / max) * item.count + "%",
+          height: (100 / max) * item.details.length + "%",
           minHeight: "3px"
         }} >
           {item.details.length !== 0 ? item.details.map(detail => (
               <div
-                  key={detail.uid}
-                  className={styles.item_slice}
-              style={{
-                minHeight: (item.details.length / max) * 30 + "%", background: getColor(detail.browser)}} ></div>
+                key={detail.uid}
+                className={styles.item_slice}
+                style={{minHeight: (108 / max) + "px", background: getColor(detail.browser)}} ></div>
           )) : <></> }
         </div>
       ))}
