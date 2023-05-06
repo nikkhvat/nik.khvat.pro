@@ -7,5 +7,6 @@
   "average_time_spent": "Среднее время на сайте",
   "top_countries": "Топ стран",
   "top_browsers": "Топ браузеров",
-  "top_os": "Топ ОС"
+  "top_os": "Топ ОС",
+  "total_bots": "Всего ботов"
 }

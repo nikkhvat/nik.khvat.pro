@@ -7,5 +7,6 @@
     "average_time_spent": "Temps moyen passé",
     "top_countries": "Pays les plus populaires",
     "top_browsers": "Navigateurs les plus populaires",
-    "top_os": "Systèmes d'exploitation les plus populaires"
+    "top_os": "OS les plus populaires",
+    "total_bots": "Total des bots"
 }

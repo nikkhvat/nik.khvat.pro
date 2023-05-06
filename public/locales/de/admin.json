@@ -7,5 +7,6 @@
     "average_time_spent": "Durchschnittliche Verweildauer",
     "top_countries": "Top-Länder",
     "top_browsers": "Top-Browser",
-    "top_os": "Top-Betriebssysteme"
+    "top_os": "Top-OS",
+    "total_bots": "bots insgesamt"
 }

@@ -7,5 +7,6 @@
   "average_time_spent": "평균 소비 시간",
   "top_countries": "상위 국가",
   "top_browsers": "상위 브라우저",
-  "top_os": "상위 운영 체제"
+  "top_os": "상위 운영 체제",
+  "total_bots": "전체 봇"
 }

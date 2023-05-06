@@ -7,5 +7,6 @@
     "average_time_spent": "平均滞在時間",
     "top_countries": "トップ国",
     "top_browsers": "トップブラウザ",
-    "top_os": "トップOS"
+    "top_os": "トップOS",
+    "total_bots": "総ボット"
 }

@@ -366,7 +366,9 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               <div className={styles.card_progress__nums} >
                 <span
                   className={styles.card_progress__num}
-                  style={{ left: (100 / Math.max(general.total_visits, general.unique_visits) * general.unique_visits) + "%" }} >{Math.max(general.total_visits, general.unique_visits) * general.unique_visits + "%"}</span>
+                  style={{ left: (100 / Math.max(general.total_visits, general.unique_visits) * general.total_bots) + "%" }} >
+                    {Math.max(general.total_visits, general.unique_visits) * general.total_bots + "%"}
+                  </span>
               </div>
 
               <div className={styles.card_progress__line} >
