@@ -11,12 +11,7 @@ const nextConfig = {
   swcMinify: true,
   i18n,
   images: {
-    remotePatterns: [
-      { protocol: 'http', hostname: 'localhost', port: '3030', pathname: '/images/**' },
-      { protocol: 'https', hostname: 'nik19ta.pro', port: '443', pathname: '/images/**' },
-      { protocol: 'http', hostname: 'localhost', port: '3030', pathname: '/icons/**' },
-      { protocol: 'https', hostname: 'nik19ta.pro', port: '443', pathname: '/icons/**' },
-    ],
+    domains: ['localhost', 'nik19ta.pro'],
   },
   webpack: (config, { dev, buildId, isServer }) => {
 
