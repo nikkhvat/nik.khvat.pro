@@ -126,7 +126,7 @@ const Homepage: React.FC<HomePageProps> = ( _props: any) => {
   ];
 
   const footerLinks: IFooterLinks[] = [
-    { link: "mailto:nik19ta.me@gmail.com", text: "nik19ta.me@gmail.com", icon: mail, alt: "mail" },
+    { link: "mailto:hi@nik19ta.me", text: "hi@nik19ta.me", icon: mail, alt: "mail" },
     { link: "https://www.instagram.com/nik19ta.me/", text: "@nik19ta.me", icon: instagram, alt: "instagram" },
     { link: "https://github.com/nik19ta/", text: "github.com/nik19ta", icon: github, alt: "github" },
     { link: "https://t.me/nik19ta", text: "@nik19ta", icon: telegramm, alt: "telergamm" },
