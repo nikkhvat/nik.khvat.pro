@@ -1,6 +1,7 @@
 package http
 
 import (
+	"log"
 	"net/http"
 	stat "nik19ta/backend/services/stat"
 
@@ -91,7 +92,8 @@ func (h *Handler) SetVisit(c *gin.Context) {
 
 	unique := un == "1"
 
-	httpReferer := c.Request.Header.Get("Referrer")
+	log.Println(c.Request.Header)
+	httpReferer := c.Request.Header.Get("Referer")
 	if httpReferer == "" {
 		httpReferer = ""
 	}
