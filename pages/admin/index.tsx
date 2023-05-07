@@ -329,7 +329,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               <div className={styles.card_progress__nums} >
                 <span
                   className={styles.card_progress__num}
-                  style={{left: `76%`}} >100%</span>
+                  style={{ left: `76%` }} >({(100).toFixed(2)})%</span>
               </div>
 
               <div className={styles.card_progress__line} >
@@ -347,7 +347,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               <div className={styles.card_progress__nums} >
                 <span 
                   className={styles.card_progress__num}
-                  style={{ left: (100 / general.total_visits * general.unique_visits) + "%" }} >{Math.max(general.total_visits, general.unique_visits) * general.unique_visits + "%"}</span>
+                  style={{ left: (100 / general.total_visits * general.unique_visits) + "%" }} >{(Math.max(general.total_visits, general.unique_visits) * general.unique_visits).toFixed(2) + "%"}</span>
               </div>
               <div className={styles.card_progress__line} >
                 <div
@@ -367,7 +367,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
                 <span
                   className={styles.card_progress__num}
                   style={{ left: (100 / (general.total_visits + general.total_bots) * general.total_bots) + "%" }} >
-                    {(100 / (general.total_visits + general.total_bots) * general.total_bots) + "%"}
+                    {(100 / (general.total_visits + general.total_bots) * general.total_bots).toFixed(2) + "%"}
                   </span>
               </div>
 
