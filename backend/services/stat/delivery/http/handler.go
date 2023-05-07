@@ -1,9 +1,10 @@
 package http
 
 import (
-	gin "github.com/gin-gonic/gin"
 	"net/http"
 	stat "nik19ta/backend/services/stat"
+
+	gin "github.com/gin-gonic/gin"
 )
 
 type Handler struct {
@@ -90,7 +91,7 @@ func (h *Handler) SetVisit(c *gin.Context) {
 
 	unique := un == "1"
 
-	httpReferer := c.Request.Header.Get("Referer")
+	httpReferer := c.Request.Header.Get("Referrer")
 	if httpReferer == "" {
 		httpReferer = ""
 	}
