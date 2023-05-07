@@ -58,3 +58,11 @@ func (r UserRepository) GetProject(lang string, uuid string) (*projects.ProjectR
 
 	return &project, result.Error
 }
+
+func (r UserRepository) GetCategories() ([]projects.Category, error) {
+	var categories []projects.Category
+
+	result := r.db.Find(&categories)
+
+	return categories, result.Error
+}

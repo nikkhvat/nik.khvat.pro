@@ -47,6 +47,7 @@ func autoMigrateDB(db *gorm.DB) {
 	_ = db.AutoMigrate(&projects.Cards{})
 	_ = db.AutoMigrate(&projects.Features{})
 	_ = db.AutoMigrate(&projects.Photos{})
+	_ = db.AutoMigrate(&projects.Category{})
 
 	// Stats
 	_ = db.AutoMigrate(&stat.ProjectsStats{})

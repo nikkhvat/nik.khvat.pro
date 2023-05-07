@@ -51,12 +51,6 @@ interface IFooterLinksPage {
   to: string
 }
 
-interface ICategories {
-  id: number
-  title: string
-}
-
-
 interface HomePageProps {
   locale: string
   projects: {
@@ -132,20 +126,13 @@ const Homepage: React.FC<HomePageProps> = ( _props: any) => {
     { link: "https://t.me/nik19ta", text: "@nik19ta", icon: telegramm, alt: "telergamm" },
   ];
 
-  const linksFooter: IFooterLinksPage[] = [
+  const linksFooter: IFooterLinksPage[] = [ 
     { name: t("menu.main"), to: "preview" },
     { name: t("menu.about"), to: "about" },
     { name: t("menu.portfolio"), to: "portfolio" },
-    { name: t("menu.services"), to: "service" },
+    { name: t("menu.services"), to: "service" }
   ];
-
-  const categories: ICategories[] = [
-    { id: 1, title: t("portfolio.all_projects") },
-    { id: 2, title: "WEB" },
-    { id: 4, title: "MOBILE" },
-    { id: 3, title: "BOT" },
-  ];
-
+  
   return (
     <div className={styles.container}>
       <Head>
@@ -155,24 +142,25 @@ const Homepage: React.FC<HomePageProps> = ( _props: any) => {
       </Head>
       <Preview linkContactsWithMe={contectLinks} />
       <About companies={companies} skills={skils} />
-      <Portfolio categories={categories} projects={_props.projects} />
+      <Portfolio categories={_props.categories} projects={_props.projects} />
       <Service services={services} />
-      <Footer
-        linksFooter={linksFooter}
-        linkContactsWithMe={footerLinks}
-      />
+      <Footer linksFooter={linksFooter} linkContactsWithMe={footerLinks} />
     </div>
   );
 };
 
 export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/projects?lang=${locale}`);
-  const projects = await res.json();
+  const projectResp = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/projects?lang=${locale}`);
+  const projectsData = await projectResp.json();
+  
+  const categoriesResp = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/projects/categories`)
+  const categoriesData = await categoriesResp.json();
 
   return { 
     props: {
-      projects: projects.data,
+      projects: projectsData.data,
+      categories: categoriesData,
       ...(await serverSideTranslations(locale ?? "en", ["common"])),
     },
     revalidate: 10, // In seconds

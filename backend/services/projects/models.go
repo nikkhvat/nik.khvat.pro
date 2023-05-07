@@ -78,3 +78,9 @@ type ProjectsResponse struct {
 type ProjectsResp struct {
 	Data []ProjectsResponse `json:"data"`
 }
+
+// swagger:model Category
+type Category struct {
+	ID    int    `json:"id"`
+	Title string `json:"title"`
+}

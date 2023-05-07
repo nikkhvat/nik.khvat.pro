@@ -13,5 +13,7 @@ func RegisterHTTPEndpoints(router *gin.Engine, uc Projects.UseCase) {
 	{
 		ProjectsEndpoints.GET("", h.GetProjects)
 		ProjectsEndpoints.GET("/:id", h.GetProject)
+
+		ProjectsEndpoints.GET("/categories", h.GetCategories)
 	}
 }

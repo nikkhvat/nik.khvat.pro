@@ -67,3 +67,23 @@ func (h *Handler) GetProject(c *gin.Context) {
 
 	c.JSON(http.StatusOK, project)
 }
+
+// GetCategories @Summary Get all project categories
+// @Description get all project categories
+// @Tags Projects
+// @Accept  json
+// @Produce  json
+// @Param lang query string false "language (English by default)"
+// @Success 200 {object} []projects.Category
+// @Failure 400
+// @Failure 404
+// @Router /api/categories [get]
+func (h *Handler) GetCategories(c *gin.Context) {
+	categories, err := h.useCase.GetCategories()
+
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
+	}
+
+	c.JSON(http.StatusOK, categories)
+}

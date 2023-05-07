@@ -27,3 +27,7 @@ func (a *ProjectsUseCase) GetProject(lang string, id string) (*projects.ProjectR
 
 	return data, err
 }
+
+func (a *ProjectsUseCase) GetCategories() ([]projects.Category, error) {
+	return a.userRepo.GetCategories()
+}
