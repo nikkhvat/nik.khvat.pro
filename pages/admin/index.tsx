@@ -347,11 +347,11 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               <div className={styles.card_progress__nums} >
                 <span 
                   className={styles.card_progress__num}
-                  style={{ left: (100 / Math.max(general.total_visits, general.unique_visits) * general.unique_visits) + "%" }} >{Math.max(general.total_visits, general.unique_visits) * general.unique_visits + "%"}</span>
+                  style={{ left: (100 / general.total_visits * general.unique_visits) + "%" }} >{Math.max(general.total_visits, general.unique_visits) * general.unique_visits + "%"}</span>
               </div>
               <div className={styles.card_progress__line} >
                 <div
-                  style={{ width: 100 / Math.max(general.total_visits, general.unique_visits) * general.unique_visits + "%" }}
+                  style={{ width: 100 / general.total_visits * general.unique_visits + "%" }}
                   className={styles.card_progress__line_fill} />
               </div>
             </div>
@@ -366,14 +366,14 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               <div className={styles.card_progress__nums} >
                 <span
                   className={styles.card_progress__num}
-                  style={{ left: (100 / Math.max(general.total_visits, general.unique_visits) * general.total_bots) + "%" }} >
-                    {Math.max(general.total_visits, general.unique_visits) * general.total_bots + "%"}
+                  style={{ left: (100 / (general.total_visits + general.total_bots) * general.total_bots) + "%" }} >
+                    {(100 / (general.total_visits + general.total_bots) * general.total_bots) + "%"}
                   </span>
               </div>
 
               <div className={styles.card_progress__line} >
                 <div 
-                  style={{ width: 100 / Math.max(general.total_visits) * general.total_bots + "%" }} className={styles.card_progress__line_fill} ></div>
+                  style={{ width: (100 / (general.total_visits + general.total_bots) * general.total_bots) + "%" }} className={styles.card_progress__line_fill} ></div>
               </div>
             </div>
           </div>
