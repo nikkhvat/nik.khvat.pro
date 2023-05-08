@@ -17,6 +17,9 @@
   min-width: 10px;
   position: relative;
   cursor: pointer;
+
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .item_slice {

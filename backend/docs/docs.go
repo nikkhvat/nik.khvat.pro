@@ -479,6 +479,23 @@ const docTemplate = `{
                 }
             }
         },
+        "stat.Bot": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string"
+                },
+                "details": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/stat.Entry"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
         "stat.Entry": {
             "type": "object",
             "properties": {
@@ -555,9 +572,9 @@ const docTemplate = `{
                 },
                 "total_visits_bot": {
                     "description": "Total bots visit by days",
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "integer"
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/stat.Bot"
                     }
                 },
                 "total_visits_by_day": {

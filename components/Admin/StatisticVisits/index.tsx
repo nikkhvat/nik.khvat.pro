@@ -27,11 +27,11 @@ const StatisticVisits: React.FC<StatisticVisitsProps> = ({ daysObject, setStatVi
     if (!data) return []
 
     const result = [];
+
     const now = new Date();
-    now.setDate(now.getDate() + 1);
-    
     const startDate = new Date();
     startDate.setDate(now.getDate() - 29);
+    
 
     for (let d = startDate; d <= now; d.setDate(d.getDate() + 1)) {
       const dateKey = d.toISOString().split('T')[0];
@@ -56,13 +56,15 @@ const StatisticVisits: React.FC<StatisticVisitsProps> = ({ daysObject, setStatVi
       </div>
       
       {days.map(item => (
-        <div className={styles.item} key={item.date} style={{
-          width: (100 / days.length) + "%",
-          height: (100 / max) * item.count + "%",
-          minHeight: "3px"
-        }} >
-          {item.count !== 0 ? <p className={styles.item_text} >{item.count}</p> : <></>}
-        </div>
+        <div 
+          className={styles.item} 
+          title={`${item.date} - ${item.count}`}
+          key={item.date} 
+          style={{
+            width: (100 / days.length) + "%",
+            height: (100 / max) * item.count + "%",
+            minHeight: "3px"
+          }} />
       ))}
     </div>
   )

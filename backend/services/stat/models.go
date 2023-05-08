@@ -71,6 +71,13 @@ type Entry struct {
 	Count int    `json:"count"` // value
 }
 
+// swagger:model Bot
+type Bot struct {
+	Date    string  `json:"date"`
+	Details []Entry `json:"details"`
+	Total   int     `json:"total"`
+}
+
 // swagger:model SiteStats
 type SiteStats struct {
 	TopCountries        []Entry         `json:"top_countries"`          // Top countries
@@ -79,7 +86,7 @@ type SiteStats struct {
 	UniqueVisits        int             `json:"unique_visits"`          // Unique visits
 	UniqueVisitsByDay   map[string]int  `json:"unique_visits_by_day"`   // Unique visits per day
 	TotalVisitsByDay    map[string]int  `json:"total_visits_by_day"`    // Visits per day
-	VisitsBotByDay      map[string]int  `json:"total_visits_bot"`       // Total bots visit by days
+	VisitsBotByDay      []Bot           `json:"total_visits_bot"`       // Total bots visit by days
 	TopOS               []Entry         `json:"top_os"`                 // Top Operating systems
 	TopBrowsers         []Entry         `json:"top_browsers"`           // Top browsers
 	AvgTimeOnSite       int64           `json:"avg_time_on_site"`       // Average time spent on the site

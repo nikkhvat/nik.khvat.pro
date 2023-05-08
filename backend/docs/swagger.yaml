@@ -84,6 +84,17 @@ definitions:
         description: Url preview
         type: string
     type: object
+  stat.Bot:
+    properties:
+      date:
+        type: string
+      details:
+        items:
+          $ref: '#/definitions/stat.Entry'
+        type: array
+      total:
+        type: integer
+    type: object
   stat.Entry:
     properties:
       count:
@@ -137,10 +148,10 @@ definitions:
         description: Visits
         type: integer
       total_visits_bot:
-        additionalProperties:
-          type: integer
         description: Total bots visit by days
-        type: object
+        items:
+          $ref: '#/definitions/stat.Bot'
+        type: array
       total_visits_by_day:
         additionalProperties:
           type: integer

@@ -16,23 +16,8 @@ import StatisticVisits from "../../components/Admin/StatisticVisits";
 
 import StatisticBots from "../../components/Admin/StatisticBots"
 
-import chrome from '../../images/admin/chrome.png'
-import firefox from '../../images/admin/firefox.png'
-import microsoft from '../../images/admin/microsoft.png'
-import opera from '../../images/admin/opera.png'
-import safari from '../../images/admin/safari.png'
-
-import android from '../../images/admin/platforms/android.png'
-import ipad from '../../images/admin/platforms/ipad.png'
-import iphone from '../../images/admin/platforms/iphone.png'
-import macbook from '../../images/admin/platforms/macbook.png'
-import windows from '../../images/admin/platforms/windows.png'
-import windows7 from '../../images/admin/platforms/windows7.png'
-import apple from '../../images/admin/platforms/apple.png'
-import bot from '../../images/admin/platforms/bot.png'
-import yandex from '../../images/admin/yandex.png'
-
-import { StaticImageData } from "next/image";
+import PlatformIcon from "../../components/Admin/PlatformIcon";
+import BrowserIcon from "../../components/Admin/BrowserIcon";
 
 type Props = {
   // Add custom props here
@@ -57,13 +42,14 @@ export interface SiteStats {
   total_bots: number
   unique_visits_by_day: { [key: string]: number }
   total_visits_by_day: { [key: string]: number }
-  total_visits_bot: { [key: string]: number }
   top_os: { name: string, count: number }[]
   top_browsers: { name: string, count: number }[]
   avg_time_on_site: number
-  no_bots: { date: string, details: VisitDetail[], count: number }[],
-  bots: { date: string, details: VisitDetail[], count: number }[],
-  visits_details_by_days: { date: string, details: VisitDetail[] }[],
+  total_visits_bot: {
+    date: string,
+    total: number,
+    details: { name: string, count: number }[]
+  }[]
   categories: { [key: number]: string }
 }
 
@@ -92,24 +78,6 @@ interface Data {
       uuid: string
     }[]
   }[]
-  unique: {
-    by_days: {
-      count: number
-      date: string
-    }[]
-    total: number
-  },
-  visits: {
-    by_days: {
-      count: number
-      date: string
-    }[]
-    total: number
-  },
-  countries: {
-    count: number
-    country: string
-  }[],
 }
 
 
@@ -133,9 +101,6 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
 
   const [data, setData] = useState({
     all: 0,
-    visits: { by_days: [], total: 0 },
-    unique: { by_days: [], total: 0 },
-    countries: [],
     projects: []
   } as Data)
 
@@ -203,25 +168,6 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
  
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/visits`, { headers })
     const data: SiteStats = (await response.json()).data
-
-    const bots = data.visits_details_by_days.map(day => {
-      const details = day.details.filter(item => item.browser.toLowerCase().indexOf("bot") !== -1);
-      return {
-        details: details,
-        date: day.date,
-        count: details.length
-      }
-    });
-    const noBots = data.visits_details_by_days.map(
-        day => {
-          const details = day.details.filter(item => item.browser.toLowerCase().indexOf("bot") == -1);
-          return {
-            details: details,
-            date: day.date,
-            count: details.length
-        }}
-    );
-
     
     const categoriesResp = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/projects/categories`)
     const categoriesData = await categoriesResp.json();
@@ -234,7 +180,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
       categories[element.id] = element.title
     }
 
-    setGenerat({ ...data, no_bots: noBots, bots: bots, top_os: data.top_os, categories: categories })
+    setGenerat({ ...data, top_os: data.top_os, categories: categories })
   }
 
   useEffect(() => {
@@ -258,40 +204,6 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
     { locale: "kk", img: "🇰🇿" },
     { locale: "ko", img: "🇰🇷" },
   ]
-
-  const getBrowserIcon = (key: string): StaticImageData | null => {
-    const browsers: { [key: string]: StaticImageData } = {
-      "Chrome": chrome,
-      "Firefox": firefox,
-      "Microsoft": microsoft,
-      "Opera": opera,
-      "Safari": safari,
-      "YaBrowser": yandex
-    }
-
-    return browsers[key] ? browsers[key] : null
-  }
-
-  const getPlatformIcon = (key: string): StaticImageData | null => {
-
-    if (key.indexOf("Mac") !== -1) return apple
-
-    const platforms: { [key: string]: StaticImageData } = {
-      "Android": android,
-      "Linux": android,
-      "iPad": ipad,
-      "iPhone": iphone,
-      "Macintosh": macbook,
-      "Windows": windows,
-      "Windows 10": windows,
-      "Windows 7": windows7,
-      "Googlebot": bot,
-      "AhrefsBot": bot,
-      "Vercelbot": bot
-    }
-
-    return platforms[key] ? platforms[key] : null
-  }
 
   const formatDuration = (milliseconds: number) => {
     const totalSeconds = Math.floor(milliseconds / 1000);
@@ -359,7 +271,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               <div className={styles.card_progress__nums} >
                 <span 
                   className={styles.card_progress__num}
-                  style={{ left: (100 / general.total_visits * general.unique_visits) + "%" }} >{(Math.max(general.total_visits, general.unique_visits) * general.unique_visits).toFixed(0) + "%"}</span>
+                  style={{ left: (100 / general.total_visits * general.unique_visits) + "%" }} >{(100 / general.total_visits * general.unique_visits).toFixed(0) + "%"}</span>
               </div>
               <div className={styles.card_progress__line} >
                 <div
@@ -396,7 +308,9 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
             </div>
           </div>
           <div className={`${styles.grid_card} ${styles.first_stat}`} >
-            <StatisticVisits setStatVisits={setStatVisits} daysObject={statVisits === "unique" ? general.total_visits_by_day : general.unique_visits_by_day} />
+            <StatisticVisits 
+              setStatVisits={setStatVisits} 
+              daysObject={statVisits === "unique" ? general.total_visits_by_day : general.unique_visits_by_day} />
           </div>
           <div className={`${styles.grid_card} ${styles.top_countries}`} >
             <p className={styles.card_title} >{t("top_countries")}</p>
@@ -419,37 +333,28 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
           <div className={`${styles.grid_card} ${styles.top_browsers}`} >
             <p className={styles.card_title} >{t("top_browsers")}</p>
             <div className={styles.browser_container} >
+
               {general.top_browsers ? general.top_browsers.map((browser) =>
-                browser.name.toLowerCase().indexOf("bot") === -1 ? <div key={browser.name} className={styles.browser_line} >
-                  {getBrowserIcon(browser.name) !== null ?
-                    <Image
-                      className={styles.browser}
-                      width={14}
-                      height={14}
-                      src={getBrowserIcon(browser.name)!.src} alt="" /> : ""}
-                  <span className={styles.browser_line_count} >{browser.name}: {browser.count}</span>
-                </div> : <></>
-              ) : <></>}
+                browser.name.toLowerCase().indexOf("bot") === -1 ? 
+                  <BrowserIcon 
+                    key={browser.name} 
+                    name={browser.name} 
+                    count={browser.count} /> : <></>) : <></>}
             </div>
           </div>
           <div className={`${styles.grid_card} ${styles.top_os}`} >
             <p className={styles.card_title} >{t("top_os")}</p>
             <ul className={styles.browser_container} >
               {general.top_os ? general.top_os.map((os) =>
-                os.name.toLowerCase().indexOf("bot") === -1 ? <li key={os.name} className={styles.browser_line} >
-                  {getPlatformIcon(os.name) !== null ?
-                    <Image
-                      className={styles.browser}
-                      width={14}
-                      height={14}
-                      src={getPlatformIcon(os.name)!.src} alt="" /> : ""}
-                  <span className={styles.platform_line_count} >{os.name}: {os.count}</span>
-                </li> : <></>
-              ) : <></>}
+                os.name.toLowerCase().indexOf("bot") === -1 ? 
+                  <PlatformIcon 
+                    key={os.name} 
+                    name={os.name} 
+                    count={os.count} /> : <></>) : <></>}
             </ul>
           </div>
           <div className={`${styles.grid_card} ${styles.second_stat}`} >
-            <StatisticBots daysObject={general.bots} />
+            <StatisticBots daysObject={general.total_visits_bot} />
           </div>
         </div>
 

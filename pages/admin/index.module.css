@@ -121,6 +121,10 @@
   list-style-type: none;
   font-size: 14px;
 
+  row-gap: 10px;
+  column-gap: 14px;
+  padding: 8px;
+
   display: flex; 
   flex-wrap: wrap;
 }
@@ -314,7 +318,7 @@
   grid-auto-flow: row;
   grid-template-areas:
     "visits unique_visits total_bots average_time_spent first_stat first_stat first_stat first_stat"
-    "top_countries top_countries top_browsers top_browsers top_os second_stat second_stat second_stat";
+    "top_countries top_countries top_browsers top_browsers top_os top_os second_stat second_stat";
   gap: 10px 10px; 
 }
 

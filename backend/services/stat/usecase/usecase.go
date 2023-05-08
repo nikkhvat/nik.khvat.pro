@@ -114,14 +114,15 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 		UniqueVisits:      0,
 		UniqueVisitsByDay: make(map[string]int),
 		TotalVisitsByDay:  make(map[string]int),
-		VisitsBotByDay:    make(map[string]int),
-		AvgTimeOnSite:     0,
+		//VisitsBotByDay:    make(map[string]int),
+		AvgTimeOnSite: 0,
 	}
 
-	uniqueVisitors := make(map[string]bool)
 	var totalDuration time.Duration
 	var peoples int
 
+	uniqueVisitors := make(map[string]bool)
+	botsByDate := make(map[string][]stat.Entry)
 	TopCountries := make(map[string]int)
 	TopBrowsers := make(map[string]int)
 	TopOS := make(map[string]int)
@@ -136,7 +137,10 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 		browser := strings.ToLower(visit.Browser)
 
 		if strings.Contains(browser, "bot") {
-			stats.VisitsBotByDay[date]++
+			botsByDate[date] = append(botsByDate[date], stat.Entry{
+				Name:  visit.Browser,
+				Count: 1,
+			})
 			stats.TotalBots++
 		} else {
 			stats.UniqueVisitsByDay[date]++
@@ -161,18 +165,18 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 		}
 
 		// Подробности посещения
-		found := false
-		for i, details := range stats.VisitsDetailsByDays {
-			if details.Date == date {
-
-				stats.VisitsDetailsByDays[i].Details = append(details.Details, visit)
-				found = true
-				break
-			}
-		}
-		if !found {
-			stats.VisitsDetailsByDays = append(stats.VisitsDetailsByDays, stat.VisitsDetails{Date: date, Details: []stat.Visits{visit}})
-		}
+		//found := false
+		//for i, details := range stats.VisitsDetailsByDays {
+		//	if details.Date == date {
+		//
+		//		stats.VisitsDetailsByDays[i].Details = append(details.Details, visit)
+		//		found = true
+		//		break
+		//	}
+		//}
+		//if !found {
+		//	stats.VisitsDetailsByDays = append(stats.VisitsDetailsByDays, stat.VisitsDetails{Date: date, Details: []stat.Visits{visit}})
+		//}
 	}
 
 	stats.AvgTimeOnSite = int64(totalDuration/time.Duration(peoples)) / 1000000
@@ -222,7 +226,64 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 
 	// Sort top os END
 
+	// Start top Bots
+	now := time.Now()
+	endDate := now.Format("2006-01-02")
+	startDate := now.AddDate(0, 0, -16).Format("2006-01-02")
+
+	bots := convertToBots(botsByDate, startDate, endDate)
+
+	stats.VisitsBotByDay = bots
+	// End top bots
 	return stats
+}
+
+func convertToBots(data map[string][]stat.Entry, startDate, endDate string) []stat.Bot {
+	start, _ := time.Parse("2006-01-02", startDate)
+	end, _ := time.Parse("2006-01-02", endDate)
+
+	bots := []stat.Bot{}
+	for d := start; !d.After(end); d = d.AddDate(0, 0, 1) {
+		date := d.Format("2006-01-02")
+		details, ok := data[date]
+		if !ok {
+			details = []stat.Entry{}
+		} else {
+			details = mergeEntries(details)
+		}
+
+		total := getTotal(details)
+
+		bot := stat.Bot{
+			Date:    date,
+			Details: details,
+			Total:   total,
+		}
+		bots = append(bots, bot)
+	}
+	return bots
+}
+
+func getTotal(details []stat.Entry) int {
+	total := 0
+	for _, entry := range details {
+		total += entry.Count
+	}
+	return total
+}
+
+func mergeEntries(entries []stat.Entry) []stat.Entry {
+	merged := make(map[string]int)
+	for _, entry := range entries {
+		merged[entry.Name] += entry.Count
+	}
+
+	mergedEntries := make([]stat.Entry, 0, len(merged))
+	for name, count := range merged {
+		mergedEntries = append(mergedEntries, stat.Entry{Name: name, Count: count})
+	}
+
+	return mergedEntries
 }
 
 func (a *statUseCase) GetVisits() (stat.SiteStats, error) {

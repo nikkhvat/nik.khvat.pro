@@ -2,55 +2,31 @@ import React, { useState } from "react";
 
 import styles from "./index.module.css"
 // import { useTranslation } from "next-i18next";
-import {VisitDetail} from "../../../pages/admin";
+
+interface Days {
+  date: string,
+  total: number,
+  details: { 
+    name: string, 
+    count: number
+  }[]
+}
 
 interface StatisticVisitsProps {
-  daysObject: { date: string, details: VisitDetail[], count: number }[]
+  daysObject: Days[]
 }
 
 const StatisticBots: React.FC<StatisticVisitsProps> = ({ daysObject }) => {
   // const { t } = useTranslation("admin");
 
-  function findMaxCount(array: { date: string, details: VisitDetail[], count: number }[]) {
+  function findMaxCount(array: Days[]) {
     let maxCount = 0;
 
     for (const item of array) {
-      if (item.details.length > maxCount) {
-        maxCount = item.details.length;
-      }
+      if (item.total > maxCount) maxCount = item.total
     }
 
     return maxCount;
-  }
-
-
-  function fillMissingDates(array: { date: string, details: VisitDetail[], count: number }[]) {
-    const endDate = new Date();
-    const startDate = new Date();
-    startDate.setDate(endDate.getDate() - 29);
-
-    const filledArray: { date: string, details: VisitDetail[], count: number }[] = [];
-
-    for (let currentDate = startDate; currentDate <= endDate; currentDate.setDate(currentDate.getDate() + 1)) {
-      const dateString = currentDate.toISOString().split('T')[0];
-      const existingDate = array.find((item) => item.date === dateString);
-
-      if (existingDate) {
-        filledArray.push(existingDate);
-      } else {
-        filledArray.push({ date: dateString, details: [], count: 0 });
-      }
-    }
-
-    return filledArray;
-  }
-
-  function sortByName(array:  VisitDetail[]) {
-    return array.sort((a, b) => {
-      if (a.browser.toLowerCase() < b.browser.toLowerCase()) return -1;
-      if (a.browser.toLowerCase() > b.browser.toLowerCase()) return 1;
-      return 0;
-    });
   }
 
   
@@ -58,59 +34,43 @@ const StatisticBots: React.FC<StatisticVisitsProps> = ({ daysObject }) => {
     { show: true, id: "Googlebot", name: "Google Bot", color: "#2196F3" },
     { show: true, id: "AhrefsBot", name: "Ahrefs Bot", color: "#4CAF50" },
     { show: true, id: "Vercelbot", name: "Vercel Bot", color: "#FF9800" },
-    { show: true, id: "-", name: "Another Bot", color: "#9C27B0" },
   ])
   
   const getBotByName = (name: string) => {
     for (let i = 0; i < bots.length; i++) {
       const element = bots[i];
       
-      console.log(element.name, name);
       if (element.id === name) return element
     }
     
     return bots[bots.length - 1]
   }
 
-  const days = fillMissingDates(daysObject)
-    .map(item => ({ 
+  const days = daysObject.map(item => ({ 
       ...item, 
-      details: sortByName(item.details).filter((item) => getBotByName(item.browser).show === true)
+      details: item.details.filter((el) => getBotByName(el.name).show === true)
     }))
 
-  console.log(days);
-
-  const max = findMaxCount(days)
-
-  const clickBot = (name: string) => {
-    console.log("click");
-    
+  const clickBot = (name: string) => {    
     const arr: any = []
 
     for (let i = 0; i < bots.length; i++) {
       const element = bots[i];
       
-      if (element.name === name) {
-        arr.push({ ...element, show: !element.show })
-      } else {
-        arr.push(element)
-      }
+      if (element.name === name) arr.push({ ...element, show: !element.show })
+      else arr.push(element)
     }
-
-    console.log(arr);
     
     setBots(_ => arr)
   }
 
   const getColor = (name: string) => {
-    const colors: {[key: string]: string} = {
-      "Googlebot": "#2196F3",
-      "AhrefsBot": "#4CAF50",
-      "Vercelbot": "#FF9800",
-    }
-
+    const colors: {[key: string]: string} = {"Googlebot": "#2196F3", "AhrefsBot": "#4CAF50", "Vercelbot": "#FF9800"}
     return colors[name] ? colors[name] : "#9C27B0"
   }
+
+  const max = findMaxCount(days);
+  const maxHeight = 100
 
   return (
     <div className={styles.container} >
@@ -127,20 +87,37 @@ const StatisticBots: React.FC<StatisticVisitsProps> = ({ daysObject }) => {
         ))}
 
       </div>  
-      {days.map(item => (
-        <div className={styles.item} key={item.date} style={{
-          width: (100 / days.length) + "%",
-          height: (100 / max) * item.details.length + "%",
-          minHeight: "3px"
-        }} >
-          {item.details.length !== 0 ? item.details.map(detail => (
-              <div
-                key={detail.uid}
-                className={styles.item_slice}
-                style={{minHeight: (103 / max) + "px", background: getColor(detail.browser)}} ></div>
-          )) : <></> }
-        </div>
-      ))}
+      {days.map(item => {
+        let count = 0
+
+        if (item.details.length > 0) {
+          for (let i = 0; i < item.details.length; i++) {
+            const el = item.details[i];
+            count = count + el.count;
+          }
+        }
+
+        return (
+          <div 
+            className={styles.item} 
+            key={item.date} 
+            title={`Date: ${item.date}, Total: ${item.total}, Details: ${item.details.map(el => `${el.name} - ${el.count}`).join(", ")}`}
+            style={{
+              width: (100 / days.length) + "%",
+              height: (maxHeight / max) * item.total + "px",
+              minHeight: "2px"
+            }} >
+            {count !== 0 ? item.details.map(detail => (
+                <div
+                  key={detail.name}
+                  className={styles.item_slice}
+                  style={{
+                    height: `calc(${maxHeight / max}px * ${detail.count})`, 
+                    background: getColor(detail.name)
+                  }} />
+            )) : <></> }
+          </div>
+          )})}
     </div>
   )
 }
