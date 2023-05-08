@@ -144,7 +144,10 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 			stats.TotalBots++
 		} else {
 			stats.UniqueVisitsByDay[date]++
-			stats.TotalVisitsByDay[date]++
+
+			if visit.Unique {
+				stats.TotalVisitsByDay[date]++
+			}
 
 			stats.TotalVisits++
 
@@ -163,20 +166,6 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 				uniqueVisitors[visit.Ip] = true
 			}
 		}
-
-		// Подробности посещения
-		//found := false
-		//for i, details := range stats.VisitsDetailsByDays {
-		//	if details.Date == date {
-		//
-		//		stats.VisitsDetailsByDays[i].Details = append(details.Details, visit)
-		//		found = true
-		//		break
-		//	}
-		//}
-		//if !found {
-		//	stats.VisitsDetailsByDays = append(stats.VisitsDetailsByDays, stat.VisitsDetails{Date: date, Details: []stat.Visits{visit}})
-		//}
 	}
 
 	stats.AvgTimeOnSite = int64(totalDuration/time.Duration(peoples)) / 1000000
