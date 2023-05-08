@@ -152,8 +152,6 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
           })
       }
 
-
-
       setData((prev: any) => ({ ...prev, projects: projects.sort((a, b) => b.count - a.count), all: allCount }))
     } catch (error: any) {
       push(`/admin/auth`)
@@ -179,6 +177,9 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
 
       categories[element.id] = element.title
     }
+
+    console.log(data);
+    
 
     setGenerat({ ...data, top_os: data.top_os, categories: categories })
   }

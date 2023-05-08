@@ -3,7 +3,7 @@ import styles from "./index.module.css";
 
 import ipad from '../../../images/admin/platforms/ipad.png'
 import iphone from '../../../images/admin/platforms/iphone.png'
-import macbook from '../../../images/admin/platforms/macbook.png'
+import notebook from '../../../images/admin/platforms/notebook.png'
 import windows from '../../../images/admin/platforms/windows.png'
 import windows7 from '../../../images/admin/platforms/windows7.png'
 import apple from '../../../images/admin/platforms/apple.png'
@@ -37,7 +37,7 @@ const PlatformIcon: React.FC<{ name: string, count: number }> = ({ name, count }
       "Linux": android,
       "iPad": ipad,
       "iPhone": iphone,
-      "Macintosh": macbook,
+      "Macintosh": apple,
       "Windows": windows,
       "Windows 10": windows,
       "Windows 7": windows7,
@@ -46,7 +46,7 @@ const PlatformIcon: React.FC<{ name: string, count: number }> = ({ name, count }
       "Vercelbot": bot
     }
 
-    return platforms[key]
+    return platforms[key] ? platforms[key] : notebook
   }
 
   return (

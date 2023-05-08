@@ -8,6 +8,7 @@ import microsoft from '../../../images/admin/microsoft.png'
 import opera from '../../../images/admin/opera.png'
 import safari from '../../../images/admin/safari.png'
 import yandex from '../../../images/admin/yandex.png'
+import defaultIcon from '../../../images/admin/default.png'
 
 import Image, { StaticImageData } from "next/image";
 
@@ -17,12 +18,13 @@ const BrowserIcon: React.FC<{ name: string, count: number }> = ({ name, count })
       "Chrome": chrome,
       "Firefox": firefox,
       "Microsoft": microsoft,
+      "Edge": microsoft,
       "Opera": opera,
       "Safari": safari,
       "YaBrowser": yandex
     }
 
-    return browsers[key] ? browsers[key] : null
+    return browsers[key] ? browsers[key] : defaultIcon
   }
   return (
     <div>
