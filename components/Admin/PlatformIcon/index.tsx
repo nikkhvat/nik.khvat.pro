@@ -26,7 +26,7 @@ const PlatformIcon: React.FC<{ name: string, count: number }> = ({ name, count }
     return name
   }
 
-  const getPlatformIcon = (key: string): StaticImageData | null => {
+  const getPlatformIcon = (key: string): StaticImageData => {
 
     if (key.indexOf("Mac") !== -1) return apple
     if (key.indexOf("Linux") !== -1) return linux
@@ -55,7 +55,7 @@ const PlatformIcon: React.FC<{ name: string, count: number }> = ({ name, count }
         className={styles.browser}
         width={14}
         height={14}
-        src={getPlatformIcon(name)!.src} alt="" />
+        src={getPlatformIcon(name).src} alt="" />
 
       <span className={styles.platform_line_count} >{getShortName(name)}: ({count})</span>
     </div>

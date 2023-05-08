@@ -13,7 +13,7 @@ import defaultIcon from '../../../images/admin/default.png'
 import Image, { StaticImageData } from "next/image";
 
 const BrowserIcon: React.FC<{ name: string, count: number }> = ({ name, count }) => {
-  const getIcon = (key: string): StaticImageData | null => {
+  const getIcon = (key: string): StaticImageData => {
     const browsers: { [key: string]: StaticImageData } = {
       "Chrome": chrome,
       "Firefox": firefox,
@@ -32,7 +32,7 @@ const BrowserIcon: React.FC<{ name: string, count: number }> = ({ name, count })
         className={styles.browser}
         width={14}
         height={14}
-        src={getIcon(name)!.src} alt="" />
+        src={getIcon(name).src} alt="" />
 
       <span className={styles.platform_line_count} >{name}: {count}</span>
     </div>
