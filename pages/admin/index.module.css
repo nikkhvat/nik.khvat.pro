@@ -184,6 +184,17 @@
   margin-bottom: -4px;
 }
 
+.project_categories {
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+.project_categories__item {
+  font-family: "Open Sans";
+  font-size: 14px;
+  color: #A6A6A6;
+}
+
 .description {
   padding: 8px;
   padding-left: 12px;
@@ -191,6 +202,7 @@
   display: flex;
   width: 100%;
   flex-direction: column;
+  position: relative;
 }
 
 .description_count {

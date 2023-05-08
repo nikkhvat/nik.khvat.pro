@@ -1,26 +1,11 @@
-
-.card_progress__nums {
-    width: 100%;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    margin-top: 18px;
-}
-
-.card_progress__num {
-    font-family: "Open Sans", sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
-    color: #A6A6A6;
+.card_progress {
+    position: absolute;
+    bottom: 0;
 }
 
 .card_progress__line {
     background-color: #323232;
-    width: 100%;
+    width: calc(100% - 20px);
     height: 6px;
     margin-top: 5px;
 }

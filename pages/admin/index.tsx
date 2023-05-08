@@ -63,7 +63,8 @@ export interface SiteStats {
   avg_time_on_site: number
   no_bots: { date: string, details: VisitDetail[], count: number }[],
   bots: { date: string, details: VisitDetail[], count: number }[],
-  visits_details_by_days: { date: string, details: VisitDetail[] }[]
+  visits_details_by_days: { date: string, details: VisitDetail[] }[],
+  categories: { [key: number]: string }
 }
 
 
@@ -221,8 +222,19 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
         }}
     );
 
-    console.log({...data, no_bots: noBots, bots: bots, top_os: data.top_os})
-    setGenerat({...data, no_bots: noBots, bots: bots, top_os: data.top_os})
+    
+    const categoriesResp = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/projects/categories`)
+    const categoriesData = await categoriesResp.json();
+
+    const categories = {} as {[key: number]: string}
+
+    for (let i = 0; i < categoriesData.length; i++) {
+      const element = categoriesData[i];
+
+      categories[element.id] = element.title
+    }
+
+    setGenerat({ ...data, no_bots: noBots, bots: bots, top_os: data.top_os, categories: categories })
   }
 
   useEffect(() => {
@@ -329,7 +341,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               <div className={styles.card_progress__nums} >
                 <span
                   className={styles.card_progress__num}
-                  style={{ left: `76%` }} >({(100).toFixed(2)})%</span>
+                  style={{ left: `76%` }} >{(100).toFixed(0)}%</span>
               </div>
 
               <div className={styles.card_progress__line} >
@@ -347,7 +359,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               <div className={styles.card_progress__nums} >
                 <span 
                   className={styles.card_progress__num}
-                  style={{ left: (100 / general.total_visits * general.unique_visits) + "%" }} >{(Math.max(general.total_visits, general.unique_visits) * general.unique_visits).toFixed(2) + "%"}</span>
+                  style={{ left: (100 / general.total_visits * general.unique_visits) + "%" }} >{(Math.max(general.total_visits, general.unique_visits) * general.unique_visits).toFixed(0) + "%"}</span>
               </div>
               <div className={styles.card_progress__line} >
                 <div
@@ -367,7 +379,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
                 <span
                   className={styles.card_progress__num}
                   style={{ left: (100 / (general.total_visits + general.total_bots) * general.total_bots) + "%" }} >
-                    {(100 / (general.total_visits + general.total_bots) * general.total_bots).toFixed(2) + "%"}
+                    {(100 / (general.total_visits + general.total_bots) * general.total_bots).toFixed(0) + "%"}
                   </span>
               </div>
 
@@ -464,9 +476,14 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
               <div className={styles.description} >
                 <p>
                   <span className={styles.description_count} >{item.count}</span>
-                  <span className={styles.description_subcount} >{item.percent.toFixed(1)}%</span>
+                  <span className={styles.description_subcount} >{item.percent.toFixed(0)}%</span>
                 </p>
                 <span className={styles.project_title} >{item.title}</span>
+
+                <ol className={styles.project_categories} >
+                  {item.categories.map((item: number) => 
+                    <li key={item} className={styles.project_categories__item} >{general.categories[item]}</li>)}
+                </ol>
 
                 <ProgressBar
                   fs={data.all}
