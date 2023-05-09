@@ -7,6 +7,7 @@ import { InferGetStaticPropsType } from "next";
 import styles from "../../styles/Project.module.css";
 
 import Storage from "../../utils/storage"
+import Stat from "../../components/Stat";
 
 const Project: React.FC<InferGetStaticPropsType<any>> = (_props) => {
   const { t } = useTranslation("common");
@@ -25,6 +26,7 @@ const Project: React.FC<InferGetStaticPropsType<any>> = (_props) => {
 
   return (
     <div className={styles.main}>
+      <Stat />
       <Head>
         <title>{data.title}</title>
         <meta name='description' content={data.description} />

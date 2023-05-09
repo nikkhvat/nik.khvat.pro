@@ -50,8 +50,6 @@ func autoMigrateDB(db *gorm.DB) {
 	_ = db.AutoMigrate(&projects.Category{})
 
 	// Stats
-	_ = db.AutoMigrate(&stat.ProjectsStats{})
-	_ = db.AutoMigrate(&stat.ClicksStat{})
 	_ = db.AutoMigrate(&stat.Visits{})
 
 	// Links

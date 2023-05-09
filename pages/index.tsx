@@ -16,6 +16,7 @@ import Preview from "../components/Preview";
 import { StaticImageData } from "next/image";
 
 import { github, instagram, linkedin, mail, telegramm } from "../images/images";
+import Stat from "../components/Stat";
 
 type Props = {
   // Add custom props here
@@ -109,6 +110,7 @@ const Homepage: React.FC<HomePageProps> = ( _props: any) => {
         <meta name='description' content={t('description')} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
+      <Stat />
       <Preview linkContactsWithMe={contectLinks} />
       <About companies={companies} skills={skils} />
       <Portfolio categories={_props.categories} projects={_props.projects} />

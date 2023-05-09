@@ -84,36 +84,25 @@ definitions:
         description: Url preview
         type: string
     type: object
-  stat.Bot:
-    properties:
-      date:
-        type: string
-      details:
-        items:
-          $ref: '#/definitions/stat.Entry'
-        type: array
-      total:
-        type: integer
-    type: object
-  stat.Entry:
+  stat.BrowserCount:
     properties:
       count:
-        description: value
         type: integer
       name:
-        description: key
         type: string
     type: object
-  stat.ProjectsStats:
+  stat.DateCountPair:
     properties:
       count:
-        description: Count visits
         type: integer
       date:
-        description: Date
         type: string
-      uuid:
-        description: Project Id
+    type: object
+  stat.NameCountPair:
+    properties:
+      count:
+        type: integer
+      name:
         type: string
     type: object
   stat.SessionResponse:
@@ -123,100 +112,44 @@ definitions:
     type: object
   stat.SiteStats:
     properties:
-      avg_time_on_site:
-        description: Average time spent on the site
+      avg_duration:
+        type: integer
+      first_visits:
         type: integer
       top_browsers:
-        description: Top browsers
         items:
-          $ref: '#/definitions/stat.Entry'
+          $ref: '#/definitions/stat.BrowserCount'
         type: array
       top_countries:
         description: Top countries
         items:
-          $ref: '#/definitions/stat.Entry'
+          $ref: '#/definitions/stat.NameCountPair'
         type: array
       top_os:
-        description: Top Operating systems
         items:
-          $ref: '#/definitions/stat.Entry'
+          $ref: '#/definitions/stat.NameCountPair'
+        type: array
+      top_pages:
+        items:
+          $ref: '#/definitions/stat.URLCountPair'
         type: array
       total_bots:
-        description: Total bots visit
         type: integer
       total_visits:
-        description: Visits
         type: integer
-      total_visits_bot:
-        description: Total bots visit by days
+      visits_by_day:
         items:
-          $ref: '#/definitions/stat.Bot'
-        type: array
-      total_visits_by_day:
-        additionalProperties:
-          type: integer
-        description: Visits per day
-        type: object
-      unique_visits:
-        description: Unique visits
-        type: integer
-      unique_visits_by_day:
-        additionalProperties:
-          type: integer
-        description: Unique visits per day
-        type: object
-      visits_details_by_days:
-        description: Full statistics of visits by users
-        items:
-          $ref: '#/definitions/stat.VisitsDetails'
+          $ref: '#/definitions/stat.DateCountPair'
         type: array
     type: object
-  stat.Visits:
+  stat.URLCountPair:
     properties:
-      browser:
-        description: Browser (Chrome, Firefox, etc.)
+      count:
+        type: integer
+      title:
         type: string
-      country:
-        description: Short country code (EE, DE, etc.)
+      url:
         type: string
-      http_referer:
-        description: Http Refer
-        type: string
-      ip:
-        description: The IP address from which
-        type: string
-      os:
-        description: Operating system (Windows, macOS, etc.)
-        type: string
-      platform:
-        description: Platform (Linux, Macintosh, iPhone)
-        type: string
-      time_entry:
-        description: The time at which the person entered
-        type: string
-      time_leaving:
-        description: The time when the user left the site
-        type: string
-      uid:
-        description: Unique identifier
-        type: string
-      unique:
-        description: Has the user already logged in or not
-        type: boolean
-      utm:
-        description: the UTM tag id came in
-        type: string
-    type: object
-  stat.VisitsDetails:
-    properties:
-      date:
-        description: Date
-        type: string
-      details:
-        description: Details
-        items:
-          $ref: '#/definitions/stat.Visits'
-        type: array
     type: object
   stat.VisitsResponse:
     properties:
@@ -348,42 +281,6 @@ paths:
             type: array
       tags:
       - Stat
-  /api/stat/projects:
-    get:
-      consumes:
-      - application/json
-      description: Get project visits by day in 30 days
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            additionalProperties:
-              items:
-                $ref: '#/definitions/stat.ProjectsStats'
-              type: array
-            type: object
-      tags:
-      - Stat
-  /api/stat/update/projects/{uuid}:
-    put:
-      consumes:
-      - application/json
-      description: Increments the number of project visits by 1 for the current day
-      parameters:
-      - description: project id
-        in: path
-        name: uuid
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: Successful statistics update
-      tags:
-      - Stat
   /api/stat/update/visit:
     put:
       consumes:
@@ -399,6 +296,18 @@ paths:
       - description: UTM tag ID (optional parameter)
         in: query
         name: utm
+        type: string
+      - description: URL Page
+        in: query
+        name: url
+        type: string
+      - description: Title Page
+        in: query
+        name: title
+        type: string
+      - description: Session (if user yet visited website)
+        in: query
+        name: session
         type: string
       produces:
       - application/json

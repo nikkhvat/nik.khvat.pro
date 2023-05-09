@@ -172,7 +172,7 @@
   background-color: #fdfdfd;
 }
 
-.project_card {
+.page_card {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -181,19 +181,19 @@
   background-color: #212121;
 }
 
-.project_card_image {
+.page_card_image {
   object-fit: cover;
   width: 170px;
   height: 140px;
   margin-bottom: -4px;
 }
 
-.project_categories {
+.page_categories {
   margin-left: 15px;
   margin-top: 5px;
 }
 
-.project_categories__item {
+.page_categories__item {
   font-family: "Open Sans";
   font-size: 14px;
   color: #A6A6A6;
@@ -231,7 +231,7 @@
   margin-left: 8px;
 }
 
-.project_title {
+.page_title {
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
@@ -240,6 +240,18 @@
   color: #A6A6A6;
   margin-top: 6px;
   margin-bottom: 5px;
+}
+
+.page_url {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #A6A6A6;
+  margin-top: 6px;
+  margin-bottom: 5px;
+  line-height: 120%;
 }
 
 .cards {
@@ -255,13 +267,13 @@
 
 
 @media screen and (max-width: 1330px) {
-  .project_card {
+  .page_card {
       width: calc(33.3333% - 15px);
   }
 }
 
 @media screen and (max-width: 1000px) {
-  .project_card {
+  .page_card {
       width: calc(33.3333% - 10px);
   }
   .line {
@@ -275,12 +287,12 @@
 }
 
 @media screen and (max-width: 1000px) {
-  .project_card {
+  .page_card {
       width: calc(50% - 10px);
   }
 }
 @media screen and (max-width: 700px) {
-  .project_card {
+  .page_card {
       width: calc(100%);
   }
 
@@ -317,7 +329,7 @@
   grid-template-rows: 140px 140px;
   grid-auto-flow: row;
   grid-template-areas:
-    "visits unique_visits total_bots average_time_spent first_stat first_stat first_stat first_stat"
+    "visits visits total_bots average_time_spent first_stat first_stat first_stat first_stat"
     "top_countries top_countries top_browsers top_browsers top_os top_os second_stat second_stat";
   gap: 10px 10px; 
 }
@@ -384,7 +396,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 140px 140px 140px;
     grid-template-areas:
-      "visits unique_visits total_bots average_time_spent"
+      "visits visits total_bots average_time_spent"
       "first_stat first_stat second_stat second_stat"
       "top_countries top_countries top_browsers top_os ";
     }
@@ -395,7 +407,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 140px 140px 140px 140px;
     grid-template-areas:
-      "visits unique_visits total_bots average_time_spent"
+      "visits visits total_bots average_time_spent"
       "first_stat first_stat first_stat first_stat"
       "second_stat second_stat second_stat second_stat"
       "top_countries top_countries top_browsers top_os";
@@ -406,7 +418,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 140px 140px 140px 140px 140px 140px;
     grid-template-areas:
-      "visits visits unique_visits unique_visits"
+      "visits visits visits visits"
       "total_bots total_bots average_time_spent average_time_spent"
       "first_stat first_stat first_stat first_stat"
       "second_stat second_stat second_stat second_stat"

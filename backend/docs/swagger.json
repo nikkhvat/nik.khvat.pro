@@ -193,62 +193,6 @@
                 }
             }
         },
-        "/api/stat/projects": {
-            "get": {
-                "description": "Get project visits by day in 30 days",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Stat"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/definitions/stat.ProjectsStats"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/api/stat/update/projects/{uuid}": {
-            "put": {
-                "description": "Increments the number of project visits by 1 for the current day",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Stat"
-                ],
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "project id",
-                        "name": "uuid",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful statistics update"
-                    }
-                }
-            }
-        },
         "/api/stat/update/visit": {
             "put": {
                 "description": "add a visit to the site, gets the IP, country, time of entry and uniqueness of the visit",
@@ -273,6 +217,24 @@
                         "type": "string",
                         "description": "UTM tag ID (optional parameter)",
                         "name": "utm",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "URL Page",
+                        "name": "url",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Title Page",
+                        "name": "title",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Session (if user yet visited website)",
+                        "name": "session",
                         "in": "query"
                     }
                 ],
@@ -467,49 +429,35 @@
                 }
             }
         },
-        "stat.Bot": {
-            "type": "object",
-            "properties": {
-                "date": {
-                    "type": "string"
-                },
-                "details": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/stat.Entry"
-                    }
-                },
-                "total": {
-                    "type": "integer"
-                }
-            }
-        },
-        "stat.Entry": {
+        "stat.BrowserCount": {
             "type": "object",
             "properties": {
                 "count": {
-                    "description": "value",
                     "type": "integer"
                 },
                 "name": {
-                    "description": "key",
                     "type": "string"
                 }
             }
         },
-        "stat.ProjectsStats": {
+        "stat.DateCountPair": {
             "type": "object",
             "properties": {
                 "count": {
-                    "description": "Count visits",
                     "type": "integer"
                 },
                 "date": {
-                    "description": "Date",
                     "type": "string"
+                }
+            }
+        },
+        "stat.NameCountPair": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
                 },
-                "uuid": {
-                    "description": "Project Id",
+                "name": {
                     "type": "string"
                 }
             }
@@ -525,135 +473,62 @@
         "stat.SiteStats": {
             "type": "object",
             "properties": {
-                "avg_time_on_site": {
-                    "description": "Average time spent on the site",
+                "avg_duration": {
+                    "type": "integer"
+                },
+                "first_visits": {
                     "type": "integer"
                 },
                 "top_browsers": {
-                    "description": "Top browsers",
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/stat.Entry"
+                        "$ref": "#/definitions/stat.BrowserCount"
                     }
                 },
                 "top_countries": {
                     "description": "Top countries",
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/stat.Entry"
+                        "$ref": "#/definitions/stat.NameCountPair"
                     }
                 },
                 "top_os": {
-                    "description": "Top Operating systems",
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/stat.Entry"
+                        "$ref": "#/definitions/stat.NameCountPair"
+                    }
+                },
+                "top_pages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/stat.URLCountPair"
                     }
                 },
                 "total_bots": {
-                    "description": "Total bots visit",
                     "type": "integer"
                 },
                 "total_visits": {
-                    "description": "Visits",
                     "type": "integer"
                 },
-                "total_visits_bot": {
-                    "description": "Total bots visit by days",
+                "visits_by_day": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/stat.Bot"
-                    }
-                },
-                "total_visits_by_day": {
-                    "description": "Visits per day",
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "integer"
-                    }
-                },
-                "unique_visits": {
-                    "description": "Unique visits",
-                    "type": "integer"
-                },
-                "unique_visits_by_day": {
-                    "description": "Unique visits per day",
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "integer"
-                    }
-                },
-                "visits_details_by_days": {
-                    "description": "Full statistics of visits by users",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/stat.VisitsDetails"
+                        "$ref": "#/definitions/stat.DateCountPair"
                     }
                 }
             }
         },
-        "stat.Visits": {
+        "stat.URLCountPair": {
             "type": "object",
             "properties": {
-                "browser": {
-                    "description": "Browser (Chrome, Firefox, etc.)",
+                "count": {
+                    "type": "integer"
+                },
+                "title": {
                     "type": "string"
                 },
-                "country": {
-                    "description": "Short country code (EE, DE, etc.)",
+                "url": {
                     "type": "string"
-                },
-                "http_referer": {
-                    "description": "Http Refer",
-                    "type": "string"
-                },
-                "ip": {
-                    "description": "The IP address from which",
-                    "type": "string"
-                },
-                "os": {
-                    "description": "Operating system (Windows, macOS, etc.)",
-                    "type": "string"
-                },
-                "platform": {
-                    "description": "Platform (Linux, Macintosh, iPhone)",
-                    "type": "string"
-                },
-                "time_entry": {
-                    "description": "The time at which the person entered",
-                    "type": "string"
-                },
-                "time_leaving": {
-                    "description": "The time when the user left the site",
-                    "type": "string"
-                },
-                "uid": {
-                    "description": "Unique identifier",
-                    "type": "string"
-                },
-                "unique": {
-                    "description": "Has the user already logged in or not",
-                    "type": "boolean"
-                },
-                "utm": {
-                    "description": "the UTM tag id came in",
-                    "type": "string"
-                }
-            }
-        },
-        "stat.VisitsDetails": {
-            "type": "object",
-            "properties": {
-                "date": {
-                    "description": "Date",
-                    "type": "string"
-                },
-                "details": {
-                    "description": "Details",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/stat.Visits"
-                    }
                 }
             }
         },
