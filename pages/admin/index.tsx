@@ -91,13 +91,19 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
   const [load, setLoad] = useState(false)
 
   
-  const [general, setGenerat] = useState({} as SiteStats)
+  const [general, setGenerat] = useState({
+    first_visits: 0
+  } as SiteStats)
 
   const init = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/visits`, { headers })
-    const data: SiteStats = (await response.json()).data
-
-    setGenerat(data)
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/stat/visits`, { headers })
+      const data: SiteStats = (await response.json()).data
+  
+      setGenerat(data)
+    } catch (error) {
+      push(`/admin/auth`)
+    }
   }
 
   useEffect(() => {
