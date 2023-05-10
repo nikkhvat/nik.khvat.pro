@@ -5,6 +5,7 @@ import (
 	"nik19ta/backend/services/links"
 	stat "nik19ta/backend/services/stat"
 	"sort"
+	"strconv"
 	"strings"
 	"time"
 
@@ -257,6 +258,7 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 	topPagesMap := make(map[string]stat.URLCountPair)
 	browserCounter := make(map[string]int)
 	countryCounter := make(map[string]int)
+	visitsByHourMap := make(map[int]int)
 	sessionCounter := make(map[string]bool)
 	topOSMap := make(map[string]int)
 	botsByDate := make(map[string][]stat.Entry)
@@ -307,6 +309,11 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 
 			// * Обновляем счетчик для страны
 			countryCounter[visit.Country]++
+
+			// * Получите час посещения
+			// * Обновление информации о посещениях по часам
+			visitHour := visit.TimeEntry.Hour()
+			visitsByHourMap[visitHour]++
 		}
 
 		// * Иначе учитываем его как обычное посещение
@@ -375,6 +382,15 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 	for name, count := range topOSMap {
 		topOS = append(topOS, stat.NameCountPair{Name: name, Count: count})
 	}
+
+	// * Конвертирование отображения visitsByHourMap в срез visitsByHour
+	var visitsByHour []stat.TimeCountPair
+	for hour := 0; hour < 24; hour++ {
+		count := visitsByHourMap[hour]
+		visitsByHour = append(visitsByHour, stat.TimeCountPair{Time: strconv.Itoa(hour), Count: count})
+	}
+
+	stats.VisitsByHour = visitsByHour
 
 	// * Сортировка topOS по убыванию count
 	sort.Slice(topOS, func(i, j int) bool {

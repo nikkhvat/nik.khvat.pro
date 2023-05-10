@@ -564,6 +564,23 @@ const docTemplate = `{
                     "items": {
                         "$ref": "#/definitions/stat.DateCountPair"
                     }
+                },
+                "visits_by_hour": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/stat.TimeCountPair"
+                    }
+                }
+            }
+        },
+        "stat.TimeCountPair": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "time": {
+                    "type": "string"
                 }
             }
         },

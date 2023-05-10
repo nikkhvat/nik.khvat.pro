@@ -166,6 +166,17 @@ definitions:
         items:
           $ref: '#/definitions/stat.DateCountPair'
         type: array
+      visits_by_hour:
+        items:
+          $ref: '#/definitions/stat.TimeCountPair'
+        type: array
+    type: object
+  stat.TimeCountPair:
+    properties:
+      count:
+        type: integer
+      time:
+        type: string
     type: object
   stat.URLCountPair:
     properties:

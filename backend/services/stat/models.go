@@ -78,6 +78,11 @@ func (pairs NameCountPairs) Swap(i, j int) {
 	pairs[i], pairs[j] = pairs[j], pairs[i]
 }
 
+type TimeCountPair struct {
+	Time  string `json:"time"`
+	Count int    `json:"count"`
+}
+
 // swagger:model SiteStats
 type SiteStats struct {
 	TotalVisits      int             `json:"total_visits"`
@@ -90,6 +95,7 @@ type SiteStats struct {
 	TopOS            []NameCountPair `json:"top_os"`
 	FirstVisitsByDay []DateCountPair `json:"visits_by_day"`
 	VisitsBotByDay   []Bot           `json:"total_visits_bot"` // Total bots visit by days
+	VisitsByHour     []TimeCountPair `json:"visits_by_hour"`
 	// TotalVisits         int             `json:"total_visits"`           // Visits
 	// TotalBots           int             `json:"total_bots"`             // Total bots visit
 	// UniqueVisits        int             `json:"unique_visits"`          // Unique visits
