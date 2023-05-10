@@ -33,7 +33,7 @@ const StatisticBots: React.FC<StatisticVisitsProps> = ({ daysObject }) => {
   const [bots, setBots] = useState([
     { show: true, id: "Googlebot", name: "Google Bot", color: "#2196F3" },
     { show: true, id: "AhrefsBot", name: "Ahrefs Bot", color: "#4CAF50" },
-    { show: true, id: "OtherBots", name: "Vercel Bot", color: "rgb(156, 39, 176)" },
+    { show: true, id: "OtherBots", name: "Other Bots", color: "rgb(156, 39, 176)" },
   ])
   
   const getBotByName = (name: string) => {
