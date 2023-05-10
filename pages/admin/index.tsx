@@ -18,6 +18,7 @@ import StatisticVisits from "../../components/Admin/StatisticVisits";
 
 import PlatformIcon from "../../components/Admin/PlatformIcon";
 import BrowserIcon from "../../components/Admin/BrowserIcon";
+import StatisticBots from "../../components/Admin/StatisticBots";
 
 type Props = {
   // Add custom props here
@@ -40,27 +41,19 @@ export interface SiteStats {
   total_bots: number
   avg_duration: number
   first_visits: number
-  top_pages: Array<{
-    url: string
-    title: string
-    count: number
-  }>
-  top_browsers: Array<{
-    name: string
-    count: number
-  }>
-  top_countries: Array<{
-    name: string
-    count: number
-  }>
-  top_os: Array<{
-    name: string
-    count: number
-  }>
-  visits_by_day: Array<{
-    date: string
-    count: number
-  }>
+  top_pages: { url: string, title: string, count: number}[]
+  top_browsers: { name: string, count: number }[]
+  top_countries: {name: string, count: number }[]
+  top_os: { name: string, count: number }[]
+  visits_by_day: { date: string, count: number}[]
+  total_visits_bot: { 
+    date: string, 
+    total: number,
+    details: {
+      name: string,
+      count: number
+    }[]
+  }[]
 }
 
 
@@ -263,7 +256,7 @@ const Admin: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
             </ul>
           </div>
           <div className={`${styles.grid_card} ${styles.second_stat}`} >
-            {/* <StatisticBots daysObject={general.visits_by_day} /> */}
+            <StatisticBots daysObject={general.total_visits_bot} />
           </div>
         </div>
 
