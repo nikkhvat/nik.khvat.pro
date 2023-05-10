@@ -84,6 +84,17 @@ definitions:
         description: Url preview
         type: string
     type: object
+  stat.Bot:
+    properties:
+      date:
+        type: string
+      details:
+        items:
+          $ref: '#/definitions/stat.Entry'
+        type: array
+      total:
+        type: integer
+    type: object
   stat.BrowserCount:
     properties:
       count:
@@ -96,6 +107,15 @@ definitions:
       count:
         type: integer
       date:
+        type: string
+    type: object
+  stat.Entry:
+    properties:
+      count:
+        description: value
+        type: integer
+      name:
+        description: key
         type: string
     type: object
   stat.NameCountPair:
@@ -114,10 +134,6 @@ definitions:
     properties:
       avg_duration:
         type: integer
-      bot_by_day:
-        items:
-          $ref: '#/definitions/stat.DateCountPair'
-        type: array
       first_visits:
         type: integer
       top_browsers:
@@ -141,6 +157,11 @@ definitions:
         type: integer
       total_visits:
         type: integer
+      total_visits_bot:
+        description: Total bots visit by days
+        items:
+          $ref: '#/definitions/stat.Bot'
+        type: array
       visits_by_day:
         items:
           $ref: '#/definitions/stat.DateCountPair'

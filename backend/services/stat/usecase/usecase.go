@@ -198,65 +198,56 @@ func (a *statUseCase) AddVisit(ip, userAgent, utm, httpReferer, url, title strin
 
 // 	// Sort top os END
 
-// 	// Start top Bots
-// 	now := time.Now()
-// 	endDate := now.Format("2006-01-02")
-// 	startDate := now.AddDate(0, 0, -16).Format("2006-01-02")
-
-// 	bots := convertToBots(botsByDate, startDate, endDate)
-
-// 	stats.VisitsBotByDay = bots
-// 	// End top bots
 // 	return stats
 // }
 
-// func convertToBots(data map[string][]stat.Entry, startDate, endDate string) []stat.Bot {
-// 	start, _ := time.Parse("2006-01-02", startDate)
-// 	end, _ := time.Parse("2006-01-02", endDate)
+func convertToBots(data map[string][]stat.Entry, startDate, endDate string) []stat.Bot {
+	start, _ := time.Parse("2006-01-02", startDate)
+	end, _ := time.Parse("2006-01-02", endDate)
 
-// 	bots := []stat.Bot{}
-// 	for d := start; !d.After(end); d = d.AddDate(0, 0, 1) {
-// 		date := d.Format("2006-01-02")
-// 		details, ok := data[date]
-// 		if !ok {
-// 			details = []stat.Entry{}
-// 		} else {
-// 			details = mergeEntries(details)
-// 		}
+	bots := []stat.Bot{}
+	for d := start; !d.After(end); d = d.AddDate(0, 0, 1) {
+		date := d.Format("2006-01-02")
+		details, ok := data[date]
+		if !ok {
+			details = []stat.Entry{}
+		} else {
+			details = mergeEntries(details)
+		}
 
-// 		total := getTotal(details)
+		total := getTotal(details)
 
-// 		bot := stat.Bot{
-// 			Date:    date,
-// 			Details: details,
-// 			Total:   total,
-// 		}
-// 		bots = append(bots, bot)
-// 	}
-// 	return bots
-// }
+		bot := stat.Bot{
+			Date:    date,
+			Details: details,
+			Total:   total,
+		}
+		bots = append(bots, bot)
+	}
+	return bots
+}
 
-// func getTotal(details []stat.Entry) int {
-// 	total := 0
-// 	for _, entry := range details {
-// 		total += entry.Count
-// 	}
-// 	return total
-// }
+func getTotal(details []stat.Entry) int {
+	total := 0
+	for _, entry := range details {
+		total += entry.Count
+	}
+	return total
+}
 
-// func mergeEntries(entries []stat.Entry) []stat.Entry {
-// 	merged := make(map[string]int)
-// 	for _, entry := range entries {
-// 		merged[entry.Name] += entry.Count
-// 	}
+func mergeEntries(entries []stat.Entry) []stat.Entry {
+	merged := make(map[string]int)
+	for _, entry := range entries {
+		merged[entry.Name] += entry.Count
+	}
 
-// 	mergedEntries := make([]stat.Entry, 0, len(merged))
-// 	for name, count := range merged {
-// 		mergedEntries = append(mergedEntries, stat.Entry{Name: name, Count: count})
-// 	}
+	mergedEntries := make([]stat.Entry, 0, len(merged))
+	for name, count := range merged {
+		mergedEntries = append(mergedEntries, stat.Entry{Name: name, Count: count})
+	}
 
-// 	return mergedEntries
-// }
+	return mergedEntries
+}
 
 func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 	// * Создаем пустой объект SiteStats
@@ -268,6 +259,7 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 	countryCounter := make(map[string]int)
 	sessionCounter := make(map[string]bool)
 	topOSMap := make(map[string]int)
+	botsByDate := make(map[string][]stat.Entry)
 
 	var totalDuration time.Duration
 
@@ -277,23 +269,21 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 	// * Создайте отображение для хранения информации о первых посещениях по дням
 	firstVisitsByDayMap := make(map[string]int)
 
-	// * Создайте отображение для хранения информации о ботах
-	botsByDayMap := make(map[string]int)
-
 	// * Получите текущую дату и вычислите дату 30 дней назад
 	now := time.Now()
 	startDate := now.AddDate(0, 0, -30)
 
 	for _, visit := range visits {
+		date := visit.TimeEntry.Format("2006-01-02")
 		// * Если браузер содержит "bot", учитываем его как бота
 		if containsBot(visit.Browser) {
 			stats.TotalBots++
 
-			// * Если посещение находится в интервале последних 30 дней
-			if visit.TimeEntry.After(startDate) {
-				visitDate := visit.TimeEntry.Format("2006-01-02")
-				botsByDayMap[visitDate]++
-			}
+			botsByDate[date] = append(botsByDate[date], stat.Entry{
+				Name:  visit.Browser,
+				Count: 1,
+			})
+
 			continue
 		}
 
@@ -350,17 +340,6 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 		}
 
 		stats.FirstVisitsByDay = firstVisitsByDay
-
-		// * Конвертирование отображение botsByDayMap в срез
-		var botsByDay []stat.DateCountPair
-		for date := startDate; !date.After(now); date = date.AddDate(0, 0, 1) {
-			formattedDate := date.Format("2006-01-02")
-			count := botsByDayMap[formattedDate]
-			botsByDay = append(botsByDay, stat.DateCountPair{Date: formattedDate, Count: count})
-		}
-		// botsByDayMap
-
-		stats.BotsByDay = botsByDay
 	}
 
 	// Вычисляем среднюю продолжительность посещения
@@ -401,6 +380,14 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 	sort.Slice(topOS, func(i, j int) bool {
 		return topOS[i].Count > topOS[j].Count
 	})
+
+	// * Start top Bots
+	endDateBot := now.Format("2006-01-02")
+	startDateBot := now.AddDate(0, 0, -16).Format("2006-01-02")
+
+	bots := convertToBots(botsByDate, startDateBot, endDateBot)
+
+	stats.VisitsBotByDay = bots
 
 	stats.TopOS = topOS
 

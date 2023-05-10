@@ -89,14 +89,12 @@ type SiteStats struct {
 	TopCountries     []NameCountPair `json:"top_countries"` // Top countries
 	TopOS            []NameCountPair `json:"top_os"`
 	FirstVisitsByDay []DateCountPair `json:"visits_by_day"`
-	BotsByDay        []DateCountPair `json:"bot_by_day"`
-
+	VisitsBotByDay   []Bot           `json:"total_visits_bot"` // Total bots visit by days
 	// TotalVisits         int             `json:"total_visits"`           // Visits
 	// TotalBots           int             `json:"total_bots"`             // Total bots visit
 	// UniqueVisits        int             `json:"unique_visits"`          // Unique visits
 	// UniqueVisitsByDay   map[string]int  `json:"unique_visits_by_day"`   // Unique visits per day
 	// TotalVisitsByDay    map[string]int  `json:"total_visits_by_day"`    // Visits per day
-	// VisitsBotByDay      []Bot           `json:"total_visits_bot"`       // Total bots visit by days
 	// TopOS               []Entry         `json:"top_os"`                 // Top Operating systems
 	// TopBrowsers         []Entry         `json:"top_browsers"`           // Top browsers
 	// AvgTimeOnSite       int64           `json:"avg_time_on_site"`       // Average time spent on the site

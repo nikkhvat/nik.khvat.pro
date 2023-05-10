@@ -441,6 +441,23 @@ const docTemplate = `{
                 }
             }
         },
+        "stat.Bot": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string"
+                },
+                "details": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/stat.Entry"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
         "stat.BrowserCount": {
             "type": "object",
             "properties": {
@@ -459,6 +476,19 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "date": {
+                    "type": "string"
+                }
+            }
+        },
+        "stat.Entry": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "description": "value",
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "key",
                     "type": "string"
                 }
             }
@@ -487,12 +517,6 @@ const docTemplate = `{
             "properties": {
                 "avg_duration": {
                     "type": "integer"
-                },
-                "bot_by_day": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/stat.DateCountPair"
-                    }
                 },
                 "first_visits": {
                     "type": "integer"
@@ -527,6 +551,13 @@ const docTemplate = `{
                 },
                 "total_visits": {
                     "type": "integer"
+                },
+                "total_visits_bot": {
+                    "description": "Total bots visit by days",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/stat.Bot"
+                    }
                 },
                 "visits_by_day": {
                     "type": "array",
