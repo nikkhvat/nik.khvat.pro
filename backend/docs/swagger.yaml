@@ -114,6 +114,10 @@ definitions:
     properties:
       avg_duration:
         type: integer
+      bot_by_day:
+        items:
+          $ref: '#/definitions/stat.DateCountPair'
+        type: array
       first_visits:
         type: integer
       top_browsers:

@@ -89,6 +89,7 @@ type SiteStats struct {
 	TopCountries     []NameCountPair `json:"top_countries"` // Top countries
 	TopOS            []NameCountPair `json:"top_os"`
 	FirstVisitsByDay []DateCountPair `json:"visits_by_day"`
+	BotsByDay        []DateCountPair `json:"bot_by_day"`
 
 	// TotalVisits         int             `json:"total_visits"`           // Visits
 	// TotalBots           int             `json:"total_bots"`             // Total bots visit

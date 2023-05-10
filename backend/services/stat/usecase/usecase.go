@@ -259,10 +259,10 @@ func (a *statUseCase) AddVisit(ip, userAgent, utm, httpReferer, url, title strin
 // }
 
 func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
-	// Создаем пустой объект SiteStats
+	// * Создаем пустой объект SiteStats
 	stats := stat.SiteStats{}
 
-	// Создаем временные хранилища
+	// * Создаем временные хранилища
 	topPagesMap := make(map[string]stat.URLCountPair)
 	browserCounter := make(map[string]int)
 	countryCounter := make(map[string]int)
@@ -271,13 +271,16 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 
 	var totalDuration time.Duration
 
-	// Создайте отображение для хранения информации о первых посещениях по сессиям
+	// * Создайте отображение для хранения информации о первых посещениях по сессиям
 	firstVisitSessions := make(map[string]bool)
 
-	// Создайте отображение для хранения информации о первых посещениях по дням
+	// * Создайте отображение для хранения информации о первых посещениях по дням
 	firstVisitsByDayMap := make(map[string]int)
 
-	// Получите текущую дату и вычислите дату 30 дней назад
+	// * Создайте отображение для хранения информации о ботах
+	botsByDayMap := make(map[string]int)
+
+	// * Получите текущую дату и вычислите дату 30 дней назад
 	now := time.Now()
 	startDate := now.AddDate(0, 0, -30)
 
@@ -285,18 +288,24 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 		// * Если браузер содержит "bot", учитываем его как бота
 		if containsBot(visit.Browser) {
 			stats.TotalBots++
+
+			// * Если посещение находится в интервале последних 30 дней
+			if visit.TimeEntry.After(startDate) {
+				visitDate := visit.TimeEntry.Format("2006-01-02")
+				botsByDayMap[visitDate]++
+			}
 			continue
 		}
 
 		if _, ok := firstVisitSessions[visit.Session]; !ok {
 			firstVisitSessions[visit.Session] = true
 
-			// Если посещение находится в интервале последних 30 дней
+			// * Если посещение находится в интервале последних 30 дней
 			if visit.TimeEntry.After(startDate) {
-				// Получите дату посещения без времени
+				// * Получите дату посещения без времени
 				visitDate := visit.TimeEntry.Format("2006-01-02")
 
-				// Обновление информации о первых посещениях по дням
+				// * Обновление информации о первых посещениях по дням
 				firstVisitsByDayMap[visitDate]++
 			}
 
@@ -342,6 +351,16 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 
 		stats.FirstVisitsByDay = firstVisitsByDay
 
+		// * Конвертирование отображение botsByDayMap в срез
+		var botsByDay []stat.DateCountPair
+		for date := startDate; !date.After(now); date = date.AddDate(0, 0, 1) {
+			formattedDate := date.Format("2006-01-02")
+			count := botsByDayMap[formattedDate]
+			botsByDay = append(botsByDay, stat.DateCountPair{Date: formattedDate, Count: count})
+		}
+		// botsByDayMap
+
+		stats.BotsByDay = botsByDay
 	}
 
 	// Вычисляем среднюю продолжительность посещения
@@ -404,7 +423,8 @@ func sortAndSliceTopCountries(countryCounter map[string]int) []stat.NameCountPai
 }
 
 func containsBot(browser string) bool {
-	return strings.Contains(strings.ToLower(browser), "bot")
+	lowerBrowser := strings.ToLower(browser)
+	return strings.Contains(lowerBrowser, "bot") || strings.Contains(lowerBrowser, "headless")
 }
 
 func sortAndSliceTopBrowsers(browserCounter map[string]int) []stat.BrowserCount {

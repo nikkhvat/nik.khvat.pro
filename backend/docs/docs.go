@@ -488,6 +488,12 @@ const docTemplate = `{
                 "avg_duration": {
                     "type": "integer"
                 },
+                "bot_by_day": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/stat.DateCountPair"
+                    }
+                },
                 "first_visits": {
                     "type": "integer"
                 },
