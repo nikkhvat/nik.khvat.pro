@@ -278,13 +278,22 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 	for _, visit := range visits {
 		date := visit.TimeEntry.Format("2006-01-02")
 		// * Если браузер содержит "bot", учитываем его как бота
-		if containsBot(visit.Browser) {
+		if containsBot(visit.Browser, visit.Os) {
 			stats.TotalBots++
 
-			botsByDate[date] = append(botsByDate[date], stat.Entry{
-				Name:  visit.Browser,
-				Count: 1,
-			})
+			lowerOs := strings.ToLower(visit.Os)
+
+			if strings.Contains(lowerOs, "yandex") {
+				botsByDate[date] = append(botsByDate[date], stat.Entry{
+					Name:  "YandexBot",
+					Count: 1,
+				})
+			} else {
+				botsByDate[date] = append(botsByDate[date], stat.Entry{
+					Name:  visit.Browser,
+					Count: 1,
+				})
+			}
 
 			continue
 		}
@@ -425,9 +434,10 @@ func sortAndSliceTopCountries(countryCounter map[string]int) []stat.NameCountPai
 	return sortedCountries
 }
 
-func containsBot(browser string) bool {
+func containsBot(browser string, os string) bool {
 	lowerBrowser := strings.ToLower(browser)
-	return strings.Contains(lowerBrowser, "bot") || strings.Contains(lowerBrowser, "headless")
+	lowerOs := strings.ToLower(os)
+	return strings.Contains(lowerBrowser, "bot") || strings.Contains(lowerBrowser, "headless") || strings.Contains(lowerOs, "bot")
 }
 
 func sortAndSliceTopBrowsers(browserCounter map[string]int) []stat.BrowserCount {
