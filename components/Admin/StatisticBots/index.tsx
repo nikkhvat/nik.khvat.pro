@@ -31,8 +31,9 @@ const StatisticBots: React.FC<StatisticVisitsProps> = ({ daysObject }) => {
 
   
   const [bots, setBots] = useState([
-    { show: true, id: "Googlebot", name: "Google Bot", color: "#2196F3" },
-    { show: true, id: "AhrefsBot", name: "Ahrefs Bot", color: "#4CAF50" },
+    { show: true, id: "Googlebot", name: "Google", color: "#2196F3" },
+    { show: true, id: "AhrefsBot", name: "Ahrefs", color: "#4CAF50" },
+    { show: true, id: "YandexBot", name: "Ya", color: "#FFC701" },
     { show: true, id: "OtherBots", name: "Other Bots", color: "rgb(156, 39, 176)" },
   ])
   
@@ -68,7 +69,8 @@ const StatisticBots: React.FC<StatisticVisitsProps> = ({ daysObject }) => {
     // #FF9800
     const colors: {[key: string]: string} = {
       "Googlebot": "#2196F3", 
-      "AhrefsBot": "#4CAF50"
+      "AhrefsBot": "#4CAF50",
+      "YandexBot": "#FFC701"
     }
     return colors[name] ? colors[name] : "#9C27B0"
   }
