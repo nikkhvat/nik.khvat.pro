@@ -165,6 +165,11 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 	startDate := now.AddDate(0, 0, -30)
 
 	for _, visit := range visits {
+		// * Если посещение находится в интервале последних 30 дней
+		if !visit.TimeEntry.After(startDate) {
+			continue
+		}
+
 		date := visit.TimeEntry.Format("2006-01-02")
 
 		diff := visit.TimeLeaving.Sub(visit.TimeEntry)
@@ -200,14 +205,11 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 		if _, ok := firstVisitSessions[visit.Session]; !ok {
 			firstVisitSessions[visit.Session] = true
 
-			// * Если посещение находится в интервале последних 30 дней
-			if visit.TimeEntry.After(startDate) {
-				// * Получите дату посещения без времени
-				visitDate := visit.TimeEntry.Format("2006-01-02")
+			// * Получите дату посещения без времени
+			visitDate := visit.TimeEntry.Format("2006-01-02")
 
-				// * Обновление информации о первых посещениях по дням
-				firstVisitsByDayMap[visitDate]++
-			}
+			// * Обновление информации о первых посещениях по дням
+			firstVisitsByDayMap[visitDate]++
 
 			// * Обновление информации о топ-ОС
 			topOSMap[visit.Os]++
