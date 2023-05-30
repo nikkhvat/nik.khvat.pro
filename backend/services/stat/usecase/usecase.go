@@ -91,117 +91,6 @@ func (a *statUseCase) AddVisit(ip, userAgent, utm, httpReferer, url, title strin
 	return userSession, err
 }
 
-// func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
-// 	stats := stat.SiteStats{
-// 		TotalVisits:       0,
-// 		TotalBots:         0,
-// 		UniqueVisits:      0,
-// 		UniqueVisitsByDay: make(map[string]int),
-// 		TotalVisitsByDay:  make(map[string]int),
-// 		//VisitsBotByDay:    make(map[string]int),
-// 		AvgTimeOnSite: 0,
-// 	}
-
-// 	var totalDuration time.Duration
-// 	var peoples int
-
-// 	uniqueVisitors := make(map[string]bool)
-// 	botsByDate := make(map[string][]stat.Entry)
-// 	TopCountries := make(map[string]int)
-// 	TopBrowsers := make(map[string]int)
-// 	TopOS := make(map[string]int)
-
-// 	for _, visit := range visits {
-// 		if visit.Browser == "Googlebot" || visit.Browser == "AhrefsBot" || visit.Browser == "Vercelbot" {
-// 			visit.Os = visit.Browser
-// 		}
-
-// 		date := visit.TimeEntry.Format("2006-01-02")
-
-// 		browser := strings.ToLower(visit.Browser)
-
-// 		if strings.Contains(browser, "bot") {
-// 			botsByDate[date] = append(botsByDate[date], stat.Entry{
-// 				Name:  visit.Browser,
-// 				Count: 1,
-// 			})
-// 			stats.TotalBots++
-// 		} else {
-// 			stats.UniqueVisitsByDay[date]++
-
-// 			if visit.Unique {
-// 				stats.TotalVisitsByDay[date]++
-// 			}
-
-// 			stats.TotalVisits++
-
-// 			TopOS[visit.Os]++
-// 			TopBrowsers[visit.Browser]++
-
-// 			//timeOnSite := visit.TimeLeaving.Sub(visit.TimeEntry)
-// 			duration := visit.TimeLeaving.Sub(visit.TimeEntry)
-// 			totalDuration += duration
-
-// 			peoples++
-
-// 			TopCountries[visit.Country]++
-// 			if !uniqueVisitors[visit.Ip] {
-// 				stats.UniqueVisits++
-// 				uniqueVisitors[visit.Ip] = true
-// 			}
-// 		}
-// 	}
-
-// 	stats.AvgTimeOnSite = int64(totalDuration/time.Duration(peoples)) / 1000000
-
-// 	// Sort TopCountries
-// 	sortedCountries := make([]stat.Entry, 0, len(TopCountries))
-
-// 	for k, v := range TopCountries {
-// 		sortedCountries = append(sortedCountries, stat.Entry{Name: k, Count: v})
-// 	}
-
-// 	sort.Slice(sortedCountries, func(i, j int) bool {
-// 		return sortedCountries[i].Count > sortedCountries[j].Count
-// 	})
-
-// 	stats.TopCountries = sortedCountries
-
-// 	// Sort TopCountries END
-
-// 	// Sort Browser
-// 	sortedBrowsers := make([]stat.Entry, 0, len(TopBrowsers))
-
-// 	for k, v := range TopBrowsers {
-// 		sortedBrowsers = append(sortedBrowsers, stat.Entry{Name: k, Count: v})
-// 	}
-
-// 	sort.Slice(sortedBrowsers, func(i, j int) bool {
-// 		return sortedBrowsers[i].Count > sortedBrowsers[j].Count
-// 	})
-
-// 	stats.TopBrowsers = sortedBrowsers
-
-// 	// Sort Browser END
-
-// 	// Sort top os
-// 	sortedTopOs := make([]stat.Entry, 0, len(TopOS))
-
-// 	for k, v := range TopOS {
-// 		sortedTopOs = append(sortedTopOs, stat.Entry{Name: k, Count: v})
-// 	}
-
-// 	sort.Slice(sortedTopOs, func(i, j int) bool {
-// 		return sortedTopOs[i].Count > sortedTopOs[j].Count
-// 	})
-
-// 	stats.TopOS = sortedTopOs
-
-// 	// Sort top os END
-
-// 	return stats
-// }
-
 func convertToBots(data map[string][]stat.Entry, startDate, endDate string) []stat.Bot {
 	start, _ := time.Parse("2006-01-02", startDate)
 	end, _ := time.Parse("2006-01-02", endDate)
@@ -277,8 +166,11 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 
 	for _, visit := range visits {
 		date := visit.TimeEntry.Format("2006-01-02")
+
+		diff := visit.TimeLeaving.Sub(visit.TimeEntry)
+
 		// * Если браузер содержит "bot", учитываем его как бота
-		if containsBot(visit.Browser, visit.Os) {
+		if containsBot(visit.Browser, visit.Os) || diff <= time.Second*1 {
 			stats.TotalBots++
 
 			lowerOs := strings.ToLower(visit.Os)
@@ -289,10 +181,17 @@ func calculateSiteStats(visits []stat.Visits) stat.SiteStats {
 					Count: 1,
 				})
 			} else {
-				botsByDate[date] = append(botsByDate[date], stat.Entry{
-					Name:  visit.Browser,
-					Count: 1,
-				})
+				if !containsBot(visit.Browser, visit.Os) {
+					botsByDate[date] = append(botsByDate[date], stat.Entry{
+						Name:  "AnotherBot",
+						Count: 1,
+					})
+				} else {
+					botsByDate[date] = append(botsByDate[date], stat.Entry{
+						Name:  visit.Browser,
+						Count: 1,
+					})
+				}
 			}
 
 			continue
