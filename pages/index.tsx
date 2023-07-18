@@ -113,7 +113,6 @@ const Homepage: React.FC<HomePageProps> = ( _props: any) => {
       <Stat />
       <Preview linkContactsWithMe={contectLinks} />
       <About companies={companies} skills={skils} />
-      <Portfolio categories={_props.categories} projects={_props.projects} />
       <Service services={services} />
       <Footer linksFooter={linksFooter} linkContactsWithMe={footerLinks} />
     </div>
