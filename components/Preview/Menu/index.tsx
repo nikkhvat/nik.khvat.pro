@@ -21,7 +21,7 @@ const Menu: React.FC = () => {
 
   const menuList = [
     { text: t("menu.about"), id: "about" },
-    { text: t("menu.portfolio"), id: "portfolio" },
+    // { text: t("menu.portfolio"), id: "portfolio" },
     { text: t("menu.services"), id: "service" },
     { text: t("menu.contacts"), id: "concatcs" },
   ];

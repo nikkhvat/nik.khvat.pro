@@ -9,7 +9,7 @@ import styles from "../styles/Home.module.css";
 
 import Footer from "../components/Footer";
 import Service from "../components/Service";
-import Portfolio from "../components/Portfolio";
+// import Portfolio from "../components/Portfolio";
 import About from "../components/About";
 import Preview from "../components/Preview";
 
