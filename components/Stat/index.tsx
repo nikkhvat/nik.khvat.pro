@@ -14,7 +14,10 @@ const Stat = () => {
 
     // Delay 800 
     setTimeout(() => {
-      if (localStorage.stat_visit_session && localStorage.stat_visit_session !== "undefined") {
+      if (
+        !!localStorage.stat_visit_session ||
+        localStorage.stat_visit_session === "undefined"
+      ) {
         fetch(
           `https://gostat.app/api/stats/set/visit?un=1&url=${
             window.location.pathname
