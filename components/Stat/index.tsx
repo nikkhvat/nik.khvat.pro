@@ -21,9 +21,15 @@ const Stat = () => {
         fetch(
           `https://gostat.app/api/stats/set/visit?un=1&url=${
             window.location.pathname
-          }&title=${document.querySelector("title")?.innerHTML}&session=${
-            localStorage.stat_visit_session
-          }&app_id=b871fdf8-3de0-4b9c-870a-2e534cd0817c`,
+          }&title=${document.querySelector("title")?.innerHTML}
+          ${localStorage.stat_visit_session !== "undefined" ? 
+            `&session=${
+              localStorage.stat_visit_session
+            }`
+            :
+            ""
+          }
+          &app_id=b871fdf8-3de0-4b9c-870a-2e534cd0817c`,
           requestOptions
         )
           .then((data) => data.json())
