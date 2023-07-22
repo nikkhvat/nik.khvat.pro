@@ -120,17 +120,8 @@ const Homepage: React.FC<HomePageProps> = ( _props: any) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
-
-  const projectResp = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/projects?lang=${locale}`);
-  const projectsData = await projectResp.json();
-  
-  const categoriesResp = await fetch(`${process.env.NEXT_PUBLIC_BACK_END}/api/projects/categories`)
-  const categoriesData = await categoriesResp.json();
-
   return { 
     props: {
-      projects: projectsData.data,
-      categories: categoriesData,
       ...(await serverSideTranslations(locale ?? "en", ["common"])),
     },
     revalidate: 10, // In seconds
