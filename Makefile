@@ -1,7 +1,8 @@
-# Makefile
-start@front:
-	npm run build
-	npm run start
+start:
+	docker-compose up --build -d
 
-dev@front:
-	npm run dev
+stop:
+	docker-compose stop nik19ta_front
+	docker-compose rm nik19ta_front
+
+
