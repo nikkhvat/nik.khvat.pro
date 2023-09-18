@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "setup": "yarn",
-    "dev": "next dev",
+    "dev": "next dev ",
     "build": "next build",
-    "start": "next start",
+    "start": "next start start -p 3010",
     "lint": "next lint"
   },
   "dependencies": {
